@@ -3,6 +3,8 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
 
+import * as S from './style';
+
 const ForgotPassword = () => {
   const emailRef = useRef();
   const { resetPassword } = useAuth();
@@ -30,7 +32,7 @@ const ForgotPassword = () => {
     <>
       <Card>
         <Card.Body>
-          <h2 className='text-center mb-4'>Password Reset</h2>
+          <S.Header>Password Reset</S.Header>
           {error && <Alert variant='danger'>{error}</Alert>}
           {message && <Alert variant='success'>{message}</Alert>}
           <Form onSubmit={handleSubmit}>
@@ -42,14 +44,14 @@ const ForgotPassword = () => {
               Reset Password
             </Button>
           </Form>
-          <div className='w-100 text-center mt-3'>
+          <S.Login>
             <Link to='/login'>Login</Link>
-          </div>
+          </S.Login>
         </Card.Body>
       </Card>
-      <div className='w-100 text-center mt-2'>
+      <S.SignUp>
         Need an account? <Link to='/signup'>Sign Up</Link>
-      </div>
+      </S.SignUp>
     </>
   );
 };
