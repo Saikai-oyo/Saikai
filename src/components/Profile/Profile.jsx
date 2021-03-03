@@ -34,11 +34,11 @@ const Profile = () => {
         </Card.Body>
       </Card>
 
-      <div className='w-100 text-center mt-2'>
+      <S.Logout>
         <Button variant='link' onClick={handleLogout}>
           Log Out
         </Button>
-      </div>
+      </S.Logout>
     </>
   );
 };

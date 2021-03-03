@@ -3,6 +3,8 @@ import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 
+import * as S from './style';
+
 const UpdateProfile = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -35,7 +37,7 @@ const UpdateProfile = () => {
     <>
       <Card>
         <Card.Body>
-          <h2 className='text-center mb-4'>Update Profile</h2>
+          <S.Header>Update Profile</S.Header>
           {error && <Alert variant='danger'>{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id='password'>
@@ -60,9 +62,9 @@ const UpdateProfile = () => {
           </Form>
         </Card.Body>
       </Card>
-      <div className='w-100 text-center mt-2'>
+      <S.Cancel>
         <Link to='/profile'>Cancel</Link>
-      </div>
+      </S.Cancel>
     </>
   );
 };

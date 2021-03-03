@@ -50,9 +50,9 @@ const Login = () => {
               Log in
             </Button>
           </Form>
-          <div className='w-100 text-center mt-3'>
+          <S.ForgotPassword>
             <Link to='/forgot-password'>Forgot Password?</Link>
-          </div>
+          </S.ForgotPassword>
         </Card.Body>
       </Card>
       <S.Message>
