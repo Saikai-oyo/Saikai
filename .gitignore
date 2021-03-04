@@ -128,5 +128,5 @@ yarn-error.log*
 node_modules
 
 
-/mockup
+/src/mockup
 /.env
