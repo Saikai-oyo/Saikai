@@ -38,8 +38,8 @@ const ForgotPassword = () => {
           {message && <div class='alert alert-success'>{message}</div>}
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='email'>
-              <label for='email'>Email</label>
-              <div
+              <label htmlFor='email'>Email</label>
+              <input
                 className='form-control'
                 type='email'
                 ref={emailRef}

@@ -43,8 +43,8 @@ const Signup = () => {
 
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='email'>
-              <label for='email'>Email</label>
-              <div
+              <label htmlFor='email'>Email</label>
+              <input
                 className='form-control'
                 type='email'
                 ref={emailRef}
@@ -53,8 +53,8 @@ const Signup = () => {
             </div>
 
             <div className='form-group' id='password'>
-              <label for='password'>Password</label>
-              <div
+              <label htmlFor='password'>Password</label>
+              <input
                 className='form-control'
                 type='Password'
                 ref={passwordRef}
@@ -63,8 +63,8 @@ const Signup = () => {
             </div>
 
             <div className='form-group' id='password-confirm'>
-              <label for='password-confirm'>Password Confirmation</label>
-              <div
+              <label htmlFor='password-confirm'>Password Confirmation</label>
+              <input
                 className='form-control'
                 type='password'
                 ref={passwordConfirmRef}

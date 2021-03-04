@@ -19,8 +19,8 @@ const Profile = () => {
 
   return (
     <>
-      <div className='form'>
-        <div className='form-body'>
+      <div className='card'>
+        <div className='card-body'>
           <h2 className='text-center mb-3'>Profile</h2>
           {error && (
             <div class='alert alert-danger' role='alert'>
@@ -37,7 +37,7 @@ const Profile = () => {
       </div>
 
       <div className='w-100 text-center mb-1'>
-        <button variant='link' onClick={handleLogout}>
+        <button className='btn btn-link' onClick={handleLogout}>
           Log Out
         </button>
       </div>

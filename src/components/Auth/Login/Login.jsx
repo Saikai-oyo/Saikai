@@ -38,8 +38,8 @@ const Login = () => {
 
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='email'>
-              <label for='email'>Email</label>
-              <div
+              <label htmlFor='email'>Email</label>
+              <input
                 className='form-control'
                 type='email'
                 ref={emailRef}
@@ -48,8 +48,8 @@ const Login = () => {
             </div>
 
             <div className='form-group' id='password'>
-              <label for='password'>Password</label>
-              <div
+              <label htmlFor='password'>Password</label>
+              <input
                 className='form-control'
                 type='Password'
                 ref={passwordRef}

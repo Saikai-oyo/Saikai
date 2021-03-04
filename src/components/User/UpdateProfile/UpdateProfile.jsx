@@ -42,8 +42,8 @@ const UpdateProfile = () => {
           )}
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='password'>
-              <label for='password'>Password</label>
-              <div
+              <label htmlFor='password'>Password</label>
+              <input
                 className='form-control'
                 type='password'
                 ref={passwordRef}
@@ -51,8 +51,8 @@ const UpdateProfile = () => {
               />
             </div>
             <div className='form-group' id='password-confirm'>
-              <label for='password-confirm'>Password Confirmation</label>
-              <div
+              <label htmlFor='password-confirm'>Password Confirmation</label>
+              <input
                 className='form-control'
                 type='password'
                 ref={passwordConfirmRef}
