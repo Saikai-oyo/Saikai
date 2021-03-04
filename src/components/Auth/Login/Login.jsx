@@ -1,9 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Card, Button, Form, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
-
-import * as S from './style';
 
 const Login = () => {
   const emailRef = useRef();
@@ -29,36 +26,54 @@ const Login = () => {
   };
 
   return (
-    <S.SignUpContainer>
-      <Card>
-        <Card.Body>
-          <S.Header>Log in</S.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
+    <div>
+      <div className='card'>
+        <div className='card-body'>
+          <h2 className='text-center mb-3'>Log in</h2>
+          {error && (
+            <div class='alert alert-danger' role='alert'>
+              {error}
+            </div>
+          )}
 
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type='email' ref={emailRef} required />
-            </Form.Group>
+          <form onSubmit={handleSubmit}>
+            <div className='form-group' id='email'>
+              <label for='email'>Email</label>
+              <div
+                className='form-control'
+                type='email'
+                ref={emailRef}
+                required
+              />
+            </div>
 
-            <Form.Group id='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type='Password' ref={passwordRef} required />
-            </Form.Group>
+            <div className='form-group' id='password'>
+              <label for='password'>Password</label>
+              <div
+                className='form-control'
+                type='Password'
+                ref={passwordRef}
+                required
+              />
+            </div>
 
-            <Button disabled={loading} type='submit' className='w-100'>
+            <button
+              disabled={loading}
+              type='submit'
+              className='w-100 btn btn-primary'
+            >
               Log in
-            </Button>
-          </Form>
-          <S.ForgotPassword>
+            </button>
+          </form>
+          <div className='w-100 text-center mt-2'>
             <Link to='/forgot-password'>Forgot Password?</Link>
-          </S.ForgotPassword>
-        </Card.Body>
-      </Card>
-      <S.Message>
+          </div>
+        </div>
+      </div>
+      <div className='w-100 text-center mt-1'>
         Need an account ? <Link to='/signup'>Sign Up</Link>
-      </S.Message>
-    </S.SignUpContainer>
+      </div>
+    </div>
   );
 };
 

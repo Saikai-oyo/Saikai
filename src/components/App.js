@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   Signup,
-  Homepage,
   Login,
+  Homepage,
   Profile,
   ForgotPassword,
   UpdateProfile,
@@ -11,14 +11,12 @@ import GlobalStore from '../contexts/GlobalStore';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../constants/PrivateRoute';
 
-import * as S from './style';
-
 function App() {
   return (
     <GlobalStore>
-      <S.AppContainer>
-        <S.SingUpWrapper className='d-flex align-item-center justify-content-center'>
-          <S.SingUp>
+      <>
+        <div className='container d-flex align-item-center justify-content-center'>
+          <div className='w-100' style={{ maxWidth: '400px' }}>
             <Router>
               <Switch>
                 <PrivateRoute exact path='/' component={Homepage} />
@@ -32,9 +30,9 @@ function App() {
                 />
               </Switch>
             </Router>
-          </S.SingUp>
-        </S.SingUpWrapper>
-      </S.AppContainer>
+          </div>
+        </div>
+      </>
     </GlobalStore>
   );
 }

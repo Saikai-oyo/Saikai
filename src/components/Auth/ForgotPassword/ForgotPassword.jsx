@@ -1,9 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link } from 'react-router-dom';
-
-import * as S from './style';
 
 const ForgotPassword = () => {
   const emailRef = useRef();
@@ -30,28 +27,41 @@ const ForgotPassword = () => {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <S.Header>Password Reset</S.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
-          {message && <Alert variant='success'>{message}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type='email' ref={emailRef} required />
-            </Form.Group>
-            <Button disabled={loading} className='w-100' type='submit'>
+      <div className='card'>
+        <div className='card-body'>
+          <h2 className='text-center mb-3'>Password Reset</h2>
+          {error && (
+            <div class='alert alert-danger' role='alert'>
+              {error}
+            </div>
+          )}
+          {message && <div class='alert alert-success'>{message}</div>}
+          <form onSubmit={handleSubmit}>
+            <div className='form-group' id='email'>
+              <label for='email'>Email</label>
+              <div
+                className='form-control'
+                type='email'
+                ref={emailRef}
+                required
+              />
+            </div>
+            <button
+              disabled={loading}
+              className='w-100 btn btn-primary'
+              type='submit'
+            >
               Reset Password
-            </Button>
-          </Form>
-          <S.Login>
+            </button>
+          </form>
+          <div className='w-100 text-center mt-2'>
             <Link to='/login'>Login</Link>
-          </S.Login>
-        </Card.Body>
-      </Card>
-      <S.SignUp>
+          </div>
+        </div>
+      </div>
+      <div className='w-100 text-center mt-1'>
         Need an account? <Link to='/signup'>Sign Up</Link>
-      </S.SignUp>
+      </div>
     </>
   );
 };

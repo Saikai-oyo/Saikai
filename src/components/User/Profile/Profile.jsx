@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { Card, Button, Alert } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
-import * as S from './style';
 
 const Profile = () => {
   const [error, setError] = useState('');
@@ -21,24 +19,28 @@ const Profile = () => {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <S.Header>Profile</S.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
+      <div className='form'>
+        <div className='form-body'>
+          <h2 className='text-center mb-3'>Profile</h2>
+          {error && (
+            <div class='alert alert-danger' role='alert'>
+              {error}
+            </div>
+          )}
           <strong>Email: </strong>
           {currentUser.email}
 
           <Link to='/update-profile' className='btn btn-primary w-100 mt-3'>
             Update Profile
           </Link>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
 
-      <S.Logout>
-        <Button variant='link' onClick={handleLogout}>
+      <div className='w-100 text-center mb-1'>
+        <button variant='link' onClick={handleLogout}>
           Log Out
-        </Button>
-      </S.Logout>
+        </button>
+      </div>
     </>
   );
 };
