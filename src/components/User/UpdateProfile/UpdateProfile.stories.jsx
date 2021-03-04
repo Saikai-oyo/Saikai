@@ -1,5 +1,5 @@
 import React from 'react';
-import UpdateProfile from './';
+import UpdateProfile from '.';
 
 export default {
   title: 'Components/User/UpdateProfile',
