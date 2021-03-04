@@ -1,9 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-
-import * as S from './style';
 
 const UpdateProfile = () => {
   const passwordRef = useRef();
@@ -35,36 +32,46 @@ const UpdateProfile = () => {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <S.Header>Update Profile</S.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
+      <div className='card'>
+        <div className='card-body'>
+          <h2 className='text-center mb-3'>Update Profile</h2>
+          {error && (
+            <div class='alert alert-danger' role='alert'>
+              {error}
+            </div>
+          )}
+          <form onSubmit={handleSubmit}>
+            <div className='form-group' id='password'>
+              <label for='password'>Password</label>
+              <div
+                className='form-control'
                 type='password'
                 ref={passwordRef}
                 placeholder='New password here..'
               />
-            </Form.Group>
-            <Form.Group id='password-confirm'>
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control
+            </div>
+            <div className='form-group' id='password-confirm'>
+              <label for='password-confirm'>Password Confirmation</label>
+              <div
+                className='form-control'
                 type='password'
                 ref={passwordConfirmRef}
                 placeholder='New password here..'
               />
-            </Form.Group>
-            <Button disabled={loading} className='w-100' type='submit'>
+            </div>
+            <button
+              disabled={loading}
+              className='w-100 btn btn-primary'
+              type='submit'
+            >
               Update
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <S.Cancel>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div className='w-100 text-center mt-1'>
         <Link to='/profile'>Cancel</Link>
-      </S.Cancel>
+      </div>
     </>
   );
 };

@@ -1,9 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, Card, Alert } from 'react-bootstrap';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-
-import * as S from './style';
 
 const Signup = () => {
   const emailRef = useRef();
@@ -34,38 +31,61 @@ const Signup = () => {
   }
 
   return (
-    <S.SignUpContainer>
-      <Card>
-        <Card.Body>
-          <S.Header>Sing Up</S.Header>
-          {error && <Alert variant='danger'>{error}</Alert>}
+    <>
+      <div className='card'>
+        <div className='card-body'>
+          <h2 className='text-center mb-3'>Sing Up</h2>
+          {error && (
+            <div class='alert alert-danger' role='alert'>
+              {error}
+            </div>
+          )}
 
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id='email'>
-              <Form.Label>Email</Form.Label>
-              <Form.Control type='email' ref={emailRef} required />
-            </Form.Group>
+          <form onSubmit={handleSubmit}>
+            <div className='form-group' id='email'>
+              <label for='email'>Email</label>
+              <div
+                className='form-control'
+                type='email'
+                ref={emailRef}
+                required
+              />
+            </div>
 
-            <Form.Group id='password'>
-              <Form.Label>Password</Form.Label>
-              <Form.Control type='Password' ref={passwordRef} required />
-            </Form.Group>
+            <div className='form-group' id='password'>
+              <label for='password'>Password</label>
+              <div
+                className='form-control'
+                type='Password'
+                ref={passwordRef}
+                required
+              />
+            </div>
 
-            <Form.Group id='password-confirm'>
-              <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type='password' ref={passwordConfirmRef} required />
-            </Form.Group>
+            <div className='form-group' id='password-confirm'>
+              <label for='password-confirm'>Password Confirmation</label>
+              <div
+                className='form-control'
+                type='password'
+                ref={passwordConfirmRef}
+                required
+              />
+            </div>
 
-            <Button disabled={loading} type='submit' className='w-100'>
+            <button
+              disabled={loading}
+              type='submit'
+              className='w-100 btn btn-primary'
+            >
               Sign Up
-            </Button>
-          </Form>
-        </Card.Body>
-      </Card>
-      <S.Message>
+            </button>
+          </form>
+        </div>
+      </div>
+      <div className='w-100 text-center mt-1'>
         Already have an account? <Link to='/login'>Log in</Link>
-      </S.Message>
-    </S.SignUpContainer>
+      </div>
+    </>
   );
 };
 
