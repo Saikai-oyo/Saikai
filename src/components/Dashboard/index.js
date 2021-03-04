@@ -1,3 +1,2 @@
-import Dashboard from './Dashboard';
-
-export default Dashboard;
+export { default as Homepage } from './Homepage';
+export { default as Submitting } from './Submitting';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   Signup,
-  Dashboard,
+  Homepage,
   Login,
   Profile,
   ForgotPassword,
@@ -21,7 +21,7 @@ function App() {
           <S.SingUp>
             <Router>
               <Switch>
-                <PrivateRoute exact path='/' component={Dashboard} />
+                <PrivateRoute exact path='/' component={Homepage} />
                 <Route path='/signup' component={Signup} />
                 <Route path='/login' component={Login} />
                 <Route path='/forgot-password' component={ForgotPassword} />
