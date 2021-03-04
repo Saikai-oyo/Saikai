@@ -15,11 +15,11 @@ function App() {
   return (
     <GlobalStore>
       <>
-        <div className='container d-flex align-item-center justify-content-center'>
-          <div className='w-100' style={{ maxWidth: '400px' }}>
-            <Router>
-              <Switch>
-                <PrivateRoute exact path='/' component={Homepage} />
+        <Router>
+          <Switch>
+            <PrivateRoute exact path='/' component={Homepage} />
+            <div className='container d-flex align-item-center justify-content-center'>
+              <div className='w-100' style={{ maxWidth: '400px' }}>
                 <Route path='/signup' component={Signup} />
                 <Route path='/login' component={Login} />
                 <Route path='/forgot-password' component={ForgotPassword} />
@@ -28,10 +28,10 @@ function App() {
                   path='/update-profile'
                   component={UpdateProfile}
                 />
-              </Switch>
-            </Router>
-          </div>
-        </div>
+              </div>
+            </div>
+          </Switch>
+        </Router>
       </>
     </GlobalStore>
   );
