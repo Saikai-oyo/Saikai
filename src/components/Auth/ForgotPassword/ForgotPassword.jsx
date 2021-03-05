@@ -31,11 +31,11 @@ const ForgotPassword = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Password Reset</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
-          {message && <div class='alert alert-success'>{message}</div>}
+          {message && <div className='alert alert-success'>{message}</div>}
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='email'>
               <label htmlFor='email'>Email</label>

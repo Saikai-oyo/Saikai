@@ -36,7 +36,7 @@ const UpdateProfile = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Update Profile</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}

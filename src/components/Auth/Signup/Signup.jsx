@@ -22,7 +22,7 @@ const Signup = () => {
       setError('');
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      history.push('/profile');
+      history.push('/');
     } catch {
       setError('Failed to create an account');
     }
@@ -36,7 +36,7 @@ const Signup = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Sing Up</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
