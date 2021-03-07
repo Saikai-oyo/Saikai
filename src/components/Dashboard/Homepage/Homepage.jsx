@@ -14,7 +14,7 @@ const Homepage = () => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 
-  const titles = ['Sent', 'Denied', 'Receive Task', 'Follow Up', 'Contract'];
+  const titles = ['Sent', 'Receive Task', 'Follow Up', 'Contract', 'Denied'];
 
   const newComp = {
     background: 'transparent',
@@ -33,13 +33,6 @@ const Homepage = () => {
   };
 
   const cardStyle = { borderRadius: '1rem', cursor: 'pointer' };
-
-  const buttonStyle = {
-    borderRadius: '1rem',
-    borderColor: '#1d9624a6',
-    backgroundColor: '#1d9624a6',
-    color: 'white',
-  };
 
   const handleLogout = async () => {
     setError('');
@@ -127,13 +120,18 @@ const Homepage = () => {
               </h3>
 
               <ul className='list-unstyled mt-3'>
-                {mockData.map(
-                  (company) =>
+                {mockData.map((company) => {
+                  const denied =
+                    company.status === 'Denied' ? 'danger' : 'success';
+                  return (
                     title === company.status && (
                       <li className='mb-2' key={company.id}>
-                        <div className='card' style={cardStyle}>
+                        <div draggable className='card' style={cardStyle}>
                           <div
-                            style={buttonStyle}
+                            className={`btn-${denied}`}
+                            style={{
+                              borderRadius: '1rem',
+                            }}
                             onClick={() => setSelectedCompany(company)}
                           >
                             {company.name}
@@ -145,7 +143,8 @@ const Homepage = () => {
                         </div>
                       </li>
                     )
-                )}
+                  );
+                })}
 
                 <button type='button' className='mt-3' style={newComp}>
                   <img
