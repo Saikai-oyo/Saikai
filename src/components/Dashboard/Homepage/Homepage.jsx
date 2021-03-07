@@ -8,31 +8,19 @@ import mockData from '../../../mockup/MOCK_DATA.json';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 
+import './style.css';
+
 const Homepage = () => {
   const [selectedCompany, setSelectedCompany] = React.useState(null);
   const [error, setError] = React.useState('');
   const { currentUser, logout } = useAuth();
   const history = useHistory();
 
+  // DnD
+  const dragItem = React.useRef();
+  const [dragging, setDragging] = React.useState(false);
+
   const titles = ['Sent', 'Receive Task', 'Follow Up', 'Contract', 'Denied'];
-
-  const newComp = {
-    background: 'transparent',
-    fontSize: '12px',
-    border: '1.7px solid #1d9624a6',
-    color: '#1D9624',
-    borderRadius: '1rem',
-    padding: '0.5rem',
-  };
-
-  const style = {
-    padding: '1rem',
-    backgroundColor: '#ebecf0bf',
-    borderRadius: '1rem',
-    marginRight: '1rem',
-  };
-
-  const cardStyle = { borderRadius: '1rem', cursor: 'pointer' };
 
   const handleLogout = async () => {
     setError('');
@@ -42,6 +30,11 @@ const Homepage = () => {
     } catch (error) {
       setError('Failed to log out.');
     }
+  };
+
+  const handleDragStart = (e, params) => {
+    console.log('drag starting...', params);
+    dragItem.current = params;
   };
 
   return (
@@ -83,7 +76,7 @@ const Homepage = () => {
               ></img>
               Welcome back, {currentUser.email}!
             </span>
-            <span className='mr-2' style={{ cursor: 'pointer' }}>
+            <span className='mr-2 navLink'>
               <Link to='/profile'>
                 <img
                   src={settingIcon}
@@ -92,11 +85,7 @@ const Homepage = () => {
                 ></img>
               </Link>
             </span>
-            <span
-              className='mr-2'
-              style={{ cursor: 'pointer' }}
-              onClick={handleLogout}
-            >
+            <span className='mr-2 navLink' onClick={handleLogout}>
               <img
                 src={logoutIcon}
                 alt='logout icon'
@@ -109,29 +98,26 @@ const Homepage = () => {
 
       <div className='container'>
         <div className='row mt-5 text-center'>
-          {titles.map((title) => (
-            <div className='col' style={style}>
-              <h3
-                style={{
-                  borderBottom: '1px solid black',
-                }}
-              >
-                {title}
-              </h3>
+          {titles.map((title, titleIndex) => (
+            <div key={titleIndex} className='col cardLists'>
+              <h3 className='listTitle'>{title}</h3>
 
               <ul className='list-unstyled mt-3'>
-                {mockData.map((company) => {
+                {mockData.map((company, companyIndex) => {
                   const denied =
                     company.status === 'Denied' ? 'danger' : 'success';
                   return (
                     title === company.status && (
-                      <li className='mb-2' key={company.id}>
-                        <div draggable className='card' style={cardStyle}>
+                      <li className='mb-2 ' key={company.id}>
+                        <div
+                          draggable
+                          onDragStart={(e) =>
+                            handleDragStart(e, { titleIndex, companyIndex })
+                          }
+                          className='card cardStyle '
+                        >
                           <div
-                            className={`btn-${denied}`}
-                            style={{
-                              borderRadius: '1rem',
-                            }}
+                            className={`btn-${denied} cardButton`}
                             onClick={() => setSelectedCompany(company)}
                           >
                             {company.name}
@@ -146,7 +132,7 @@ const Homepage = () => {
                   );
                 })}
 
-                <button type='button' className='mt-3' style={newComp}>
+                <button type='button' className='mt-3 addCompanyButton'>
                   <img
                     src={addIcon}
                     className='mr-3 addIcon'
@@ -161,12 +147,8 @@ const Homepage = () => {
       </div>
       {selectedCompany && (
         <>
-          <div className='modal' tabindex='-1' style={{ display: 'block' }}>
-            <div
-              className='modal-dialog'
-              role='document'
-              style={{ maxWidth: '50%' }}
-            >
+          <div className='modal backdropWrapper' tabindex='-1'>
+            <div className='modal-dialog backdropModal' role='document'>
               <div className='modal-content'>
                 <div className='modal-header'>
                   <h5 className='modal-title'>
