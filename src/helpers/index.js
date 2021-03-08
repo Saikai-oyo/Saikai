@@ -1,5 +1,4 @@
 export const organizedData = (companies) => {
-  console.table(companies);
   const newData = [
     { title: 'Sent', items: [] },
     { title: 'Receive Task', items: [] },
