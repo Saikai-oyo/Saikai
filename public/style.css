@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+body,
+html {
+  height: 100vh;
+}
 #root {
+  height: 100vh;
   background-color: #ebecf0;
 }
