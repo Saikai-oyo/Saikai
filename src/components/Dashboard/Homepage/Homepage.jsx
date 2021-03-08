@@ -1,26 +1,63 @@
 import React from 'react';
-import logo from '../../../assets/logos/logo.png';
-import userIcon from '../../../assets/icons/user.svg';
-import settingIcon from '../../../assets/icons/setting.svg';
-import logoutIcon from '../../../assets/icons/logout.svg';
-import addIcon from '../../../assets/icons/add.svg';
-import mockData from '../../../mockup/MOCK_DATA.json';
 import { Link, useHistory } from 'react-router-dom';
+import csc from 'country-state-city';
+import logo from '../../../assets/logos/logo.png';
+import {
+  userIcon,
+  settingIcon,
+  logoutIcon,
+  addIcon,
+} from '../../../assets/icons';
+import { organizedData } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
+import app from '../../../config/firebase';
 
 import './style.css';
 
 const Homepage = () => {
   const [selectedCompany, setSelectedCompany] = React.useState(null);
+  const [addCompany, setAddCompany] = React.useState(null);
+  const [deleteCompany, setDeleteCompany] = React.useState(null);
+  const [cities, setCities] = React.useState([]);
   const [error, setError] = React.useState('');
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+  const [dataList, setDataList] = React.useState(null);
 
-  // DnD
-  const dragItem = React.useRef();
-  const [dragging, setDragging] = React.useState(false);
+  const [message, setMessage] = React.useState('');
 
-  const titles = ['Sent', 'Receive Task', 'Follow Up', 'Contract', 'Denied'];
+  const nameRef = React.useRef();
+  const cityRef = React.useRef();
+  const companyUrlRef = React.useRef();
+  const positionUrlRef = React.useRef();
+  const hrMailRef = React.useRef();
+  const hrNameRef = React.useRef();
+  const statusRef = React.useRef();
+  const noteRef = React.useRef();
+
+  React.useEffect(() => {
+    const unsubscribe = app
+      .firestore()
+      .collection('Companies')
+      .onSnapshot((snapshot) => {
+        const dbData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDataList(organizedData(dbData));
+      });
+
+    return () => unsubscribe();
+  }, []);
+
+  React.useEffect(() => {
+    try {
+      const citiesData = csc.getCitiesOfCountry('IL');
+      setCities(citiesData);
+    } catch (error) {
+      throw new Error('error:', error.message);
+    }
+  }, []);
 
   const handleLogout = async () => {
     setError('');
@@ -32,9 +69,46 @@ const Homepage = () => {
     }
   };
 
-  const handleDragStart = (e, params) => {
-    console.log('drag starting...', params);
-    dragItem.current = params;
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const id = Math.floor(Math.random() * Math.floor(100000));
+    app
+      .firestore()
+      .collection('Companies')
+      .doc(`${id}`)
+      .set({
+        id: id,
+        name:
+          nameRef.current.value !== ''
+            ? nameRef.current.value
+            : 'Unknown Company',
+        city: cityRef.current.value,
+        company_url: companyUrlRef.current.value,
+        position_url: positionUrlRef.current.value,
+        hr_mail: hrMailRef.current.value,
+        hr_name: hrNameRef.current.value,
+        status: statusRef.current.value,
+        note: noteRef.current.value,
+      })
+      .then(() => {
+        setMessage(
+          'Success add new company - ' +
+            (nameRef.current.value !== ''
+              ? nameRef.current.value
+              : 'Unknown Company')
+        );
+      });
+  };
+
+  const handleDelete = (id) => {
+    try {
+      app.firestore().collection('Companies').doc(`${id}`).delete();
+      setMessage('Success delete company!');
+      setSelectedCompany(null);
+    } catch (error) {
+      setError('Can not delete company.');
+      throw new Error(error);
+    }
   };
 
   return (
@@ -63,7 +137,7 @@ const Homepage = () => {
             </li>
           </ul>
           <span className='navbar-text'>
-            {error && (
+            {error && !addCompany && (
               <div className='alert alert-danger' role='alert'>
                 {error}
               </div>
@@ -96,43 +170,47 @@ const Homepage = () => {
         </div>
       </nav>
 
-      <div className='container'>
-        <div className='row mt-5 text-center'>
-          {titles.map((title, titleIndex) => (
-            <div key={titleIndex} className='col cardLists'>
-              <h3 className='listTitle'>{title}</h3>
+      {!dataList ? (
+        <div className='d-flex justify-content-center'>
+          <div className='spinner-border text-success' role='status'></div>
+        </div>
+      ) : (
+        <div className='container'>
+          <div className='row mt-5 text-center'>
+            {dataList.map((data) => (
+              <div key={data.title} className='p-2 col h-100 cardLists'>
+                <h3 className='listTitle'>{data.title}</h3>
 
-              <ul className='list-unstyled mt-3'>
-                {mockData.map((company, companyIndex) => {
-                  const denied =
+                {data.items.map((company) => {
+                  const isDenied =
                     company.status === 'Denied' ? 'danger' : 'success';
                   return (
-                    title === company.status && (
-                      <li className='mb-2 ' key={company.id}>
+                    data.title === company.status && (
+                      <div
+                        draggable
+                        key={company.id}
+                        className='card cardStyle mb-2 mt-3'
+                      >
                         <div
-                          draggable
-                          onDragStart={(e) =>
-                            handleDragStart(e, { titleIndex, companyIndex })
-                          }
-                          className='card cardStyle '
+                          className={`btn-${isDenied} p-1 cardButton`}
+                          onClick={() => setSelectedCompany(company)}
                         >
-                          <div
-                            className={`btn-${denied} cardButton`}
-                            onClick={() => setSelectedCompany(company)}
-                          >
-                            {company.name}
-                            <br />
-                            <span className='text-white-50 font-smaller'>
-                              {company.city}
-                            </span>
-                          </div>
+                          {company.name}
+                          <br />
+                          <span className='text-white-50 font-smaller'>
+                            {company.city}
+                          </span>
                         </div>
-                      </li>
+                      </div>
                     )
                   );
                 })}
 
-                <button type='button' className='mt-3 addCompanyButton'>
+                <button
+                  type='button'
+                  className='mt-3 addCompanyButton'
+                  onClick={() => setAddCompany(true)}
+                >
                   <img
                     src={addIcon}
                     className='mr-3 addIcon'
@@ -140,20 +218,31 @@ const Homepage = () => {
                   />
                   Add new company
                 </button>
-              </ul>
-            </div>
-          ))}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
+
       {selectedCompany && (
         <>
-          <div className='modal backdropWrapper' tabindex='-1'>
+          <div className='modal backdropWrapper' tabIndex='-1'>
             <div className='modal-dialog backdropModal' role='document'>
               <div className='modal-content'>
                 <div className='modal-header'>
                   <h5 className='modal-title'>
                     <strong>Company: </strong>
                     {selectedCompany.name}
+                    {message && (
+                      <div className='alert alert-success' role='alert'>
+                        {message}
+                      </div>
+                    )}
+                    {error && (
+                      <div className='alert alert-danger' role='alert'>
+                        {error}
+                      </div>
+                    )}
                   </h5>
                   <button
                     type='button'
@@ -208,6 +297,165 @@ const Homepage = () => {
                   >
                     Close
                   </button>
+                  <button
+                    type='button'
+                    className='btn btn-danger'
+                    onClick={() => handleDelete(selectedCompany.id)}
+                  >
+                    remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='modal-backdrop show'></div>
+        </>
+      )}
+
+      {addCompany && (
+        <>
+          <div className='modal backdropWrapper' tabIndex='-1'>
+            <div className='modal-dialog backdropModal' role='document'>
+              <div className='modal-content'>
+                <div className='modal-header'>
+                  <h5 className='modal-title'>
+                    <strong>Add new company </strong>
+                    {message && (
+                      <div className='alert alert-success' role='alert'>
+                        {message}
+                      </div>
+                    )}
+                    {error && (
+                      <div className='alert alert-danger' role='alert'>
+                        {error}
+                      </div>
+                    )}
+                  </h5>
+                  <button
+                    type='button'
+                    className='close'
+                    onClick={() => {
+                      setAddCompany(null);
+                      setMessage(null);
+                    }}
+                  >
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>
+                <div className='modal-body w-100'>
+                  <form onSubmit={(e) => handleOnSubmit(e)}>
+                    <div class='form-row'>
+                      <div class='form-group col-md-6'>
+                        <label for='inputEmail4'>Company Name</label>
+                        <input
+                          type='text'
+                          class='form-control'
+                          id='name'
+                          placeholder='Unknown Company'
+                          ref={nameRef}
+                        />
+                      </div>
+                      <div class='form-group col-md-6'>
+                        <label for='inputState'>City</label>
+                        <select
+                          ref={cityRef}
+                          id='inputState'
+                          class='form-control'
+                        >
+                          <option selected value='Unknown city'>
+                            Unknown city
+                          </option>
+
+                          {cities.map((city) => (
+                            <option value={city.name}>{city.name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div class='form-row'>
+                      <div class='form-group col-md-6'>
+                        <label for='inputPassword4'>Company Website</label>
+                        <input
+                          type='text'
+                          class='form-control'
+                          id='company_url'
+                          ref={companyUrlRef}
+                        />
+                      </div>
+                      <div class='form-group col-md-6'>
+                        <label for='inputAddress'>Position URL</label>
+                        <input
+                          type='text'
+                          class='form-control'
+                          id='position_url'
+                          ref={positionUrlRef}
+                        />
+                      </div>
+                    </div>
+                    <div class='form-row'>
+                      <div class='form-group col-md-6'>
+                        <label for='inputAddress2'>HR Name</label>
+                        <input
+                          ref={hrNameRef}
+                          type='text'
+                          class='form-control'
+                          id='hr_name'
+                        />
+                      </div>
+                      <div class='form-group col-md-6'>
+                        <label for='inputAddress2'>HR Mail</label>
+                        <input
+                          ref={hrMailRef}
+                          type='email'
+                          class='form-control'
+                          id='hr_mail'
+                          placeholder='hr@company.com'
+                        />
+                      </div>
+                    </div>
+                    <div class='form-row'>
+                      <div class='form-group col-md-6'>
+                        <label for=''>Note</label>
+                        <textarea
+                          ref={noteRef}
+                          class='form-control'
+                          name=''
+                          id=''
+                          rows='3'
+                        ></textarea>
+                      </div>
+                      <div class='form-group col-md-6'>
+                        <label for='inputState'>Status</label>
+                        <select
+                          ref={statusRef}
+                          id='inputState'
+                          class='form-control'
+                        >
+                          {dataList.map((data) => (
+                            <option value={data.title}>{data.title}</option>
+                          ))}
+                        </select>
+                      </div>
+                      <small id='formInfo' class='form-text text-muted'>
+                        * All fields can remain empty.
+                      </small>
+                    </div>
+                    <div className='modal-footer'>
+                      <button
+                        type='button'
+                        className='btn btn-secondary'
+                        onClick={() => {
+                          setAddCompany(null);
+                          setMessage(null);
+                        }}
+                      >
+                        Close
+                      </button>
+                      <button type='submit' className='btn btn-success'>
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
