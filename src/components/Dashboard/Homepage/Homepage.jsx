@@ -17,7 +17,6 @@ import './style.css';
 const Homepage = () => {
   const [selectedCompany, setSelectedCompany] = React.useState(null);
   const [addCompany, setAddCompany] = React.useState(null);
-  const [deleteCompany, setDeleteCompany] = React.useState(null);
   const [cities, setCities] = React.useState([]);
   const [error, setError] = React.useState('');
   const { currentUser, logout } = useAuth();
@@ -61,6 +60,7 @@ const Homepage = () => {
 
   const handleLogout = async () => {
     setError('');
+    setMessage('');
     try {
       await logout();
       history.push('/login');
@@ -71,37 +71,49 @@ const Homepage = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+
     const id = Math.floor(Math.random() * Math.floor(100000));
-    app
-      .firestore()
-      .collection('Companies')
-      .doc(`${id}`)
-      .set({
-        id: id,
-        name:
-          nameRef.current.value !== ''
-            ? nameRef.current.value
-            : 'Unknown Company',
-        city: cityRef.current.value,
-        company_url: companyUrlRef.current.value,
-        position_url: positionUrlRef.current.value,
-        hr_mail: hrMailRef.current.value,
-        hr_name: hrNameRef.current.value,
-        status: statusRef.current.value,
-        note: noteRef.current.value,
-      })
-      .then(() => {
-        setMessage(
-          'Success add new company - ' +
-            (nameRef.current.value !== ''
+    try {
+      setError('');
+      setMessage('');
+      app
+        .firestore()
+        .collection('Companies')
+        .doc(`${id}`)
+        .set({
+          id: id,
+          name:
+            nameRef.current.value !== ''
               ? nameRef.current.value
-              : 'Unknown Company')
-        );
-      });
+              : 'Unknown Company',
+          city: cityRef.current.value,
+          company_url: companyUrlRef.current.value,
+          position_url: positionUrlRef.current.value,
+          hr_mail: hrMailRef.current.value,
+          hr_name: hrNameRef.current.value,
+          status: statusRef.current.value,
+          note: noteRef.current.value,
+        });
+      setMessage(
+        'Success add new company - ' +
+          (nameRef.current.value !== ''
+            ? nameRef.current.value
+            : 'Unknown Company')
+      );
+    } catch (error) {
+      setError('Can not add company.');
+    }
+    setTimeout(() => {
+      setMessage(null);
+      setError(null);
+    }, 2500);
+    setAddCompany(null);
   };
 
   const handleDelete = (id) => {
     try {
+      setError('');
+      setMessage('');
       app.firestore().collection('Companies').doc(`${id}`).delete();
       setMessage('Success delete company!');
       setSelectedCompany(null);
@@ -109,6 +121,11 @@ const Homepage = () => {
       setError('Can not delete company.');
       throw new Error(error);
     }
+    setTimeout(() => {
+      setMessage(null);
+      setError(null);
+    }, 2500);
+    setAddCompany(null);
   };
 
   return (
@@ -136,12 +153,19 @@ const Homepage = () => {
               </a>
             </li>
           </ul>
-          <span className='navbar-text'>
-            {error && !addCompany && (
+          <div className='mr-5'>
+            {error && (
               <div className='alert alert-danger' role='alert'>
                 {error}
               </div>
             )}
+            {message && (
+              <div className='alert alert-success' role='alert'>
+                {message}
+              </div>
+            )}
+          </div>
+          <span className='navbar-text'>
             <span className='mr-5'>
               <img
                 src={userIcon}
@@ -193,7 +217,11 @@ const Homepage = () => {
                       >
                         <div
                           className={`btn-${isDenied} p-1 cardButton`}
-                          onClick={() => setSelectedCompany(company)}
+                          onClick={() => {
+                            setError('');
+                            setMessage('');
+                            setSelectedCompany(company);
+                          }}
                         >
                           {company.name}
                           <br />
@@ -233,16 +261,6 @@ const Homepage = () => {
                   <h5 className='modal-title'>
                     <strong>Company: </strong>
                     {selectedCompany.name}
-                    {message && (
-                      <div className='alert alert-success' role='alert'>
-                        {message}
-                      </div>
-                    )}
-                    {error && (
-                      <div className='alert alert-danger' role='alert'>
-                        {error}
-                      </div>
-                    )}
                   </h5>
                   <button
                     type='button'
@@ -320,16 +338,6 @@ const Homepage = () => {
                 <div className='modal-header'>
                   <h5 className='modal-title'>
                     <strong>Add new company </strong>
-                    {message && (
-                      <div className='alert alert-success' role='alert'>
-                        {message}
-                      </div>
-                    )}
-                    {error && (
-                      <div className='alert alert-danger' role='alert'>
-                        {error}
-                      </div>
-                    )}
                   </h5>
                   <button
                     type='button'
