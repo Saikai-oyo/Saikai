@@ -10,19 +10,19 @@ import {
 } from '../../../assets/icons';
 import { organizedData } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
-import app from '../../../config/firebase';
+import { app } from '../../../config/firebase';
 
 import './style.css';
 
 const Homepage = () => {
   const [selectedCompany, setSelectedCompany] = React.useState(null);
   const [addCompany, setAddCompany] = React.useState(null);
+  const [userDetails, setUserDetails] = React.useState('');
   const [cities, setCities] = React.useState([]);
   const [error, setError] = React.useState('');
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [dataList, setDataList] = React.useState(null);
-
   const [message, setMessage] = React.useState('');
 
   const nameRef = React.useRef();
@@ -37,7 +37,7 @@ const Homepage = () => {
   React.useEffect(() => {
     const unsubscribe = app
       .firestore()
-      .collection('Companies')
+      .collection('companies')
       .onSnapshot((snapshot) => {
         const dbData = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -47,6 +47,17 @@ const Homepage = () => {
       });
 
     return () => unsubscribe();
+  }, []);
+
+  React.useEffect(() => {
+    var docRef = app.firestore().collection('users').doc(`${currentUser.uid}`);
+    docRef.get().then((doc) => {
+      if (doc.exists) {
+        setUserDetails(doc.data());
+      } else {
+        console.log('No doc');
+      }
+    });
   }, []);
 
   React.useEffect(() => {
@@ -69,18 +80,19 @@ const Homepage = () => {
     }
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     const id = Math.floor(Math.random() * Math.floor(100000));
     try {
       setError('');
       setMessage('');
-      app
+      await app
         .firestore()
-        .collection('Companies')
+        .collection('companies')
         .doc(`${id}`)
         .set({
+          uid: currentUser.uid,
           id: id,
           name:
             nameRef.current.value !== ''
@@ -110,11 +122,11 @@ const Homepage = () => {
     setAddCompany(null);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     try {
       setError('');
       setMessage('');
-      app.firestore().collection('Companies').doc(`${id}`).delete();
+      await app.firestore().collection('Companies').doc(`${id}`).delete();
       setMessage('Success delete company!');
       setSelectedCompany(null);
     } catch (error) {
@@ -130,6 +142,7 @@ const Homepage = () => {
 
   return (
     <>
+      {!dataList && !userDetails}
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <button
           className='navbar-toggler'
@@ -172,7 +185,10 @@ const Homepage = () => {
                 alt='user icon'
                 className='userIcon mr-2'
               ></img>
-              Welcome back, {currentUser.email}!
+              Welcome back
+              {userDetails &&
+                ', ' + userDetails.firstName + ' ' + userDetails.lastName}
+              !
             </span>
             <span className='mr-2 navLink'>
               <Link to='/profile'>
@@ -209,6 +225,7 @@ const Homepage = () => {
                   const isDenied =
                     company.status === 'Denied' ? 'danger' : 'success';
                   return (
+                    currentUser.uid === company.uid &&
                     data.title === company.status && (
                       <div
                         draggable
@@ -233,25 +250,21 @@ const Homepage = () => {
                     )
                   );
                 })}
-
-                <button
-                  type='button'
-                  className='mt-3 addCompanyButton'
-                  onClick={() => setAddCompany(true)}
-                >
-                  <img
-                    src={addIcon}
-                    className='mr-3 addIcon'
-                    alt='add button'
-                  />
-                  Add new company
-                </button>
               </div>
             ))}
           </div>
         </div>
       )}
-
+      <div className='d-flex justify-content-end mr-2'>
+        <button
+          type='button'
+          className='mt-3 addCompanyButton'
+          onClick={() => setAddCompany(true)}
+        >
+          <img src={addIcon} className='mr-3 addIcon' alt='add button' />
+          Add new company
+        </button>
+      </div>
       {selectedCompany && (
         <>
           <div className='modal backdropWrapper' tabIndex='-1'>
@@ -352,99 +365,103 @@ const Homepage = () => {
                 </div>
                 <div className='modal-body w-100'>
                   <form onSubmit={(e) => handleOnSubmit(e)}>
-                    <div class='form-row'>
-                      <div class='form-group col-md-6'>
-                        <label for='inputEmail4'>Company Name</label>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputEmail4'>Company Name</label>
                         <input
                           type='text'
-                          class='form-control'
+                          className='form-control'
                           id='name'
                           placeholder='Unknown Company'
                           ref={nameRef}
                         />
                       </div>
-                      <div class='form-group col-md-6'>
-                        <label for='inputState'>City</label>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputState'>City</label>
                         <select
                           ref={cityRef}
                           id='inputState'
-                          class='form-control'
+                          className='form-control'
                         >
-                          <option selected value='Unknown city'>
+                          <option defaultValue='Unknown city'>
                             Unknown city
                           </option>
 
                           {cities.map((city) => (
-                            <option value={city.name}>{city.name}</option>
+                            <option key={city.name} value={city.name}>
+                              {city.name}
+                            </option>
                           ))}
                         </select>
                       </div>
                     </div>
-                    <div class='form-row'>
-                      <div class='form-group col-md-6'>
-                        <label for='inputPassword4'>Company Website</label>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputPassword4'>Company Website</label>
                         <input
                           type='text'
-                          class='form-control'
+                          className='form-control'
                           id='company_url'
                           ref={companyUrlRef}
                         />
                       </div>
-                      <div class='form-group col-md-6'>
-                        <label for='inputAddress'>Position URL</label>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputAddress'>Position URL</label>
                         <input
                           type='text'
-                          class='form-control'
+                          className='form-control'
                           id='position_url'
                           ref={positionUrlRef}
                         />
                       </div>
                     </div>
-                    <div class='form-row'>
-                      <div class='form-group col-md-6'>
-                        <label for='inputAddress2'>HR Name</label>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputAddress2'>HR Name</label>
                         <input
                           ref={hrNameRef}
                           type='text'
-                          class='form-control'
+                          className='form-control'
                           id='hr_name'
                         />
                       </div>
-                      <div class='form-group col-md-6'>
-                        <label for='inputAddress2'>HR Mail</label>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputAddress2'>HR Mail</label>
                         <input
                           ref={hrMailRef}
                           type='email'
-                          class='form-control'
+                          className='form-control'
                           id='hr_mail'
                           placeholder='hr@company.com'
                         />
                       </div>
                     </div>
-                    <div class='form-row'>
-                      <div class='form-group col-md-6'>
-                        <label for=''>Note</label>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor=''>Note</label>
                         <textarea
                           ref={noteRef}
-                          class='form-control'
+                          className='form-control'
                           name=''
                           id=''
                           rows='3'
                         ></textarea>
                       </div>
-                      <div class='form-group col-md-6'>
-                        <label for='inputState'>Status</label>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='inputState'>Status</label>
                         <select
                           ref={statusRef}
                           id='inputState'
-                          class='form-control'
+                          className='form-control'
                         >
                           {dataList.map((data) => (
-                            <option value={data.title}>{data.title}</option>
+                            <option key={data.title} value={data.title}>
+                              {data.title}
+                            </option>
                           ))}
                         </select>
                       </div>
-                      <small id='formInfo' class='form-text text-muted'>
+                      <small id='formInfo' className='form-text text-muted'>
                         * All fields can remain empty.
                       </small>
                     </div>
