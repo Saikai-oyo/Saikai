@@ -38,12 +38,12 @@ const AddPosition = ({
             : 'Unknown Position',
           name: positionForm.name ? positionForm.name : 'Unknown Company',
           city: positionForm.city ? positionForm.city : 'Unknown City',
-          company_url: positionForm.companyUrl ? positionForm.companyUrl : '',
-          position_url: positionForm.positionUrl
-            ? positionForm.positionUrl
+          company_url: positionForm.company_url ? positionForm.company_url : '',
+          position_url: positionForm.position_url
+            ? positionForm.position_url
             : '',
-          hr_mail: positionForm.hrMail ? positionForm.hrMail : '',
-          hr_name: positionForm.hrName ? positionForm.hrName : '',
+          hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
+          hr_name: positionForm.hr_name ? positionForm.hr_name : '',
           status: positionForm.status ? positionForm.status : 'Applied',
           description: positionForm.description ? positionForm.description : '',
           personalNote: positionForm.personalNote
@@ -219,7 +219,6 @@ const AddPosition = ({
                         <label htmlFor='status'>Status</label>
                         <select
                           onChange={(e) => {
-                            console.log('status', e.target.value);
                             setPositionForm({
                               ...positionForm,
                               status: e.target.value,
