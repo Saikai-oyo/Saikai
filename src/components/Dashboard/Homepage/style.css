@@ -36,5 +36,22 @@
 }
 
 .modal-dialog.backdropModal {
-  max-width: 45%;
+  max-width: 60%;
+}
+
+form label {
+  font-weight: bold;
+}
+
+.displayForm {
+  border: 1.5px solid #1d9624;
+}
+.displayForm:disabled {
+  background-color: transparent;
+  border: none;
+}
+
+.hideButton {
+  display: none;
+  visibility: hidden;
 }
