@@ -1,12 +1,12 @@
 import React from 'react';
-import {
-  Signup,
-  Login,
-  Homepage,
-  Profile,
-  ForgotPassword,
-  UpdateProfile,
-} from '../components';
+import ForgotPassword from './Auth/ForgotPassword/ForgotPassword';
+import Login from './Auth/Login/Login';
+import Signup from './Auth/Signup/Signup';
+
+import Homepage from './Dashboard/Homepage/Homepage';
+import Profile from './User/Profile/Profile';
+import UpdateProfile from './User/UpdateProfile/UpdateProfile';
+
 import GlobalStore from '../contexts/GlobalStore';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../constants/PrivateRoute';
