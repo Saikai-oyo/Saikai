@@ -33,6 +33,11 @@ const UpdateProfile = () => {
   return (
     <>
       <div className='card'>
+        <div className='card-header-pills'>
+          <button className='btn btn-link' onClick={() => history.goBack()}>
+            Go back..
+          </button>
+        </div>
         <div className='card-body'>
           <h2 className='text-center mb-3'>Update Profile</h2>
           {error && (
