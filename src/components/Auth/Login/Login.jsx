@@ -60,7 +60,7 @@ const Login = () => {
             <button
               disabled={loading}
               type='submit'
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
             >
               Log in
             </button>

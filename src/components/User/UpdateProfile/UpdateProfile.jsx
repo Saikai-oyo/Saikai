@@ -61,7 +61,7 @@ const UpdateProfile = () => {
             </div>
             <button
               disabled={loading}
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
               type='submit'
             >
               Update

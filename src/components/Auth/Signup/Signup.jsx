@@ -103,7 +103,7 @@ const Signup = () => {
             <button
               disabled={loading}
               type='submit'
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
             >
               Sign Up
             </button>
