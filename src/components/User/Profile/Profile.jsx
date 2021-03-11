@@ -23,15 +23,15 @@ const Profile = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Profile</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
           <strong>Email: </strong>
           {currentUser.email}
 
-          <Link to='/update-profile' className='btn btn-primary w-100 mt-3'>
-            Update Profile
+          <Link to='/update-profile' className='btn btn-success w-100 mt-3'>
+            Update Password
           </Link>
         </div>
       </div>

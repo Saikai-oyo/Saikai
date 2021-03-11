@@ -36,7 +36,7 @@ const UpdateProfile = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Update Profile</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
@@ -61,7 +61,7 @@ const UpdateProfile = () => {
             </div>
             <button
               disabled={loading}
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
               type='submit'
             >
               Update

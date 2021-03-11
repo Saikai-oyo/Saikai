@@ -18,7 +18,7 @@ const Login = () => {
       setError('');
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/profile');
+      history.push('/');
     } catch (error) {
       setError('Failed to sign in');
     }
@@ -31,7 +31,7 @@ const Login = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Log in</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
@@ -60,7 +60,7 @@ const Login = () => {
             <button
               disabled={loading}
               type='submit'
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
             >
               Log in
             </button>

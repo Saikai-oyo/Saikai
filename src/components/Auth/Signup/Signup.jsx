@@ -1,17 +1,21 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import { app } from '../../../config/firebase';
 
 const Signup = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
   const { signup } = useAuth();
+
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -21,14 +25,20 @@ const Signup = () => {
     try {
       setError('');
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
-      history.push('/profile');
-    } catch {
+      await signup({
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+        firstName: firstNameRef.current.value,
+        lastName: lastNameRef.current.value,
+      });
+      history.push('/');
+    } catch (error) {
       setError('Failed to create an account');
+      console.error(error);
     }
 
     setLoading(false);
-  }
+  };
 
   return (
     <>
@@ -36,7 +46,7 @@ const Signup = () => {
         <div className='card-body'>
           <h2 className='text-center mb-3'>Sing Up</h2>
           {error && (
-            <div class='alert alert-danger' role='alert'>
+            <div className='alert alert-danger' role='alert'>
               {error}
             </div>
           )}
@@ -48,6 +58,24 @@ const Signup = () => {
                 className='form-control'
                 type='email'
                 ref={emailRef}
+                required
+              />
+            </div>
+            <div className='form-group' id='firstName'>
+              <label htmlFor='firstName'>First Name</label>
+              <input
+                className='form-control'
+                type='text'
+                ref={firstNameRef}
+                required
+              />
+            </div>
+            <div className='form-group' id='lastName'>
+              <label htmlFor='lastName'>Last Name</label>
+              <input
+                className='form-control'
+                type='text'
+                ref={lastNameRef}
                 required
               />
             </div>
@@ -75,7 +103,7 @@ const Signup = () => {
             <button
               disabled={loading}
               type='submit'
-              className='w-100 btn btn-primary'
+              className='w-100 btn btn-success'
             >
               Sign Up
             </button>
