@@ -1,6 +1,6 @@
 export const organizedData = (companies) => {
   const newData = [
-    { title: 'Sent', items: [] },
+    { title: 'Applied', items: [] },
     { title: 'Receive Task', items: [] },
     { title: 'Follow Up', items: [] },
     { title: 'Contract', items: [] },
