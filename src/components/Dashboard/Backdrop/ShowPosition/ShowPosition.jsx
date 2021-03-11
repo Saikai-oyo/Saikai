@@ -26,9 +26,6 @@ const ShowPosition = ({
       return setAddFormError('No change was made 🙄 !');
     }
 
-    console.log(prev);
-    console.log(positionForm);
-
     try {
       await app
         .firestore()
@@ -204,8 +201,8 @@ const ShowPosition = ({
                               type='text'
                               className={`${
                                 disableEdit
-                                  ? 'displayForm'
-                                  : 'form-control w-100'
+                                  ? 'displayForm showBorder'
+                                  : 'form-control w-100 '
                               } `}
                               disabled={disableEdit}
                               defaultValue={selectedPosition.position_url}
@@ -230,7 +227,9 @@ const ShowPosition = ({
                             <input
                               type='text'
                               className={`${
-                                disableEdit ? 'displayForm' : 'form-control'
+                                disableEdit
+                                  ? 'displayForm showBorder'
+                                  : 'form-control'
                               } `}
                               disabled={disableEdit}
                               defaultValue={selectedPosition.company_url}
@@ -255,7 +254,9 @@ const ShowPosition = ({
                             <input
                               type='text'
                               className={`${
-                                disableEdit ? 'displayForm' : 'form-control'
+                                disableEdit
+                                  ? 'displayForm showBorder'
+                                  : 'form-control'
                               } `}
                               disabled={disableEdit}
                               defaultValue={selectedPosition.hr_name}
@@ -280,7 +281,9 @@ const ShowPosition = ({
                             <input
                               type='text'
                               className={`${
-                                disableEdit ? 'displayForm' : 'form-control'
+                                disableEdit
+                                  ? 'displayForm showBorder'
+                                  : 'form-control'
                               } `}
                               disabled={disableEdit}
                               defaultValue={selectedPosition.hr_mail}
@@ -304,7 +307,9 @@ const ShowPosition = ({
                           <div className='ml-2 text-center'>
                             <select
                               className={`${
-                                disableEdit ? 'displayForm' : 'form-control'
+                                disableEdit
+                                  ? 'displayForm showBorder'
+                                  : 'form-control'
                               } `}
                               disabled={disableEdit}
                               onChange={(e) =>
@@ -332,7 +337,7 @@ const ShowPosition = ({
                             htmlFor='statusDisplay'
                             className={`${
                               disableEdit
-                                ? 'w-100 col-form-label'
+                                ? 'w-100 col-form-label '
                                 : 'w-75 col-form-label'
                             }`}
                           >
@@ -348,7 +353,7 @@ const ShowPosition = ({
                             <select
                               className={`${
                                 disableEdit
-                                  ? 'displayForm mr-5'
+                                  ? 'displayForm mr-5 showBorder'
                                   : 'form-control'
                               }`}
                               disabled={disableEdit}
@@ -414,19 +419,35 @@ const ShowPosition = ({
                     className={`${
                       disableEdit ? 'hideButton' : 'btn btn-danger'
                     }`}
-                    onClick={() => handleDelete(selectedPosition.id)}
+                    onClick={() => {
+                      setDisableEdit(true);
+                      handleDelete(selectedPosition.id);
+                    }}
                   >
                     Remove
                   </button>
                   <button
                     type='button'
-                    className='btn btn-secondary'
+                    className={`${
+                      !disableEdit ? 'hideButton' : 'btn btn-secondary'
+                    }`}
                     onClick={() => {
                       setDisableEdit(true);
                       setSelectedPosition(null);
                     }}
                   >
                     Close
+                  </button>
+                  <button
+                    type='button'
+                    className={`${
+                      disableEdit ? 'hideButton' : 'btn btn-secondary'
+                    }`}
+                    onClick={() => {
+                      setDisableEdit(!disableEdit);
+                    }}
+                  >
+                    Cancel
                   </button>
                 </div>
               </div>
