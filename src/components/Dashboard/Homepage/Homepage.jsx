@@ -2,17 +2,13 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import csc from 'country-state-city';
 import logo from '../../../assets/logos/logo.png';
-import {
-  userIcon,
-  settingIcon,
-  logoutIcon,
-  addIcon,
-} from '../../../assets/icons';
+import { userIcon, settingIcon, logoutIcon } from '../../../assets/icons';
 import { organizedData } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
 import { app } from '../../../config/firebase';
 
 import './style.css';
+import List from '../List/List';
 
 const Homepage = () => {
   const [selectedPosition, setSelectedPosition] = React.useState(null);
@@ -50,7 +46,7 @@ const Homepage = () => {
       if (doc.exists) {
         setUserDetails(doc.data());
       } else {
-        console.log('No doc');
+        console.error('No doc');
       }
     });
   }, []);
@@ -277,62 +273,14 @@ const Homepage = () => {
           </span>
         </div>
       </nav>
-
-      {!dataList ? (
-        <div className='d-flex justify-content-center'>
-          <div className='spinner-border text-success' role='status'></div>
-        </div>
-      ) : (
-        <div className='container'>
-          <div className='row mt-5 text-center'>
-            {dataList.map((data) => (
-              <div key={data.title} className='p-2 col h-100 cardLists'>
-                <h3 className='listTitle'>{data.title}</h3>
-
-                {data.items.map((company) => {
-                  const isDenied =
-                    company.status === 'Denied' ? 'danger' : 'success';
-                  return (
-                    currentUser.uid === company.uid &&
-                    data.title === company.status && (
-                      <div
-                        draggable
-                        key={company.id}
-                        className='card cardStyle mb-2 mt-3'
-                      >
-                        <div
-                          className={`btn-${isDenied} p-1 cardButton`}
-                          onClick={() => {
-                            setError('');
-                            setMessage('');
-                            setSelectedPosition(company);
-                          }}
-                        >
-                          {company.position}
-                          <br />
-                          <span className='text-white-50 font-smaller'>
-                            {company.name}
-                          </span>
-                        </div>
-                      </div>
-                    )
-                  );
-                })}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-      <div className='d-flex justify-content-end mr-2'>
-        <button
-          type='button'
-          className='mt-3 addCompanyButton'
-          onClick={() => setAddPosition(true)}
-        >
-          <img src={addIcon} className='mr-3 addIcon' alt='add button' />
-          Add new Position
-        </button>
-      </div>
+      <List
+        dataList={dataList}
+        currentUser={currentUser}
+        setError={setError}
+        setMessage={setMessage}
+        setAddPosition={setAddPosition}
+        setSelectedPosition={setSelectedPosition}
+      />
 
       {selectedPosition && (
         <>
