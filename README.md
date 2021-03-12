@@ -23,7 +23,7 @@ You are probably wondering what can already be done in this app, so it is possib
 * Delete the position 🗑️
 * View all positions 🖼️
 
-and will be add at the next version !
+and more will be add at the next version !
 
 ### License
 
@@ -33,4 +33,4 @@ Distributed under the `MIT License`. See [LICENSE](https://github.com/eidan66/Sa
 
 Idan Levian - [Linkedin](https://www.linkedin.com/in/idanlevian/)
 
-Project Link - SOON !
+Project Link - [Saikai](https://eidan66.github.io/Saikai) 
