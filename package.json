@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d build"
   },
-  "homepage": "https://github.com/eidan66/Saikai/",
+  "homepage": "https://eidan66.github.io/Saikai/",
   "eslintConfig": {
     "extends": "react-app"
   },

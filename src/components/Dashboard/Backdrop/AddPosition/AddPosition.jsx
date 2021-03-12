@@ -59,7 +59,7 @@ const AddPosition = ({
       setPositionForm(null);
     } catch (error) {
       setError('Can not add position.');
-      throw new Error(error.message);
+      console.error(error);
     }
     setTimeout(() => {
       setMessage(null);

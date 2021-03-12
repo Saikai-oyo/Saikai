@@ -33,7 +33,7 @@ const Signup = () => {
       });
       history.push('/');
     } catch (error) {
-      setError('Failed to create an account');
+      setError(error.message);
       console.error(error);
     }
 
