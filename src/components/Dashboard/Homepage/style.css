@@ -1,3 +1,7 @@
+.homepageWrapper {
+  min-height: 90%;
+}
+
 .cardLists {
   padding: 1rem;
   background-color: #ffffff9a;
