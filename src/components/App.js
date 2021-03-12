@@ -10,6 +10,7 @@ import UpdateProfile from './User/UpdateProfile/UpdateProfile';
 import GlobalStore from '../contexts/GlobalStore';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../constants/PrivateRoute';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           </Switch>
         </Router>
       </>
+      <Footer />
     </GlobalStore>
   );
 }
