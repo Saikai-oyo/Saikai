@@ -5,13 +5,19 @@ import { Link, useHistory } from 'react-router-dom';
 const UpdateProfile = () => {
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { updatePassword } = useAuth();
+  const { updatePassword, currentUser } = useAuth();
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (currentUser.email === 'demo@saikai.com') {
+      setLoading(false);
+      return setError('Can not update Demo password! 😉');
+    }
+
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError('Passwords do not match');
     }

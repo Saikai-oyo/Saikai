@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import { app } from '../../../config/firebase';
 
 const Signup = () => {
   const emailRef = useRef();
@@ -44,7 +43,7 @@ const Signup = () => {
     <>
       <div className='card'>
         <div className='card-body'>
-          <h2 className='text-center mb-3'>Sing Up</h2>
+          <h2 className='text-center mb-3'>Sign Up</h2>
           {error && (
             <div className='alert alert-danger' role='alert'>
               {error}
