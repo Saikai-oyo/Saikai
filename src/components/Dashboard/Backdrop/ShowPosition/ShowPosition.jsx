@@ -324,19 +324,18 @@ const ShowPosition = ({
                               }
                               id='statusDisplay'
                             >
-                              {dataList.map((data) => (
-                                <option
-                                  defaultValue={
-                                    data.title === selectedPosition.status
-                                      ? selectedPosition.status
-                                      : false
-                                  }
-                                  key={data.title}
-                                  value={data.title}
-                                >
-                                  {data.title}
-                                </option>
-                              ))}
+                              <option defaultValue={selectedPosition.status}>
+                                {selectedPosition.status}
+                              </option>
+                              {dataList.map((data) => {
+                                if (data.title !== selectedPosition.status) {
+                                  return (
+                                    <option key={data.title} value={data.title}>
+                                      {data.title}
+                                    </option>
+                                  );
+                                }
+                              })}
                             </select>
                           </div>
                         </div>
