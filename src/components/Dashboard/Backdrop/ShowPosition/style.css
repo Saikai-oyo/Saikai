@@ -1,0 +1,44 @@
+.backdropWrapper {
+  display: block !important;
+}
+
+.modal-dialog.backdropModal {
+  max-width: 60%;
+}
+
+form label {
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1.5px solid #1d9624 !important;
+}
+.form-control:disabled {
+  background-color: transparent !important;
+  border: none !important;
+  resize: none;
+}
+.hideButton {
+  display: none;
+  visibility: hidden;
+}
+
+.responsiveWrapper {
+  flex-direction: row;
+}
+
+@media screen and (max-width: 470px) {
+  .modal.backdropWrapper {
+    max-width: 100% !important;
+    overflow-y: scroll;
+    max-height: 85%;
+  }
+  .modal-dialog.backdropModal {
+    margin: auto;
+    max-width: 90% !important;
+  }
+
+  .responsiveWrapper {
+    flex-direction: column !important;
+  }
+}

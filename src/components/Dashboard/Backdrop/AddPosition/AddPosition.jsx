@@ -1,0 +1,311 @@
+import React from 'react';
+import { app } from '../../../../config/firebase';
+import './style.css';
+
+const AddPosition = ({
+  addPosition,
+  setAddPosition,
+  setMessage,
+  setPositionForm,
+  positionForm,
+  cities,
+  dataList,
+  addFormError,
+  setAddFormError,
+  setError,
+  currentUser,
+}) => {
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    setAddFormError('');
+    setError('');
+    setMessage('');
+
+    if (!positionForm) {
+      return setAddFormError('Must fill minimum one field 😡');
+    }
+    try {
+      const id = Math.floor(Math.random() * Math.floor(100000));
+      await app
+        .firestore()
+        .collection('positions')
+        .doc(`${id}`)
+        .set({
+          uid: currentUser.uid,
+          id: id,
+          position: positionForm.position
+            ? positionForm.position
+            : 'Unknown Position',
+          name: positionForm.name ? positionForm.name : 'Unknown Company',
+          city: positionForm.city ? positionForm.city : 'Unknown City',
+          company_url: positionForm.company_url ? positionForm.company_url : '',
+          position_url: positionForm.position_url
+            ? positionForm.position_url
+            : '',
+          hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
+          hr_name: positionForm.hr_name ? positionForm.hr_name : '',
+          status: positionForm.status ? positionForm.status : 'Applied',
+          description: positionForm.description ? positionForm.description : '',
+          personalNote: positionForm.personalNote
+            ? positionForm.personalNote
+            : '',
+        });
+      setMessage(
+        ' 🎉 Success add new position - ' +
+          (positionForm.position
+            ? positionForm.position + ' 🎉'
+            : 'Unknown Position 🎉')
+      );
+      setPositionForm(null);
+    } catch (error) {
+      setError('Can not add position.');
+      throw new Error(error.message);
+    }
+    setTimeout(() => {
+      setMessage(null);
+      setAddFormError(null);
+      setError(null);
+    }, 4000);
+    setAddPosition(null);
+  };
+
+  return (
+    <>
+      {addPosition && (
+        <>
+          <div className='modal backdropWrapper' tabIndex='-1'>
+            <div className='modal-dialog backdropModal' role='document'>
+              <div className='modal-content'>
+                <div className='modal-header'>
+                  <h5 className='modal-title'>
+                    <strong>Add new position </strong>
+                  </h5>
+                  <button
+                    type='button'
+                    className='close'
+                    onClick={() => {
+                      setAddPosition(null);
+                      setMessage(null);
+                    }}
+                  >
+                    <span aria-hidden='true'>&times;</span>
+                  </button>
+                </div>
+                <div className='modal-body w-100'>
+                  <form onSubmit={(e) => handleOnSubmit(e)}>
+                    <div className='form-row mb-3'>
+                      <small id='formInfo' className='form-text text-muted'>
+                        * All fields can remain empty.
+                      </small>
+                    </div>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='position'>Position Name</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='position'
+                          placeholder='Unknown Position'
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              position: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='name'>Company Name</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='name'
+                          placeholder='Unknown Company'
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              name: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='company_url'>Company Website</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='company_url'
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              company_url: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='position_url'>Position URL</label>
+                        <input
+                          type='text'
+                          className='form-control'
+                          id='position_url'
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              position_url: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='hr_name'>HR Name</label>
+                        <input
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              hr_name: e.target.value,
+                            })
+                          }
+                          type='text'
+                          className='form-control'
+                          id='hr_name'
+                        />
+                      </div>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='hr_mail'>HR Mail</label>
+                        <input
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              hr_mail: e.target.value,
+                            })
+                          }
+                          type='email'
+                          className='form-control'
+                          id='hr_mail'
+                          placeholder='hr@company.com'
+                        />
+                      </div>
+                    </div>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='city'>City</label>
+                        <select
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              city: e.target.value,
+                            })
+                          }
+                          id='inputState'
+                          className='form-control'
+                        >
+                          <option defaultValue='Unknown city'>
+                            Unknown city
+                          </option>
+
+                          {cities.map((city) => (
+                            <option key={city.name} value={city.name}>
+                              {city.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='status'>Status</label>
+                        <select
+                          onChange={(e) => {
+                            setPositionForm({
+                              ...positionForm,
+                              status: e.target.value,
+                            });
+                          }}
+                          id='status'
+                          className='form-control'
+                        >
+                          {dataList.map((data) => (
+                            <option
+                              defaultValue={
+                                data.title === 'Applied' ? 'Applied' : false
+                              }
+                              key={data.title}
+                              value={data.title}
+                            >
+                              {data.title}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                    <div className='form-row'>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='description'>
+                          Position Description
+                        </label>
+                        <textarea
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              description: e.target.value,
+                            })
+                          }
+                          className='form-control'
+                          name='description'
+                          id='description'
+                          rows='3'
+                        ></textarea>
+                      </div>
+                      <div className='form-group col-md-6'>
+                        <label htmlFor='personalNote'>Personal Note</label>
+                        <textarea
+                          onChange={(e) =>
+                            setPositionForm({
+                              ...positionForm,
+                              personalNote: e.target.value,
+                            })
+                          }
+                          className='form-control'
+                          name='personalNote'
+                          id='personalNote'
+                          rows='3'
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className='modal-footer'>
+                      {addFormError && (
+                        <div className='alert alert-danger' role='alert'>
+                          {addFormError}
+                        </div>
+                      )}
+                      <button type='submit' className='btn btn-success'>
+                        Submit
+                      </button>
+                      <button
+                        type='button'
+                        className='btn btn-secondary'
+                        onClick={() => {
+                          setAddPosition(null);
+                          setAddFormError(null);
+                          setMessage(null);
+                        }}
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='modal-backdrop show'></div>
+        </>
+      )}
+    </>
+  );
+};
+
+export default AddPosition;

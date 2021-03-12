@@ -1,15 +1,16 @@
 import React from 'react';
-import {
-  Signup,
-  Login,
-  Homepage,
-  Profile,
-  ForgotPassword,
-  UpdateProfile,
-} from '../components';
+import ForgotPassword from './Auth/ForgotPassword/ForgotPassword';
+import Login from './Auth/Login/Login';
+import Signup from './Auth/Signup/Signup';
+
+import Homepage from './Dashboard/Homepage/Homepage';
+import Profile from './User/Profile/Profile';
+import UpdateProfile from './User/UpdateProfile/UpdateProfile';
+
 import GlobalStore from '../contexts/GlobalStore';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../constants/PrivateRoute';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Router>
           <Switch>
             <PrivateRoute exact path='/' component={Homepage} />
-            <div className='container d-flex align-item-center justify-content-center'>
+            <div className='container d-flex align-items-center justify-content-center'>
               <div className='w-100' style={{ maxWidth: '400px' }}>
                 <Route path='/signup' component={Signup} />
                 <Route path='/login' component={Login} />
@@ -33,6 +34,7 @@ function App() {
           </Switch>
         </Router>
       </>
+      <Footer />
     </GlobalStore>
   );
 }
