@@ -12,6 +12,11 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (emailRef.current.value === 'demo@saikai.com') {
+      setLoading(false);
+      return setError('Can not reset Demo password! 😉');
+    }
+
     try {
       setMessage('');
       setError('');
