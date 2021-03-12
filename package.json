@@ -1,6 +1,5 @@
 {
   "name": "saikai",
-  "homepage": "https://github.com/eidan66/Saikai/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,6 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build && gh-pages -d build"
   },
+  "homepage": "https://github.com/eidan66/Saikai/",
   "eslintConfig": {
     "extends": "react-app"
   },
