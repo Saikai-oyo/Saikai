@@ -19,7 +19,10 @@ const List = ({
         <div className='container'>
           <div className='row mt-5 text-center'>
             {dataList.map((data) => (
-              <div key={data.title} className='p-2 col h-100 cardLists'>
+              <div
+                key={data.title}
+                className='p-2 mb-4 col-md-2 h-100 cardLists'
+              >
                 <h3 className='listTitle'>{data.title}</h3>
 
                 {data.items.map((company) => {
