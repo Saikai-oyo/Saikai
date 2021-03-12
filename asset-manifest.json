@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/eidan66/Saikai/static/css/main.262e367a.chunk.css",
-    "main.js": "/eidan66/Saikai/static/js/main.3951b161.chunk.js",
-    "main.js.map": "/eidan66/Saikai/static/js/main.3951b161.chunk.js.map",
-    "runtime-main.js": "/eidan66/Saikai/static/js/runtime-main.86adde38.js",
-    "runtime-main.js.map": "/eidan66/Saikai/static/js/runtime-main.86adde38.js.map",
-    "static/css/2.8d3f7698.chunk.css": "/eidan66/Saikai/static/css/2.8d3f7698.chunk.css",
-    "static/js/2.a23d5e95.chunk.js": "/eidan66/Saikai/static/js/2.a23d5e95.chunk.js",
-    "static/js/2.a23d5e95.chunk.js.map": "/eidan66/Saikai/static/js/2.a23d5e95.chunk.js.map",
-    "index.html": "/eidan66/Saikai/index.html",
-    "precache-manifest.7290d3f46b88f497dacf016bdbfbdb9c.js": "/eidan66/Saikai/precache-manifest.7290d3f46b88f497dacf016bdbfbdb9c.js",
-    "service-worker.js": "/eidan66/Saikai/service-worker.js",
-    "static/css/2.8d3f7698.chunk.css.map": "/eidan66/Saikai/static/css/2.8d3f7698.chunk.css.map",
-    "static/css/main.262e367a.chunk.css.map": "/eidan66/Saikai/static/css/main.262e367a.chunk.css.map",
-    "static/js/2.a23d5e95.chunk.js.LICENSE.txt": "/eidan66/Saikai/static/js/2.a23d5e95.chunk.js.LICENSE.txt",
-    "static/media/add.svg": "/eidan66/Saikai/static/media/add.1d239fa3.svg",
-    "static/media/logo.png": "/eidan66/Saikai/static/media/logo.d9d57df5.png",
-    "static/media/logout.svg": "/eidan66/Saikai/static/media/logout.1baa3ff3.svg",
-    "static/media/setting.svg": "/eidan66/Saikai/static/media/setting.ce34cb6a.svg",
-    "static/media/user.svg": "/eidan66/Saikai/static/media/user.cf40332e.svg"
+    "main.css": "/Saikai/static/css/main.262e367a.chunk.css",
+    "main.js": "/Saikai/static/js/main.668a8218.chunk.js",
+    "main.js.map": "/Saikai/static/js/main.668a8218.chunk.js.map",
+    "runtime-main.js": "/Saikai/static/js/runtime-main.fa8634e1.js",
+    "runtime-main.js.map": "/Saikai/static/js/runtime-main.fa8634e1.js.map",
+    "static/css/2.8d3f7698.chunk.css": "/Saikai/static/css/2.8d3f7698.chunk.css",
+    "static/js/2.6261e6ba.chunk.js": "/Saikai/static/js/2.6261e6ba.chunk.js",
+    "static/js/2.6261e6ba.chunk.js.map": "/Saikai/static/js/2.6261e6ba.chunk.js.map",
+    "index.html": "/Saikai/index.html",
+    "precache-manifest.66128d8a25e25cafe063f365558de6ab.js": "/Saikai/precache-manifest.66128d8a25e25cafe063f365558de6ab.js",
+    "service-worker.js": "/Saikai/service-worker.js",
+    "static/css/2.8d3f7698.chunk.css.map": "/Saikai/static/css/2.8d3f7698.chunk.css.map",
+    "static/css/main.262e367a.chunk.css.map": "/Saikai/static/css/main.262e367a.chunk.css.map",
+    "static/js/2.6261e6ba.chunk.js.LICENSE.txt": "/Saikai/static/js/2.6261e6ba.chunk.js.LICENSE.txt",
+    "static/media/add.svg": "/Saikai/static/media/add.1d239fa3.svg",
+    "static/media/logo.png": "/Saikai/static/media/logo.d9d57df5.png",
+    "static/media/logout.svg": "/Saikai/static/media/logout.1baa3ff3.svg",
+    "static/media/setting.svg": "/Saikai/static/media/setting.ce34cb6a.svg",
+    "static/media/user.svg": "/Saikai/static/media/user.cf40332e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.86adde38.js",
+    "static/js/runtime-main.fa8634e1.js",
     "static/css/2.8d3f7698.chunk.css",
-    "static/js/2.a23d5e95.chunk.js",
+    "static/js/2.6261e6ba.chunk.js",
     "static/css/main.262e367a.chunk.css",
-    "static/js/main.3951b161.chunk.js"
+    "static/js/main.668a8218.chunk.js"
   ]
 }
