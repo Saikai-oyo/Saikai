@@ -101,9 +101,7 @@ const ShowPosition = ({
                       <div className='form-group col-md-5'>
                         <input
                           disabled={disableEdit}
-                          className={`${
-                            disableEdit ? 'displayForm' : 'form-control'
-                          } `}
+                          className='form-control'
                           type='text'
                           id='positionDisplay'
                           defaultValue={selectedPosition.position}
@@ -119,9 +117,7 @@ const ShowPosition = ({
                         <input
                           disabled={disableEdit}
                           type='text'
-                          className={`${
-                            disableEdit ? 'displayForm' : 'form-control'
-                          } `}
+                          className='form-control'
                           id='nameDisplay'
                           defaultValue={selectedPosition.name}
                           onChange={(e) =>
@@ -137,23 +133,24 @@ const ShowPosition = ({
                   <button
                     type='button'
                     className='close'
-                    onClick={() => setSelectedPosition(null)}
+                    onClick={() => {
+                      setDisableEdit(true);
+                      setSelectedPosition(null);
+                    }}
                   >
                     <span aria-hidden='true'>&times;</span>
                   </button>
                 </div>
                 <div className='modal-body w-100'>
                   <form>
-                    <div className='d-flex flex-row justify-content-sm-between'>
+                    <div className='d-flex justify-content-sm-between responsiveWrapper'>
                       <div className='col-sm-3'>
                         <label htmlFor='PositionDescriptionDisplay'>
                           Position Description
                         </label>
                         <textarea
                           disabled={disableEdit}
-                          className={`${
-                            disableEdit ? 'displayForm' : 'form-control'
-                          } `}
+                          className='form-control'
                           name='positionDescriptionDisplay'
                           id='positionDescriptionDisplay'
                           rows='10'
@@ -166,15 +163,13 @@ const ShowPosition = ({
                           }
                         ></textarea>
                       </div>
-                      <div className='col-sm-3'>
+                      <div className='col-sm-3 mb-2'>
                         <label htmlFor='personalNoteDisplay'>
                           Personal Note
                         </label>
                         <textarea
                           disabled={disableEdit}
-                          className={`${
-                            disableEdit ? 'displayForm' : 'form-control'
-                          } `}
+                          className='form-control'
                           name='personalNoteDisplay'
                           id='personalNoteDisplay'
                           rows='10'
@@ -196,14 +191,10 @@ const ShowPosition = ({
                           >
                             Position Url
                           </label>
-                          <div className='ml-2 text-center'>
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <input
                               type='text'
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm showBorder'
-                                  : 'form-control w-100 '
-                              } `}
+                              className='form-control w-100'
                               disabled={disableEdit}
                               defaultValue={selectedPosition.position_url}
                               onChange={(e) =>
@@ -223,14 +214,10 @@ const ShowPosition = ({
                           >
                             Company Url
                           </label>
-                          <div className='ml-2 text-center'>
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <input
                               type='text'
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm showBorder'
-                                  : 'form-control'
-                              } `}
+                              className='form-control'
                               disabled={disableEdit}
                               defaultValue={selectedPosition.company_url}
                               onChange={(e) =>
@@ -250,14 +237,10 @@ const ShowPosition = ({
                           >
                             HR Name
                           </label>
-                          <div className='ml-2 text-center'>
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <input
                               type='text'
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm showBorder'
-                                  : 'form-control'
-                              } `}
+                              className='form-control'
                               disabled={disableEdit}
                               defaultValue={selectedPosition.hr_name}
                               onChange={(e) =>
@@ -277,14 +260,10 @@ const ShowPosition = ({
                           >
                             Position Url
                           </label>
-                          <div className='ml-2 text-center'>
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <input
                               type='text'
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm showBorder'
-                                  : 'form-control'
-                              } `}
+                              className='form-control'
                               disabled={disableEdit}
                               defaultValue={selectedPosition.hr_mail}
                               onChange={(e) =>
@@ -304,13 +283,9 @@ const ShowPosition = ({
                           >
                             City
                           </label>
-                          <div className='ml-2 text-center'>
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <select
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm showBorder'
-                                  : 'form-control'
-                              } `}
+                              className='form-control'
                               disabled={disableEdit}
                               onChange={(e) =>
                                 setPositionForm({
@@ -335,27 +310,13 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='statusDisplay'
-                            className={`${
-                              disableEdit
-                                ? 'w-100 col-form-label '
-                                : 'w-75 col-form-label'
-                            }`}
+                            className='w-100 col-form-label'
                           >
                             Status
                           </label>
-                          <div
-                            className={`${
-                              disableEdit
-                                ? 'ml-2 text-center mr-5'
-                                : 'w-50 text-center '
-                            }`}
-                          >
+                          <div className='ml-2 text-center w-100 mb-2'>
                             <select
-                              className={`${
-                                disableEdit
-                                  ? 'displayForm mr-5 showBorder'
-                                  : 'form-control'
-                              }`}
+                              className='form-control'
                               disabled={disableEdit}
                               onChange={(e) =>
                                 setPositionForm({

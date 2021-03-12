@@ -10,19 +10,35 @@ form label {
   font-weight: bold;
 }
 
-.displayForm {
-  border: 1.5px solid #1d9624;
+.form-control {
+  border: 1.5px solid #1d9624 !important;
 }
-.displayForm:disabled {
-  background-color: transparent;
-  border: none;
+.form-control:disabled {
+  background-color: transparent !important;
+  border: none !important;
+  resize: none;
 }
-
 .hideButton {
   display: none;
   visibility: hidden;
 }
 
-.showBorder {
-  border-bottom: 1px solid black !important;
+.responsiveWrapper {
+  flex-direction: row;
+}
+
+@media screen and (max-width: 470px) {
+  .modal.backdropWrapper {
+    max-width: 100% !important;
+    overflow-y: scroll;
+    max-height: 85%;
+  }
+  .modal-dialog.backdropModal {
+    margin: auto;
+    max-width: 90% !important;
+  }
+
+  .responsiveWrapper {
+    flex-direction: column !important;
+  }
 }
