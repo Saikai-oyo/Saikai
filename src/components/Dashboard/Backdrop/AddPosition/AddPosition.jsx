@@ -304,7 +304,6 @@ const AddPosition = ({
           <div className='modal-backdrop show'></div>
         </>
       )}
-      )
     </>
   );
 };
