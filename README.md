@@ -7,7 +7,7 @@ _Saikai_ is designed to create order and organization, along with determining th
 _Saikai_ helps us to track the sending of resumes to the various companies, update as soon as the resume is received by a particular company and update relevant status when receiving an answer (positive / negative / homework, etc.).
 
 ## Website URL
-🔗 Enter the website [here](https://www.saikai-cv.io/)  ! 🥂
+🔗 Enter the website [here](https://eidan66.github.io/Saikai)  ! 🥂
 
 ## Why use it?
 You are probably wondering what can already be done in this app, so it is possible to do a number of actions that will make it easier for us in the organization of sending our resume!
