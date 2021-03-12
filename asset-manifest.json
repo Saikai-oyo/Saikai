@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Saikai/static/css/main.262e367a.chunk.css",
-    "main.js": "/Saikai/static/js/main.bd00967d.chunk.js",
-    "main.js.map": "/Saikai/static/js/main.bd00967d.chunk.js.map",
+    "main.js": "/Saikai/static/js/main.36e543b6.chunk.js",
+    "main.js.map": "/Saikai/static/js/main.36e543b6.chunk.js.map",
     "runtime-main.js": "/Saikai/static/js/runtime-main.fa8634e1.js",
     "runtime-main.js.map": "/Saikai/static/js/runtime-main.fa8634e1.js.map",
     "static/css/2.8d3f7698.chunk.css": "/Saikai/static/css/2.8d3f7698.chunk.css",
     "static/js/2.bea4ebe3.chunk.js": "/Saikai/static/js/2.bea4ebe3.chunk.js",
     "static/js/2.bea4ebe3.chunk.js.map": "/Saikai/static/js/2.bea4ebe3.chunk.js.map",
     "index.html": "/Saikai/index.html",
-    "precache-manifest.2df2be90c3e3787d68d9bddfb7d31836.js": "/Saikai/precache-manifest.2df2be90c3e3787d68d9bddfb7d31836.js",
+    "precache-manifest.b69ccc7929b218bb0caf92287a4c7e6d.js": "/Saikai/precache-manifest.b69ccc7929b218bb0caf92287a4c7e6d.js",
     "service-worker.js": "/Saikai/service-worker.js",
     "static/css/2.8d3f7698.chunk.css.map": "/Saikai/static/css/2.8d3f7698.chunk.css.map",
     "static/css/main.262e367a.chunk.css.map": "/Saikai/static/css/main.262e367a.chunk.css.map",
@@ -25,6 +25,6 @@
     "static/css/2.8d3f7698.chunk.css",
     "static/js/2.bea4ebe3.chunk.js",
     "static/css/main.262e367a.chunk.css",
-    "static/js/main.bd00967d.chunk.js"
+    "static/js/main.36e543b6.chunk.js"
   ]
 }
