@@ -20,7 +20,8 @@ const Login = () => {
       await login(emailRef.current.value, passwordRef.current.value);
       history.push('/');
     } catch (error) {
-      setError('Failed to sign in');
+      setError(error.message);
+      console.error(error);
     }
     setLoading(false);
   };

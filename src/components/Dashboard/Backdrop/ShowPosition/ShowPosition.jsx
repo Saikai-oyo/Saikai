@@ -56,9 +56,8 @@ const ShowPosition = ({
       setSelectedPosition(null);
       setMessage('Update success 🎉 !');
     } catch (error) {
-      setError('Can not update 😡 !');
-      console.log(error);
-      throw new Error(error.message);
+      setError(error.message);
+      console.error(error);
     }
 
     setTimeout(() => {
@@ -79,7 +78,7 @@ const ShowPosition = ({
       setSelectedPosition(null);
     } catch (error) {
       setError('Can not delete position.');
-      throw new Error(error);
+      console.error(error);
     }
     setAddPosition(null);
     setTimeout(() => {
