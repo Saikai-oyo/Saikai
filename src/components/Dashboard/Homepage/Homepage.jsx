@@ -59,7 +59,7 @@ const Homepage = () => {
   }, []);
 
   return (
-    <>
+    <div className='homepageWrapper'>
       <Navbar
         error={error}
         message={message}
@@ -67,6 +67,7 @@ const Homepage = () => {
         setError={setError}
         setMessage={setMessage}
       />
+
       <List
         dataList={dataList}
         currentUser={currentUser}
@@ -103,7 +104,7 @@ const Homepage = () => {
         setMessage={setMessage}
         setAddPosition={setAddPosition}
       />
-    </>
+    </div>
   );
 };
 
