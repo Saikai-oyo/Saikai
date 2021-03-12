@@ -8,6 +8,10 @@ _Saikai_ helps us to track the sending of resumes to the various companies, upda
 
 ## Website URL
 🔗 Enter the website [here](https://eidan66.github.io/Saikai)  ! 🥂
+Demo user :
+* email : demo@saikai.com
+* password : playSaikai
+
 
 ## Why use it?
 You are probably wondering what can already be done in this app, so it is possible to do a number of actions that will make it easier for us in the organization of sending our resume!
