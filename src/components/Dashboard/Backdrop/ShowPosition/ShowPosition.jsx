@@ -142,7 +142,7 @@ const ShowPosition = ({
                 </div>
                 <div className='modal-body w-100'>
                   <form>
-                    <div className='d-flex justify-content-sm-between responsiveWrapper'>
+                    <div className='d-flex responsiveWrapper'>
                       <div className='col-sm-3'>
                         <label htmlFor='PositionDescriptionDisplay'>
                           Position Description
@@ -181,12 +181,11 @@ const ShowPosition = ({
                           }
                         ></textarea>
                       </div>
-
-                      <div className='d-flex flex-column'>
+                      <div className='d-flex flex-column w-100'>
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='positionUrlDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             Position Url
                           </label>
@@ -209,7 +208,7 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='companyUrlDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             Company Url
                           </label>
@@ -232,7 +231,7 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='hrNameDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             HR Name
                           </label>
@@ -255,7 +254,7 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='hrMailDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             Position Url
                           </label>
@@ -278,7 +277,7 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='cityDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             City
                           </label>
@@ -309,7 +308,7 @@ const ShowPosition = ({
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='statusDisplay'
-                            className='w-100 col-form-label'
+                            className='w-50 col-form-label'
                           >
                             Status
                           </label>
