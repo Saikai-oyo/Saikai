@@ -36,7 +36,15 @@ const Login = () => {
               {error}
             </div>
           )}
-
+          <div className='text-center'>
+            <span className='text-muted'>
+              <small>
+                Demo user
+                <br /> <strong>email: </strong>demo@saikai.com{' '}
+                <strong>password: </strong>playSaikai
+              </small>
+            </span>
+          </div>
           <form onSubmit={handleSubmit}>
             <div className='form-group' id='email'>
               <label htmlFor='email'>Email</label>
