@@ -16,7 +16,7 @@ function App() {
   return (
     <GlobalStore>
       <>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <PrivateRoute exact path='/' component={Homepage} />
             <div className='container d-flex align-items-center justify-content-center'>
