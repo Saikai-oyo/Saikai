@@ -46,7 +46,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
               </a>
             </li>
           </ul>
-          <div className='mr-5'>
+          <div className='mr-5 '>
             {error && (
               <div className='alert alert-danger' role='alert'>
                 {error}
@@ -58,8 +58,8 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
               </div>
             )}
           </div>
-          <span className='navbar-text'>
-            <span className='mr-5'>
+          <span className='navbar-text navResponsive'>
+            <span className='mr-5 navResponsive'>
               <img
                 src={userIcon}
                 alt='user icon'
@@ -76,7 +76,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
               )}
               !
             </span>
-            <span className='mr-2 navLink'>
+            <span className='mr-2 navLink navResponsive'>
               <Link to='/profile'>
                 <img
                   src={settingIcon}
