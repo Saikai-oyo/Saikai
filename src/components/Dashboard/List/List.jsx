@@ -34,6 +34,8 @@ const List = ({
                       <div
                         key={company.id}
                         className='card cardStyle mb-2 mt-3'
+                        data-toggle='modal'
+                        data-target='.bd-selected-position'
                       >
                         <div
                           className={`btn-${isDenied} p-1 cardButton`}
@@ -62,6 +64,8 @@ const List = ({
         <button
           type='button'
           className='mt-3 addCompanyButton'
+          data-toggle='modal'
+          data-target='.bd-add-position'
           onClick={() => setAddPosition(true)}
         >
           <img src={addIcon} className='mr-3 addIcon' alt='add button' />

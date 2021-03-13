@@ -1,7 +1,3 @@
-.backdropWrapper {
-  display: block !important;
-}
-
 .modal-dialog.backdropModal {
   max-width: 60%;
 }
@@ -23,8 +19,17 @@ form label {
   visibility: hidden;
 }
 
-.responsiveWrapper {
-  flex-direction: row;
+
+@media screen and (max-width: 1000px) {
+  .modal.backdropWrapper {
+    max-width: 100% !important;
+    overflow-y: scroll;
+    max-height: 85%;
+  }
+  .modal-dialog.backdropModal {
+    margin: auto;
+    max-width: 90% !important;
+  }
 }
 
 @media screen and (max-width: 470px) {
@@ -36,9 +41,5 @@ form label {
   .modal-dialog.backdropModal {
     margin: auto;
     max-width: 90% !important;
-  }
-
-  .responsiveWrapper {
-    flex-direction: column !important;
   }
 }
