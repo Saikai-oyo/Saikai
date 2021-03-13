@@ -34,6 +34,8 @@ const List = ({
                       <div
                         key={company.id}
                         className='card cardStyle mb-2 mt-3'
+                        data-toggle='modal'
+                        data-target='.bd-selected-position'
                       >
                         <div
                           className={`btn-${isDenied} p-1 cardButton`}

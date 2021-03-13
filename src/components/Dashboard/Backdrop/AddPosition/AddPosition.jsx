@@ -289,7 +289,8 @@ const AddPosition = ({
                         {addFormError}
                       </div>
                     )}
-                    <button type='submit' className='btn btn-success'>
+                    <button type='submit' className='btn btn-success' data-dismiss='modal'
+                      aria-label='Close'>
                       Submit
                     </button>
                     <button
