@@ -1,3 +1,10 @@
 .navLink {
   cursor: pointer;
 }
+
+@media screen and (max-width: 991px) {
+.navResponsive{
+  margin-bottom:1rem;
+  display:block;
+}
+}
