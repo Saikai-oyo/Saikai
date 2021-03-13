@@ -62,6 +62,8 @@ const List = ({
         <button
           type='button'
           className='mt-3 addCompanyButton'
+          data-toggle='modal'
+          data-target='.bd-add-position'
           onClick={() => setAddPosition(true)}
         >
           <img src={addIcon} className='mr-3 addIcon' alt='add button' />

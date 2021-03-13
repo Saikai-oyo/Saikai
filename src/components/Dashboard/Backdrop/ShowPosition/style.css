@@ -27,7 +27,7 @@ form label {
   flex-direction: row;
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 1000px) {
   .modal.backdropWrapper {
     max-width: 100% !important;
     overflow-y: scroll;
@@ -37,8 +37,21 @@ form label {
     margin: auto;
     max-width: 90% !important;
   }
-
+}
+@media screen and (max-width: 680px) {
   .responsiveWrapper {
     flex-direction: column !important;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .modal.backdropWrapper {
+    max-width: 100% !important;
+    overflow-y: scroll;
+    max-height: 85%;
+  }
+  .modal-dialog.backdropModal {
+    margin: auto;
+    max-width: 90% !important;
   }
 }
