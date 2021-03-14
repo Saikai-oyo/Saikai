@@ -75,6 +75,8 @@ const AddPosition = ({
         <div
           className='modal fade bd-add-position'
           tabIndex='-1'
+
+
           role='dialog'
           aria-labelledby='bd-add-position'
           aria-hidden='true'
@@ -84,6 +86,7 @@ const AddPosition = ({
             role='document'
           >
             <div className='modal-content'>
+
               <div className='modal-header'>
                 <h5 className='modal-title'>
                   <strong>Add new position </strong>
@@ -296,6 +299,7 @@ const AddPosition = ({
                       aria-label='Close'
                       onClick={handleOnSubmit}
                     >
+
                       Submit
                     </button>
                     <button
