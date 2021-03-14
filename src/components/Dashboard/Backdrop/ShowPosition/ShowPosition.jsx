@@ -197,9 +197,7 @@ const ShowPosition = ({
                             }
                           ></textarea>
                         </div>
-
                       </div>
-                       </div>
                       <div className='d-flex flex-column w-100'>
                         <div className='d-flex flex-row align-items-center'>
                           <label
