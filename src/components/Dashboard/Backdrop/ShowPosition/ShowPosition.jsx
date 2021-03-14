@@ -91,13 +91,23 @@ const ShowPosition = ({
     <>
       {selectedPosition && (
         <>
-          <div className='modal backdropWrapper' tabIndex='-1'>
-            <div className='modal-dialog backdropModal' role='document'>
-              <div className='modal-content'>
+          <div
+            class='modal fade bd-selected-position'
+            tabindex='-1'
+            role='dialog'
+            aria-labelledby='bd-selected-position'
+            aria-hidden='true'
+          >
+            <div
+              class='modal-dialog modal-dialog-centered modal-lg'
+              role='document'
+            >
+              <div class='modal-content'>
                 <div className='modal-header w-100'>
                   <h4 className='modal-title '>
                     <div className='form-row'>
-                      <div className='form-group col-md-5'>
+                      <div className='form-group col-8'>
+                        <label for='positionDisplay'>Position</label>
                         <input
                           disabled={disableEdit}
                           className='form-control'
@@ -112,7 +122,9 @@ const ShowPosition = ({
                           }
                         />
                       </div>
-                      <div className='form-group col-md-5'>
+                      <div className='form-group col-4'>
+                        <label for='nameDisplay'>Company</label>
+
                         <input
                           disabled={disableEdit}
                           type='text'
@@ -132,6 +144,8 @@ const ShowPosition = ({
                   <button
                     type='button'
                     className='close'
+                    data-dismiss='modal'
+                    aria-label='Close'
                     onClick={() => {
                       setDisableEdit(true);
                       setSelectedPosition(null);
@@ -140,46 +154,49 @@ const ShowPosition = ({
                     <span aria-hidden='true'>&times;</span>
                   </button>
                 </div>
-                <div className='modal-body w-100'>
+
+                <div className='modal-body'>
                   <form>
-                    <div className='d-flex responsiveWrapper'>
-                      <div className='col-sm-3'>
-                        <label htmlFor='PositionDescriptionDisplay'>
-                          Position Description
-                        </label>
-                        <textarea
-                          disabled={disableEdit}
-                          className='form-control'
-                          name='positionDescriptionDisplay'
-                          id='positionDescriptionDisplay'
-                          rows='10'
-                          defaultValue={selectedPosition.description}
-                          onChange={(e) =>
-                            setPositionForm({
-                              ...positionForm,
-                              description: e.target.value,
-                            })
-                          }
-                        ></textarea>
-                      </div>
-                      <div className='col-sm-3 mb-2'>
-                        <label htmlFor='personalNoteDisplay'>
-                          Personal Note
-                        </label>
-                        <textarea
-                          disabled={disableEdit}
-                          className='form-control'
-                          name='personalNoteDisplay'
-                          id='personalNoteDisplay'
-                          rows='10'
-                          defaultValue={selectedPosition.personalNote}
-                          onChange={(e) =>
-                            setPositionForm({
-                              ...positionForm,
-                              personalNote: e.target.value,
-                            })
-                          }
-                        ></textarea>
+                    <div className='d-flex flex-column'>
+                      <div className='d-flex flex-row'>
+                        <div className='col-xl-6 mb-2'>
+                          <label htmlFor='PositionDescriptionDisplay'>
+                            Position Description
+                          </label>
+                          <textarea
+                            disabled={disableEdit}
+                            className='form-control'
+                            name='positionDescriptionDisplay'
+                            id='positionDescriptionDisplay'
+                            rows='10'
+                            defaultValue={selectedPosition.description}
+                            onChange={(e) =>
+                              setPositionForm({
+                                ...positionForm,
+                                description: e.target.value,
+                              })
+                            }
+                          ></textarea>
+                        </div>
+                        <div className='col-xl-6 mb-2'>
+                          <label htmlFor='personalNoteDisplay'>
+                            Personal Note
+                          </label>
+                          <textarea
+                            disabled={disableEdit}
+                            className='form-control'
+                            name='personalNoteDisplay'
+                            id='personalNoteDisplay'
+                            rows='10'
+                            defaultValue={selectedPosition.personalNote}
+                            onChange={(e) =>
+                              setPositionForm({
+                                ...positionForm,
+                                personalNote: e.target.value,
+                              })
+                            }
+                          ></textarea>
+                        </div>
                       </div>
                       <div className='d-flex flex-column w-100'>
                         <div className='d-flex flex-row align-items-center'>
@@ -350,7 +367,9 @@ const ShowPosition = ({
                     </div>
                   )}
                   <button
-                    type='submit'
+                    type='button'
+                    data-dismiss='modal'
+                    aria-label='Close'
                     className={`${
                       !disableEdit ? 'btn btn-success' : 'hideButton'
                     }`}
@@ -374,6 +393,8 @@ const ShowPosition = ({
                   </button>
                   <button
                     type='button'
+                    data-dismiss='modal'
+                    aria-label='Close'
                     className={`${
                       disableEdit ? 'hideButton' : 'btn btn-danger'
                     }`}
@@ -386,6 +407,8 @@ const ShowPosition = ({
                   </button>
                   <button
                     type='button'
+                    data-dismiss='modal'
+                    aria-label='Close'
                     className={`${
                       !disableEdit ? 'hideButton' : 'btn btn-secondary'
                     }`}
@@ -411,7 +434,6 @@ const ShowPosition = ({
               </div>
             </div>
           </div>
-          <div className='modal-backdrop show'></div>
         </>
       )}
     </>
