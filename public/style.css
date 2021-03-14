@@ -4,11 +4,12 @@
   box-sizing: border-box;
 }
 
+html,
 body,
-html {
+#root,
+#root > div {
   height: 100vh;
 }
 #root {
-  height: 100vh;
-  background-color: #ebecf0;
+  background-color: #f8f9fa;
 }

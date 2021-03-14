@@ -73,17 +73,20 @@ const AddPosition = ({
     <>
       {addPosition && (
         <div
-          class='modal fade bd-add-position'
-          tabindex='-1'
+          className='modal fade bd-add-position'
+          tabIndex='-1'
+
+
           role='dialog'
           aria-labelledby='bd-add-position'
           aria-hidden='true'
         >
           <div
-            class='modal-dialog modal-dialog-centered modal-lg'
+            className='modal-dialog modal-dialog-centered modal-lg'
             role='document'
           >
-            <div class='modal-content'>
+            <div className='modal-content'>
+
               <div className='modal-header'>
                 <h5 className='modal-title'>
                   <strong>Add new position </strong>
@@ -289,8 +292,14 @@ const AddPosition = ({
                         {addFormError}
                       </div>
                     )}
-                    <button type='submit' className='btn btn-success' data-dismiss='modal'
-                      aria-label='Close'>
+                    <button
+                      type='button'
+                      className='btn btn-success'
+                      data-dismiss='modal'
+                      aria-label='Close'
+                      onClick={handleOnSubmit}
+                    >
+
                       Submit
                     </button>
                     <button

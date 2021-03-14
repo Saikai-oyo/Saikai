@@ -158,45 +158,46 @@ const ShowPosition = ({
                 <div className='modal-body'>
                   <form>
                     <div className='d-flex flex-column'>
-                    <div className='d-flex flex-row' >
-                   
-                      <div className='col-xl-6 mb-2'>
-                        <label htmlFor='PositionDescriptionDisplay'>
-                          Position Description
-                        </label>
-                        <textarea
-                          disabled={disableEdit}
-                          className='form-control'
-                          name='positionDescriptionDisplay'
-                          id='positionDescriptionDisplay'
-                          rows='10'
-                          defaultValue={selectedPosition.description}
-                          onChange={(e) =>
-                            setPositionForm({
-                              ...positionForm,
-                              description: e.target.value,
-                            })
-                          }
-                        ></textarea>
-                      </div>
-                      <div className='col-xl-6 mb-2'>
-                        <label htmlFor='personalNoteDisplay'>
-                          Personal Note
-                        </label>
-                        <textarea
-                          disabled={disableEdit}
-                          className='form-control'
-                          name='personalNoteDisplay'
-                          id='personalNoteDisplay'
-                          rows='10'
-                          defaultValue={selectedPosition.personalNote}
-                          onChange={(e) =>
-                            setPositionForm({
-                              ...positionForm,
-                              personalNote: e.target.value,
-                            })
-                          }
-                        ></textarea>
+                      <div className='d-flex flex-row'>
+                        <div className='col-xl-6 mb-2'>
+                          <label htmlFor='PositionDescriptionDisplay'>
+                            Position Description
+                          </label>
+                          <textarea
+                            disabled={disableEdit}
+                            className='form-control'
+                            name='positionDescriptionDisplay'
+                            id='positionDescriptionDisplay'
+                            rows='10'
+                            defaultValue={selectedPosition.description}
+                            onChange={(e) =>
+                              setPositionForm({
+                                ...positionForm,
+                                description: e.target.value,
+                              })
+                            }
+                          ></textarea>
+                        </div>
+                        <div className='col-xl-6 mb-2'>
+                          <label htmlFor='personalNoteDisplay'>
+                            Personal Note
+                          </label>
+                          <textarea
+                            disabled={disableEdit}
+                            className='form-control'
+                            name='personalNoteDisplay'
+                            id='personalNoteDisplay'
+                            rows='10'
+                            defaultValue={selectedPosition.personalNote}
+                            onChange={(e) =>
+                              setPositionForm({
+                                ...positionForm,
+                                personalNote: e.target.value,
+                              })
+                            }
+                          ></textarea>
+                        </div>
+
                       </div>
                        </div>
                       <div className='d-flex flex-column w-100'>
@@ -370,7 +371,7 @@ const ShowPosition = ({
                   <button
                     type='button'
                     data-dismiss='modal'
-                      aria-label='Close'
+                    aria-label='Close'
                     className={`${
                       !disableEdit ? 'btn btn-success' : 'hideButton'
                     }`}
