@@ -1,5 +1,6 @@
 import React from 'react';
 import { app } from '../../../../config/firebase';
+import { formatDate, todayDate } from '../../../../helpers';
 import './style.css';
 
 const AddPosition = ({
@@ -24,6 +25,9 @@ const AddPosition = ({
     if (!positionForm) {
       return setAddFormError('Must fill minimum one field 😡');
     }
+    console.log('positionForm.date', positionForm.date);
+    console.log('formatDate(todayDate())', formatDate(todayDate()));
+
     try {
       const id = Math.floor(Math.random() * Math.floor(100000));
       await app
@@ -49,6 +53,7 @@ const AddPosition = ({
           personalNote: positionForm.personalNote
             ? positionForm.personalNote
             : '',
+          date: positionForm.date ? positionForm.date : formatDate(todayDate()),
         });
       setMessage(
         ' 🎉 Success add new position - ' +
@@ -75,8 +80,6 @@ const AddPosition = ({
         <div
           className='modal fade bd-add-position'
           tabIndex='-1'
-
-
           role='dialog'
           aria-labelledby='bd-add-position'
           aria-hidden='true'
@@ -86,7 +89,6 @@ const AddPosition = ({
             role='document'
           >
             <div className='modal-content'>
-
               <div className='modal-header'>
                 <h5 className='modal-title'>
                   <strong>Add new position </strong>
@@ -106,9 +108,27 @@ const AddPosition = ({
               </div>
               <div className='modal-body'>
                 <form onSubmit={(e) => handleOnSubmit(e)}>
-                  <div className='form-row mb-3'>
+                  <div className='form-row mb-3 d-flex justify-content-between'>
                     <small id='formInfo' className='form-text text-muted'>
                       * All fields can remain empty.
+                    </small>
+                    <small>
+                      <label htmlFor='addDate' className='mr-3'>
+                        Position date
+                      </label>
+                      <input
+                        type='date'
+                        defaultValue={`${todayDate()}`}
+                        className='from-control'
+                        name='addDate'
+                        id='addDate'
+                        onChange={(e) =>
+                          setPositionForm({
+                            ...positionForm,
+                            date: e.target.value,
+                          })
+                        }
+                      />
                     </small>
                   </div>
                   <div className='form-row'>
@@ -299,7 +319,6 @@ const AddPosition = ({
                       aria-label='Close'
                       onClick={handleOnSubmit}
                     >
-
                       Submit
                     </button>
                     <button

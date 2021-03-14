@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { formatDate, formatReversDate } from '../../../../helpers';
+
 import { app } from '../../../../config/firebase';
 
 import './style.css';
@@ -25,6 +27,8 @@ const ShowPosition = ({
     if (!positionForm) {
       return setAddFormError('No change was made 🙄 !');
     }
+    console.log('prev', prev.date);
+    console.log('positionForm', positionForm.date);
 
     try {
       await app
@@ -52,6 +56,7 @@ const ShowPosition = ({
           personalNote: positionForm.personalNote
             ? positionForm.personalNote
             : prev.personalNote,
+          date: positionForm.date ? formatDate(positionForm.date) : prev.date,
         });
       setSelectedPosition(null);
       setMessage('Update success 🎉 !');
@@ -106,12 +111,13 @@ const ShowPosition = ({
                 <div className='modal-header w-100'>
                   <h4 className='modal-title '>
                     <div className='form-row'>
-                      <div className='form-group col-8'>
+                      <div className='form-group col-6'>
                         <label for='positionDisplay'>Position</label>
-                        <input
+                        <textarea
                           disabled={disableEdit}
                           className='form-control'
-                          type='text'
+                          rows='1'
+                          cols='100'
                           id='positionDisplay'
                           defaultValue={selectedPosition.position}
                           onChange={(e) =>
@@ -120,27 +126,29 @@ const ShowPosition = ({
                               position: e.target.value,
                             })
                           }
-                        />
+                        ></textarea>
                       </div>
-                      <div className='form-group col-4'>
+                      <div className='form-group col-6'>
                         <label for='nameDisplay'>Company</label>
 
-                        <input
+                        <textarea
                           disabled={disableEdit}
-                          type='text'
                           className='form-control'
                           id='nameDisplay'
                           defaultValue={selectedPosition.name}
+                          rows='1'
+                          cols='100'
                           onChange={(e) =>
                             setPositionForm({
                               ...positionForm,
                               name: e.target.value,
                             })
                           }
-                        />
+                        ></textarea>
                       </div>
                     </div>
                   </h4>
+
                   <button
                     type='button'
                     className='close'
@@ -199,6 +207,30 @@ const ShowPosition = ({
                         </div>
                       </div>
                       <div className='d-flex flex-column w-100'>
+                        <div className='d-flex flex-row align-items-center'>
+                          <label
+                            htmlFor='addDate'
+                            className='w-50 col-form-label'
+                          >
+                            Position date
+                          </label>
+                          <input
+                            disabled={disableEdit}
+                            type='date'
+                            defaultValue={`${formatReversDate(
+                              selectedPosition.date
+                            )}`}
+                            className='form-control w-100'
+                            name='addDate'
+                            id='addDate'
+                            onChange={(e) =>
+                              setPositionForm({
+                                ...positionForm,
+                                date: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
                         <div className='d-flex flex-row align-items-center'>
                           <label
                             htmlFor='positionUrlDisplay'
