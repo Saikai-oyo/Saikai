@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
+import './style.css';
 
 const Login = () => {
   const emailRef = useRef();
@@ -36,7 +37,7 @@ const Login = () => {
               {error}
             </div>
           )}
-          <div className='text-center'>
+          <div className='text-center bg-demo-user'>
             <span className='text-muted'>
               <small>
                 Demo user
