@@ -2,7 +2,7 @@ export const organizedData = (companies) => {
   const newData = [
     { title: 'Applied', items: [] },
     { title: 'In Progress', items: [] },
-    { title: 'Receive Task', items: [] },
+    { title: 'Received Task', items: [] },
     { title: 'Contract', items: [] },
     { title: 'Denied', items: [] },
   ];
