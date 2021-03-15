@@ -166,10 +166,10 @@ const ShowPosition = ({
                 <div className='modal-body'>
                   <form>
                     <div className='d-flex flex-column'>
-                      <div className='d-flex flex-row'>
+                      <div className='row row-cols-md-2'>
                         <div className='col-xl-6 mb-2'>
                           <label htmlFor='PositionDescriptionDisplay'>
-                            Position Description
+                            Description
                           </label>
                           <textarea
                             disabled={disableEdit}
@@ -187,9 +187,7 @@ const ShowPosition = ({
                           ></textarea>
                         </div>
                         <div className='col-xl-6 mb-2'>
-                          <label htmlFor='personalNoteDisplay'>
-                            Personal Note
-                          </label>
+                          <label htmlFor='personalNoteDisplay'>Note</label>
                           <textarea
                             disabled={disableEdit}
                             className='form-control'
@@ -214,22 +212,24 @@ const ShowPosition = ({
                           >
                             Position date
                           </label>
-                          <input
-                            disabled={disableEdit}
-                            type='date'
-                            defaultValue={`${formatReversDate(
-                              selectedPosition.date
-                            )}`}
-                            className='form-control w-100'
-                            name='addDate'
-                            id='addDate'
-                            onChange={(e) =>
-                              setPositionForm({
-                                ...positionForm,
-                                date: e.target.value,
-                              })
-                            }
-                          />
+                          <div className='ml-2 text-center w-100 mb-3'>
+                            <input
+                              disabled={disableEdit}
+                              type='date'
+                              defaultValue={`${formatReversDate(
+                                selectedPosition.date
+                              )}`}
+                              className='form-control w-100'
+                              name='addDate'
+                              id='addDate'
+                              onChange={(e) =>
+                                setPositionForm({
+                                  ...positionForm,
+                                  date: e.target.value,
+                                })
+                              }
+                            />
+                          </div>
                         </div>
                         <div className='d-flex flex-row align-items-center'>
                           <label
@@ -238,7 +238,7 @@ const ShowPosition = ({
                           >
                             Position Url
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <input
                               type='text'
                               className='form-control w-100'
@@ -261,7 +261,7 @@ const ShowPosition = ({
                           >
                             Company Url
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <input
                               type='text'
                               className='form-control'
@@ -284,7 +284,7 @@ const ShowPosition = ({
                           >
                             HR Name
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <input
                               type='text'
                               className='form-control'
@@ -305,9 +305,9 @@ const ShowPosition = ({
                             htmlFor='hrMailDisplay'
                             className='w-50 col-form-label'
                           >
-                            Position Url
+                            HR Mail
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <input
                               type='text'
                               className='form-control'
@@ -330,7 +330,7 @@ const ShowPosition = ({
                           >
                             City
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <select
                               className='form-control'
                               disabled={disableEdit}
@@ -361,7 +361,7 @@ const ShowPosition = ({
                           >
                             Status
                           </label>
-                          <div className='ml-2 text-center w-100 mb-2'>
+                          <div className='ml-2 text-center w-100 mb-3'>
                             <select
                               className='form-control'
                               disabled={disableEdit}
