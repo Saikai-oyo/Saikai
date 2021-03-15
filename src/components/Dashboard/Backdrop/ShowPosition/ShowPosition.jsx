@@ -97,22 +97,22 @@ const ShowPosition = ({
       {selectedPosition && (
         <>
           <div
-            class='modal fade bd-selected-position'
-            tabindex='-1'
+            className='modal fade bd-selected-position'
+            tabIndex='-1'
             role='dialog'
             aria-labelledby='bd-selected-position'
             aria-hidden='true'
           >
             <div
-              class='modal-dialog modal-dialog-centered modal-lg'
+              className='modal-dialog modal-dialog-centered modal-lg'
               role='document'
             >
-              <div class='modal-content'>
+              <div className='modal-content'>
                 <div className='modal-header w-100'>
                   <h4 className='modal-title '>
                     <div className='form-row'>
                       <div className='form-group col-6'>
-                        <label for='positionDisplay'>Position</label>
+                        <label htmlFor='positionDisplay'>Position</label>
                         <textarea
                           disabled={disableEdit}
                           className='form-control'
@@ -129,7 +129,7 @@ const ShowPosition = ({
                         ></textarea>
                       </div>
                       <div className='form-group col-6'>
-                        <label for='nameDisplay'>Company</label>
+                        <label htmlFor='nameDisplay'>Company</label>
 
                         <textarea
                           disabled={disableEdit}
