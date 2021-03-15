@@ -2,25 +2,6 @@
   min-height: 90%;
 }
 
-.cardLists {
-  padding: 1rem;
-  background-color: #ffffff9a;
-  border-radius: 1rem;
-  margin-right: 1rem;
-}
-
-.listTitle {
-  border-bottom: 1px solid black;
-}
-.card.cardStyle {
-  border-radius: 1rem;
-  cursor: pointer;
-}
-
-.cardButton {
-  border-radius: 1rem;
-}
-
 .addCompanyButton {
   background: transparent;
   font-size: 12px;
