@@ -18,7 +18,7 @@ const List = ({
         </div>
       ) : (
         <div>
-          <div class='col-md-1 addButtonWrapper  mt-2 mb-2'>
+          <div className='col-md-1 addButtonWrapper  mt-2 mb-2'>
             <button
               type='button'
               className='addPositionButton'
