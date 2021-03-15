@@ -28,24 +28,27 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
           className='navbar-toggler'
           type='button'
           data-toggle='collapse'
-          data-target='#navbarTogglerDemo01'
-          aria-controls='navbarTogglerDemo01'
+          data-target='#navbarTogglerSaikai'
+          aria-controls='navbarTogglerSaikai'
           aria-expanded='false'
           aria-label='Toggle navigation'
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className='collapse navbar-collapse' id='navbarTogglerDemo01'>
+        <div
+          className='collapse navbar-collapse justify-content-between'
+          id='navbarTogglerSaikai'
+        >
           <a className='navbar-brand' href='/Saikai/'>
             <img src={logo} width='170' height='50' alt='' />
           </a>
-          <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
+          {/*   <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
             <li className='nav-item active'>
               <a className='nav-link' href='/Saikai/'>
                 Home <span className='sr-only'>(current)</span>
               </a>
             </li>
-          </ul>
+          </ul> */}
           <div className='mr-5 '>
             {error && (
               <div className='alert alert-danger' role='alert'>
