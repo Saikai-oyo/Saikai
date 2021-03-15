@@ -35,6 +35,8 @@ const List = ({
                         key={company.id}
                         className='card cardStyle mb-2 mt-3'
                         data-toggle='modal'
+                        data-backdrop='static'
+                        data-keyboard='false'
                         data-target='.bd-selected-position'
                       >
                         <div
