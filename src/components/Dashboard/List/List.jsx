@@ -1,5 +1,6 @@
 import React from 'react';
 import { addIcon } from '../../../assets/icons';
+import './style.css';
 
 const List = ({
   dataList,
@@ -26,8 +27,18 @@ const List = ({
                 <h3 className='listTitle'>{data.title}</h3>
 
                 {data.items.map((company) => {
-                  const isDenied =
-                    company.status === 'Denied' ? 'danger' : 'success';
+                  const cardColorsId =
+                    company.status === 'Denied'
+                      ? 'denied'
+                      : company.status === 'Contract'
+                      ? 'contract'
+                      : company.status === 'In Progress'
+                      ? 'inProgress'
+                      : company.status === 'Receive Task'
+                      ? 'receiveTask'
+                      : company.status === 'Applied'
+                      ? 'applied'
+                      : '';
                   return (
                     currentUser.uid === company.uid &&
                     data.title === company.status && (
@@ -40,7 +51,8 @@ const List = ({
                         data-target='.bd-selected-position'
                       >
                         <div
-                          className={`btn-${isDenied} p-1 cardButton`}
+                          className={`p-1 cardButton`}
+                          id={`${cardColorsId}`}
                           onClick={() => {
                             setError('');
                             setMessage('');

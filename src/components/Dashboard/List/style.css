@@ -1,0 +1,25 @@
+#applied {
+  color: #fff;
+  background-color: #0067dab3;
+  border-color: #0067dab3;
+}
+#receiveTask {
+  color: #fff;
+  background-color: #ff3b2d8a;
+  border-color: #ff3b2d8a;
+}
+#inProgress {
+  color: #fff;
+  background-color: #961da28a;
+  border-color: #961da28a;
+}
+#contract {
+  color: #fff;
+  background-color: #1d9623b0;
+  border-color: #1d9623b0;
+}
+#denied {
+  color: #fff;
+  background-color: #d83f4ea8;
+  border-color: #d83f4ea8;
+}
