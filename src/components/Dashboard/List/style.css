@@ -23,3 +23,45 @@
   background-color: #d83f4ea8;
   border-color: #d83f4ea8;
 }
+
+.cardLists {
+  padding: 1rem;
+  background-color: #ffffff9a;
+  border-radius: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 35rem;
+}
+
+@media screen and (min-width: 1540px) {
+  .cardLists {
+    max-height: 40rem;
+  }
+}
+
+@media screen and (max-width: 1539px) {
+  .cardLists {
+    max-height: 30rem;
+  }
+}
+
+#positionWrapper {
+  max-height: inherit;
+  overflow-y: auto;
+}
+
+.listTitle {
+  border-bottom: 1px solid black;
+  height: 10%;
+}
+
+.card.cardStyle {
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.cardButton {
+  border-radius: 1rem;
+}

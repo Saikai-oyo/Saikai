@@ -20,55 +20,53 @@ const List = ({
         <div className='container'>
           <div className='row mt-5 text-center'>
             {dataList.map((data) => (
-              <div
-                key={data.title}
-                className='p-2 mb-4 col-md-2 h-100 cardLists'
-              >
+              <div key={data.title} className='p-2 mb-4 col-md-2 cardLists'>
                 <h3 className='listTitle'>{data.title}</h3>
-
-                {data.items.map((company) => {
-                  const cardColorsId =
-                    company.status === 'Denied'
-                      ? 'denied'
-                      : company.status === 'Contract'
-                      ? 'contract'
-                      : company.status === 'In Progress'
-                      ? 'inProgress'
-                      : company.status === 'Receive Task'
-                      ? 'receiveTask'
-                      : company.status === 'Applied'
-                      ? 'applied'
-                      : '';
-                  return (
-                    currentUser.uid === company.uid &&
-                    data.title === company.status && (
-                      <div
-                        key={company.id}
-                        className='card cardStyle mb-2 mt-3'
-                        data-toggle='modal'
-                        data-backdrop='static'
-                        data-keyboard='false'
-                        data-target='.bd-selected-position'
-                      >
+                <div id='positionWrapper'>
+                  {data.items.map((company) => {
+                    const cardColorsId =
+                      company.status === 'Denied'
+                        ? 'denied'
+                        : company.status === 'Contract'
+                        ? 'contract'
+                        : company.status === 'In Progress'
+                        ? 'inProgress'
+                        : company.status === 'Receive Task'
+                        ? 'receiveTask'
+                        : company.status === 'Applied'
+                        ? 'applied'
+                        : '';
+                    return (
+                      currentUser.uid === company.uid &&
+                      data.title === company.status && (
                         <div
-                          className={`p-1 cardButton`}
-                          id={`${cardColorsId}`}
-                          onClick={() => {
-                            setError('');
-                            setMessage('');
-                            setSelectedPosition(company);
-                          }}
+                          key={company.id}
+                          className='card cardStyle mb-2 mt-3'
+                          data-toggle='modal'
+                          data-backdrop='static'
+                          data-keyboard='false'
+                          data-target='.bd-selected-position'
                         >
-                          {company.position}
-                          <br />
-                          <span className='text-white-50 font-smaller'>
-                            {company.name}
-                          </span>
+                          <div
+                            className={`p-1 cardButton`}
+                            id={`${cardColorsId}`}
+                            onClick={() => {
+                              setError('');
+                              setMessage('');
+                              setSelectedPosition(company);
+                            }}
+                          >
+                            {company.position}
+                            <br />
+                            <span className='text-white-50 font-smaller'>
+                              {company.name}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    )
-                  );
-                })}
+                      )
+                    );
+                  })}
+                </div>
               </div>
             ))}
           </div>
