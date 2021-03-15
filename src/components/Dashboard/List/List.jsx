@@ -43,8 +43,8 @@ const List = ({
                           ? 'contract'
                           : company.status === 'In Progress'
                           ? 'inProgress'
-                          : company.status === 'Receive Task'
-                          ? 'receiveTask'
+                          : company.status === 'Received Task'
+                          ? 'receivedTask'
                           : company.status === 'Applied'
                           ? 'applied'
                           : '';
