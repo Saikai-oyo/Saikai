@@ -25,8 +25,6 @@ const AddPosition = ({
     if (!positionForm) {
       return setAddFormError('Must fill minimum one field 😡');
     }
-    console.log('positionForm.date', positionForm.date);
-    console.log('formatDate(todayDate())', formatDate(todayDate()));
 
     try {
       const id = Math.floor(Math.random() * Math.floor(100000));

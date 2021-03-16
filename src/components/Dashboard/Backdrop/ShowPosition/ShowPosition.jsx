@@ -27,8 +27,6 @@ const ShowPosition = ({
     if (!positionForm) {
       return setAddFormError('No change was made 🙄 !');
     }
-    console.log('prev', prev.date);
-    console.log('positionForm', positionForm.date);
 
     try {
       await app

@@ -26,7 +26,6 @@ export const todayDate = () => {
     '-' +
     ('0' + todayDate.getDate()).slice(-2);
 
-  console.log('todayStringDate', todayStringDate);
   return todayStringDate;
 };
 
@@ -36,8 +35,6 @@ export const formatDate = (date) => {
     year = datePart[0],
     month = datePart[1],
     day = datePart[2];
-  console.log('~ datePart', datePart);
-  console.log('~ year', year);
   const reformat = day + '-' + month + '-' + year;
   return reformat;
 };
@@ -47,8 +44,6 @@ export const formatReversDate = (date) => {
     day = datePart[0],
     month = datePart[1],
     year = datePart[2];
-  console.log('~ formatReversDate datePart', datePart);
   const reformat = year + '-' + month + '-' + day;
-  console.log('~ formatReversDate reformat', reformat);
   return reformat;
 };
