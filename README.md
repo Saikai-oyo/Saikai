@@ -9,7 +9,21 @@ _Saikai_ helps us to track the sending of resumes to the various companies, upda
 ## Website URL
 🔗 Enter the website [here](https://eidan66.github.io/Saikai)  ! 🥂
 
-Demo user :
+## Preview
+#### Homescreen
+![image](https://user-images.githubusercontent.com/41434778/111340445-4e731480-8681-11eb-9c8a-c16fa94e4da7.png)
+
+#### Add new position
+![image](https://user-images.githubusercontent.com/41434778/111340594-7498b480-8681-11eb-9b6a-23d845652deb.png)
+
+#### View selected position
+![image](https://user-images.githubusercontent.com/41434778/111340718-8da16580-8681-11eb-878d-42786873447b.png)
+
+#### Edit selection position
+![image](https://user-images.githubusercontent.com/41434778/111340779-9d20ae80-8681-11eb-999f-19a81418ca5f.png)
+
+
+### Demo user :
 * email : demo@saikai.com
 * password : playSaikai
 
