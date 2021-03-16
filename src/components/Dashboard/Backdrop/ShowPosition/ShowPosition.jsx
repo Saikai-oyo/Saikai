@@ -24,6 +24,7 @@ const ShowPosition = ({
     setAddFormError('');
     setError('');
     setMessage('');
+
     if (!positionForm) {
       return setAddFormError('No change was made 🙄 !');
     }
@@ -113,7 +114,7 @@ const ShowPosition = ({
                         <label htmlFor='positionDisplay'>Position</label>
                         <textarea
                           disabled={disableEdit}
-                          className='form-control'
+                          className='form-control '
                           rows='1'
                           cols='100'
                           id='positionDisplay'
@@ -127,12 +128,12 @@ const ShowPosition = ({
                         ></textarea>
                       </div>
                       <div className='form-group col-6'>
-                        <label htmlFor='nameDisplay'>Company</label>
+                        <label htmlFor='companyDisplay'>Company</label>
 
                         <textarea
                           disabled={disableEdit}
                           className='form-control'
-                          id='nameDisplay'
+                          id='companyDisplay'
                           defaultValue={selectedPosition.name}
                           rows='1'
                           cols='100'
@@ -174,14 +175,18 @@ const ShowPosition = ({
                             className='form-control'
                             name='positionDescriptionDisplay'
                             id='positionDescriptionDisplay'
-                            rows='10'
+                            rows={`${
+                              selectedPosition.description.length / 100 - 10 < 0
+                                ? 1
+                                : 5
+                            }`}
                             defaultValue={selectedPosition.description}
-                            onChange={(e) =>
+                            onChange={(e) => {
                               setPositionForm({
                                 ...positionForm,
                                 description: e.target.value,
-                              })
-                            }
+                              });
+                            }}
                           ></textarea>
                         </div>
                         <div className='col-xl-6 mb-2'>
@@ -191,7 +196,12 @@ const ShowPosition = ({
                             className='form-control'
                             name='personalNoteDisplay'
                             id='personalNoteDisplay'
-                            rows='10'
+                            rows={`${
+                              selectedPosition.personalNote.length / 100 - 10 <
+                              0
+                                ? 1
+                                : 5
+                            }`}
                             defaultValue={selectedPosition.personalNote}
                             onChange={(e) =>
                               setPositionForm({
