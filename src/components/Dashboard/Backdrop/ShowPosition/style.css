@@ -12,8 +12,13 @@ form label {
 .form-control:disabled {
   background-color: transparent !important;
   border: none !important;
+}
+
+#positionDisplay,
+#companyDisplay {
   resize: none;
 }
+
 .hideButton {
   display: none;
   visibility: hidden;
