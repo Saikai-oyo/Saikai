@@ -108,7 +108,7 @@ const AddPosition = ({
                 <form onSubmit={(e) => handleOnSubmit(e)}>
                   <div className='form-row mb-3 d-flex justify-content-between'>
                     <small id='formInfo' className='form-text text-muted'>
-                      * All fields can remain empty.
+                      * Fill at least one field
                     </small>
                     <small>
                       <label htmlFor='addDate' className='mr-3'>
@@ -313,8 +313,8 @@ const AddPosition = ({
                     <button
                       type='button'
                       className='btn btn-success'
-                      data-dismiss='modal'
-                      aria-label='Close'
+                      data-dismiss={`${positionForm ? 'modal' : ''}`}
+                      aria-label={`${positionForm ? 'Close' : ''}`}
                       onClick={handleOnSubmit}
                     >
                       Submit
