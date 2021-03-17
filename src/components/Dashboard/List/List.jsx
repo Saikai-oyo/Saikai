@@ -26,7 +26,11 @@ const List = ({
               data-target='.bd-add-position'
               onClick={() => setAddPosition(true)}
             >
-              <img src={addPositionSVG} className='mr-3' alt='add button' />
+              <img
+                src={addPositionSVG}
+                className='mr-3 addPositionButtonSvg'
+                alt='add button'
+              />
             </button>
           </div>
           <div className='container'>

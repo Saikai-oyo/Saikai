@@ -76,6 +76,20 @@
   padding: 0.5rem;
 }
 
+.addButtonWrapper {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 22rem;
+  padding-right: 2rem;
+}
+
+.addPositionButtonSvg {
+  width: 11rem;
+}
+
 .row.addButtonWrapper {
   height: 100%;
   margin-left: 0;
