@@ -1,4 +1,4 @@
-export const organizedData = (companies) => {
+export const organizedData = (positions) => {
   const newData = [
     { title: 'Applied', items: [] },
     { title: 'In Progress', items: [] },
@@ -8,8 +8,8 @@ export const organizedData = (companies) => {
   ];
 
   newData.map((data) => {
-    companies.map((company) => {
-      data.title === company.status && data.items.push(company);
+    positions.map((position) => {
+      data.title === position.doc.status && data.items.push(position.doc);
     });
   });
 
