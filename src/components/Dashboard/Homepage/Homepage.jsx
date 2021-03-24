@@ -39,8 +39,6 @@ const Homepage = () => {
       .catch((error) => {
         throw new Error(error.message);
       });
-
-    return () => unsubscribe();
   }, [currentUser.uid]);
 
   React.useEffect(() => {
