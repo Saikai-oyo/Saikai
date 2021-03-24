@@ -1,6 +1,6 @@
 import React from 'react';
 import { userIcon, settingIcon, logoutIcon } from '../../../assets/icons';
-import logo from '../../../assets/logos/logo.png';
+import logo from '../../../assets/logos/saikai.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import './style.css';
@@ -25,7 +25,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <a className='navbar-brand' href='/Saikai/'>
-          <img src={logo} width='170' height='50' alt='' />
+          <img id='saikaiLogo' src={logo} alt='Saikai Logo' />
         </a>
         <button
           className='navbar-toggler'

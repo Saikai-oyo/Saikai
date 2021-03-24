@@ -2,9 +2,17 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 991px) {
-.navResponsive{
-  margin-bottom:1rem;
-  display:block;
+#saikaiLogo {
+  height: 62px;
 }
+
+@media screen and (max-width: 991px) {
+  .navResponsive {
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  #saikaiLogo {
+    height: 42px;
+  }
 }
