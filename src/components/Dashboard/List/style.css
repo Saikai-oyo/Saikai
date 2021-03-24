@@ -20,7 +20,7 @@
 }
 #denied {
   color: #fff;
-  background-color: #d83f4ea8;
+  background-color: #c12e3cd1;
   border: 1px solid white;
 }
 
@@ -74,6 +74,20 @@
   color: #1d9624;
   border-radius: 1rem;
   padding: 0.5rem;
+}
+
+.addButtonWrapper {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 22rem;
+  padding-right: 2rem;
+}
+
+.addPositionButtonSvg {
+  width: 11rem;
 }
 
 .row.addButtonWrapper {

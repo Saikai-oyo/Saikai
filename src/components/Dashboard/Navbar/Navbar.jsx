@@ -24,6 +24,9 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <a className='navbar-brand' href='/Saikai/'>
+          <img src={logo} width='170' height='50' alt='' />
+        </a>
         <button
           className='navbar-toggler'
           type='button'
@@ -39,16 +42,6 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
           className='collapse navbar-collapse justify-content-between'
           id='navbarTogglerSaikai'
         >
-          <a className='navbar-brand' href='/Saikai/'>
-            <img src={logo} width='170' height='50' alt='' />
-          </a>
-          {/*   <ul className='navbar-nav mr-auto mt-2 mt-lg-0'>
-            <li className='nav-item active'>
-              <a className='nav-link' href='/Saikai/'>
-                Home <span className='sr-only'>(current)</span>
-              </a>
-            </li>
-          </ul> */}
           <div className='mr-5 '>
             {error && (
               <div className='alert alert-danger' role='alert'>

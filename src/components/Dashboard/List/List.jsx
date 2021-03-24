@@ -18,7 +18,7 @@ const List = ({
         </div>
       ) : (
         <div>
-          <div class='col-md-1 addButtonWrapper  mt-2 mb-2'>
+          <div className='col-md-1 addButtonWrapper  mt-2 mb-2'>
             <button
               type='button'
               className='addPositionButton'
@@ -26,7 +26,11 @@ const List = ({
               data-target='.bd-add-position'
               onClick={() => setAddPosition(true)}
             >
-              <img src={addPositionSVG} className='mr-3' alt='add button' />
+              <img
+                src={addPositionSVG}
+                className='mr-3 addPositionButtonSvg'
+                alt='add button'
+              />
             </button>
           </div>
           <div className='container'>
@@ -35,24 +39,24 @@ const List = ({
                 <div key={data.title} className='p-2 mb-4 col-md cardLists'>
                   <h3 className='listTitle'>{data.title}</h3>
                   <div id='positionWrapper'>
-                    {data.items.map((company) => {
+                    {data.items.map((position) => {
                       const cardColorsId =
-                        company.status === 'Denied'
+                        position.status === 'Denied'
                           ? 'denied'
-                          : company.status === 'Contract'
+                          : position.status === 'Contract'
                           ? 'contract'
-                          : company.status === 'In Progress'
+                          : position.status === 'In Progress'
                           ? 'inProgress'
-                          : company.status === 'Received Task'
+                          : position.status === 'Received Task'
                           ? 'receivedTask'
-                          : company.status === 'Applied'
+                          : position.status === 'Applied'
                           ? 'applied'
                           : '';
                       return (
-                        currentUser.uid === company.uid &&
-                        data.title === company.status && (
+                        currentUser.uid === position.uid &&
+                        data.title === position.status && (
                           <div
-                            key={company.id}
+                            key={position.id}
                             className='card cardStyle mb-2 mt-3'
                             data-toggle='modal'
                             data-backdrop='static'
@@ -65,13 +69,13 @@ const List = ({
                               onClick={() => {
                                 setError('');
                                 setMessage('');
-                                setSelectedPosition(company);
+                                setSelectedPosition(position);
                               }}
                             >
-                              {company.position}
+                              {position.position}
                               <br />
                               <span className='text-white-50 font-smaller'>
-                                {company.name}
+                                {position.name}
                               </span>
                             </div>
                           </div>
