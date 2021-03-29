@@ -29,15 +29,11 @@ const Homepage = () => {
       .firestore()
       .collection('positions')
       .where('uid', '==', `${currentUser.uid}`)
-      .get()
-      .then((querySnapshot) => {
+      .onSnapshot((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           respondedData.push({ id: doc.id, doc: doc.data() });
         });
         setDataList(organizedData(respondedData));
-      })
-      .catch((error) => {
-        throw new Error(error.message);
       });
   }, [currentUser.uid]);
 
