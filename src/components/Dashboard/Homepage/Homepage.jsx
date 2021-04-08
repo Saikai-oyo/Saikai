@@ -24,18 +24,33 @@ const Homepage = () => {
   const [positionForm, setPositionForm] = React.useState(null);
 
   React.useEffect(() => {
-    const respondedData = [];
-    const unsubscribe = app
+    // const respondedData = [];
+
+    /* 
+      app
+      .firestore()
+      .collection('positions')
+      .where('uid', '==', `${currentUser.uid}`)
+      .onSnapshot((snapshot) => {
+        const dbData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setDataList(organizedData(dbData));
+      });
+ */
+    app
       .firestore()
       .collection('positions')
       .where('uid', '==', `${currentUser.uid}`)
       .onSnapshot((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          respondedData.push({ id: doc.id, doc: doc.data() });
-        });
+        const respondedData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          doc: doc.data(),
+        }));
         setDataList(organizedData(respondedData));
       });
-  }, [currentUser.uid]);
+  }, []);
 
   React.useEffect(() => {
     var docRef = app.firestore().collection('users').doc(`${currentUser.uid}`);
