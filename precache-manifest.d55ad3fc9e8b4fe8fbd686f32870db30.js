@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "48626cb8a240422aa5fa154460c82032",
+    "revision": "453594c81d28744906c877da9fff1ca8",
     "url": "/Saikai/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Saikai/static/css/2.8d3f7698.chunk.css"
   },
   {
-    "revision": "13a9f8ffd07721c94ae7",
+    "revision": "2b6dbf661b751674f436",
     "url": "/Saikai/static/css/main.bf2434be.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Saikai/static/js/2.c923851c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "13a9f8ffd07721c94ae7",
-    "url": "/Saikai/static/js/main.7b6eb076.chunk.js"
+    "revision": "2b6dbf661b751674f436",
+    "url": "/Saikai/static/js/main.74e9dd50.chunk.js"
   },
   {
     "revision": "9a73fcd6bcf3c0b7d51a",
