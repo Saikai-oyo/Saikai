@@ -24,21 +24,6 @@ const Homepage = () => {
   const [positionForm, setPositionForm] = React.useState(null);
 
   React.useEffect(() => {
-    // const respondedData = [];
-
-    /* 
-      app
-      .firestore()
-      .collection('positions')
-      .where('uid', '==', `${currentUser.uid}`)
-      .onSnapshot((snapshot) => {
-        const dbData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setDataList(organizedData(dbData));
-      });
- */
     app
       .firestore()
       .collection('positions')
