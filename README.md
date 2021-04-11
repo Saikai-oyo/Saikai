@@ -39,6 +39,11 @@ You are probably wondering what can already be done in this app, so it is possib
 
 and more will be add at the next version !
 
+### Clone 
+If you want to clone this project, PM me at [Linkedin](https://www.linkedin.com/in/idanlevian/) to get Keys.
+Firebase use here for DB and Auth.
+**THE APP WON'T WORK WITHOUT THOSE KEYS**
+
 ### License
 
 Distributed under the `MIT License`. See [LICENSE](https://github.com/eidan66/Saikai/blob/main/LICENSE) for more information.
