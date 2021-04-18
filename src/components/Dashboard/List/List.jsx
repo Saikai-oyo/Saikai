@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { addIcon, addIconBlack } from '../../../assets/icons';
-import { PositionsContext } from '../../../contexts/PositionsContext';
 import Spinner from '../../Spinner/Spinner';
 import * as S from './style.js';
 import './style.css';
+// Context Imports
+import { PositionsContext } from '../../../contexts/PositionsContext';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
+  const { currentUser } = useAuth();
 
   return (
     <S.ListWrapper>
@@ -34,13 +37,16 @@ const List = () => {
               <S.ListBody>
                 {positions.items.map((position) => {
                   return (
-                    <S.PositionWrapper
-                      title={positions.title}
-                      key={position.id}
-                    >
-                      <S.PositionHeader>{position.position}</S.PositionHeader>
-                      <S.PositionBody>{position.name}</S.PositionBody>
-                    </S.PositionWrapper>
+                    currentUser.uid === position.uid &&
+                    positions.title === position.status && (
+                      <S.PositionWrapper
+                        title={positions.title}
+                        key={position.id}
+                      >
+                        <S.PositionHeader>{position.position}</S.PositionHeader>
+                        <S.PositionBody>{position.name}</S.PositionBody>
+                      </S.PositionWrapper>
+                    )
                   );
                 })}
               </S.ListBody>

@@ -21,7 +21,7 @@ const Homepage = () => {
   const [error, setError] = React.useState('');
   const [addFormError, setAddFormError] = React.useState('');
   const { currentUser } = useAuth();
-  const [dataList, setDataList] = React.useState(null);
+  // const [dataList, setDataList] = React.useState(null);
   const [message, setMessage] = React.useState('');
 
   const [positionForm, setPositionForm] = React.useState(null);
@@ -76,7 +76,6 @@ const Homepage = () => {
 
       <List
         dataList={positionContext.positions.data}
-        currentUser={currentUser}
         setError={setError}
         setMessage={setMessage}
         setAddPosition={setAddPosition}
