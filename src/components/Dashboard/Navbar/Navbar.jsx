@@ -4,6 +4,7 @@ import logo from '../../../assets/logos/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import './style.css';
+import SearchBar from '../SearchBar/SearchBar';
 
 const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
   const { logout } = useAuth();
@@ -55,19 +56,21 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
             )}
           </div>
           <span className='navbar-text navResponsive'>
-            <span className='mr-5 navResponsive'>
+            <SearchBar />
+
+            <span className='mr-4 navResponsive'>
               Welcome back
               {userDetails ? (
                 ', ' + userDetails.firstName + ' ' + userDetails.lastName
               ) : (
                 <div
-                  className='ml-2 mr-2 spinner-grow spinner-grow-sm text-success'
+                  className='ml-2 mr-2 spinner-grow spinner-grow-sm text-dark'
                   role='status'
                 ></div>
               )}
               !
             </span>
-            <span className='mr-2 navLink navResponsive'>
+            <span className='mr-3 navLink navResponsive'>
               <Link to='/profile'>
                 <img
                   src={settingIcon}
@@ -76,7 +79,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
                 ></img>
               </Link>
             </span>
-            <span className='mr-2 navLink' onClick={handleLogout}>
+            <span className='mr-3 navLink' onClick={handleLogout}>
               <img
                 src={logoutIcon}
                 alt='logout icon'
