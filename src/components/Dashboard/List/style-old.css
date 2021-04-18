@@ -1,30 +1,27 @@
-#dd {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  height: inherit;
-}
-
 #applied {
   color: #fff;
   background-color: #4c94e5;
+  border: 1px solid white;
 }
 #receivedTask {
   color: #fff;
   background-color: #c685cd;
+  border: 1px solid white;
 }
 #inProgress {
   color: #000;
   background-color: #ffd88d;
+  border: 1px solid white;
 }
 #contract {
   color: #fff;
   background-color: #63b767;
+  border: 1px solid white;
 }
 #denied {
   color: #fff;
   background-color: #b92c2c;
+  border: 1px solid white;
 }
 
 .cardLists {

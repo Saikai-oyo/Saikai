@@ -1,108 +1,58 @@
 import React from 'react';
-import { addIcon, addPositionSVG } from '../../../assets/icons';
+import { addIcon, addIconBlack } from '../../../assets/icons';
+
+import * as S from './style.js';
 import './style.css';
 
-const List = ({
-  dataList,
-  currentUser,
-  setError,
-  setMessage,
-  setAddPosition,
-  setSelectedPosition,
-}) => {
-  return (
-    <>
-      {!dataList ? (
-        <div className='d-flex justify-content-center'>
-          <div className='spinner-border text-success' role='status'></div>
-        </div>
-      ) : (
-        <div>
-          <div className='col-md-1 addButtonWrapper  mt-2 mb-2'>
-            <button
-              type='button'
-              className='addPositionButton'
-              data-toggle='modal'
-              data-target='.bd-add-position'
-              onClick={() => setAddPosition(true)}
-            >
+const List = () => {
+  const ren = () => {
+    const arr = [
+      'Applied',
+      'In Progress',
+      'Received Task',
+      'Contract',
+      'Denied',
+    ];
+
+    const arr2 = [
+      'Full Stack Developer',
+      'Product Manager',
+      'Data Analyst ',
+      'אלטעזאכן בשוק התקווה',
+      'אלטעזאכן בשוק התקווה',
+      'אלטעזאכן בשוק התקווה',
+      'אלטעזאכן בשוק התקווה',
+      'שופט בבית המשפט המחוזי באנטרטיקה',
+      'Hamburger Speed Eating',
+    ];
+
+    const smallText = 'Schneider, Gutmann and Zboncak ';
+
+    return arr.map((title) => {
+      return (
+        <S.List key={title}>
+          <S.ListHeader title={title}>
+            <S.HeaderTypography title={title}>{title} </S.HeaderTypography>
+            <S.AddButton>
               <img
-                src={addPositionSVG}
-                className='mr-3 addPositionButtonSvg'
-                alt='add button'
+                src={title === 'Received Task' ? addIconBlack : addIcon}
+                alt='Add Button'
               />
-            </button>
-          </div>
-          <div className='container'>
-            <div className='row row-col-6 text-center '>
-              {dataList.map((data) => (
-                <div key={data.title} className='p-2 mb-4 col-md cardLists'>
-                  <h3 className='listTitle'>{data.title}</h3>
-                  <div id='positionWrapper'>
-                    {data.items.map((position) => {
-                      const cardColorsId =
-                        position.status === 'Denied'
-                          ? 'denied'
-                          : position.status === 'Contract'
-                          ? 'contract'
-                          : position.status === 'In Progress'
-                          ? 'inProgress'
-                          : position.status === 'Received Task'
-                          ? 'receivedTask'
-                          : position.status === 'Applied'
-                          ? 'applied'
-                          : '';
-                      return (
-                        currentUser.uid === position.uid &&
-                        data.title === position.status && (
-                          <div
-                            key={position.id}
-                            className='card cardStyle mb-2 mt-3'
-                            data-toggle='modal'
-                            data-backdrop='static'
-                            data-keyboard='false'
-                            data-target='.bd-selected-position'
-                          >
-                            <div
-                              className={`p-1 cardButton`}
-                              id={`${cardColorsId}`}
-                              onClick={() => {
-                                setError('');
-                                setMessage('');
-                                setSelectedPosition(position);
-                              }}
-                            >
-                              {position.position}
-                              <br />
-                              <span className='text-white-50 font-smaller'>
-                                {position.name}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
-      {/* <div className='d-flex justify-content-end mr-2'>
-        <button
-          type='button'
-          className='mt-3 addPositionButton'
-          data-toggle='modal'
-          data-target='.bd-add-position'
-          onClick={() => setAddPosition(true)}
-        >
-          <img src={addIcon} className='mr-3 addIcon' alt='add button' />
-          Add new Position
-        </button>
-      </div> */}
-    </>
-  );
+            </S.AddButton>
+          </S.ListHeader>
+          <S.ListBody>
+            {arr2.map((positionHeader, index) => (
+              <S.PositionWrapper title={title} key={index}>
+                <S.PositionHeader>{positionHeader}</S.PositionHeader>
+                <S.PositionBody>{smallText}</S.PositionBody>
+              </S.PositionWrapper>
+            ))}
+          </S.ListBody>
+        </S.List>
+      );
+    });
+  };
+  return <S.ListWrapper>{ren()}</S.ListWrapper>;
 };
 
 export default List;
