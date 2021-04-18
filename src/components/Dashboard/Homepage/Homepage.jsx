@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import csc from 'country-state-city';
 import { organizedData } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
 import { app } from '../../../config/firebase';
+
+import { PositionsContext } from '../../../contexts/PositionsContext';
 
 import List from '../List/List';
 import Navbar from '../Navbar/Navbar';
@@ -11,6 +13,7 @@ import AddPosition from '../Backdrop/AddPosition/AddPosition';
 import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
 
 const Homepage = () => {
+  const positionContext = useContext(PositionsContext);
   const [selectedPosition, setSelectedPosition] = React.useState(null);
   const [addPosition, setAddPosition] = React.useState(null);
   const [userDetails, setUserDetails] = React.useState('');
@@ -33,7 +36,11 @@ const Homepage = () => {
           id: doc.id,
           doc: doc.data(),
         }));
-        setDataList(organizedData(respondedData));
+        positionContext.setPositions({
+          ...positionContext.positions,
+          data: organizedData(respondedData),
+          loading: false,
+        });
       });
   }, []);
 
@@ -68,7 +75,7 @@ const Homepage = () => {
       />
 
       <List
-        dataList={dataList}
+        dataList={positionContext.positions.data}
         currentUser={currentUser}
         setError={setError}
         setMessage={setMessage}
@@ -83,7 +90,7 @@ const Homepage = () => {
         setPositionForm={setPositionForm}
         positionForm={positionForm}
         cities={cities}
-        dataList={dataList}
+        dataList={positionContext.positions.data}
         addFormError={addFormError}
         setAddFormError={setAddFormError}
         setError={setError}
@@ -95,7 +102,7 @@ const Homepage = () => {
         setPositionForm={setPositionForm}
         positionForm={positionForm}
         setSelectedPosition={setSelectedPosition}
-        dataList={dataList}
+        dataList={positionContext.positions.data}
         cities={cities}
         addFormError={addFormError}
         setAddFormError={setAddFormError}

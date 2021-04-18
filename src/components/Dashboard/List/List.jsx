@@ -1,58 +1,55 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { addIcon, addIconBlack } from '../../../assets/icons';
-
+import { PositionsContext } from '../../../contexts/PositionsContext';
+import Spinner from '../../Spinner/Spinner';
 import * as S from './style.js';
 import './style.css';
 
 const List = () => {
-  const ren = () => {
-    const arr = [
-      'Applied',
-      'In Progress',
-      'Received Task',
-      'Contract',
-      'Denied',
-    ];
+  const { positions } = useContext(PositionsContext);
 
-    const arr2 = [
-      'Full Stack Developer',
-      'Product Manager',
-      'Data Analyst ',
-      'אלטעזאכן בשוק התקווה',
-      'אלטעזאכן בשוק התקווה',
-      'אלטעזאכן בשוק התקווה',
-      'אלטעזאכן בשוק התקווה',
-      'שופט בבית המשפט המחוזי באנטרטיקה',
-      'Hamburger Speed Eating',
-    ];
-
-    const smallText = 'Schneider, Gutmann and Zboncak ';
-
-    return arr.map((title) => {
-      return (
-        <S.List key={title}>
-          <S.ListHeader title={title}>
-            <S.HeaderTypography title={title}>{title} </S.HeaderTypography>
-            <S.AddButton>
-              <img
-                src={title === 'Received Task' ? addIconBlack : addIcon}
-                alt='Add Button'
-              />
-            </S.AddButton>
-          </S.ListHeader>
-          <S.ListBody>
-            {arr2.map((positionHeader, index) => (
-              <S.PositionWrapper title={title} key={index}>
-                <S.PositionHeader>{positionHeader}</S.PositionHeader>
-                <S.PositionBody>{smallText}</S.PositionBody>
-              </S.PositionWrapper>
-            ))}
-          </S.ListBody>
-        </S.List>
-      );
-    });
-  };
-  return <S.ListWrapper>{ren()}</S.ListWrapper>;
+  return (
+    <S.ListWrapper>
+      {positions.loading ? (
+        <Spinner />
+      ) : (
+        positions.data.map((positions) => {
+          return (
+            <S.List key={positions.title}>
+              <S.ListHeader title={positions.title}>
+                <S.HeaderTypography title={positions.title}>
+                  {positions.title}{' '}
+                </S.HeaderTypography>
+                <S.AddButton>
+                  <img
+                    src={
+                      positions.title === 'Received Task'
+                        ? addIconBlack
+                        : addIcon
+                    }
+                    alt='Add Button'
+                  />
+                </S.AddButton>
+              </S.ListHeader>
+              <S.ListBody>
+                {positions.items.map((position) => {
+                  return (
+                    <S.PositionWrapper
+                      title={positions.title}
+                      key={position.id}
+                    >
+                      <S.PositionHeader>{position.position}</S.PositionHeader>
+                      <S.PositionBody>{position.name}</S.PositionBody>
+                    </S.PositionWrapper>
+                  );
+                })}
+              </S.ListBody>
+            </S.List>
+          );
+        })
+      )}
+    </S.ListWrapper>
+  );
 };
 
 export default List;
