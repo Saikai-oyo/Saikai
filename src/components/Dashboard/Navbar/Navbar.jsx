@@ -1,6 +1,6 @@
 import React from 'react';
-import { userIcon, settingIcon, logoutIcon } from '../../../assets/icons';
-import logo from '../../../assets/logos/logo.png';
+import { settingIcon, logoutIcon } from '../../../assets/icons';
+import logo from '../../../assets/logos/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import './style.css';
@@ -23,7 +23,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
 
   return (
     <div>
-      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+      <nav className='navbar navbar-expand-lg navbar-light '>
         <a className='navbar-brand' href='/Saikai/'>
           <img src={logo} width='170' height='50' alt='' />
         </a>
@@ -56,11 +56,6 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
           </div>
           <span className='navbar-text navResponsive'>
             <span className='mr-5 navResponsive'>
-              <img
-                src={userIcon}
-                alt='user icon'
-                className='userIcon mr-2'
-              ></img>
               Welcome back
               {userDetails ? (
                 ', ' + userDetails.firstName + ' ' + userDetails.lastName
