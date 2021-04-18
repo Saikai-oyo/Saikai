@@ -79,7 +79,6 @@ const Homepage = () => {
         setError={setError}
         setMessage={setMessage}
         setAddPosition={setAddPosition}
-        setSelectedPosition={setSelectedPosition}
       />
 
       <AddPosition

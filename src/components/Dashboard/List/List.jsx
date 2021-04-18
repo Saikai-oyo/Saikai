@@ -2,14 +2,20 @@ import React, { useContext } from 'react';
 import { addIcon, addIconBlack } from '../../../assets/icons';
 import Spinner from '../../Spinner/Spinner';
 import * as S from './style.js';
-import './style.css';
+// import './style.css';
 // Context Imports
 import { PositionsContext } from '../../../contexts/PositionsContext';
+import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
+  const { setPosition } = useContext(SelectedPositionContext);
   const { currentUser } = useAuth();
+
+  const setSelectedPosition = (position) => {
+    setPosition({ data: position, selected: true });
+  };
 
   return (
     <S.ListWrapper>
@@ -42,6 +48,7 @@ const List = () => {
                       <S.PositionWrapper
                         title={positions.title}
                         key={position.id}
+                        onClick={() => setSelectedPosition(position)}
                       >
                         <S.PositionHeader>{position.position}</S.PositionHeader>
                         <S.PositionBody>{position.name}</S.PositionBody>
