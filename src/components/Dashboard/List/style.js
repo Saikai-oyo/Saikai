@@ -32,7 +32,7 @@ export const ListHeader = styled.div`
 
   width: 100%;
   height: 39px;
-  border-radius: 5px;
+  border-radius: 4px;
 
   background-color: ${({ title }) =>
     title === 'Applied'
