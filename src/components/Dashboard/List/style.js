@@ -90,6 +90,7 @@ export const PositionWrapper = styled.div`
         : title === 'Denied'
         ? '#b92c2c'
         : ''};
+  cursor: pointer;
 `;
 
 export const PositionHeader = styled.p`
