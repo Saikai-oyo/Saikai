@@ -6,7 +6,7 @@ import { app } from '../../../config/firebase';
 
 import List from '../List/List';
 import Navbar from '../Navbar/Navbar';
-import './style.css';
+import * as S from './style.js';
 import AddPosition from '../Backdrop/AddPosition/AddPosition';
 import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
 
@@ -58,7 +58,7 @@ const Homepage = () => {
   }, []);
 
   return (
-    <div className='homepageWrapper'>
+    <S.HomepageWrapper>
       <Navbar
         error={error}
         message={message}
@@ -103,7 +103,7 @@ const Homepage = () => {
         setMessage={setMessage}
         setAddPosition={setAddPosition}
       />
-    </div>
+    </S.HomepageWrapper>
   );
 };
 
