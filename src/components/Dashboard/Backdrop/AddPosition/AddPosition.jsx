@@ -1,6 +1,8 @@
 import React from 'react';
 import { app } from '../../../../config/firebase';
 import { formatDate, todayDate } from '../../../../helpers';
+import { v4 as uuidv4 } from 'uuid';
+
 import './style.css';
 
 const AddPosition = ({
@@ -27,7 +29,7 @@ const AddPosition = ({
     }
 
     try {
-      const id = Math.floor(Math.random() * Math.floor(100000));
+      const id = uuidv4();
       await app
         .firestore()
         .collection('positions')
