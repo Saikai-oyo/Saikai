@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { addIcon, addIconBlack } from '../../../assets/icons';
 import Spinner from '../../Spinner/Spinner';
 import * as S from './style.js';
@@ -7,11 +7,13 @@ import * as S from './style.js';
 import { PositionsContext } from '../../../contexts/PositionsContext';
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { useAuth } from '../../../contexts/AuthContext';
+import AddPositionModal from '../../Modals/AddPositionModal';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
   const { setPosition } = useContext(SelectedPositionContext);
   const { currentUser } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   const setSelectedPosition = (position) => {
     setPosition({ data: position, selected: true });
@@ -29,7 +31,7 @@ const List = () => {
                 <S.HeaderTypography title={positions.title}>
                   {positions.title}{' '}
                 </S.HeaderTypography>
-                <S.AddButton>
+                <S.AddButton onClick={() => setIsOpen(true)}>
                   <img
                     src={
                       positions.title === 'Received Task'
@@ -61,6 +63,7 @@ const List = () => {
           );
         })
       )}
+      <AddPositionModal open={isOpen} onClose={() => setIsOpen(false)} />
     </S.ListWrapper>
   );
 };
