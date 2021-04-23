@@ -1,68 +1,296 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import * as S from './style';
 import ReactDOM from 'react-dom';
-import { exitIcon } from '../../assets/icons';
-import { todayDate } from '../../helpers';
+import { app } from '../../config/firebase';
 
-const AddPositionModal = ({ open, onClose }) => {
+import { exitIcon } from '../../assets/icons';
+import { formatDate, todayDate } from '../../helpers';
+import { useAuth } from '../../contexts/AuthContext';
+import { MessagesContext } from '../../contexts/MessagesContext';
+import { v4 as uuidv4 } from 'uuid';
+
+import titles from '../../helpers/titles';
+
+const AddPositionModal = ({ selectedTitle, open, onClose }) => {
+  const [advance, setAdvance] = useState(false);
+  const [positionForm, setPositionForm] = useState([]);
+  const { setInformation } = useContext(MessagesContext);
+
+  const { currentUser } = useAuth();
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!positionForm) {
+      return alert('Must fill minimum one field 😡');
+    }
+
+    setInformation({
+      error: '',
+      message: '',
+      haveError: false,
+      haveMessage: false,
+    });
+    try {
+      const id = uuidv4();
+      await app
+        .firestore()
+        .collection('positions')
+        .doc(`${id}`)
+        .set({
+          uid: currentUser.uid,
+          id: id,
+          position: positionForm.position
+            ? positionForm.position
+            : 'Unknown Position',
+          name: positionForm.name ? positionForm.name : 'Unknown Company',
+          city: positionForm.city ? positionForm.city : 'Unknown City',
+          company_url: positionForm.company_url ? positionForm.company_url : '',
+          position_url: positionForm.position_url
+            ? positionForm.position_url
+            : '',
+          hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
+          hr_name: positionForm.hr_name ? positionForm.hr_name : '',
+          status: positionForm.status ? positionForm.status : selectedTitle,
+          description: positionForm.description ? positionForm.description : '',
+          add_by: positionForm.add_by ? positionForm.add_by : '',
+          date: positionForm.date ? positionForm.date : formatDate(todayDate()),
+        });
+
+      setInformation({
+        message: `🎉 Success add new position - ${
+          positionForm.position
+            ? positionForm.position + ' 🎉'
+            : 'Unknown Position 🎉'
+        }`,
+        haveMessage: true,
+      });
+      setPositionForm(null);
+    } catch (error) {
+      setInformation({
+        error: error.message,
+        hasError: true,
+      });
+      console.error(error);
+    }
+    setTimeout(() => {
+      setInformation({
+        error: '',
+        message: '',
+        haveError: false,
+        haveMessage: false,
+      });
+    }, 2500);
+    setAdvance(false);
+    onClose();
+  };
+
   if (!open) return null;
   return ReactDOM.createPortal(
     <>
-      <S.BackDrop onClick={onClose} />
+      <S.BackDrop
+        onClick={() => {
+          onClose();
+          setAdvance(false);
+        }}
+      />
       <S.ModalWrapper>
         <S.Header>
           <S.HeaderTitle>Add New Position</S.HeaderTitle>
-          <S.ExitBtn onClick={onClose}>
+          <S.ExitBtn
+            onClick={() => {
+              onClose();
+              setAdvance(false);
+            }}
+          >
             <img src={exitIcon} alt='X' />
           </S.ExitBtn>
         </S.Header>
-        <S.Body>
-          <S.InputLineOne>
-            <S.Input
-              type='text'
-              id='positionName'
-              placeholder='Position Name'
-            />
-            <S.Date>
-              <S.DateLabel htmlFor='addDate'>Position Date:</S.DateLabel>
-              <S.InputDate
-                type='date'
-                defaultValue={`${todayDate()}`}
-                name='addDate'
-                id='addDate'
+        <S.Body advance={advance}>
+          <form onSubmit={(e) => handleOnSubmit(e)}>
+            <S.InputLineOne>
+              <S.HiddenLabel htmlFor='positionName'>
+                Position Name
+              </S.HiddenLabel>
+              <S.Input
+                type='text'
+                id='positionName'
+                name='positionName'
+                placeholder='Position Name'
+                onChange={(e) =>
+                  setPositionForm({
+                    ...positionForm,
+                    position: e.target.value,
+                  })
+                }
               />
-            </S.Date>
-          </S.InputLineOne>
+              <S.Date>
+                <S.DateLabel htmlFor='addDate'>Position Date:</S.DateLabel>
+                <S.InputDate
+                  type='date'
+                  defaultValue={`${todayDate()}`}
+                  name='addDate'
+                  id='addDate'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      date: e.target.value,
+                    })
+                  }
+                />
+              </S.Date>
+            </S.InputLineOne>
 
-          <S.InputLineTow>
-            <S.Input type='text' id='companyName' placeholder='Company Name' />
-          </S.InputLineTow>
+            <S.InputLineTow>
+              <S.HiddenLabel htmlFor='companyName'>Company Name</S.HiddenLabel>
+              <S.Input
+                type='text'
+                id='companyName'
+                name='companyName'
+                placeholder='Company Name'
+                onChange={(e) =>
+                  setPositionForm({
+                    ...positionForm,
+                    name: e.target.value,
+                  })
+                }
+              />
+            </S.InputLineTow>
 
-          <S.InputLineThree>
-            <S.TextArea placeholder='Position Description'></S.TextArea>
-          </S.InputLineThree>
+            <S.InputLineThree>
+              <S.HiddenLabel htmlFor='description'>Description</S.HiddenLabel>
+              <S.TextArea
+                onChange={(e) =>
+                  setPositionForm({
+                    ...positionForm,
+                    description: e.target.value,
+                  })
+                }
+                placeholder='Position Description'
+                name='description'
+                id='description'
+              ></S.TextArea>
+            </S.InputLineThree>
 
-          <S.InputLineFour>
-            <S.Select>
-              <option value='' selected disabled hidden>
-                Status
-              </option>
-              <option value='Applied'>Applied</option>
-              <option value='In Progress'>In Progress</option>
-              <option value='Received Task'>Received Task</option>
-              <option value='Contract'>Contract</option>
-              <option value='Denied'>Denied</option>
-            </S.Select>
-          </S.InputLineFour>
+            <S.InputLineFour advance={advance}>
+              <S.HiddenLabel htmlFor='status'>Status</S.HiddenLabel>
+              <S.Select
+                name='status'
+                value={selectedTitle}
+                onChange={(e) => {
+                  setPositionForm({
+                    ...positionForm,
+                    status: e.target.value,
+                  });
+                }}
+              >
+                {titles.map((title) => (
+                  <option key={title.label} value={title.value}>
+                    {title.label}
+                  </option>
+                ))}
+              </S.Select>
+            </S.InputLineFour>
 
-          <S.InputLineFive>
-            <S.CancelButton onClick={onClose}>Cancel</S.CancelButton>
-            <S.SubmitButton>Submit</S.SubmitButton>
-          </S.InputLineFive>
+            <S.InputAdvancedGroup advance={advance}>
+              <S.InputAdvancedLineOne>
+                <S.HiddenLabel htmlFor='positionUrl'>
+                  Position URL
+                </S.HiddenLabel>
+                <S.InputUrl
+                  name='positionUrl'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      position_url: e.target.value,
+                    })
+                  }
+                  type='url'
+                  placeholder='Position URL:'
+                />
+              </S.InputAdvancedLineOne>
+              <S.InputAdvancedLineTwo>
+                <S.HiddenLabel htmlFor='hrName'>HR Name</S.HiddenLabel>
+                <S.InputInsideGroup
+                  name='hrName'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      hr_name: e.target.value,
+                    })
+                  }
+                  type='text'
+                  placeholder='HR Name'
+                />
+                <S.HiddenLabel htmlFor='hrMail'>HR Mail</S.HiddenLabel>
 
-          <S.InputLineSix>
-            <S.AdvanceBtn>{'Advanced >>'}</S.AdvanceBtn>
-          </S.InputLineSix>
+                <S.InputInsideGroup
+                  name='hrMail'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      hr_mail: e.target.value,
+                    })
+                  }
+                  type='email'
+                  placeholder='HR Mail'
+                />
+              </S.InputAdvancedLineTwo>
+              <S.InputAdvancedLineThree>
+                <S.HiddenLabel htmlFor='city'>City</S.HiddenLabel>
+
+                <S.InputInsideGroup
+                  name='city'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      city: e.target.value,
+                    })
+                  }
+                  type='text'
+                  placeholder='City'
+                />
+                <S.HiddenLabel htmlFor='addBy'>Add By</S.HiddenLabel>
+
+                <S.InputInsideGroup
+                  name='addBy'
+                  onChange={(e) =>
+                    setPositionForm({
+                      ...positionForm,
+                      add_by: e.target.value,
+                    })
+                  }
+                  type='text'
+                  placeholder='Added By'
+                />
+              </S.InputAdvancedLineThree>
+            </S.InputAdvancedGroup>
+
+            <S.InputLineFive>
+              <S.CancelButton
+                onClick={() => {
+                  onClose();
+                  setAdvance(false);
+                }}
+              >
+                Cancel
+              </S.CancelButton>
+              <S.SubmitButton type='button' onClick={handleOnSubmit}>
+                Submit
+              </S.SubmitButton>
+            </S.InputLineFive>
+            <S.InputLineSix>
+              <S.AdvanceBtn
+                type='button'
+                advance={advance}
+                onClick={() => {
+                  setAdvance(!advance);
+                }}
+              >
+                Advanced
+              </S.AdvanceBtn>
+            </S.InputLineSix>
+          </form>
         </S.Body>
       </S.ModalWrapper>
     </>,

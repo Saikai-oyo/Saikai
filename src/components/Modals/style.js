@@ -4,6 +4,7 @@ import { upArrow, downArrow } from '../../assets/icons';
 
 export const BackDrop = styled.div`
   position: fixed;
+  transition: all 1.3s;
   top: 0;
   left: 0;
   right: 0;
@@ -18,12 +19,11 @@ export const ModalWrapper = styled.div`
   left: 50%;
   width: 621px;
   height: auto;
-
   background: #ffffff;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-  transform: translate(-50%, -50%);
   z-index: 1000;
+  transform: translate(-50%, -50%);
 `;
 
 export const Header = styled.div`
@@ -59,7 +59,17 @@ export const Body = styled.div`
   background-repeat: no-repeat;
   background-position: center bottom;
   width: 100%;
-  height: 453px;
+  height: ${({ advance }) => (advance ? 'auto' : '453px')};
+  ${({ advance }) =>
+    advance
+      ? 'transition-delay: 0s;'
+      : 'transition: visibility 0s linear 0.33s, opacity 0.33s linear;'}
+`;
+
+export const HiddenLabel = styled.label`
+  display: none;
+  visibility: hidden;
+  opacity: 0;
 `;
 
 export const InputLineOne = styled.div`
@@ -147,7 +157,7 @@ export const InputLineFour = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0px 391px 58px 40px;
+  padding: 0px 391px ${({ advance }) => (advance ? '31px' : '58px')} 40px;
 `;
 
 export const Select = styled.select`
@@ -238,5 +248,62 @@ export const AdvanceBtn = styled.button`
   border: none;
   background: none;
   text-decoration-line: underline;
-  color: #4e4e4e;
+  color: #5f50e6;
+
+  /* Arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  padding-right: 1rem;
+  background-position-x: 100%;
+  background-position-y: 50%;
+  ${({ advance }) =>
+    advance
+      ? `background-image: url(${downArrow});`
+      : `background-image: url(${upArrow});`};
+`;
+
+export const InputAdvancedGroup = styled.div`
+  ${({ advance }) =>
+    advance
+      ? 'display: flex;flex-direction: column;padding: 0px 180px 63px 40px; transition-delay: 0s;'
+      : 'display:none; opacity:0; visibility:hidden; transition: visibility 0s linear 0.33s, opacity 0.33s linear;'}
+`;
+
+export const InputAdvancedLineOne = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const InputUrl = styled.input`
+  width: 400px;
+  height: 35px;
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #a5add8;
+  border-radius: 4px;
+  padding: 10px 0px 10px 10px;
+`;
+
+export const InputAdvancedLineTwo = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 29px 0px 29px 0px;
+`;
+
+export const InputInsideGroup = styled.input`
+  width: 190px;
+  height: 35px;
+  outline: none;
+  background: #ffffff;
+  border: 1px solid #a5add8;
+  border-radius: 4px;
+  padding: 10px 0px 10px 10px;
+`;
+
+export const InputAdvancedLineThree = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;

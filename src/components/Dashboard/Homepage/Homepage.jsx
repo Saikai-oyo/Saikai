@@ -4,6 +4,7 @@ import { organizedData } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
 import { app } from '../../../config/firebase';
 
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { PositionsContext } from '../../../contexts/PositionsContext';
 
 import List from '../List/List';
@@ -14,6 +15,8 @@ import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
 
 const Homepage = () => {
   const positionContext = useContext(PositionsContext);
+  const { information } = useContext(MessagesContext);
+
   const [selectedPosition, setSelectedPosition] = React.useState(null);
   const [addPosition, setAddPosition] = React.useState(null);
   const [userDetails, setUserDetails] = React.useState('');
@@ -67,8 +70,8 @@ const Homepage = () => {
   return (
     <S.HomepageWrapper>
       <Navbar
-        error={error}
-        message={message}
+        error={information.error}
+        message={information.message}
         userDetails={userDetails}
         setError={setError}
         setMessage={setMessage}

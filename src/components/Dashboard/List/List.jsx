@@ -1,19 +1,20 @@
 import React, { useContext, useState } from 'react';
-import { addIcon, addIconBlack } from '../../../assets/icons';
+import { addIcon } from '../../../assets/icons';
 import Spinner from '../../Spinner/Spinner';
+import AddPositionModal from '../../Modals/AddPositionModal';
 import * as S from './style.js';
-// import './style.css';
+
 // Context Imports
 import { PositionsContext } from '../../../contexts/PositionsContext';
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import AddPositionModal from '../../Modals/AddPositionModal';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
   const { setPosition } = useContext(SelectedPositionContext);
   const { currentUser } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState('');
 
   const setSelectedPosition = (position) => {
     setPosition({ data: position, selected: true });
@@ -31,15 +32,13 @@ const List = () => {
                 <S.HeaderTypography title={positions.title}>
                   {positions.title}{' '}
                 </S.HeaderTypography>
-                <S.AddButton onClick={() => setIsOpen(true)}>
-                  <img
-                    src={
-                      positions.title === 'Received Task'
-                        ? addIconBlack
-                        : addIcon
-                    }
-                    alt='Add Button'
-                  />
+                <S.AddButton
+                  onClick={() => {
+                    setSelectedTitle(positions.title);
+                    setIsOpen(true);
+                  }}
+                >
+                  <img src={addIcon} alt='Add Button' />
                 </S.AddButton>
               </S.ListHeader>
               <S.ListBody>
@@ -63,7 +62,11 @@ const List = () => {
           );
         })
       )}
-      <AddPositionModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <AddPositionModal
+        selectedTitle={selectedTitle}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </S.ListWrapper>
   );
 };
