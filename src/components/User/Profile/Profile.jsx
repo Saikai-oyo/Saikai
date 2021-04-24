@@ -1,52 +1,64 @@
-import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
+import { useHistory } from 'react-router-dom';
+import Footer from '../../Footer/Footer';
+import logo from '../../../assets/logos/logo.svg';
+
+import * as S from './style';
 
 const Profile = () => {
-  const [error, setError] = useState('');
-  const { currentUser, logout } = useAuth();
+  const { information, setInformation } = useContext(MessagesContext);
+  const { logout, currentUser } = useAuth();
   const history = useHistory();
 
   const handleLogout = async () => {
-    setError('');
     try {
       await logout();
       history.push('/login');
     } catch (error) {
-      setError('Failed to log out.');
+      setInformation({
+        error: 'Failed to log out',
+        haveError: true,
+      });
+      console.error(error.message);
     }
+    setTimeout(() => {
+      setInformation({ hasError: false });
+    }, 2500);
   };
-
   return (
-    <>
-      <div className='card'>
-        <div className='card-header-pills'>
-          <button className='btn btn-link' onClick={() => history.goBack()}>
-            Go back..
-          </button>
-        </div>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Profile</h2>
-          {error && (
+    <div>
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.ProfileContainer>
+          <div className='card-header-pills'>
+            <S.GoBack onClick={() => history.goBack()}></S.GoBack>
+          </div>
+          <S.Header>Profile</S.Header>
+          {information.hasError && (
             <div className='alert alert-danger' role='alert'>
-              {error}
+              {information.error}
             </div>
           )}
-          <strong>Email: </strong>
-          {currentUser.email}
+          <S.EmailWrapper>
+            <b>Email:</b> <S.EmailText>{currentUser.email}</S.EmailText>
+          </S.EmailWrapper>
+          <S.Update type='submit'>Update Password</S.Update>
 
-          <Link to='/update-profile' className='btn btn-success w-100 mt-3'>
-            Update Password
-          </Link>
-        </div>
-      </div>
-
-      <div className='w-100 text-center mb-1'>
-        <button className='btn btn-link' onClick={handleLogout}>
-          Log Out
-        </button>
-      </div>
-    </>
+          <S.Logout onClick={handleLogout}>Log Out</S.Logout>
+          <S.FooterWrapper>
+            <Footer />
+          </S.FooterWrapper>
+        </S.ProfileContainer>
+      </S.Wrapper>
+    </div>
   );
 };
 
