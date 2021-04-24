@@ -1,74 +1,94 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext } from 'react';
+import Input from '../Input/Input';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import Footer from '../../Footer/Footer';
+import logo from '../../../assets/logos/logo.svg';
+
+import * as S from './style';
 
 const ForgotPassword = () => {
-  const emailRef = useRef();
+  const { information, setInformation } = useContext(MessagesContext);
   const { resetPassword } = useAuth();
-  const [error, setError] = useState('');
-  const [message, setMessage] = useState('');
-  const [loading, setLoading] = useState(false);
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (emailRef.current.value === 'demo@saikai.com') {
-      setLoading(false);
-      return setError('Can not reset Demo password! 😉');
+    if (e.target[0].value === 'demo@saikai.com') {
+      setInformation({
+        error: 'Can not reset Demo password! 😉',
+        hasError: true,
+      });
+      return setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
 
     try {
-      setMessage('');
-      setError('');
-      setLoading(true);
-      await resetPassword(emailRef.current.value);
-      setMessage('Check your inbox for further instructions');
-    } catch {
-      setError(error.message);
+      await resetPassword(e.target[0].value);
+      setInformation({
+        message: 'Check your inbox for further instructions.',
+        hasMessage: true,
+      });
+      history.push('/login');
+    } catch (error) {
+      setInformation({
+        error: error.message,
+        hasError: true,
+      });
       console.error(error);
+      setTimeout(() => {
+        setInformation({
+          message: '',
+          hasMessage: false,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
-
-    setLoading(false);
   };
 
   return (
-    <>
-      <div className='card'>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Password Reset</h2>
-          {error && (
+    <div>
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.ResetPassContainer>
+          <S.Header>Password Reset</S.Header>
+          {information.hasError && (
             <div className='alert alert-danger' role='alert'>
-              {error}
+              {information.error}
             </div>
           )}
-          {message && <div className='alert alert-success'>{message}</div>}
           <form onSubmit={handleSubmit}>
-            <div className='form-group' id='email'>
-              <label htmlFor='email'>Email</label>
-              <input
-                className='form-control'
-                type='email'
-                ref={emailRef}
-                required
-              />
-            </div>
-            <button
-              disabled={loading}
-              className='w-100 btn btn-success'
-              type='submit'
-            >
-              Reset Password
-            </button>
+            <S.InputsWrapper>
+              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
+              <Input type='text' placeholder='Your Email' name='email' />
+            </S.InputsWrapper>
+
+            <S.ResetPassword type='submit'>Reset Password</S.ResetPassword>
+
+            <S.NeedAccount>
+              Need an account ? <Link to='/signup'>Sign Up</Link>
+            </S.NeedAccount>
           </form>
-          <div className='w-100 text-center mt-2'>
-            <Link to='/login'>Login</Link>
-          </div>
-        </div>
-      </div>
-      <div className='w-100 text-center mt-1'>
-        Need an account? <Link to='/signup'>Sign Up</Link>
-      </div>
-    </>
+          <S.FooterWrapper>
+            <Footer />
+          </S.FooterWrapper>
+        </S.ResetPassContainer>
+      </S.Wrapper>
+    </div>
   );
 };
 
