@@ -1,88 +1,81 @@
-import React, { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import Input from '../Input/Input';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import './style.css';
+import { Link, useHistory } from 'react-router-dom';
+import Footer from '../../Footer/Footer';
+import logo from '../../../assets/logos/logo.svg';
+
+import * as S from './style';
 
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
+  const { information, setInformation } = useContext(MessagesContext);
   const { login } = useAuth();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      setError('');
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(e.target[0].value, e.target[1].value);
       history.push('/');
     } catch (error) {
-      setError(error.message);
+      setInformation({
+        error: error.message,
+        hasError: true,
+      });
       console.error(error);
+      setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
-    setLoading(false);
   };
 
   return (
     <div>
-      <div className='card'>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Log in</h2>
-          {error && (
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.LoginContainer>
+          <S.Header>Login</S.Header>
+          {information.hasError && (
             <div className='alert alert-danger' role='alert'>
-              {error}
+              {information.error}
             </div>
           )}
-          <div className='text-center bg-demo-user'>
-            <span className='text-muted'>
-              <small>
-                Demo user
-                <br /> <strong>email: </strong>demo@saikai.com{' '}
-                <strong>password: </strong>playSaikai
-              </small>
-            </span>
-          </div>
           <form onSubmit={handleSubmit}>
-            <div className='form-group' id='email'>
-              <label htmlFor='email'>Email</label>
-              <input
-                className='form-control'
-                type='email'
-                ref={emailRef}
-                required
-              />
-            </div>
+            <S.InputsWrapper>
+              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
+              <Input type='text' placeholder='Your Email' name='email' />
 
-            <div className='form-group' id='password'>
-              <label htmlFor='password'>Password</label>
-              <input
-                className='form-control'
-                type='Password'
-                ref={passwordRef}
-                required
+              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
+              <Input
+                type='password'
+                placeholder='Your Password'
+                name='password'
               />
-            </div>
-
-            <button
-              disabled={loading}
-              type='submit'
-              className='w-100 btn btn-success'
-            >
-              Log in
-            </button>
+            </S.InputsWrapper>
+            <S.LogIn type='submit'>Log In</S.LogIn>
+            <S.ForgotPassword>
+              <Link to='/forgot-password'>Forgot Password?</Link>
+            </S.ForgotPassword>
+            <S.NeedAccount>
+              Need an account ? <Link to='/signup'>Sign Up</Link>
+            </S.NeedAccount>
           </form>
-          <div className='w-100 text-center mt-2'>
-            <Link to='/forgot-password'>Forgot Password?</Link>
-          </div>
-        </div>
-      </div>
-      <div className='w-100 text-center mt-1'>
-        Need an account ? <Link to='/signup'>Sign Up</Link>
-      </div>
+          <S.FooterWrapper>
+            <Footer />
+          </S.FooterWrapper>
+        </S.LoginContainer>
+      </S.Wrapper>
     </div>
   );
 };
