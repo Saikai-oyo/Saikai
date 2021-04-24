@@ -75,7 +75,10 @@ export const Update = styled.button`
   font-weight: 600;
   font-size: 16px;
   line-height: 20px;
-  color: #ffffff;
+  &,
+  & > a {
+    color: #ffffff;
+  }
 `;
 
 export const Logout = styled.div`

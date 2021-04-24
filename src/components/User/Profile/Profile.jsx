@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 
@@ -39,7 +39,9 @@ const Profile = () => {
       <S.Wrapper>
         <S.ProfileContainer>
           <div className='card-header-pills'>
-            <S.GoBack onClick={() => history.goBack()}></S.GoBack>
+            <Link to='/'>
+              <S.GoBack></S.GoBack>
+            </Link>
           </div>
           <S.Header>Profile</S.Header>
           {information.hasError && (
@@ -50,7 +52,9 @@ const Profile = () => {
           <S.EmailWrapper>
             <b>Email:</b> <S.EmailText>{currentUser.email}</S.EmailText>
           </S.EmailWrapper>
-          <S.Update type='submit'>Update Password</S.Update>
+          <S.Update>
+            <Link to='/update-profile'>Update Password</Link>
+          </S.Update>
 
           <S.Logout onClick={handleLogout}>Log Out</S.Logout>
           <S.FooterWrapper>

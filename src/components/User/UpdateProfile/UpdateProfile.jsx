@@ -90,7 +90,9 @@ const UpdateProfile = () => {
       <S.Wrapper>
         <S.UpdatePassContainer>
           <div className='card-header-pills'>
-            <S.GoBack onClick={() => history.goBack()}></S.GoBack>
+            <Link to='/profile'>
+              <S.GoBack></S.GoBack>
+            </Link>
           </div>
           <S.Header>Update Password</S.Header>
           {information.hasError && (
