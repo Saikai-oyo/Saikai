@@ -1,118 +1,116 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext } from 'react';
+import Input from '../Input/Input';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import Footer from '../../Footer/Footer';
+import logo from '../../../assets/logos/logo.svg';
+
+import * as S from './style';
 
 const Signup = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
-  const firstNameRef = useRef();
-  const lastNameRef = useRef();
+  const { information, setInformation } = useContext(MessagesContext);
   const { signup } = useAuth();
-
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
+    if (e.target[3].value !== e.target[4].value) {
+      setInformation({
+        error: 'Passwords do not match',
+        hasError: true,
+      });
+      return setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
 
     try {
-      setError('');
-      setLoading(true);
       await signup({
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-        firstName: firstNameRef.current.value,
-        lastName: lastNameRef.current.value,
+        email: e.target[0].value,
+        firstName: e.target[1].value,
+        lastName: e.target[2].value,
+        password: e.target[3].value,
       });
       history.push('/');
     } catch (error) {
-      setError(error.message);
+      setInformation({
+        error: error.message,
+        hasError: true,
+      });
       console.error(error);
+      setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
-
-    setLoading(false);
   };
 
   return (
-    <>
-      <div className='card'>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Sign Up</h2>
-          {error && (
+    <div>
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.SignupContainer>
+          <S.Header>Sign Up</S.Header>
+          {information.hasError && (
             <div className='alert alert-danger' role='alert'>
-              {error}
+              {information.error}
             </div>
           )}
-
           <form onSubmit={handleSubmit}>
-            <div className='form-group' id='email'>
-              <label htmlFor='email'>Email</label>
-              <input
-                className='form-control'
-                type='email'
-                ref={emailRef}
-                required
-              />
-            </div>
-            <div className='form-group' id='firstName'>
-              <label htmlFor='firstName'>First Name</label>
-              <input
-                className='form-control'
-                type='text'
-                ref={firstNameRef}
-                required
-              />
-            </div>
-            <div className='form-group' id='lastName'>
-              <label htmlFor='lastName'>Last Name</label>
-              <input
-                className='form-control'
-                type='text'
-                ref={lastNameRef}
-                required
-              />
-            </div>
+            <S.InputsWrapper>
+              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
+              <Input type='text' placeholder='Your Email' name='email' />
 
-            <div className='form-group' id='password'>
-              <label htmlFor='password'>Password</label>
-              <input
-                className='form-control'
-                type='Password'
-                ref={passwordRef}
-                required
-              />
-            </div>
+              <S.HiddenLabel htmlFor='firstName'>First Name</S.HiddenLabel>
+              <Input type='text' placeholder='First Name' name='firstName' />
 
-            <div className='form-group' id='password-confirm'>
-              <label htmlFor='password-confirm'>Password Confirmation</label>
-              <input
-                className='form-control'
+              <S.HiddenLabel htmlFor='lastName'>Last Name</S.HiddenLabel>
+              <Input type='text' placeholder='Last Name' name='lastName' />
+
+              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
+              <Input
                 type='password'
-                ref={passwordConfirmRef}
-                required
+                placeholder='Your Password'
+                name='password'
               />
-            </div>
 
-            <button
-              disabled={loading}
-              type='submit'
-              className='w-100 btn btn-success'
-            >
-              Sign Up
-            </button>
+              <S.HiddenLabel htmlFor='confirmPassword'>
+                Confirm Password
+              </S.HiddenLabel>
+              <Input
+                type='password'
+                placeholder='Confirm Password'
+                name='confirmPassword'
+              />
+            </S.InputsWrapper>
+            <S.SignUp type='submit'>Sign Up</S.SignUp>
+
+            <S.HaveAccount>
+              Already have an account? <Link to='/login'>Log in</Link>
+            </S.HaveAccount>
           </form>
-        </div>
-      </div>
-      <div className='w-100 text-center mt-1'>
-        Already have an account? <Link to='/login'>Log in</Link>
-      </div>
-    </>
+
+          <S.FooterWrapper>
+            <Footer />
+          </S.FooterWrapper>
+        </S.SignupContainer>
+      </S.Wrapper>
+    </div>
   );
 };
 
