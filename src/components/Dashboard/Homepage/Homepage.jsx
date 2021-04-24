@@ -10,7 +10,6 @@ import { PositionsContext } from '../../../contexts/PositionsContext';
 import List from '../List/List';
 import Navbar from '../Navbar/Navbar';
 import * as S from './style.js';
-import AddPosition from '../Backdrop/AddPosition/AddPosition';
 import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
 
 const Homepage = () => {
@@ -82,20 +81,6 @@ const Homepage = () => {
         setError={setError}
         setMessage={setMessage}
         setAddPosition={setAddPosition}
-      />
-
-      <AddPosition
-        addPosition={addPosition}
-        setAddPosition={setAddPosition}
-        setMessage={setMessage}
-        setPositionForm={setPositionForm}
-        positionForm={positionForm}
-        cities={cities}
-        dataList={positionContext.positions.data}
-        addFormError={addFormError}
-        setAddFormError={setAddFormError}
-        setError={setError}
-        currentUser={currentUser}
       />
 
       <ShowPosition
