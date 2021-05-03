@@ -5,12 +5,15 @@ const initialState = {
   selected: false,
 };
 
+
 export const SelectedPositionContext = React.createContext(initialState);
 
 export const SelectedPositionContextProvider = ({ children }) => {
-  const [position, setPosition] = useState(initialState);
+  const [selectedPosition, setSelectedPosition] = useState(initialState);
   return (
-    <SelectedPositionContext.Provider value={{ position, setPosition }}>
+    <SelectedPositionContext.Provider
+      value={{ selectedPosition, setSelectedPosition }}
+    >
       {children}
     </SelectedPositionContext.Provider>
   );
