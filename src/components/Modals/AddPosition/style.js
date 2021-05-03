@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { addPositionBG } from '../../assets/images';
-import { upArrow, downArrow } from '../../assets/icons';
+import { addPositionBG } from '../../../assets/images';
+import { upArrow, downArrow } from '../../../assets/icons';
 
 export const BackDrop = styled.div`
   position: fixed;
@@ -21,7 +21,7 @@ export const ModalWrapper = styled.div`
   height: auto;
   background: #ffffff;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
+  border-radius: 8px;
   z-index: 1000;
   transform: translate(-50%, -50%);
 `;
@@ -213,6 +213,7 @@ export const CancelButton = styled.button`
   outline: none;
   color: #5f50e6;
   margin-right: 5px;
+  background-color: transparent;
 `;
 export const SubmitButton = styled.button`
   display: flex;

@@ -1,15 +1,15 @@
 import React, { useState, useContext } from 'react';
 import * as S from './style';
 import ReactDOM from 'react-dom';
-import { app } from '../../config/firebase';
+import { app } from '../../../config/firebase';
 
-import { exitIcon } from '../../assets/icons';
-import { formatDate, todayDate } from '../../helpers';
-import { useAuth } from '../../contexts/AuthContext';
-import { MessagesContext } from '../../contexts/MessagesContext';
+import { exitIcon } from '../../../assets/icons';
+import { formatDate, todayDate } from '../../../helpers';
+import { useAuth } from '../../../contexts/AuthContext';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { v4 as uuidv4 } from 'uuid';
 
-import titles from '../../helpers/titles';
+import titles from '../../../helpers/titles';
 
 const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [advance, setAdvance] = useState(false);
