@@ -3,7 +3,6 @@ import Input from '../Input/Input';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 
 import * as S from './style';
@@ -39,7 +38,12 @@ const ForgotPassword = () => {
       history.push('/login');
     } catch (error) {
       setInformation({
-        error: error.message,
+        error:
+          error.code === 'auth/invalid-email'
+            ? 'Oops! Wrong email format.'
+            : error.code === 'auth/user-not-found'
+            ? 'Oops! Wrong email or password.'
+            : 'Something went wrong!',
         hasError: true,
       });
       console.error(error);
@@ -65,7 +69,7 @@ const ForgotPassword = () => {
       </a>
       <S.Wrapper>
         <S.ResetPassContainer>
-          <S.Header>Password Reset</S.Header>
+          <S.Header>Reset Password</S.Header>
           {information.hasError && (
             <div className='alert alert-danger' role='alert'>
               {information.error}
@@ -74,7 +78,7 @@ const ForgotPassword = () => {
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Your Email' name='email' />
+              <Input type='text' placeholder='Email' name='email' />
             </S.InputsWrapper>
 
             <S.ResetPassword type='submit'>Reset Password</S.ResetPassword>
@@ -83,9 +87,6 @@ const ForgotPassword = () => {
               Need an account ? <Link to='/signup'>Sign Up</Link>
             </S.NeedAccount>
           </form>
-          <S.FooterWrapper>
-            <Footer />
-          </S.FooterWrapper>
         </S.ResetPassContainer>
       </S.Wrapper>
     </div>

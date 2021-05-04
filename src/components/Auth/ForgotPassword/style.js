@@ -75,7 +75,3 @@ export const NeedAccount = styled.div`
     font-weight: bold;
   }
 `;
-
-export const FooterWrapper = styled.div`
-  margin: 0px 90px 0px 155px;
-`;
