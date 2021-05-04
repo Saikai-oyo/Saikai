@@ -45,6 +45,7 @@ export const ListHeader = styled.div`
 `;
 
 export const HeaderTypography = styled.div`
+  margin: auto;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
