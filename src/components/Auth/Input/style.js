@@ -5,7 +5,7 @@ export const Input = styled.input`
   width: 329.84px;
   height: 37.6px;
   background: #fff;
-  border: 0.5px solid #a5add8;
+  border: 1px solid #a5add8;
 
   box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
   border-radius: 2.63874px;
@@ -17,11 +17,23 @@ export const Input = styled.input`
   }
 
   &:focus {
-    /* Pinkish Hover & Focus/focused */
-    border: 0.5px solid #c282f4;
+    filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
+    border: 1px solid #c282f4;
   }
 
-  font-style: normal;
+  &:invalid {
+    border: 1px solid #fe4c4c;
+    color: #bdbdbd;
+  }
+  &:disabled {
+    border: 1px solid #9e9e9e;
+    color: #bdbdbd;
+  }
+
+  &:hover {
+    border: 1px solid #c282f4;
+  }
+
   font-weight: 300;
   font-size: 14px;
   line-height: 18px;

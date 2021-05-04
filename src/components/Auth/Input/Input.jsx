@@ -9,7 +9,6 @@ const Input = ({ type, placeholder, name, onChange }) => {
       name={name}
       onChange={onChange}
       autoComplete='new-password'
-      required
     />
   );
 };
