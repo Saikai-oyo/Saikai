@@ -194,7 +194,8 @@ export const Select = styled.select`
 export const InputLineFive = styled.div`
   display: flex;
   flex-direction: row;
-  padding: 0px 193px 0px 40px;
+  justify-content: space-between;
+  margin: 0px 185px 0px 40px;
 `;
 
 export const CancelButton = styled.button`
