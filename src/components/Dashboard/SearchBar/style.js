@@ -23,7 +23,7 @@ export const LabelSearchBar = styled.label`
 export const SearchBar = styled.input`
   width: 322px;
   height: 32px;
-  padding: 1rem;
+  padding-left: 2rem;
 
   background: #ffffff;
   border: 1px solid #c6c6c6;
@@ -33,6 +33,5 @@ export const SearchBar = styled.input`
   &:focus {
     border: 2px solid #4c94e5;
     outline: none;
-    padding-left: 1.5rem;
   }
 `;

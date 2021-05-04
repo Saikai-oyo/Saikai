@@ -5,7 +5,10 @@ const SearchBar = () => {
   return (
     <S.SearchWrapper>
       <S.LabelSearchBar>
-        <S.SearchBar type='text' />
+        <S.SearchBar
+          placeholder='Job Title, Company, or Keywords'
+          type='text'
+        />
       </S.LabelSearchBar>
     </S.SearchWrapper>
   );
