@@ -3,7 +3,6 @@ import Input from '../Input/Input';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 
 import * as S from './style';
@@ -18,7 +17,7 @@ const Signup = () => {
 
     if (e.target[3].value !== e.target[4].value) {
       setInformation({
-        error: 'Passwords do not match',
+        error: 'Oops! Passwords don’t match.',
         hasError: true,
       });
       return setTimeout(() => {
@@ -40,7 +39,10 @@ const Signup = () => {
       history.push('/');
     } catch (error) {
       setInformation({
-        error: error.message,
+        error:
+          error.code === 'auth/email-already-in-use'
+            ? 'Oops! Email already exists. '
+            : 'Something went wrong!',
         hasError: true,
       });
       console.error(error);
@@ -65,16 +67,17 @@ const Signup = () => {
       </a>
       <S.Wrapper>
         <S.SignupContainer>
-          <S.Header>Sign Up</S.Header>
+          <S.Header>Join Saikai</S.Header>
+          <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
           {information.hasError && (
-            <div className='alert alert-danger' role='alert'>
+            <div className='alert alert-danger text-center' role='alert'>
               {information.error}
             </div>
           )}
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Your Email' name='email' />
+              <Input type='text' placeholder='Email' name='email' />
 
               <S.HiddenLabel htmlFor='firstName'>First Name</S.HiddenLabel>
               <Input type='text' placeholder='First Name' name='firstName' />
@@ -104,10 +107,6 @@ const Signup = () => {
               Already have an account? <Link to='/login'>Log in</Link>
             </S.HaveAccount>
           </form>
-
-          <S.FooterWrapper>
-            <Footer />
-          </S.FooterWrapper>
         </S.SignupContainer>
       </S.Wrapper>
     </div>

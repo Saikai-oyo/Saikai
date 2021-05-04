@@ -18,12 +18,22 @@ export const SignupContainer = styled.div`
 `;
 
 export const Header = styled.h3`
-  margin: 61px 186px 43px 186px;
-  width: 100px;
+  margin: 54px auto 0px auto;
+  width: max-content;
   height: 33px;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
+  line-height: 31px;
+  color: #353535;
+`;
+
+export const Subtitle = styled.h4`
+  margin: auto;
+  width: max-content;
+  height: 33.26px;
+  font-weight: bold;
+  font-size: 20px;
   line-height: 31px;
   color: #353535;
 `;
@@ -74,8 +84,4 @@ export const HaveAccount = styled.div`
     color: #353535;
     font-weight: bold;
   }
-`;
-
-export const FooterWrapper = styled.div`
-  margin: 0px 130px 60px 150px;
 `;
