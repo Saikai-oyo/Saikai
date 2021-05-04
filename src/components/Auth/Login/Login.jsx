@@ -3,7 +3,6 @@ import Input from '../Input/Input';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 
 import * as S from './style';
@@ -20,17 +19,22 @@ const Login = () => {
       history.push('/');
     } catch (error) {
       setInformation({
-        error: error.message,
+        error:
+          error.code === 'auth/invalid-email'
+            ? 'Oops! Wrong email format.'
+            : error.code === 'auth/wrong-password' ||
+              error.code === 'auth/user-not-found'
+            ? 'Oops! Wrong email or password.'
+            : 'Something went wrong!',
         hasError: true,
       });
-      console.error(error);
       setTimeout(() => {
         setInformation({
           ...information,
           error: '',
           hasError: false,
         });
-      }, 2500);
+      }, 3500);
     }
   };
 
@@ -45,35 +49,29 @@ const Login = () => {
       </a>
       <S.Wrapper>
         <S.LoginContainer>
-          <S.Header>Login</S.Header>
+          <S.Header>Welcome!</S.Header>
+          <S.Subtitle>Sign in to your account</S.Subtitle>
           {information.hasError && (
-            <div className='alert alert-danger' role='alert'>
+            <div className='alert alert-danger text-center' role='alert'>
               {information.error}
             </div>
           )}
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Your Email' name='email' />
+              <Input type='text' placeholder='Email' name='email' />
 
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <Input
-                type='password'
-                placeholder='Your Password'
-                name='password'
-              />
+              <Input type='password' placeholder='Password' name='password' />
             </S.InputsWrapper>
-            <S.LogIn type='submit'>Log In</S.LogIn>
+            <S.LogIn type='submit'>Log in</S.LogIn>
             <S.ForgotPassword>
-              <Link to='/forgot-password'>Forgot Password?</Link>
+              <Link to='/forgot-password'>Forgot password?</Link>
             </S.ForgotPassword>
             <S.NeedAccount>
-              Need an account ? <Link to='/signup'>Sign Up</Link>
+              Need an account? <Link to='/signup'>Sign up</Link>
             </S.NeedAccount>
           </form>
-          <S.FooterWrapper>
-            <Footer />
-          </S.FooterWrapper>
         </S.LoginContainer>
       </S.Wrapper>
     </div>

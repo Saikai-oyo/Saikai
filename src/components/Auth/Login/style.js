@@ -18,12 +18,20 @@ export const LoginContainer = styled.div`
 `;
 
 export const Header = styled.h3`
-  margin: 54px 210px 43px 210px;
-  width: 70.52px;
+  margin: 54px auto 0px auto;
+  width: max-content;
   height: 33.26px;
-  font-style: normal;
   font-weight: bold;
   font-size: 25px;
+  line-height: 31px;
+  color: #353535;
+`;
+export const Subtitle = styled.h4`
+  margin: auto;
+  width: max-content;
+  height: 33.26px;
+  font-weight: bold;
+  font-size: 20px;
   line-height: 31px;
   color: #353535;
 `;
@@ -87,8 +95,4 @@ export const NeedAccount = styled.div`
     color: #353535;
     font-weight: bold;
   }
-`;
-
-export const FooterWrapper = styled.div`
-  margin: 0px 90px 0px 155px;
 `;
