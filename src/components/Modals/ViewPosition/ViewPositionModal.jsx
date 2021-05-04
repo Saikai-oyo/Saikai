@@ -5,6 +5,8 @@ import DesTab from './DesTab/DesTab';
 
 import { blackExitIcon } from '../../../assets/icons';
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
+import { MessagesContext } from '../../../contexts/MessagesContext';
+import { app } from '../../../config/firebase';
 
 import * as S from './style';
 
@@ -16,6 +18,41 @@ const ViewPositionModal = ({ open, onClose }) => {
   const { selectedPosition, setSelectedPosition } = useContext(
     SelectedPositionContext
   );
+  console.log('~ selectedPosition', selectedPosition);
+  const { setInformation } = useContext(MessagesContext);
+
+  const handleDelete = async (id) => {
+    setInformation({
+      error: '',
+      message: '',
+      haveError: false,
+      haveMessage: false,
+    });
+    try {
+      await app.firestore().collection('positions').doc(`${id}`).delete();
+      setInformation({
+        message: 'Success delete position!',
+        haveMessage: true,
+      });
+    } catch (error) {
+      setInformation({
+        error: 'Can not delete position!',
+        haveError: true,
+      });
+      console.error(error);
+    }
+    removeSelectedPosition();
+    onClose();
+
+    setTimeout(() => {
+      setInformation({
+        error: '',
+        message: '',
+        haveError: false,
+        haveMessage: false,
+      });
+    }, 4000);
+  };
 
   const removeSelectedPosition = () =>
     setSelectedPosition({ data: [], selected: false });
@@ -89,7 +126,19 @@ const ViewPositionModal = ({ open, onClose }) => {
                 >
                   Close
                 </S.CloseButton>
-                <S.EditBtn onClick={() => handleEdit()} />
+
+                <div
+                  style={{
+                    width: '6rem',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                  }}
+                >
+                  <S.IconsBtn
+                    onClick={() => handleDelete(selectedPosition.data.id)}
+                  />
+                  <S.IconsBtn icon='edit' onClick={() => handleEdit()} />
+                </div>
               </S.ButtonsWrapper>
             ) : (
               <S.ButtonsWrapper>

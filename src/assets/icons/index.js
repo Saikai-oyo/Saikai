@@ -8,3 +8,4 @@ export { default as blackExitIcon } from './blackExitIcon.svg';
 export { default as downArrow } from './downArrow.svg';
 export { default as upArrow } from './upArrow.svg';
 export { default as editIcon } from './editIcon.svg';
+export { default as deleteIcon } from './delete.svg';

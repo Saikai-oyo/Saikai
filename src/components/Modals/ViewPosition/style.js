@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ViewModalBG } from '../../../assets/images';
-import { editIcon } from '../../../assets/icons';
+import { editIcon, deleteIcon } from '../../../assets/icons';
 
 export const BackDrop = styled.div`
   position: fixed;
@@ -108,29 +108,22 @@ export const CloseButton = styled.button`
   background-color: transparent;
 `;
 
-export const EditBtn = styled.button`
-  width: 100px;
-  height: 20px;
+export const IconsBtn = styled.button`
+  width: 25px;
+  height: 100%;
   outline: none;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
   border: none;
-  background: none;
-  text-decoration-line: underline;
-  color: #5f50e6;
-
+  background-color: transparent;
   /* Edit Icon */
   -webkit-appearance: none;
   -moz-appearance: none;
   background-repeat: no-repeat;
-  padding-right: 1rem;
   background-position-x: 100%;
   background-position-y: 50%;
-  background-image: url(${editIcon});
-  margin-top: 7px;
+  background-image: ${({ icon }) =>
+    icon === 'edit' ? `url(${editIcon})` : `url(${deleteIcon})`};
 `;
+
 export const SubmitButton = styled.button`
   display: flex;
   justify-content: center;
