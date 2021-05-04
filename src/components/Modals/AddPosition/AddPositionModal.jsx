@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import * as S from './style';
 import ReactDOM from 'react-dom';
 import { app } from '../../../config/firebase';
@@ -12,9 +12,14 @@ import { v4 as uuidv4 } from 'uuid';
 import titles from '../../../helpers/titles';
 
 const AddPositionModal = ({ selectedTitle, open, onClose }) => {
+  const [title, setTitle] = useState(selectedTitle);
   const [advance, setAdvance] = useState(false);
   const [positionForm, setPositionForm] = useState([]);
   const { setInformation } = useContext(MessagesContext);
+
+  useEffect(() => {
+    setTitle(selectedTitle);
+  }, [selectedTitle]);
 
   const { currentUser } = useAuth();
 
@@ -125,7 +130,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 }
               />
               <S.Date>
-                <S.DateLabel htmlFor='addDate'>Position Date:</S.DateLabel>
+                <S.DateLabel htmlFor='addDate'>Application Date:</S.DateLabel>
                 <S.InputDate
                   type='date'
                   defaultValue={`${todayDate()}`}
@@ -158,7 +163,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             </S.InputLineTow>
 
             <S.InputLineThree>
-              <S.HiddenLabel htmlFor='description'>Description</S.HiddenLabel>
+              <S.HiddenLabel htmlFor='description'>
+                Position Description
+              </S.HiddenLabel>
               <S.TextArea
                 onChange={(e) =>
                   setPositionForm({
@@ -176,8 +183,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.HiddenLabel htmlFor='status'>Status</S.HiddenLabel>
               <S.Select
                 name='status'
-                value={selectedTitle}
+                value={title}
                 onChange={(e) => {
+                  setTitle(e.target.value);
                   setPositionForm({
                     ...positionForm,
                     status: e.target.value,
@@ -195,7 +203,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             <S.InputAdvancedGroup advance={advance}>
               <S.InputAdvancedLineOne>
                 <S.HiddenLabel htmlFor='positionUrl'>
-                  Position URL
+                  Position Link
                 </S.HiddenLabel>
                 <S.InputUrl
                   name='positionUrl'
@@ -206,7 +214,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                     })
                   }
                   type='url'
-                  placeholder='Position URL:'
+                  placeholder='Position Link'
                 />
               </S.InputAdvancedLineOne>
               <S.InputAdvancedLineTwo>
@@ -250,7 +258,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                   type='text'
                   placeholder='City'
                 />
-                <S.HiddenLabel htmlFor='addBy'>Add By</S.HiddenLabel>
+                <S.HiddenLabel htmlFor='addBy'>Applied through</S.HiddenLabel>
 
                 <S.InputInsideGroup
                   name='addBy'
@@ -261,12 +269,15 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                     })
                   }
                   type='text'
-                  placeholder='Added By'
+                  placeholder='Applied through'
                 />
               </S.InputAdvancedLineThree>
             </S.InputAdvancedGroup>
 
             <S.InputLineFive>
+              <S.SubmitButton type='button' onClick={handleOnSubmit}>
+                Submit
+              </S.SubmitButton>
               <S.CancelButton
                 onClick={() => {
                   onClose();
@@ -275,9 +286,6 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               >
                 Cancel
               </S.CancelButton>
-              <S.SubmitButton type='button' onClick={handleOnSubmit}>
-                Submit
-              </S.SubmitButton>
             </S.InputLineFive>
             <S.InputLineSix>
               <S.AdvanceBtn
