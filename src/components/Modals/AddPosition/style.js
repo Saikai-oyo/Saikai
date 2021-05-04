@@ -107,7 +107,7 @@ export const DateLabel = styled.label`
   font-weight: 300;
   font-size: 16px;
   line-height: 20px;
-  width: 101px;
+  width: 110px;
   margin: 0px 5px;
   white-space: nowrap;
 `;
@@ -230,6 +230,7 @@ export const SubmitButton = styled.button`
   font-size: 18px;
   line-height: 23px;
   color: #ffffff;
+  border: 1px solid #5f50e6;
 `;
 
 export const InputLineSix = styled.div`
