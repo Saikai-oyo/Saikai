@@ -34,7 +34,7 @@ export const DateLabel = styled.label`
   font-weight: 300;
   font-size: 16px;
   line-height: 20px;
-  width: 101px;
+  width: 110px;
   margin: 0px 5px;
   white-space: nowrap;
   color: #9e9e9e;

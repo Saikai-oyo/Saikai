@@ -5,7 +5,7 @@ const ViewTab = ({ viewTab, position }) => {
   return (
     <S.ViewPositionWrapper viewTab={viewTab}>
       <S.WrapperDate>
-        <S.DateLabel htmlFor='addDate'>Position Date:</S.DateLabel>
+        <S.DateLabel htmlFor='addDate'>Application Date</S.DateLabel>
         <S.Date>{position.date}</S.Date>
       </S.WrapperDate>
 
@@ -29,7 +29,7 @@ const ViewTab = ({ viewTab, position }) => {
 
       <S.ViewLineTwo>
         <S.PositionGroup>
-          <S.Label>Position URL</S.Label>
+          <S.Label>Position Link</S.Label>
           <S.PositionText>
             <a
               href={position.company_url ? position.company_url : '#'}
@@ -61,7 +61,7 @@ const ViewTab = ({ viewTab, position }) => {
           </S.PositionGroup>
 
           <S.PositionGroup>
-            <S.Label>Applied By</S.Label>
+            <S.Label>Applied through</S.Label>
             <S.PositionText>{position.appliedBy}</S.PositionText>
           </S.PositionGroup>
         </S.GroupWrapper>
