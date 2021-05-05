@@ -8,7 +8,7 @@ export const Input = styled.input`
   border: 1px solid #a5add8;
 
   box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 2.63874px;
+  border-radius: 4px;
   outline: none;
 
   &:autofill,
