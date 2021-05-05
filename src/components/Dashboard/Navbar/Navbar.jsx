@@ -1,27 +1,45 @@
 import React, { useContext } from 'react';
 import { settingIcon, logoutIcon } from '../../../assets/icons';
-import logo from '../../../assets/logos/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
-import './style.css';
-import SearchBar from '../SearchBar/SearchBar';
 import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
+import { MessagesContext } from '../../../contexts/MessagesContext';
+import SearchBar from '../SearchBar/SearchBar';
+import logo from '../../../assets/logos/logo.svg';
+import './style.css';
 
-const Navbar = ({ error, message, setError, setMessage }) => {
+const Navbar = () => {
   const { logout } = useAuth();
   const history = useHistory();
   const { userDetails } = useContext(UserDetailsContext);
+  const { information, setInformation } = useContext(MessagesContext);
 
   const handleLogout = async () => {
-    setError('');
-    setMessage('');
+    setInformation({
+      errorLine: null,
+      error: '',
+      message: '',
+      haveError: false,
+      haveMessage: false,
+    });
+
     try {
       await logout();
       history.push('/login');
     } catch (error) {
-      setError('Failed to log out.');
+      setInformation({ error: 'Failed to logout.', hasError: true });
       console.error(error.message);
     }
+
+    setTimeout(() => {
+      setInformation({
+        errorLine: null,
+        error: '',
+        message: '',
+        haveError: false,
+        haveMessage: false,
+      });
+    }, 3500);
   };
 
   return (
@@ -46,14 +64,14 @@ const Navbar = ({ error, message, setError, setMessage }) => {
           id='navbarTogglerSaikai'
         >
           <div className='mr-5 '>
-            {error && (
+            {information.haveError && (
               <div className='alert alert-danger' role='alert'>
-                {error}
+                {information.error}
               </div>
             )}
-            {message && (
+            {information.haveMessage && (
               <div className='alert alert-success' role='alert'>
-                {message}
+                {information.message}
               </div>
             )}
           </div>
