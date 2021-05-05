@@ -1,25 +1,18 @@
-import React, { useContext } from 'react';
-import { organizedData } from '../../../helpers';
-import { useAuth } from '../../../contexts/AuthContext';
-import { app } from '../../../config/firebase';
-
-import { MessagesContext } from '../../../contexts/MessagesContext';
-import { PositionsContext } from '../../../contexts/PositionsContext';
-
-import List from '../List/List';
-import Navbar from '../Navbar/Navbar';
-import * as S from './style.js';
+import React, { useContext, useEffect } from 'react';
 import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
+import Navbar from '../Navbar/Navbar';
+import List from '../List/List';
+import { organizedData } from '../../../helpers';
+import { app } from '../../../config/firebase';
+import { PositionsContext } from '../../../contexts/PositionsContext';
+import { useAuth } from '../../../contexts/AuthContext';
+import * as S from './style.js';
 
 const Homepage = () => {
   const positionContext = useContext(PositionsContext);
-  const { information } = useContext(MessagesContext);
-
-  const [error, setError] = React.useState('');
   const { currentUser } = useAuth();
-  const [message, setMessage] = React.useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     app
       .firestore()
       .collection('positions')
@@ -39,15 +32,8 @@ const Homepage = () => {
 
   return (
     <S.HomepageWrapper>
-      <Navbar
-        error={information.error}
-        message={information.message}
-        setError={setError}
-        setMessage={setMessage}
-      />
-
+      <Navbar />
       <List />
-
       <ShowPosition />
     </S.HomepageWrapper>
   );
