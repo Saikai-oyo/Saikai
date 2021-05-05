@@ -43,10 +43,13 @@ export const Header = styled.h3`
   color: #353535;
 `;
 
-export const EmailWrapper = styled.div`
-  margin: 0px 161px 32px 161px;
-  width: 100%;
-  height: 18px;
+export const DetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 0px 161px 20px 161px;
+  width: max-content;
+  height: 15%;
+  justify-content: space-between;
 `;
 
 export const EmailText = styled.span`

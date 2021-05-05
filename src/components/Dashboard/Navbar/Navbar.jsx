@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { settingIcon, logoutIcon } from '../../../assets/icons';
 import logo from '../../../assets/logos/logo.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import './style.css';
 import SearchBar from '../SearchBar/SearchBar';
+import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
 
-const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
+const Navbar = ({ error, message, setError, setMessage }) => {
   const { logout } = useAuth();
   const history = useHistory();
+  const { userDetails } = useContext(UserDetailsContext);
 
   const handleLogout = async () => {
     setError('');
@@ -60,7 +62,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
 
             <span className='mr-4 navResponsive'>
               Welcome back
-              {userDetails ? (
+              {!userDetails.loading ? (
                 ', ' + userDetails.firstName + ' ' + userDetails.lastName
               ) : (
                 <div

@@ -4,6 +4,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
 import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
+import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
 
 import * as S from './style';
 
@@ -11,6 +12,7 @@ const Profile = () => {
   const { information, setInformation } = useContext(MessagesContext);
   const { logout, currentUser } = useAuth();
   const history = useHistory();
+  const { userDetails } = useContext(UserDetailsContext);
 
   const handleLogout = async () => {
     try {
@@ -49,9 +51,15 @@ const Profile = () => {
               {information.error}
             </div>
           )}
-          <S.EmailWrapper>
-            <b>Email:</b> <S.EmailText>{currentUser.email}</S.EmailText>
-          </S.EmailWrapper>
+          <S.DetailsWrapper>
+            <div>
+              <b>Email:</b> <S.EmailText>{currentUser.email}</S.EmailText>
+            </div>
+            <div>
+              <b>Full Name:</b>
+              <S.EmailText>{` ${userDetails.firstName} ${userDetails.lastName}`}</S.EmailText>
+            </div>
+          </S.DetailsWrapper>
           <S.Update>
             <Link to='/update-profile'>Update Password</Link>
           </S.Update>
