@@ -84,7 +84,20 @@ const ForgotPassword = () => {
             <S.ResetPassword type='submit'>Reset Password</S.ResetPassword>
 
             <S.NeedAccount>
-              Need an account ? <Link to='/signup'>Sign Up</Link>
+              Need an account ?{' '}
+              <Link
+                to='/signup'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Sign Up
+              </Link>
             </S.NeedAccount>
           </form>
         </S.ResetPassContainer>

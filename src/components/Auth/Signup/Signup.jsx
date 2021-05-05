@@ -152,7 +152,20 @@ const Signup = () => {
             <S.SignUp type='submit'>Sign Up</S.SignUp>
 
             <S.HaveAccount>
-              Already have an account? <Link to='/login'>Log in</Link>
+              Already have an account?
+              <Link
+                to='/login'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Log in
+              </Link>
             </S.HaveAccount>
           </form>
         </S.SignupContainer>

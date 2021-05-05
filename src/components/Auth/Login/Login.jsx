@@ -96,10 +96,35 @@ const Login = () => {
               </S.LoginWith>
             </S.LoginsWrappers>
             <S.ForgotPassword>
-              <Link to='/forgot-password'>Forgot password?</Link>
+              <Link
+                to='/forgot-password'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Forgot password?
+              </Link>
             </S.ForgotPassword>
             <S.NeedAccount>
-              Need an account? <Link to='/signup'>Sign up</Link>
+              Need an account?
+              <Link
+                to='/signup'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Sign up
+              </Link>
             </S.NeedAccount>
           </form>
         </S.LoginContainer>
