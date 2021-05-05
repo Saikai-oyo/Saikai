@@ -57,7 +57,7 @@ export const ExitBtn = styled.button`
 export const Body = styled.div`
   background-image: url(${addPositionBG});
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: right bottom;
   width: 100%;
   height: ${({ advance }) => (advance ? 'auto' : '453px')};
   ${({ advance }) =>
