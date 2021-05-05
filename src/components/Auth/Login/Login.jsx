@@ -4,7 +4,8 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../assets/logos/logo.svg';
-
+import SmallError from '../../Errors/SmallError';
+import BigError from '../../Errors/BigError';
 import * as S from './style';
 
 const Login = () => {
@@ -14,28 +15,38 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      await login(e.target[0].value, e.target[1].value);
-      history.push('/');
-    } catch (error) {
+
+    if (e.target[0].value === '' || e.target[1].value === '') {
       setInformation({
-        error:
-          error.code === 'auth/invalid-email'
-            ? 'Oops! Wrong email format.'
-            : error.code === 'auth/wrong-password' ||
-              error.code === 'auth/user-not-found'
-            ? 'Oops! Wrong email or password.'
-            : 'Something went wrong!',
+        error: 'Fields cannot be empty',
         hasError: true,
       });
-      setTimeout(() => {
+    } else {
+      try {
+        await login(e.target[0].value, e.target[1].value);
+        history.push('/');
+      } catch (error) {
         setInformation({
-          ...information,
-          error: '',
-          hasError: false,
+          errorCode: error.code === 'auth/invalid-email' && 0,
+          error:
+            error.code === 'auth/invalid-email'
+              ? 'Oops! Wrong email format.'
+              : error.code === 'auth/wrong-password' ||
+                error.code === 'auth/user-not-found'
+              ? 'Oops! Wrong email or password.'
+              : 'Something went wrong!',
+          hasError: true,
         });
-      }, 3500);
+      }
     }
+    setTimeout(() => {
+      setInformation({
+        ...information,
+        errorCode: null,
+        error: '',
+        hasError: false,
+      });
+    }, 3500);
   };
 
   return (
@@ -50,17 +61,17 @@ const Login = () => {
       <S.Wrapper>
         <S.LoginContainer>
           <S.Header>Welcome!</S.Header>
-          <S.Subtitle>Sign in to your account</S.Subtitle>
-          {information.hasError && (
-            <div className='alert alert-danger text-center' role='alert'>
-              {information.error}
-            </div>
-          )}
+          <BigError show={information.hasError}>{information.error}</BigError>
+          <S.Subtitle>Log in to your account</S.Subtitle>
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
               <Input type='text' placeholder='Email' name='email' />
-
+              <SmallError>
+                {information.hasError &&
+                  information.errorCode === 0 &&
+                  information.error}
+              </SmallError>
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
               <Input type='password' placeholder='Password' name='password' />
             </S.InputsWrapper>

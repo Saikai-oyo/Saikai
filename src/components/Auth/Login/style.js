@@ -22,17 +22,15 @@ export const Header = styled.h3`
   width: max-content;
   height: 33.26px;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 35px;
   line-height: 31px;
   color: #353535;
 `;
 export const Subtitle = styled.h4`
-  margin: auto;
-  width: max-content;
-  height: 33.26px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 31px;
+  margin: 0px 74px 10px 74px;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 18px;
   color: #353535;
 `;
 
@@ -48,7 +46,7 @@ export const InputsWrapper = styled.div`
   justify-content: space-between;
   margin: 0px 74px 71px 74px;
   width: 337px;
-  height: 105px;
+  height: 95px;
 `;
 
 export const LogIn = styled.button`
