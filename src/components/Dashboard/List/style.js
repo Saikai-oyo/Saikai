@@ -127,3 +127,14 @@ export const PositionBody = styled.p`
   flex-grow: 0;
   margin: 3px 0px;
 `;
+
+export const PositionFooter = styled.p`
+  font-size: 14px;
+  line-height: 15px;
+  text-align: center;
+  color: #000000;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+  margin: 3px 0px;
+`;

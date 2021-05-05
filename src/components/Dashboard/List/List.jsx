@@ -83,6 +83,7 @@ const List = () => {
                       >
                         <S.PositionHeader>{position.position}</S.PositionHeader>
                         <S.PositionBody>{position.name}</S.PositionBody>
+                        <S.PositionFooter>{position.date}</S.PositionFooter>
                       </S.PositionWrapper>
                     )
                   );
