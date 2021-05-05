@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { colorForTitle } from '../../../helpers';
+
 export const ListWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -30,18 +32,7 @@ export const ListHeader = styled.div`
   width: 100%;
   height: 39px;
   border-radius: 4px;
-  background-color: ${({ title }) =>
-    title === 'Applied'
-      ? '#4c94e5'
-      : title === 'In Progress'
-      ? '#c685cd'
-      : title === 'Received Task'
-      ? '#E78C49'
-      : title === 'Contract'
-      ? '#63b767'
-      : title === 'Denied'
-      ? '#b92c2c'
-      : ''};
+  background-color: ${({ title }) => colorForTitle(title)};
 `;
 
 export const HeaderTypography = styled.div`
@@ -72,20 +63,22 @@ export const PositionWrapper = styled.div`
   align-items: center;
   padding: 1rem;
   text-align: center;
-  border-bottom: 2.5px solid
-    ${({ title }) =>
-      title === 'Applied'
-        ? '#4c94e5'
-        : title === 'In Progress'
-        ? '#c685cd'
-        : title === 'Received Task'
-        ? '#E78C49'
-        : title === 'Contract'
-        ? '#63b767'
-        : title === 'Denied'
-        ? '#b92c2c'
-        : ''};
+  border-bottom: 2.5px solid ${({ title }) => colorForTitle(title)};
   cursor: pointer;
+  &:hover {
+    background-color: ${({ title }) =>
+      title === 'Applied'
+        ? '#D1E4FA'
+        : title === 'In Progress'
+        ? '#EFDAF1'
+        : title === 'Received Task'
+        ? '#F9E3D2'
+        : title === 'Contract'
+        ? '#DCEFDD'
+        : title === 'Denied'
+        ? '#F5D6D6'
+        : ''};
+  }
 `;
 
 export const PositionHeader = styled.p`
