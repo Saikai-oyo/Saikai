@@ -73,7 +73,6 @@ const Signup = () => {
     }
     setTimeout(() => {
       setInformation({
-        ...information,
         errorCode: null,
         error: '',
         hasError: false,
@@ -161,7 +160,6 @@ const Signup = () => {
                 to='/login'
                 onClick={() =>
                   setInformation({
-                    ...information,
                     errorCode: null,
                     error: '',
                     hasError: false,
