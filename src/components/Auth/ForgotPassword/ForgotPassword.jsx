@@ -22,7 +22,6 @@ const ForgotPassword = () => {
       });
       return setTimeout(() => {
         setInformation({
-          ...information,
           error: '',
           hasError: false,
         });
@@ -89,7 +88,6 @@ const ForgotPassword = () => {
                 to='/signup'
                 onClick={() =>
                   setInformation({
-                    ...information,
                     errorCode: null,
                     error: '',
                     hasError: false,
@@ -99,6 +97,21 @@ const ForgotPassword = () => {
                 Sign Up
               </Link>
             </S.NeedAccount>
+            <S.HaveAccount>
+              Remember the password?{' '}
+              <Link
+                to='/login'
+                onClick={() =>
+                  setInformation({
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Log in
+              </Link>
+            </S.HaveAccount>
           </form>
         </S.ResetPassContainer>
       </S.Wrapper>

@@ -63,7 +63,21 @@ export const ResetPassword = styled.button`
 `;
 
 export const NeedAccount = styled.div`
-  margin: 0px 165px 57px 175px;
+  margin: 0px 165px 0px 175px;
+  width: 180px;
+  height: 15px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 15px;
+  & > a {
+    color: #353535;
+    font-weight: bold;
+  }
+`;
+
+export const HaveAccount = styled.div`
+  margin: 20px 145px 0px 160px;
   width: 180px;
   height: 15px;
   font-style: normal;
