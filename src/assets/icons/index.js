@@ -11,3 +11,4 @@ export { default as editIcon } from './editIcon.svg';
 export { default as deleteIcon } from './delete.svg';
 export { default as googleIcon } from './googleIcon.svg';
 export { default as facebookIcon } from './facebookIcon.svg';
+export { default as filterIcon } from './filterIcon.svg';

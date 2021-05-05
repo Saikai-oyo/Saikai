@@ -41,7 +41,7 @@ export const ListHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   text-align: center;
-  padding: 10px 20px;
+  padding: 0 20px;
   width: 100%;
   height: 39px;
   border-radius: 3px 3px 0px 0px;
@@ -63,6 +63,13 @@ export const AddButton = styled.button`
   display: flex;
   background-color: transparent;
   border: 0px solid transparent;
+`;
+
+export const FilterButton = styled.button`
+  display: flex;
+  background-color: transparent;
+  border: none;
+  outline: none;
 `;
 
 export const ListBody = styled.div`

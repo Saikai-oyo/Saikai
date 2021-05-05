@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
-import { addIcon } from '../../../assets/icons';
+import { addIcon, filterIcon } from '../../../assets/icons';
 
 import * as S from './style.js';
 
@@ -26,6 +26,10 @@ const List = () => {
     setSelectedPosition({ data: position, selected: true });
   };
 
+  const handleFilter = () => {
+    // TODO:Create the filter here...
+  };
+
   return (
     <S.ListWrapper>
       {positions.loading ? (
@@ -35,6 +39,9 @@ const List = () => {
           return (
             <S.List key={positions.title}>
               <S.ListHeader title={positions.title}>
+                <S.FilterButton onClick={() => handleFilter()}>
+                  <img src={filterIcon} alt='Filter Icon' />
+                </S.FilterButton>
                 <S.HeaderTypography title={positions.title}>
                   {positions.title}
                 </S.HeaderTypography>
@@ -42,7 +49,7 @@ const List = () => {
                   onClick={() => {
                     setSelectedTitle(positions.title);
                     setIsCreateOpen(true);
-                  }}
+                  }};
                 >
                   <img src={addIcon} alt='Add Button' />
                 </S.AddButton>
