@@ -49,7 +49,7 @@ const List = () => {
                   onClick={() => {
                     setSelectedTitle(positions.title);
                     setIsCreateOpen(true);
-                  }};
+                  }}
                 >
                   <img src={addIcon} alt='Add Button' />
                 </S.AddButton>
