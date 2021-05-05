@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const initialState = {
+  errorLine: null,
   error: '',
   message: '',
   haveError: false,
