@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
 
@@ -65,9 +64,7 @@ const Profile = () => {
           </S.Update>
 
           <S.Logout onClick={handleLogout}>Log Out</S.Logout>
-          <S.FooterWrapper>
-            <Footer />
-          </S.FooterWrapper>
+          <S.FooterWrapper></S.FooterWrapper>
         </S.ProfileContainer>
       </S.Wrapper>
     </div>

@@ -3,7 +3,6 @@ import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import Footer from '../../Footer/Footer';
 import logo from '../../../assets/logos/logo.svg';
 
 import * as S from './style';
@@ -124,9 +123,7 @@ const UpdateProfile = () => {
               <Link to='/profile'>Cancel</Link>
             </S.Cancel>
           </form>
-          <S.FooterWrapper>
-            <Footer />
-          </S.FooterWrapper>
+          <S.FooterWrapper></S.FooterWrapper>
         </S.UpdatePassContainer>
       </S.Wrapper>
     </div>
