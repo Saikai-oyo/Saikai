@@ -3,18 +3,21 @@ import { AuthProvider } from './AuthContext';
 import { PositionsContextProvider } from './PositionsContext';
 import { SelectedPositionContextProvider } from './SelectedPositionContext';
 import { MessagesContextProvider } from './MessagesContext';
+import { UserDetailsContextProvider } from './UserDetailsContext';
 
 const GlobalStore = ({ children }) => {
   return (
-    <AuthProvider>
-      <MessagesContextProvider>
-        <PositionsContextProvider>
-          <SelectedPositionContextProvider>
-            {children}
-          </SelectedPositionContextProvider>
-        </PositionsContextProvider>
-      </MessagesContextProvider>
-    </AuthProvider>
+    <UserDetailsContextProvider>
+      <AuthProvider>
+        <MessagesContextProvider>
+          <PositionsContextProvider>
+            <SelectedPositionContextProvider>
+              {children}
+            </SelectedPositionContextProvider>
+          </PositionsContextProvider>
+        </MessagesContextProvider>
+      </AuthProvider>
+    </UserDetailsContextProvider>
   );
 };
 
