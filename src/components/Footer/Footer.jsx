@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const SFooter = styled.div`
+  margin: auto;
   width: max-content;
   height: 15px;
   font-style: normal;
