@@ -35,6 +35,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
     }
 
     setInformation({
+      errorLine: null,
       error: '',
       message: '',
       haveError: false,
@@ -84,6 +85,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
     }
     setTimeout(() => {
       setInformation({
+        errorLine: null,
         error: '',
         message: '',
         haveError: false,
