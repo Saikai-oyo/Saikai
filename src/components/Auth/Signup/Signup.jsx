@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Input from '../Input/Input';
+import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
@@ -100,7 +100,7 @@ const Signup = () => {
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Email' name='email' />
+              <AuthInput type='text' placeholder='Email' name='email' />
               <SmallError>
                 {information.hasError &&
                   information.errorCode === 0 &&
@@ -108,7 +108,11 @@ const Signup = () => {
               </SmallError>
 
               <S.HiddenLabel htmlFor='firstName'>First Name</S.HiddenLabel>
-              <Input type='text' placeholder='First Name' name='firstName' />
+              <AuthInput
+                type='text'
+                placeholder='First Name'
+                name='firstName'
+              />
               <SmallError>
                 {information.hasError &&
                   information.errorCode === 1 &&
@@ -116,7 +120,7 @@ const Signup = () => {
               </SmallError>
 
               <S.HiddenLabel htmlFor='lastName'>Last Name</S.HiddenLabel>
-              <Input type='text' placeholder='Last Name' name='lastName' />
+              <AuthInput type='text' placeholder='Last Name' name='lastName' />
               <SmallError>
                 {information.hasError &&
                   information.errorCode === 2 &&
@@ -124,7 +128,7 @@ const Signup = () => {
               </SmallError>
 
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <Input
+              <AuthInput
                 type='password'
                 placeholder='Your Password'
                 name='password'
@@ -138,7 +142,7 @@ const Signup = () => {
               <S.HiddenLabel htmlFor='confirmPassword'>
                 Confirm Password
               </S.HiddenLabel>
-              <Input
+              <AuthInput
                 type='password'
                 placeholder='Confirm Password'
                 name='confirmPassword'

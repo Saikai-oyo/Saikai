@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Input from '../Input/Input';
+import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
@@ -78,7 +78,7 @@ const ForgotPassword = () => {
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Email' name='email' />
+              <AuthInput type='text' placeholder='Email' name='email' />
             </S.InputsWrapper>
 
             <S.ResetPassword type='submit'>Reset Password</S.ResetPassword>

@@ -1,4 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
+import PositionsInput from '../../Input/PositionsInput';
+import DescriptionInput from '../../Input/DescriptionInput';
+import LinkInput from '../../Input/LinkInput';
+import AdvanceInputs from '../../Input/AdvanceInputs';
 import * as S from './style';
 import ReactDOM from 'react-dom';
 import { app } from '../../../config/firebase';
@@ -117,7 +121,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.HiddenLabel htmlFor='positionName'>
                 Position Name
               </S.HiddenLabel>
-              <S.Input
+              <PositionsInput
                 type='text'
                 id='positionName'
                 name='positionName'
@@ -148,7 +152,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
 
             <S.InputLineTow>
               <S.HiddenLabel htmlFor='companyName'>Company Name</S.HiddenLabel>
-              <S.Input
+              <PositionsInput
                 type='text'
                 id='companyName'
                 name='companyName'
@@ -166,7 +170,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.HiddenLabel htmlFor='description'>
                 Position Description
               </S.HiddenLabel>
-              <S.TextArea
+              <DescriptionInput
                 onChange={(e) =>
                   setPositionForm({
                     ...positionForm,
@@ -176,7 +180,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 placeholder='Position Description'
                 name='description'
                 id='description'
-              ></S.TextArea>
+              ></DescriptionInput>
             </S.InputLineThree>
 
             <S.InputLineFour advance={advance}>
@@ -205,7 +209,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 <S.HiddenLabel htmlFor='positionUrl'>
                   Position Link
                 </S.HiddenLabel>
-                <S.InputUrl
+                <LinkInput
                   name='positionUrl'
                   onChange={(e) =>
                     setPositionForm({
@@ -219,7 +223,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               </S.InputAdvancedLineOne>
               <S.InputAdvancedLineTwo>
                 <S.HiddenLabel htmlFor='hrName'>HR Name</S.HiddenLabel>
-                <S.InputInsideGroup
+                <AdvanceInputs
                   name='hrName'
                   onChange={(e) =>
                     setPositionForm({
@@ -232,7 +236,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 />
                 <S.HiddenLabel htmlFor='hrMail'>HR Mail</S.HiddenLabel>
 
-                <S.InputInsideGroup
+                <AdvanceInputs
                   name='hrMail'
                   onChange={(e) =>
                     setPositionForm({
@@ -247,7 +251,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.InputAdvancedLineThree>
                 <S.HiddenLabel htmlFor='city'>City</S.HiddenLabel>
 
-                <S.InputInsideGroup
+                <AdvanceInputs
                   name='city'
                   onChange={(e) =>
                     setPositionForm({
@@ -260,7 +264,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 />
                 <S.HiddenLabel htmlFor='addBy'>Applied through</S.HiddenLabel>
 
-                <S.InputInsideGroup
+                <AdvanceInputs
                   name='addBy'
                   onChange={(e) =>
                     setPositionForm({

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Input from '../../Auth/Input/Input';
+import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
@@ -103,7 +103,7 @@ const UpdateProfile = () => {
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <Input
+              <AuthInput
                 type='password'
                 placeholder='New Password'
                 name='password'
@@ -112,7 +112,7 @@ const UpdateProfile = () => {
               <S.HiddenLabel htmlFor='confirmPassword'>
                 Confirm Password
               </S.HiddenLabel>
-              <Input
+              <AuthInput
                 type='password'
                 placeholder='Confirm New Password'
                 name='confirmPassword'

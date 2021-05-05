@@ -79,18 +79,6 @@ export const InputLineOne = styled.div`
   padding: 31px 50px 21px 40px;
 `;
 
-export const Input = styled.input`
-  width: 261px;
-  height: 35px;
-  padding: 10px 0px 10px 10px;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-  outline: none;
-  &:focus {
-    border: 2px solid #4c94e5;
-  }
-`;
-
 export const Date = styled.div`
   display: flex;
   flex-direction: row;
@@ -138,21 +126,6 @@ export const InputLineThree = styled.div`
   padding: 0px 40px 20px 40px;
 `;
 
-export const TextArea = styled.textarea`
-  width: 541px;
-  height: 109px;
-  outline: none;
-  padding: 10px 0px 10px 10px;
-
-  background: #ffffff;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-
-  &:focus {
-    border: 2px solid #4c94e5;
-  }
-`;
-
 export const InputLineFour = styled.div`
   display: flex;
   flex-direction: row;
@@ -185,9 +158,13 @@ export const Select = styled.select`
   background-position-y: 50%;
 
   &:focus {
-    border: 2px solid #4c94e5;
     /* Arrow */
     background-image: url(${downArrow});
+    border: 1px solid #c282f4;
+  }
+
+  &:hover {
+    border: 1px solid #c282f4;
   }
 `;
 
@@ -252,7 +229,6 @@ export const AdvanceBtn = styled.button`
   background: none;
   text-decoration-line: underline;
   color: #5f50e6;
-
   /* Arrow */
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -278,31 +254,11 @@ export const InputAdvancedLineOne = styled.div`
   flex-direction: row;
 `;
 
-export const InputUrl = styled.input`
-  width: 400px;
-  height: 35px;
-  outline: none;
-  background: #ffffff;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-  padding: 10px 0px 10px 10px;
-`;
-
 export const InputAdvancedLineTwo = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 29px 0px 29px 0px;
-`;
-
-export const InputInsideGroup = styled.input`
-  width: 190px;
-  height: 35px;
-  outline: none;
-  background: #ffffff;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-  padding: 10px 0px 10px 10px;
 `;
 
 export const InputAdvancedLineThree = styled.div`

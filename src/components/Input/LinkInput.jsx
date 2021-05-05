@@ -1,9 +1,10 @@
 import React from 'react';
 import * as S from './style';
 
-const Input = ({ type, placeholder, name, onChange }) => {
+const LinkInput = ({ type, id, placeholder, name, onChange }) => {
   return (
-    <S.Input
+    <S.LinkInput
+      id={id}
       type={type}
       placeholder={placeholder}
       name={name}
@@ -13,4 +14,4 @@ const Input = ({ type, placeholder, name, onChange }) => {
   );
 };
 
-export default Input;
+export default LinkInput;

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Input from '../Input/Input';
+import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
@@ -67,14 +67,18 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <Input type='text' placeholder='Email' name='email' />
+              <AuthInput type='text' placeholder='Email' name='email' />
               <SmallError>
                 {information.hasError &&
                   information.errorCode === 0 &&
                   information.error}
               </SmallError>
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <Input type='password' placeholder='Password' name='password' />
+              <AuthInput
+                type='password'
+                placeholder='Password'
+                name='password'
+              />
             </S.InputsWrapper>
             <S.LogIn type='submit'>Log in</S.LogIn>
             <S.LoginsWrappers>
