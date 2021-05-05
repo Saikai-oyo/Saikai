@@ -9,3 +9,5 @@ export { default as downArrow } from './downArrow.svg';
 export { default as upArrow } from './upArrow.svg';
 export { default as editIcon } from './editIcon.svg';
 export { default as deleteIcon } from './delete.svg';
+export { default as googleIcon } from './googleIcon.svg';
+export { default as facebookIcon } from './facebookIcon.svg';

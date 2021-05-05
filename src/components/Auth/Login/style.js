@@ -10,7 +10,7 @@ export const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 479px;
-  height: 538px;
+  height: 500px;
   background: #ffffff;
   border: 1px solid #a5add8;
   box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
@@ -44,7 +44,7 @@ export const InputsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0px 74px 71px 74px;
+  margin: 0px 74px 27px 74px;
   width: 337px;
   height: 95px;
 `;
@@ -66,6 +66,25 @@ export const LogIn = styled.button`
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
+`;
+
+export const LoginsWrappers = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 10px 102px;
+`;
+
+export const LoginWith = styled.button`
+  width: 133px;
+  height: 28px;
+  background: ${({ login }) => (login === 'facebook' ? '#3C7AFF' : '#DF492E')};
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  border: none;
+  outline: none;
 `;
 
 export const ForgotPassword = styled.div`

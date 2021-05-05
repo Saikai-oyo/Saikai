@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../assets/logos/logo.svg';
 import SmallError from '../../Errors/SmallError';
 import BigError from '../../Errors/BigError';
+import { googleIcon, facebookIcon } from '../../../assets/icons/';
 import * as S from './style';
 
 const Login = () => {
@@ -76,6 +77,24 @@ const Login = () => {
               <Input type='password' placeholder='Password' name='password' />
             </S.InputsWrapper>
             <S.LogIn type='submit'>Log in</S.LogIn>
+            <S.LoginsWrappers>
+              <S.LoginWith login='facebook'>
+                Sign in with{' '}
+                <img
+                  style={{ paddingLeft: '.5rem' }}
+                  src={facebookIcon}
+                  alt='FaceBook Icon'
+                />
+              </S.LoginWith>
+              <S.LoginWith login='google'>
+                Sign in with{' '}
+                <img
+                  style={{ paddingLeft: '.5rem' }}
+                  src={googleIcon}
+                  alt='GOOGLE Icon'
+                />
+              </S.LoginWith>
+            </S.LoginsWrappers>
             <S.ForgotPassword>
               <Link to='/forgot-password'>Forgot password?</Link>
             </S.ForgotPassword>
