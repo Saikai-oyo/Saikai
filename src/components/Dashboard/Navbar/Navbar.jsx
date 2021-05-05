@@ -27,7 +27,11 @@ const Navbar = () => {
       await logout();
       history.push('/login');
     } catch (error) {
-      setInformation({ error: 'Failed to logout.', hasError: true });
+      setInformation({
+        errorLine: 'navbar',
+        error: 'Failed to logout.',
+        hasError: true,
+      });
       console.error(error.message);
     }
 
@@ -64,15 +68,20 @@ const Navbar = () => {
           id='navbarTogglerSaikai'
         >
           <div className='mr-5 '>
-            {information.haveError && (
-              <div className='alert alert-danger' role='alert'>
-                {information.error}
-              </div>
-            )}
-            {information.haveMessage && (
-              <div className='alert alert-success' role='alert'>
-                {information.message}
-              </div>
+            {information.errorLine === 'navbar' ? (
+              information.haveError ? (
+                <div className='alert alert-danger' role='alert'>
+                  {information.error}
+                </div>
+              ) : information.haveMessage ? (
+                <div className='alert alert-success' role='alert'>
+                  {information.message}
+                </div>
+              ) : (
+                ''
+              )
+            ) : (
+              ''
             )}
           </div>
           <span className='navbar-text navResponsive'>

@@ -9,6 +9,19 @@ export const ListWrapper = styled.div`
   height: inherit;
 `;
 
+export const ListMessages = styled.div`
+  width: 100%;
+  height: 20px;
+  background: ${({ message }) => (message === 'bad' ? '#fe4c4c' : '#6ACB73')};
+  border-radius: 0px 0px 5px 5px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 15px;
+  color: #ffffff;
+  text-align: center;
+  padding: 1px;
+`;
+
 export const List = styled.div`
   display: flex;
   flex-direction: column;
@@ -31,7 +44,9 @@ export const ListHeader = styled.div`
   padding: 10px 20px;
   width: 100%;
   height: 39px;
-  border-radius: 4px;
+  border-radius: 3px 3px 0px 0px;
+
+  /* border-radius: 4px; */
   background-color: ${({ title }) => colorForTitle(title)};
 `;
 

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { addPositionBG } from '../../../assets/images';
 import { upArrow, downArrow } from '../../../assets/icons';
 
@@ -59,11 +59,8 @@ export const Body = styled.div`
   background-repeat: no-repeat;
   background-position: right bottom;
   width: 100%;
-  height: ${({ advance }) => (advance ? 'auto' : '453px')};
-  ${({ advance }) =>
-    advance
-      ? 'transition-delay: 0s;'
-      : 'transition: visibility 0s linear 0.33s, opacity 0.33s linear;'}
+  max-height: ${({ advance }) => (advance ? 'auto' : '453px')};
+  transition: all 0.3s;
 `;
 
 export const HiddenLabel = styled.label`
@@ -245,8 +242,9 @@ export const AdvanceBtn = styled.button`
 export const InputAdvancedGroup = styled.div`
   ${({ advance }) =>
     advance
-      ? 'display: flex;flex-direction: column;padding: 0px 180px 63px 40px; transition-delay: 0s;'
-      : 'display:none; opacity:0; visibility:hidden; transition: visibility 0s linear 0.33s, opacity 0.33s linear;'}
+      ? `display: flex;flex-direction: column;padding: 0px 180px 63px 40px;visibility:visible; opacity:1;`
+      : `display:none; opacity:0; visibility:hidden;`}
+  transition: all 7s;
 `;
 
 export const InputAdvancedLineOne = styled.div`

@@ -1,19 +1,23 @@
 import React, { useContext, useState } from 'react';
-import { addIcon } from '../../../assets/icons';
-import Spinner from '../../Spinner/Spinner';
-import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
+import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
+import Spinner from '../../Spinner/Spinner';
+import { addIcon } from '../../../assets/icons';
+
 import * as S from './style.js';
 
 // Context Imports
-import { PositionsContext } from '../../../contexts/PositionsContext';
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
+import { PositionsContext } from '../../../contexts/PositionsContext';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
   const { setSelectedPosition } = useContext(SelectedPositionContext);
+  const { information } = useContext(MessagesContext);
   const { currentUser } = useAuth();
+
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
@@ -32,7 +36,7 @@ const List = () => {
             <S.List key={positions.title}>
               <S.ListHeader title={positions.title}>
                 <S.HeaderTypography title={positions.title}>
-                  {positions.title}{' '}
+                  {positions.title}
                 </S.HeaderTypography>
                 <S.AddButton
                   onClick={() => {
@@ -43,6 +47,20 @@ const List = () => {
                   <img src={addIcon} alt='Add Button' />
                 </S.AddButton>
               </S.ListHeader>
+              {information.errorLine &&
+              positions.title === information.errorLine[0] ? (
+                information.errorLine[1] === 'bad' ? (
+                  <S.ListMessages message='bad'>
+                    <span>{information.message}</span>
+                  </S.ListMessages>
+                ) : (
+                  <S.ListMessages message='good'>
+                    <span>{information.message}</span>
+                  </S.ListMessages>
+                )
+              ) : (
+                ''
+              )}
               <S.ListBody>
                 {positions.items.map((position) => {
                   return (

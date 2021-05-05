@@ -30,10 +30,6 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
 
-    if (!positionForm) {
-      return alert('Must fill minimum one field 😡');
-    }
-
     setInformation({
       errorLine: null,
       error: '',
@@ -54,7 +50,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             ? positionForm.position
             : 'Unknown Position',
           name: positionForm.name ? positionForm.name : 'Unknown Company',
-          city: positionForm.city ? positionForm.city : 'Unknown City',
+          city: positionForm.city ? positionForm.city : '',
           company_url: positionForm.company_url ? positionForm.company_url : '',
           position_url: positionForm.position_url
             ? positionForm.position_url
@@ -68,11 +64,8 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         });
 
       setInformation({
-        message: `🎉 Success add new position - ${
-          positionForm.position
-            ? positionForm.position + ' 🎉'
-            : 'Unknown Position 🎉'
-        }`,
+        errorLine: [selectedTitle, 'good'],
+        message: 'Successfully Added',
         haveMessage: true,
       });
       setPositionForm(null);
@@ -83,6 +76,8 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
       });
       console.error(error);
     }
+    onClose();
+    setAdvance(false);
     setTimeout(() => {
       setInformation({
         errorLine: null,
@@ -91,9 +86,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         haveError: false,
         haveMessage: false,
       });
-    }, 2500);
-    setAdvance(false);
-    onClose();
+    }, 3500);
   };
 
   if (!open) return null;

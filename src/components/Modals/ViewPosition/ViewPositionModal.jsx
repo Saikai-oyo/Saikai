@@ -18,11 +18,11 @@ const ViewPositionModal = ({ open, onClose }) => {
   const { selectedPosition, setSelectedPosition } = useContext(
     SelectedPositionContext
   );
-  console.log('~ selectedPosition', selectedPosition);
   const { setInformation } = useContext(MessagesContext);
 
   const handleDelete = async (id) => {
     setInformation({
+      errorLine: null,
       error: '',
       message: '',
       haveError: false,
@@ -31,7 +31,8 @@ const ViewPositionModal = ({ open, onClose }) => {
     try {
       await app.firestore().collection('positions').doc(`${id}`).delete();
       setInformation({
-        message: 'Success delete position!',
+        errorLine: [selectedPosition.data.status, 'bad'],
+        message: 'Successfully Deleted!',
         haveMessage: true,
       });
     } catch (error) {
@@ -41,8 +42,8 @@ const ViewPositionModal = ({ open, onClose }) => {
       });
       console.error(error);
     }
-    removeSelectedPosition();
     onClose();
+    removeSelectedPosition();
 
     setTimeout(() => {
       setInformation({
@@ -51,7 +52,7 @@ const ViewPositionModal = ({ open, onClose }) => {
         haveError: false,
         haveMessage: false,
       });
-    }, 4000);
+    }, 3500);
   };
 
   const removeSelectedPosition = () =>
