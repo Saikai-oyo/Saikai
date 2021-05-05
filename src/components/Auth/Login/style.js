@@ -60,7 +60,7 @@ export const LogIn = styled.button`
   height: 42.58px;
   background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
   border-radius: 2.66111px;
-
+  border: none;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
