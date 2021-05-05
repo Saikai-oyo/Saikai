@@ -63,7 +63,7 @@ export const SignUp = styled.button`
   width: 274.09px;
   height: 42.58px;
   background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
-  border-radius: 2.66111px;
+  border-radius: 4px;
   border: none;
   font-style: normal;
   font-weight: 600;
