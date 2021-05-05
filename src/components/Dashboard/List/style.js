@@ -26,7 +26,7 @@ export const List = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0px;
-  width: 240px;
+  width: 260px;
   height: 35rem;
   background: #ffffff;
   border: 1px solid #c8c8c8;
