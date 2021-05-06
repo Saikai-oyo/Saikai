@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { ViewModalBG } from '../../../assets/images';
-import { editIcon, deleteIcon } from '../../../assets/icons';
+import {
+  editIcon,
+  openDeleteIcon,
+  closeDeleteIcon,
+} from '../../../assets/icons';
 
 export const BackDrop = styled.div`
   position: fixed;
@@ -18,12 +22,15 @@ export const ModalWrapper = styled.div`
   top: 50%;
   left: 50%;
   width: 635px;
-  height: auto;
+  height: ${({ edit }) => (edit ? '530px' : 'auto')};
   background: #ffffff;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   z-index: 1000;
   transform: translate(-50%, -50%);
+  background-image: url(${ViewModalBG});
+  background-repeat: no-repeat;
+  background-position: right bottom;
 `;
 
 export const ExitBtn = styled.button`
@@ -36,9 +43,6 @@ export const ExitBtn = styled.button`
 `;
 
 export const Body = styled.div`
-  background-image: url(${ViewModalBG});
-  background-repeat: no-repeat;
-  background-position: right bottom;
   width: 100%;
   height: 410px;
 `;
@@ -60,7 +64,7 @@ export const DescriptionTab = styled.button`
       : '#ffffff'};
   border: 1px solid #a5add8;
   border-radius: 5px 0px 0px 0px;
-  font-weight: ${({ descriptionTab }) => (descriptionTab ? 'normal' : 'bold')};
+  font-weight: ${({ descriptionTab }) => (descriptionTab ? 'bold' : 'normal')};
   font-size: 18px;
   line-height: 23px;
   color: ${({ descriptionTab }) => (descriptionTab ? '#ffffff' : '#353535')};
@@ -77,7 +81,7 @@ export const ViewTab = styled.button`
       : '#ffffff'};
   border: 1px solid #a5add8;
   border-radius: 0px 5px 0px 0px;
-  font-weight: ${({ viewTab }) => (viewTab ? 'normal' : 'bold')};
+  font-weight: ${({ viewTab }) => (viewTab ? 'bold' : 'normal')};
   font-size: 18px;
   line-height: 23px;
   color: ${({ viewTab }) => (viewTab ? '#ffffff' : '#353535')};
@@ -87,7 +91,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0px 56px 0px 58px;
+  margin: ${({ edit }) => (edit ? '40px 185px 0px 58px' : '0px 56px 0px 58px')};
 `;
 
 export const CloseButton = styled.button`
@@ -121,7 +125,12 @@ export const IconsBtn = styled.button`
   background-position-x: 100%;
   background-position-y: 50%;
   background-image: ${({ icon }) =>
-    icon === 'edit' ? `url(${editIcon})` : `url(${deleteIcon})`};
+    icon === 'edit' ? `url(${editIcon})` : `url(${closeDeleteIcon})`};
+
+  &:hover {
+    background-image: ${({ icon }) =>
+      icon === 'edit' ? '' : `url(${openDeleteIcon})`};
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -139,4 +148,5 @@ export const SubmitButton = styled.button`
   font-size: 18px;
   line-height: 23px;
   color: #ffffff;
+  border: none;
 `;

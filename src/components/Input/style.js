@@ -42,11 +42,13 @@ export const AuthInput = styled.input`
 
 export const PositionsInput = styled.input`
   padding: 1rem;
-  width: 261px;
-  height: 35px;
+  width: ${({ edit }) => (edit ? '183px' : '261px')};
+  height: ${({ edit }) => (edit ? '21px' : '35px')};
   background: #fff;
   border: 1px solid #a5add8;
-
+  font-weight: 300;
+  line-height: 15px;
+  color: #000000;
   border-radius: 4px;
   outline: none;
 
@@ -72,16 +74,12 @@ export const PositionsInput = styled.input`
   &:hover {
     border: 1px solid #c282f4;
   }
-
-  font-weight: 300;
-  line-height: 15px;
-  color: #000000;
 `;
 
 export const DescriptionInput = styled.textarea`
   padding: 1rem;
-  width: 541px;
-  height: 114px;
+  width: ${({ edit }) => (edit ? '521px' : '541px')};
+  height: ${({ edit }) => (edit ? '280px' : '114px')};
   background: #fff;
   border: 1px solid #a5add8;
 
@@ -156,8 +154,8 @@ export const LinkInput = styled.input`
 
 export const AdvanceInputs = styled.input`
   padding: 1rem;
-  width: 190px;
-  height: 35px;
+  width: ${({ edit }) => (edit ? '115px' : '190px')};
+  height: ${({ edit }) => (edit ? '21px' : '35px')};
   background: #fff;
   border: 1px solid #a5add8;
 

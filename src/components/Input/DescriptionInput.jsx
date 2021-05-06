@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from './style';
 
 const DescriptionInput = ({
+  edit,
+  value,
   type,
   id,
   placeholder,
@@ -11,6 +13,8 @@ const DescriptionInput = ({
 }) => {
   return (
     <S.DescriptionInput
+      edit={edit}
+      defaultValue={value}
       id={id}
       type={type}
       placeholder={placeholder}

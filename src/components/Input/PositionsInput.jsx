@@ -1,9 +1,19 @@
 import React from 'react';
 import * as S from './style';
 
-const PositionsInput = ({ type, id, placeholder, name, onChange }) => {
+const PositionsInput = ({
+  edit,
+  type,
+  id,
+  placeholder,
+  name,
+  onChange,
+  value,
+}) => {
   return (
     <S.PositionsInput
+      value={value}
+      edit={edit}
       id={id}
       type={type}
       placeholder={placeholder}

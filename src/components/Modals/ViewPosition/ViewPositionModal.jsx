@@ -85,7 +85,7 @@ const ViewPositionModal = ({ open, onClose }) => {
           onClose();
         }}
       />
-      <S.ModalWrapper>
+      <S.ModalWrapper edit={edit}>
         <S.ExitBtn
           onClick={() => {
             removeSelectedPosition();
@@ -111,10 +111,15 @@ const ViewPositionModal = ({ open, onClose }) => {
             </S.Tabs>
 
             <DesTab
+              edit={edit}
               descriptionTab={descriptionTab}
               position={selectedPosition.data}
             />
-            <ViewTab viewTab={viewTab} position={selectedPosition.data} />
+            <ViewTab
+              edit={edit}
+              viewTab={viewTab}
+              position={selectedPosition.data}
+            />
             {!edit ? (
               <S.ButtonsWrapper>
                 <S.CloseButton
@@ -136,13 +141,21 @@ const ViewPositionModal = ({ open, onClose }) => {
                   }}
                 >
                   <S.IconsBtn
-                    onClick={() => handleDelete(selectedPosition.data.id)}
+                    icon='delete'
+                    onClick={() => {
+                      if (
+                        window.confirm(
+                          'Are you sure you want to delete this position?'
+                        )
+                      )
+                        handleDelete(selectedPosition.data.id);
+                    }}
                   />
                   <S.IconsBtn icon='edit' onClick={() => handleEdit()} />
                 </div>
               </S.ButtonsWrapper>
             ) : (
-              <S.ButtonsWrapper>
+              <S.ButtonsWrapper edit={edit}>
                 <S.CloseButton onClick={() => handleEdit()}>
                   Cancel
                 </S.CloseButton>

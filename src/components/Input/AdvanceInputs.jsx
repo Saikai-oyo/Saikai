@@ -1,9 +1,19 @@
 import React from 'react';
 import * as S from './style';
 
-const AdvanceInputs = ({ type, id, placeholder, name, onChange }) => {
+const AdvanceInputs = ({
+  edit,
+  value,
+  type,
+  id,
+  placeholder,
+  name,
+  onChange,
+}) => {
   return (
     <S.AdvanceInputs
+      value={value}
+      edit={edit}
       id={id}
       type={type}
       placeholder={placeholder}

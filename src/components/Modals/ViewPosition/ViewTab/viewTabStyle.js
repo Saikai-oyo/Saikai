@@ -27,7 +27,7 @@ export const WrapperDate = styled.div`
   padding: 0px;
   width: max-content;
   height: 25px;
-  margin: 0px 0px 21px 281px;
+  margin: 0px 0px 21px 305px;
 `;
 export const DateLabel = styled.label`
   font-style: normal;
@@ -114,7 +114,7 @@ export const ViewLineTwo = styled.div`
   display: flex;
   flex-direction: row;
   height: 31px;
-  margin: 0px 380px 23px 0px;
+  margin: ${({ edit }) => (edit ? '0px 380px 28px 0px' : '0px 380px 23px 0px')};
 
   & > div > span > a {
     overflow: hidden;
@@ -131,12 +131,13 @@ export const ViewLineThree = styled.div`
   justify-content: space-between;
   width: 369px;
   height: 85px;
-  margin: 0px 159px 44px 0px;
+  margin: ${({ edit }) => (edit ? '0 159px 44px 0px' : '0px 159px 44px 0px')};
 `;
 
 export const GroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 13px;
+  margin-right: ${({ edit }) => (edit ? '32px' : '13px')};
+  ${({ edit }) => edit && 'height: 6.5rem;'}
 `;
