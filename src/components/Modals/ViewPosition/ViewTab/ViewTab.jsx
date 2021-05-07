@@ -1,20 +1,62 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import * as S from './viewTabStyle';
-import { PositionsInput, LinkInput } from '../../../Input';
+import {
+  PositionsInput,
+  LinkInput,
+  DateInput,
+  StatusInput,
+} from '../../../Input';
+import { UpdatedPositionContext } from '../../../../contexts/UpdatedPositionContext';
+import { formatReversDate } from '../../../../helpers';
 
 const ViewTab = ({ viewTab, position, edit }) => {
+  const { updatedPosition, setUpdatedPosition } = useContext(
+    UpdatedPositionContext
+  );
+  const [title, setTitle] = useState(position.status);
+
   return (
     <S.ViewPositionWrapper viewTab={viewTab}>
       <S.WrapperDate>
         <S.DateLabel htmlFor='addDate'>Application Date</S.DateLabel>
-        <S.Date>{position.date}</S.Date>
+        {edit ? (
+          <DateInput
+            edit={true}
+            type='date'
+            value={`${formatReversDate(position.date)}`}
+            onChange={(e) =>
+              setUpdatedPosition({
+                updated: {
+                  ...updatedPosition.updated,
+                  date: e.target.value,
+                },
+                didUpdate: true,
+              })
+            }
+          />
+        ) : (
+          <S.Date>{position.date}</S.Date>
+        )}
       </S.WrapperDate>
 
-      <S.ViewLineOne>
+      <S.ViewLineOne edit={edit}>
         <S.PositionGroup>
           <S.Label>Position Name</S.Label>
           {edit ? (
-            <PositionsInput edit={true} type='text' value={position.position} />
+            <PositionsInput
+              edit={true}
+              type='text'
+              value={position.position}
+              onChange={(e) =>
+                setUpdatedPosition({
+                  updated: {
+                    ...updatedPosition.updated,
+                    position: e.target.value,
+                  },
+                  didUpdate: true,
+                })
+              }
+            />
           ) : (
             <S.PositionText>{position.position}</S.PositionText>
           )}
@@ -23,7 +65,17 @@ const ViewTab = ({ viewTab, position, edit }) => {
         <S.PositionGroup>
           <S.Label>Company Name</S.Label>
           {edit ? (
-            <PositionsInput edit={true} type='text' value={position.name} />
+            <PositionsInput
+              edit={true}
+              type='text'
+              value={position.name}
+              onChange={(e) =>
+                setUpdatedPosition({
+                  updated: { ...updatedPosition.updated, name: e.target.value },
+                  didUpdate: true,
+                })
+              }
+            />
           ) : (
             <S.PositionText>{position.name}</S.PositionText>
           )}
@@ -31,8 +83,28 @@ const ViewTab = ({ viewTab, position, edit }) => {
 
         <S.PositionGroup>
           <S.Label>Status</S.Label>
-          <S.PositionText>{position.status}</S.PositionText>
-          <S.UnderLineStatus title={position.status} />
+          {edit ? (
+            <StatusInput
+              edit={edit}
+              name='status'
+              value={title}
+              onChange={(e) => {
+                setTitle(e.target.value);
+                setUpdatedPosition({
+                  updated: {
+                    ...updatedPosition.updated,
+                    status: e.target.value,
+                  },
+                  didUpdate: true,
+                });
+              }}
+            />
+          ) : (
+            <>
+              <S.PositionText>{position.status}</S.PositionText>
+              <S.UnderLineStatus title={position.status} />
+            </>
+          )}
         </S.PositionGroup>
       </S.ViewLineOne>
 
@@ -40,15 +112,28 @@ const ViewTab = ({ viewTab, position, edit }) => {
         <S.PositionGroup>
           <S.Label>Position Link</S.Label>
           {edit ? (
-            <LinkInput edit={true} type='text' value={position.company_url} />
+            <LinkInput
+              edit={true}
+              type='text'
+              onChange={(e) =>
+                setUpdatedPosition({
+                  updated: {
+                    ...updatedPosition.updated,
+                    position_url: e.target.value,
+                  },
+                  didUpdate: true,
+                })
+              }
+              value={position.position_url}
+            />
           ) : (
             <S.PositionText>
               <a
-                href={position.company_url ? position.company_url : '#'}
+                href={position.position_url ? position.position_url : '#'}
                 target='_blank'
                 rel='noopener noreferrer'
               >
-                {position.company_url}
+                {position.position_url}
               </a>
             </S.PositionText>
           )}
@@ -64,6 +149,15 @@ const ViewTab = ({ viewTab, position, edit }) => {
                 edit={true}
                 type='text'
                 value={position.hr_name}
+                onChange={(e) =>
+                  setUpdatedPosition({
+                    updated: {
+                      ...updatedPosition.updated,
+                      hr_name: e.target.value,
+                    },
+                    didUpdate: true,
+                  })
+                }
               />
             ) : (
               <S.PositionText>{position.hr_name}</S.PositionText>
@@ -73,7 +167,20 @@ const ViewTab = ({ viewTab, position, edit }) => {
           <S.PositionGroup>
             <S.Label>City</S.Label>
             {edit ? (
-              <PositionsInput edit={true} type='text' value={position.city} />
+              <PositionsInput
+                edit={true}
+                type='text'
+                value={position.city}
+                onChange={(e) =>
+                  setUpdatedPosition({
+                    updated: {
+                      ...updatedPosition.updated,
+                      city: e.target.value,
+                    },
+                    didUpdate: true,
+                  })
+                }
+              />
             ) : (
               <S.PositionText>{position.city}</S.PositionText>
             )}
@@ -88,6 +195,15 @@ const ViewTab = ({ viewTab, position, edit }) => {
                 edit={true}
                 type='text'
                 value={position.hr_mail}
+                onChange={(e) =>
+                  setUpdatedPosition({
+                    updated: {
+                      ...updatedPosition.updated,
+                      hr_mail: e.target.value,
+                    },
+                    didUpdate: true,
+                  })
+                }
               />
             ) : (
               <S.PositionText>{position.hr_mail}</S.PositionText>
@@ -101,6 +217,15 @@ const ViewTab = ({ viewTab, position, edit }) => {
                 edit={true}
                 type='text'
                 value={position.appliedBy}
+                onChange={(e) =>
+                  setUpdatedPosition({
+                    updated: {
+                      ...updatedPosition.updated,
+                      appliedBy: e.target.value,
+                    },
+                    didUpdate: true,
+                  })
+                }
               />
             ) : (
               <S.PositionText>{position.appliedBy}</S.PositionText>

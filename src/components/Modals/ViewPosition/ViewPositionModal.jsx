@@ -3,8 +3,11 @@ import ReactDOM from 'react-dom';
 import ViewTab from './ViewTab/ViewTab';
 import DesTab from './DesTab/DesTab';
 
+import { formatDate } from '../../../helpers';
+
 import { blackExitIcon } from '../../../assets/icons';
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
+import { UpdatedPositionContext } from '../../../contexts/UpdatedPositionContext';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { app } from '../../../config/firebase';
 
@@ -18,7 +21,107 @@ const ViewPositionModal = ({ open, onClose }) => {
   const { selectedPosition, setSelectedPosition } = useContext(
     SelectedPositionContext
   );
+  const { updatedPosition, setUpdatedPosition } = useContext(
+    UpdatedPositionContext
+  );
+
   const { setInformation } = useContext(MessagesContext);
+
+  const handleUpdate = async () => {
+    setInformation({
+      errorLine: null,
+      error: '',
+      message: '',
+      haveError: false,
+      haveMessage: false,
+    });
+    console.log('1', updatedPosition.updated);
+    if (!updatedPosition.didUpdate) {
+      setInformation({
+        errorLine: [selectedPosition.data.status, 'bad'],
+        message: 'No changes was made!',
+        haveError: true,
+      });
+      onClose();
+      handleDecTab();
+      setEdit(false);
+      removeSelectedPosition();
+    } else {
+      try {
+        console.log('2', updatedPosition.updated);
+
+        await app
+          .firestore()
+          .collection('positions')
+          .doc(`${selectedPosition.data.id}`)
+          .update({
+            description: updatedPosition.updated.description
+              ? updatedPosition.updated.description
+              : selectedPosition.data.description,
+            position: updatedPosition.updated.position
+              ? updatedPosition.updated.position
+              : selectedPosition.data.position,
+            name: updatedPosition.updated.name
+              ? updatedPosition.updated.name
+              : selectedPosition.data.name,
+            position_url: updatedPosition.updated.position_url
+              ? updatedPosition.updated.position_url
+              : selectedPosition.data.position_url,
+            hr_name: updatedPosition.updated.hr_name
+              ? updatedPosition.updated.hr_name
+              : selectedPosition.data.hr_name,
+            city: updatedPosition.updated.city
+              ? updatedPosition.updated.city
+              : selectedPosition.data.city,
+            hr_mail: updatedPosition.updated.hr_mail
+              ? updatedPosition.updated.hr_mail
+              : selectedPosition.data.hr_mail,
+            appliedBy: updatedPosition.updated.appliedBy
+              ? updatedPosition.updated.appliedBy
+              : selectedPosition.data.appliedBy,
+            date: updatedPosition.updated.date
+              ? formatDate(updatedPosition.updated.date)
+              : selectedPosition.data.date,
+            status: updatedPosition.updated.status
+              ? updatedPosition.updated.status
+              : selectedPosition.data.status,
+
+            //TODO: Maybe will use it in later versions.
+            // company_url: updatedPosition.updated.companyUrl
+            //   && updatedPosition.updated.companyUrl
+            // personalNote: updatedPosition.updated.personalNote
+            //   && updatedPosition.updated.personalNote
+          });
+
+        setInformation({
+          errorLine: [updatedPosition.updated.status, 'good'],
+          message: 'Successfully Updated',
+          haveMessage: true,
+        });
+        setUpdatedPosition({ updated: [], didUpdate: false });
+      } catch (error) {
+        setInformation({
+          error: error.message,
+          haveError: true,
+        });
+        console.error(error);
+      }
+    }
+    onClose();
+    handleDecTab();
+    setEdit(false);
+    removeSelectedPosition();
+
+    setTimeout(() => {
+      setInformation({
+        errorLine: null,
+        error: '',
+        message: '',
+        haveError: false,
+        haveMessage: false,
+      });
+    }, 3500);
+  };
 
   const handleDelete = async (id) => {
     setInformation({
@@ -47,6 +150,7 @@ const ViewPositionModal = ({ open, onClose }) => {
 
     setTimeout(() => {
       setInformation({
+        errorLine: null,
         error: '',
         message: '',
         haveError: false,
@@ -60,7 +164,6 @@ const ViewPositionModal = ({ open, onClose }) => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log('work hard');
   };
 
   const handleDecTab = () => {
@@ -87,6 +190,7 @@ const ViewPositionModal = ({ open, onClose }) => {
       />
       <S.ModalWrapper edit={edit}>
         <S.ExitBtn
+          edit={edit}
           onClick={() => {
             removeSelectedPosition();
             handleDecTab();
@@ -151,7 +255,11 @@ const ViewPositionModal = ({ open, onClose }) => {
                         handleDelete(selectedPosition.data.id);
                     }}
                   />
-                  <S.IconsBtn icon='edit' onClick={() => handleEdit()} />
+                  <S.IconsBtn
+                    icon='edit'
+                    type='button'
+                    onClick={() => handleEdit()}
+                  />
                 </div>
               </S.ButtonsWrapper>
             ) : (
@@ -159,7 +267,7 @@ const ViewPositionModal = ({ open, onClose }) => {
                 <S.CloseButton onClick={() => handleEdit()}>
                   Cancel
                 </S.CloseButton>
-                <S.SubmitButton type='button' onClick={handleOnSubmit}>
+                <S.SubmitButton type='button' onClick={handleUpdate}>
                   Save
                 </S.SubmitButton>
               </S.ButtonsWrapper>

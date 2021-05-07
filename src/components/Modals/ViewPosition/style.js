@@ -21,7 +21,7 @@ export const ModalWrapper = styled.div`
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 635px;
+  width: ${({ edit }) => (edit ? '685px' : '635px')};
   height: ${({ edit }) => (edit ? '530px' : 'auto')};
   background: #ffffff;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
@@ -34,7 +34,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ExitBtn = styled.button`
-  margin: 26px 21px 0px 600px;
+  margin: 26px 21px 0px ${({ edit }) => (edit ? '645px' : '600px')};
   width: 17px;
   height: 18px;
   outline: none;
@@ -56,7 +56,7 @@ export const Tabs = styled.div`
 export const DescriptionTab = styled.button`
   text-align: center;
   outline: none;
-  width: 254px;
+  width: 277px;
   height: 31px;
   background: ${({ descriptionTab }) =>
     descriptionTab
@@ -73,7 +73,7 @@ export const DescriptionTab = styled.button`
 export const ViewTab = styled.button`
   text-align: center;
   outline: none;
-  width: 266px;
+  width: 277px;
   height: 31px;
   background: ${({ viewTab }) =>
     viewTab
@@ -91,7 +91,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: ${({ edit }) => (edit ? '40px 185px 0px 58px' : '0px 56px 0px 58px')};
+  margin: ${({ edit }) => (edit ? '40px 245px 0px 58px' : '0px 56px 0px 58px')};
 `;
 
 export const CloseButton = styled.button`
@@ -99,7 +99,7 @@ export const CloseButton = styled.button`
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
-  width: 190px;
+  width: 183px;
   height: 33px;
   border: 1px solid #5f50e6;
   border-radius: 4px;
@@ -139,7 +139,7 @@ export const SubmitButton = styled.button`
   align-items: center;
   padding: 5px 10px;
   outline: none;
-  width: 190px;
+  width: 183px;
   height: 33px;
   background: #5f50e6;
   border-radius: 4px;

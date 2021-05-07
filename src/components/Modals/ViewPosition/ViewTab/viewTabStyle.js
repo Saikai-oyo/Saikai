@@ -51,9 +51,9 @@ export const ViewLineOne = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 481px;
+  width: ${({ edit }) => (edit ? 'auto' : '481px')};
   height: 31px;
-  margin: 0px 106px 28px 0px;
+  margin: 0px ${({ edit }) => (edit ? '15px' : '106px')} 28px 0px;
 `;
 
 export const PositionGroup = styled.div`
@@ -71,15 +71,15 @@ export const PositionText = styled.span`
 export const UnderLineStatus = styled.div`
   width: ${({ title }) =>
     title === 'Applied'
-      ? '48px'
-      : title === 'In Progress'
-      ? '65px'
-      : title === 'Received Task'
-      ? '81px'
-      : title === 'Contract'
       ? '51px'
+      : title === 'In Progress'
+      ? '73px'
+      : title === 'Received Task'
+      ? '91px'
+      : title === 'Contract'
+      ? '57px'
       : title === 'Denied'
-      ? '44px'
+      ? '47px'
       : ''};
   height: 0px;
 
@@ -138,6 +138,6 @@ export const GroupWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: ${({ edit }) => (edit ? '32px' : '13px')};
+  margin-right: ${({ edit }) => (edit ? '1rem' : '13px')};
   ${({ edit }) => edit && 'height: 6.5rem;'}
 `;
