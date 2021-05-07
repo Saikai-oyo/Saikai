@@ -1,8 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import PositionsInput from '../../Input/PositionsInput';
-import DescriptionInput from '../../Input/DescriptionInput';
-import LinkInput from '../../Input/LinkInput';
-import AdvanceInputs from '../../Input/AdvanceInputs';
+import {
+  StatusInput,
+  PositionsInput,
+  DescriptionInput,
+  LinkInput,
+  AdvanceInputs,
+} from '../../Input';
+
+import DateInput from '../../Input/DateInput';
 import * as S from './style';
 import ReactDOM from 'react-dom';
 import { app } from '../../../config/firebase';
@@ -12,8 +17,6 @@ import { formatDate, todayDate } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { v4 as uuidv4 } from 'uuid';
-
-import titles from '../../../helpers/titles';
 
 const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [title, setTitle] = useState(selectedTitle);
@@ -51,7 +54,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             : 'Unknown Position',
           name: positionForm.name ? positionForm.name : 'Unknown Company',
           city: positionForm.city ? positionForm.city : '',
-          company_url: positionForm.company_url ? positionForm.company_url : '',
+          // company_url: positionForm.company_url ? positionForm.company_url : '',
           position_url: positionForm.position_url
             ? positionForm.position_url
             : '',
@@ -59,7 +62,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
           hr_name: positionForm.hr_name ? positionForm.hr_name : '',
           status: positionForm.status ? positionForm.status : selectedTitle,
           description: positionForm.description ? positionForm.description : '',
-          add_by: positionForm.add_by ? positionForm.add_by : '',
+          appliedBy: positionForm.appliedBy ? positionForm.appliedBy : '',
           date: positionForm.date ? positionForm.date : formatDate(todayDate()),
         });
 
@@ -130,9 +133,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               />
               <S.Date>
                 <S.DateLabel htmlFor='addDate'>Application Date:</S.DateLabel>
-                <S.InputDate
+                <DateInput
                   type='date'
-                  defaultValue={`${todayDate()}`}
+                  value={`${todayDate()}`}
                   name='addDate'
                   id='addDate'
                   onChange={(e) =>
@@ -180,7 +183,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
 
             <S.InputLineFour advance={advance}>
               <S.HiddenLabel htmlFor='status'>Status</S.HiddenLabel>
-              <S.Select
+              <StatusInput
                 name='status'
                 value={title}
                 onChange={(e) => {
@@ -190,13 +193,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                     status: e.target.value,
                   });
                 }}
-              >
-                {titles.map((title) => (
-                  <option key={title.label} value={title.value}>
-                    {title.label}
-                  </option>
-                ))}
-              </S.Select>
+              />
             </S.InputLineFour>
 
             <S.InputAdvancedGroup advance={advance}>
@@ -264,7 +261,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                   onChange={(e) =>
                     setPositionForm({
                       ...positionForm,
-                      add_by: e.target.value,
+                      appliedBy: e.target.value,
                     })
                   }
                   type='text'

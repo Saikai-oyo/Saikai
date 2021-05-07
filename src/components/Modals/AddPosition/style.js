@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { addPositionBG } from '../../../assets/images';
 import { upArrow, downArrow } from '../../../assets/icons';
 
@@ -128,41 +128,6 @@ export const InputLineFour = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 391px ${({ advance }) => (advance ? '31px' : '58px')} 40px;
-`;
-
-export const Select = styled.select`
-  width: 190px;
-  height: 45px;
-  outline: none;
-  padding: 10px 0px 10px 10px;
-
-  background: #ffffff;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-
-  & > option {
-    background: #ffffff;
-    border: 1px solid #a5add8;
-    border-radius: 4px;
-  }
-
-  /* Arrow */
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url(${upArrow});
-  background-repeat: no-repeat;
-  background-position-x: 90%;
-  background-position-y: 50%;
-
-  &:focus {
-    /* Arrow */
-    background-image: url(${downArrow});
-    border: 1px solid #c282f4;
-  }
-
-  &:hover {
-    border: 1px solid #c282f4;
-  }
 `;
 
 export const InputLineFive = styled.div`
