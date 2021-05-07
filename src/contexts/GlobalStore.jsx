@@ -4,6 +4,7 @@ import { PositionsContextProvider } from './PositionsContext';
 import { SelectedPositionContextProvider } from './SelectedPositionContext';
 import { MessagesContextProvider } from './MessagesContext';
 import { UserDetailsContextProvider } from './UserDetailsContext';
+import { UpdatedPositionContextProvider } from './UpdatedPositionContext';
 
 const GlobalStore = ({ children }) => {
   return (
@@ -11,9 +12,11 @@ const GlobalStore = ({ children }) => {
       <AuthProvider>
         <MessagesContextProvider>
           <PositionsContextProvider>
-            <SelectedPositionContextProvider>
-              {children}
-            </SelectedPositionContextProvider>
+            <UpdatedPositionContextProvider>
+              <SelectedPositionContextProvider>
+                {children}
+              </SelectedPositionContextProvider>
+            </UpdatedPositionContextProvider>
           </PositionsContextProvider>
         </MessagesContextProvider>
       </AuthProvider>
