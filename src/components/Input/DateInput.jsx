@@ -1,10 +1,12 @@
 import React from 'react';
 import * as S from './style';
 
-const AuthInput = ({ value, type, placeholder, name, onChange }) => {
+const DateInput = ({ edit, type, id, placeholder, name, onChange, value }) => {
   return (
-    <S.AuthInput
+    <S.DateInput
       defaultValue={value}
+      edit={edit}
+      id={id}
       type={type}
       placeholder={placeholder}
       name={name}
@@ -14,4 +16,4 @@ const AuthInput = ({ value, type, placeholder, name, onChange }) => {
   );
 };
 
-export default AuthInput;
+export default DateInput;

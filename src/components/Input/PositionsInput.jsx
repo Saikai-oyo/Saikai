@@ -12,7 +12,7 @@ const PositionsInput = ({
 }) => {
   return (
     <S.PositionsInput
-      value={value}
+      defaultValue={value}
       edit={edit}
       id={id}
       type={type}

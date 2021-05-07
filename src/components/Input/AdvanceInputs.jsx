@@ -12,7 +12,7 @@ const AdvanceInputs = ({
 }) => {
   return (
     <S.AdvanceInputs
-      value={value}
+      defaultValue={value}
       edit={edit}
       id={id}
       type={type}

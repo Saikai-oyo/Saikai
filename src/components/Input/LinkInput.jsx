@@ -4,7 +4,7 @@ import * as S from './style';
 const LinkInput = ({ edit, value, type, id, placeholder, name, onChange }) => {
   return (
     <S.LinkInput
-      value={value}
+      defaultValue={value}
       edit={edit}
       id={id}
       type={type}
