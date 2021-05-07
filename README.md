@@ -14,19 +14,47 @@ _Saikai_ helps us to track the sending of resumes to the various companies, upda
 
 #### Home screen
 
-![image](https://user-images.githubusercontent.com/41434778/115304375-93510600-a16d-11eb-9052-db04ea4b9309.png)
+![image](https://user-images.githubusercontent.com/41434778/117183544-56794600-ade0-11eb-8a28-e31d07f7fc97.png)
 
 #### Add new position
 
-![image](https://user-images.githubusercontent.com/41434778/115304625-d1e6c080-a16d-11eb-8109-24d819a79f65.png)
+![image](https://user-images.githubusercontent.com/41434778/117183609-68f37f80-ade0-11eb-9d7b-7713eadfd7ca.png)
 
-#### View selected position
+![image](https://user-images.githubusercontent.com/41434778/117183682-7f014000-ade0-11eb-984f-5006b780c473.png)
 
-![image](https://user-images.githubusercontent.com/41434778/111340718-8da16580-8681-11eb-878d-42786873447b.png)
+### View Position Modal
 
-#### Edit selection position
+#### Description Tab
 
-![image](https://user-images.githubusercontent.com/41434778/111340779-9d20ae80-8681-11eb-999f-19a81418ca5f.png)
+![image](https://user-images.githubusercontent.com/41434778/117183831-afe17500-ade0-11eb-8fc7-726b272a5683.png)
+
+#### View Position Tab
+
+![image](https://user-images.githubusercontent.com/41434778/117183867-bd96fa80-ade0-11eb-87c8-c0d083041f7c.png)
+
+### Auth
+
+#### Login
+
+![image](https://user-images.githubusercontent.com/41434778/117183937-d0113400-ade0-11eb-8e1b-bb2d50a7c76a.png)
+
+#### Register
+
+![image](https://user-images.githubusercontent.com/41434778/117183958-da333280-ade0-11eb-8ed9-4d2c9d15a708.png)
+
+#### Forgot Password? -> Reset Password
+
+![image](https://user-images.githubusercontent.com/41434778/117184011-e919e500-ade0-11eb-8bc0-9e3eae77a3ae.png)
+
+### User Profile
+
+#### Profile
+
+![image](https://user-images.githubusercontent.com/41434778/117184195-1ebece00-ade1-11eb-945a-0f80fd6ed265.png)
+
+#### Update Password
+
+![image](https://user-images.githubusercontent.com/41434778/117184231-29796300-ade1-11eb-84fc-856d91f6b984.png)
 
 ### Demo user :
 
