@@ -67,7 +67,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         });
 
       setInformation({
-        errorLine: [selectedTitle, 'good'],
+        errorLine: [positionForm.status, 'good'],
         message: 'Successfully Added',
         haveMessage: true,
       });
