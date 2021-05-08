@@ -50,7 +50,7 @@ const Navbar = () => {
     <div>
       <nav className='navbar navbar-expand-lg navbar-light '>
         <a className='navbar-brand' href='/Saikai/'>
-          <img src={logo} width='170' height='50' alt='' />
+          <img src={logo} width='265' height='80' alt='' />
         </a>
         <button
           className='navbar-toggler'
