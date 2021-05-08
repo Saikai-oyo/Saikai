@@ -11,7 +11,7 @@ export const ListWrapper = styled.div`
 
 export const ListMessages = styled.div`
   width: 100%;
-  height: 20px;
+  height: 25px;
   background: ${({ message }) => (message === 'bad' ? '#fe4c4c' : '#6ACB73')};
   border-radius: 0px 0px 5px 5px;
   font-weight: bold;
@@ -45,12 +45,12 @@ export const ListHeader = styled.div`
   width: 100%;
   height: 39px;
   border-radius: 3px 3px 0px 0px;
-
-  /* border-radius: 4px; */
+  min-height: 39px;
+  max-height: 39px;
   background-color: ${({ title }) => colorForTitle(title)};
 `;
 
-export const HeaderTypography = styled.div`
+export const HeaderTypography = styled.span`
   margin: auto;
   font-style: normal;
   font-weight: bold;
