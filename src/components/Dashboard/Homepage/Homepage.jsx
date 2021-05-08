@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react';
-import ShowPosition from '../Backdrop/ShowPosition/ShowPosition';
 import Navbar from '../Navbar/Navbar';
 import List from '../List/List';
 import { organizedData } from '../../../helpers';
@@ -17,6 +16,7 @@ const Homepage = () => {
       .firestore()
       .collection('positions')
       .where('uid', '==', `${currentUser.uid}`)
+      .orderBy('createdDate', 'desc')
       .onSnapshot((querySnapshot) => {
         const respondedData = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -34,7 +34,6 @@ const Homepage = () => {
     <S.HomepageWrapper>
       <Navbar />
       <List />
-      <ShowPosition />
     </S.HomepageWrapper>
   );
 };
