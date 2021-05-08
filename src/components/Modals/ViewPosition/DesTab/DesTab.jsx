@@ -10,6 +10,7 @@ const Pre = styled.pre`
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
+  font-family: 'Assistant', sans-serif;
 `;
 
 const DesTab = ({ edit, descriptionTab, position }) => {
