@@ -22,6 +22,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [title, setTitle] = useState(selectedTitle);
   const [advance, setAdvance] = useState(false);
   const [positionForm, setPositionForm] = useState([]);
+  console.log('~ positionForm', positionForm);
   const { setInformation } = useContext(MessagesContext);
 
   useEffect(() => {
@@ -64,10 +65,11 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
           description: positionForm.description ? positionForm.description : '',
           appliedBy: positionForm.appliedBy ? positionForm.appliedBy : '',
           date: positionForm.date ? positionForm.date : formatDate(todayDate()),
+          createdDate: new Date().getTime(),
         });
 
       setInformation({
-        errorLine: [positionForm.status, 'good'],
+        errorLine: [title, 'good'],
         message: 'Successfully Added',
         haveMessage: true,
       });
@@ -281,7 +283,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             </S.InputAdvancedGroup>
 
             <S.InputLineFive>
-              <S.SubmitButton type='button' onClick={handleOnSubmit}>
+              <S.SubmitButton type='submit' onClick={handleOnSubmit}>
                 Submit
               </S.SubmitButton>
               <S.CancelButton

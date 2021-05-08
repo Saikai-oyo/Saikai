@@ -16,6 +16,7 @@ const List = () => {
   const { positions } = useContext(PositionsContext);
   const { setSelectedPosition } = useContext(SelectedPositionContext);
   const { information } = useContext(MessagesContext);
+  console.log('~ information', information);
   const { currentUser } = useAuth();
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);

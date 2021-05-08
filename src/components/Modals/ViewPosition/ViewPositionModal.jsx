@@ -35,7 +35,6 @@ const ViewPositionModal = ({ open, onClose }) => {
       haveError: false,
       haveMessage: false,
     });
-    console.log('1', updatedPosition.updated);
     if (!updatedPosition.didUpdate) {
       setInformation({
         errorLine: [selectedPosition.data.status, 'bad'],
@@ -47,9 +46,10 @@ const ViewPositionModal = ({ open, onClose }) => {
       setEdit(false);
       removeSelectedPosition();
     } else {
+      var title = updatedPosition.updated.status
+        ? updatedPosition.updated.status
+        : selectedPosition.data.status;
       try {
-        console.log('2', updatedPosition.updated);
-
         await app
           .firestore()
           .collection('positions')
@@ -94,7 +94,7 @@ const ViewPositionModal = ({ open, onClose }) => {
           });
 
         setInformation({
-          errorLine: [updatedPosition.updated.status, 'good'],
+          errorLine: [title, 'good'],
           message: 'Successfully Updated',
           haveMessage: true,
         });
