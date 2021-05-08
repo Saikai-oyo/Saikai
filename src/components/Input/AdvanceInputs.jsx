@@ -9,11 +9,13 @@ const AdvanceInputs = ({
   placeholder,
   name,
   onChange,
+  tabIndex,
 }) => {
   return (
     <S.AdvanceInputs
       defaultValue={value}
       edit={edit}
+      tabIndex={tabIndex}
       id={id}
       type={type}
       placeholder={placeholder}

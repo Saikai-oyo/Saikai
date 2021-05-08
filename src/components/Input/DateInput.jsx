@@ -1,9 +1,19 @@
 import React from 'react';
 import * as S from './style';
 
-const DateInput = ({ edit, type, id, placeholder, name, onChange, value }) => {
+const DateInput = ({
+  tabIndex,
+  edit,
+  type,
+  id,
+  placeholder,
+  name,
+  onChange,
+  value,
+}) => {
   return (
     <S.DateInput
+      tabIndex={tabIndex}
       defaultValue={value}
       edit={edit}
       id={id}

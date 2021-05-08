@@ -192,7 +192,7 @@ export const AdvanceInputs = styled.input`
 `;
 
 export const DateInput = styled.input`
-  width: 8rem;
+  width: 137px;
   height: 30px;
   background: #fff;
   border: 1px solid #a5add8;
@@ -229,7 +229,7 @@ export const DateInput = styled.input`
 
 export const StatusInput = styled.select`
   width: ${({ edit }) => (edit ? '153px' : '190px')};
-  height: 35px;
+  height: 37px;
   padding: ${({ edit }) =>
     edit ? '.5rem .5rem .6rem .5rem' : '10px 0px 10px 10px'};
   background: #fff;

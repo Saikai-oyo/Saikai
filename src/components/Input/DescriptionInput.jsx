@@ -10,10 +10,12 @@ const DescriptionInput = ({
   name,
   onChange,
   children,
+  tabIndex,
 }) => {
   return (
     <S.DescriptionInput
       edit={edit}
+      tabIndex={tabIndex}
       defaultValue={value}
       id={id}
       type={type}

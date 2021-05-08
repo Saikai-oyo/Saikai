@@ -9,11 +9,13 @@ const PositionsInput = ({
   name,
   onChange,
   value,
+  tabIndex,
 }) => {
   return (
     <S.PositionsInput
       defaultValue={value}
       edit={edit}
+      tabIndex={tabIndex}
       id={id}
       type={type}
       placeholder={placeholder}

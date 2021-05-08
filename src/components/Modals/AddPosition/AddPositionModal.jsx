@@ -120,6 +120,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 Position Name
               </S.HiddenLabel>
               <PositionsInput
+                tabIndex='1'
                 type='text'
                 id='positionName'
                 name='positionName'
@@ -134,6 +135,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.Date>
                 <S.DateLabel htmlFor='addDate'>Application Date:</S.DateLabel>
                 <DateInput
+                  tabIndex='4'
                   type='date'
                   value={`${todayDate()}`}
                   name='addDate'
@@ -151,6 +153,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             <S.InputLineTow>
               <S.HiddenLabel htmlFor='companyName'>Company Name</S.HiddenLabel>
               <PositionsInput
+                tabIndex='2'
                 type='text'
                 id='companyName'
                 name='companyName'
@@ -169,6 +172,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 Position Description
               </S.HiddenLabel>
               <DescriptionInput
+                tabIndex='3'
                 onChange={(e) =>
                   setPositionForm({
                     ...positionForm,
@@ -184,6 +188,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             <S.InputLineFour advance={advance}>
               <S.HiddenLabel htmlFor='status'>Status</S.HiddenLabel>
               <StatusInput
+                tabIndex='5'
                 name='status'
                 value={title}
                 onChange={(e) => {
@@ -202,6 +207,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                   Position Link
                 </S.HiddenLabel>
                 <LinkInput
+                  tabIndex='6'
                   name='positionUrl'
                   onChange={(e) =>
                     setPositionForm({
@@ -216,6 +222,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               <S.InputAdvancedLineTwo>
                 <S.HiddenLabel htmlFor='hrName'>HR Name</S.HiddenLabel>
                 <AdvanceInputs
+                  tabIndex='7'
                   name='hrName'
                   onChange={(e) =>
                     setPositionForm({
@@ -230,6 +237,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
 
                 <AdvanceInputs
                   name='hrMail'
+                  tabIndex='8'
                   onChange={(e) =>
                     setPositionForm({
                       ...positionForm,
@@ -244,6 +252,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 <S.HiddenLabel htmlFor='city'>City</S.HiddenLabel>
 
                 <AdvanceInputs
+                  tabIndex='9'
                   name='city'
                   onChange={(e) =>
                     setPositionForm({
@@ -257,6 +266,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 <S.HiddenLabel htmlFor='addBy'>Applied through</S.HiddenLabel>
 
                 <AdvanceInputs
+                  tabIndex='10'
                   name='addBy'
                   onChange={(e) =>
                     setPositionForm({

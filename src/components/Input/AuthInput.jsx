@@ -1,10 +1,11 @@
 import React from 'react';
 import * as S from './style';
 
-const AuthInput = ({ value, type, placeholder, name, onChange }) => {
+const AuthInput = ({ tabIndex, value, type, placeholder, name, onChange }) => {
   return (
     <S.AuthInput
       defaultValue={value}
+      tabIndex={tabIndex}
       type={type}
       placeholder={placeholder}
       name={name}

@@ -21,6 +21,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
         <S.DateLabel htmlFor='addDate'>Application Date</S.DateLabel>
         {edit ? (
           <DateInput
+            tabIndex='9'
             edit={true}
             type='date'
             value={`${formatReversDate(position.date)}`}
@@ -44,6 +45,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
           <S.Label>Position Name</S.Label>
           {edit ? (
             <PositionsInput
+              tabIndex='1'
               edit={true}
               type='text'
               value={position.position}
@@ -66,6 +68,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
           <S.Label>Company Name</S.Label>
           {edit ? (
             <PositionsInput
+              tabIndex='2'
               edit={true}
               type='text'
               value={position.name}
@@ -85,6 +88,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
           <S.Label>Status</S.Label>
           {edit ? (
             <StatusInput
+              tabIndex='3'
               edit={edit}
               name='status'
               value={title}
@@ -113,6 +117,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
           <S.Label>Position Link</S.Label>
           {edit ? (
             <LinkInput
+              tabIndex='4'
               edit={true}
               type='text'
               onChange={(e) =>
@@ -146,6 +151,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
             <S.Label>HR Name</S.Label>
             {edit ? (
               <PositionsInput
+                tabIndex='5'
                 edit={true}
                 type='text'
                 value={position.hr_name}
@@ -169,6 +175,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
             {edit ? (
               <PositionsInput
                 edit={true}
+                tabIndex='6'
                 type='text'
                 value={position.city}
                 onChange={(e) =>
@@ -192,6 +199,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
             <S.Label>HR Email</S.Label>
             {edit ? (
               <PositionsInput
+                tabIndex='7'
                 edit={true}
                 type='text'
                 value={position.hr_mail}
@@ -214,6 +222,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
             <S.Label>Applied through</S.Label>
             {edit ? (
               <PositionsInput
+                tabIndex='8'
                 edit={true}
                 type='text'
                 value={position.appliedBy}
