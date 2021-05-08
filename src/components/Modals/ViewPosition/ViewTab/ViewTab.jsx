@@ -17,7 +17,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
 
   return (
     <S.ViewPositionWrapper viewTab={viewTab}>
-      <S.WrapperDate>
+      <S.WrapperDate edit={true}>
         <S.DateLabel htmlFor='addDate'>Application Date</S.DateLabel>
         {edit ? (
           <DateInput

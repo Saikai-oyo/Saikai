@@ -79,7 +79,7 @@ export const PositionsInput = styled.input`
 
 export const DescriptionInput = styled.textarea`
   padding: 1rem;
-  width: ${({ edit }) => (edit ? '553px' : '541px')};
+  width: ${({ edit }) => (edit ? '600px' : '541px')};
   height: ${({ edit }) => (edit ? '280px' : '114px')};
   background: #fff;
   border: 1px solid #a5add8;

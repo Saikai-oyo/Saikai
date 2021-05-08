@@ -50,13 +50,13 @@ export const Body = styled.div`
 export const Tabs = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 7px 19px 21px 58px;
+  margin: 7px 19px 21px 45px;
 `;
 
 export const DescriptionTab = styled.button`
   text-align: center;
   outline: none;
-  width: 277px;
+  width: ${({ edit }) => (edit ? '300px' : '277px')};
   height: 31px;
   background: ${({ descriptionTab }) =>
     descriptionTab
@@ -73,7 +73,7 @@ export const DescriptionTab = styled.button`
 export const ViewTab = styled.button`
   text-align: center;
   outline: none;
-  width: 277px;
+  width: ${({ edit }) => (edit ? '300px' : '277px')};
   height: 31px;
   background: ${({ viewTab }) =>
     viewTab
@@ -91,7 +91,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: ${({ edit }) => (edit ? '40px 245px 0px 58px' : '0px 56px 0px 58px')};
+  margin: ${({ edit }) => (edit ? '40px 245px 0px 45px' : '0px 56px 0px 45px')};
 `;
 
 export const CloseButton = styled.button`

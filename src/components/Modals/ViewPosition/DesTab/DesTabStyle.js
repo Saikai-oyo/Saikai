@@ -7,7 +7,7 @@ export const DescriptionPositionWrapper = styled.div`
     descriptionTab
       ? 'display: flex;opacity: 1;flex-direction: column;'
       : 'display: none;opacity: 0;'}
-  margin: 0px 58px 20px 58px;
+  margin: 0px 58px 20px 45px;
 `;
 export const Label = styled.label`
   width: max-content;
@@ -20,7 +20,7 @@ export const Label = styled.label`
 `;
 
 export const Description = styled.div`
-  width: 521px;
+  width: 553px;
   height: 255px;
   background: #ffffff;
   border: 1px solid #a5add8;

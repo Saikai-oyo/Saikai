@@ -4,7 +4,7 @@ export const Label = styled.label`
   width: max-content;
   height: 13px;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 13px;
   color: #9e9e9e;
   margin: 0;
@@ -15,7 +15,7 @@ export const ViewPositionWrapper = styled.div`
     viewTab
       ? 'display: flex;opacity: 1;flex-direction: column;'
       : 'display: none;opacity: 0;'}
-  margin: 0px 58px;
+  margin: 0px 45px;
 `;
 
 export const WrapperDate = styled.div`
@@ -27,7 +27,7 @@ export const WrapperDate = styled.div`
   padding: 0px;
   width: max-content;
   height: 25px;
-  margin: 0px 0px 21px 305px;
+  margin: ${({ edit }) => (edit ? '0px 0px 21px 342px' : '0px 0px 21px 336px')};
 `;
 export const DateLabel = styled.label`
   font-style: normal;
@@ -53,7 +53,7 @@ export const ViewLineOne = styled.div`
   justify-content: space-between;
   width: ${({ edit }) => (edit ? 'auto' : '481px')};
   height: 31px;
-  margin: 0px ${({ edit }) => (edit ? '15px' : '106px')} 28px 0px;
+  margin: 0px ${({ edit }) => (edit ? '-3px' : '106px')} 28px 0px;
 `;
 
 export const PositionGroup = styled.div`

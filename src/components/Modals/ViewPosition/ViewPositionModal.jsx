@@ -204,12 +204,17 @@ const ViewPositionModal = ({ open, onClose }) => {
           <form onSubmit={(e) => handleOnSubmit(e)}>
             <S.Tabs>
               <S.DescriptionTab
+                edit={edit}
                 onClick={() => handleDecTab()}
                 descriptionTab={descriptionTab}
               >
                 Description
               </S.DescriptionTab>
-              <S.ViewTab onClick={() => handleViewTab()} viewTab={viewTab}>
+              <S.ViewTab
+                onClick={() => handleViewTab()}
+                viewTab={viewTab}
+                edit={edit}
+              >
                 View Position
               </S.ViewTab>
             </S.Tabs>
