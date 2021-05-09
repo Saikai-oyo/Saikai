@@ -49,7 +49,7 @@ const Navbar = () => {
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light '>
-        <a className='navbar-brand' href='/Saikai/'>
+        <a className='navbar-brand' href='/'>
           <img src={logo} width='265' height='80' alt='' />
         </a>
         <button
