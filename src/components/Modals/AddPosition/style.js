@@ -31,9 +31,9 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 40.5px;
+  padding: 0 40px;
   width: 621px;
-  height: 71px;
+  height: 55px;
   background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
 `;
 
