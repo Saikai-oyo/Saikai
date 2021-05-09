@@ -1,88 +1,138 @@
-import React, { useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext } from 'react';
+import AuthInput from '../../Input/AuthInput';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
-import './style.css';
+import { Link, useHistory } from 'react-router-dom';
+import logo from '../../../assets/logos/logo.svg';
+import SmallError from '../../Errors/SmallError';
+import BigError from '../../Errors/BigError';
+import { googleIcon, facebookIcon } from '../../../assets/icons/';
+import * as S from './style';
 
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
+  const { information, setInformation } = useContext(MessagesContext);
   const { login } = useAuth();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setError('');
-      setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push('/');
-    } catch (error) {
-      setError(error.message);
-      console.error(error);
+    if (e.target[0].value === '' || e.target[1].value === '') {
+      setInformation({
+        error: 'Fields cannot be empty',
+        hasError: true,
+      });
+    } else {
+      try {
+        await login(e.target[0].value, e.target[1].value);
+        history.push('/');
+      } catch (error) {
+        setInformation({
+          errorCode: error.code === 'auth/invalid-email' && 0,
+          error:
+            error.code === 'auth/invalid-email'
+              ? 'Oops! Wrong email format.'
+              : error.code === 'auth/wrong-password' ||
+                error.code === 'auth/user-not-found'
+              ? 'Oops! Wrong email or password.'
+              : 'Something went wrong!',
+          hasError: true,
+        });
+      }
     }
-    setLoading(false);
+    setTimeout(() => {
+      setInformation({
+        ...information,
+        errorCode: null,
+        error: '',
+        hasError: false,
+      });
+    }, 3500);
   };
 
   return (
     <div>
-      <div className='card'>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Log in</h2>
-          {error && (
-            <div className='alert alert-danger' role='alert'>
-              {error}
-            </div>
-          )}
-          <div className='text-center bg-demo-user'>
-            <span className='text-muted'>
-              <small>
-                Demo user
-                <br /> <strong>email: </strong>demo@saikai.com{' '}
-                <strong>password: </strong>playSaikai
-              </small>
-            </span>
-          </div>
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.LoginContainer>
+          <S.Header>Welcome!</S.Header>
+          <BigError show={information.hasError}>{information.error}</BigError>
+          <S.Subtitle>Log in to your account</S.Subtitle>
           <form onSubmit={handleSubmit}>
-            <div className='form-group' id='email'>
-              <label htmlFor='email'>Email</label>
-              <input
-                className='form-control'
-                type='email'
-                ref={emailRef}
-                required
+            <S.InputsWrapper>
+              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
+              <AuthInput type='text' placeholder='Email' name='email' />
+              <SmallError>
+                {information.hasError &&
+                  information.errorCode === 0 &&
+                  information.error}
+              </SmallError>
+              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
+              <AuthInput
+                type='password'
+                placeholder='Password'
+                name='password'
               />
-            </div>
-
-            <div className='form-group' id='password'>
-              <label htmlFor='password'>Password</label>
-              <input
-                className='form-control'
-                type='Password'
-                ref={passwordRef}
-                required
-              />
-            </div>
-
-            <button
-              disabled={loading}
-              type='submit'
-              className='w-100 btn btn-success'
-            >
-              Log in
-            </button>
+            </S.InputsWrapper>
+            <S.LogIn type='submit'>Log in</S.LogIn>
+            <S.LoginsWrappers>
+              <S.LoginWith login='facebook'>
+                Sign in with{' '}
+                <img
+                  style={{ paddingLeft: '.5rem' }}
+                  src={facebookIcon}
+                  alt='FaceBook Icon'
+                />
+              </S.LoginWith>
+              <S.LoginWith login='google'>
+                Sign in with{' '}
+                <img
+                  style={{ paddingLeft: '.5rem' }}
+                  src={googleIcon}
+                  alt='GOOGLE Icon'
+                />
+              </S.LoginWith>
+            </S.LoginsWrappers>
+            <S.ForgotPassword>
+              <Link
+                to='/forgot-password'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Forgot password?
+              </Link>
+            </S.ForgotPassword>
+            <S.NeedAccount>
+              Need an account?
+              <Link
+                to='/signup'
+                onClick={() =>
+                  setInformation({
+                    ...information,
+                    errorCode: null,
+                    error: '',
+                    hasError: false,
+                  })
+                }
+              >
+                Sign up
+              </Link>
+            </S.NeedAccount>
           </form>
-          <div className='w-100 text-center mt-2'>
-            <Link to='/forgot-password'>Forgot Password?</Link>
-          </div>
-        </div>
-      </div>
-      <div className='w-100 text-center mt-1'>
-        Need an account ? <Link to='/signup'>Sign Up</Link>
-      </div>
+        </S.LoginContainer>
+      </S.Wrapper>
     </div>
   );
 };

@@ -1,89 +1,132 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext } from 'react';
+import AuthInput from '../../Input/AuthInput';
+import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
+import logo from '../../../assets/logos/logo.svg';
+
+import * as S from './style';
 
 const UpdateProfile = () => {
-  const passwordRef = useRef();
-  const passwordConfirmRef = useRef();
+  const { information, setInformation } = useContext(MessagesContext);
   const { updatePassword, currentUser } = useAuth();
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (currentUser.email === 'demo@saikai.com') {
-      setLoading(false);
-      return setError('Can not update Demo password! 😉');
+      setInformation({
+        error: 'Can not update Demo password! 😉',
+        hasError: true,
+      });
+      return setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
 
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-      return setError('Passwords do not match');
+    if (e.target[0].value !== e.target[1].value) {
+      setInformation({
+        error: 'Passwords do not match!',
+        hasError: true,
+      });
+      return setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
-    if (!passwordRef.current.value || !passwordConfirmRef.current.value) {
-      return setError('Must fill password');
+
+    if (!e.target[0].value || !e.target[1].value) {
+      setInformation({
+        error: 'Must fill password!',
+        hasError: true,
+      });
+
+      return setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
 
     try {
-      setLoading(true);
-      setError('');
-      updatePassword(passwordRef.current.value);
+      await updatePassword(e.target[0].value);
       history.push('/profile');
     } catch (error) {
-      setError('Failed to update account');
+      setInformation({
+        error: error.message,
+        hasError: true,
+      });
+      console.error(error);
+      setTimeout(() => {
+        setInformation({
+          ...information,
+          error: '',
+          hasError: false,
+        });
+      }, 2500);
     }
-    setLoading(false);
   };
 
   return (
-    <>
-      <div className='card'>
-        <div className='card-header-pills'>
-          <button className='btn btn-link' onClick={() => history.goBack()}>
-            Go back..
-          </button>
-        </div>
-        <div className='card-body'>
-          <h2 className='text-center mb-3'>Update Profile</h2>
-          {error && (
+    <div>
+      <a
+        className='navbar-brand'
+        style={{ marginBottom: '34px' }}
+        href='/Saikai/'
+      >
+        <img src={logo} width='265' height='80' alt='Saikai' />
+      </a>
+      <S.Wrapper>
+        <S.UpdatePassContainer>
+          <div className='card-header-pills'>
+            <Link to='/profile'>
+              <S.GoBack></S.GoBack>
+            </Link>
+          </div>
+          <S.Header>Update Password</S.Header>
+          {information.hasError && (
             <div className='alert alert-danger' role='alert'>
-              {error}
+              {information.error}
             </div>
           )}
           <form onSubmit={handleSubmit}>
-            <div className='form-group' id='password'>
-              <label htmlFor='password'>Password</label>
-              <input
-                className='form-control'
+            <S.InputsWrapper>
+              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
+              <AuthInput
                 type='password'
-                ref={passwordRef}
-                placeholder='New password here..'
+                placeholder='New Password'
+                name='password'
               />
-            </div>
-            <div className='form-group' id='password-confirm'>
-              <label htmlFor='password-confirm'>Password Confirmation</label>
-              <input
-                className='form-control'
+
+              <S.HiddenLabel htmlFor='confirmPassword'>
+                Confirm Password
+              </S.HiddenLabel>
+              <AuthInput
                 type='password'
-                ref={passwordConfirmRef}
-                placeholder='New password here..'
+                placeholder='Confirm New Password'
+                name='confirmPassword'
               />
-            </div>
-            <button
-              disabled={loading}
-              className='w-100 btn btn-success'
-              type='submit'
-            >
-              Update
-            </button>
+            </S.InputsWrapper>
+            <S.Update type='submit'>Update</S.Update>
+
+            <S.Cancel>
+              <Link to='/profile'>Cancel</Link>
+            </S.Cancel>
           </form>
-        </div>
-      </div>
-      <div className='w-100 text-center mt-1'>
-        <Link to='/profile'>Cancel</Link>
-      </div>
-    </>
+          <S.FooterWrapper></S.FooterWrapper>
+        </S.UpdatePassContainer>
+      </S.Wrapper>
+    </div>
   );
 };
 

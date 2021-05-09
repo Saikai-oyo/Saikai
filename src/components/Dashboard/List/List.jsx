@@ -1,107 +1,109 @@
-import React from 'react';
-import { addIcon, addPositionSVG } from '../../../assets/icons';
-import './style.css';
+import React, { useContext, useState } from 'react';
+import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
+import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
+import Spinner from '../../Spinner/Spinner';
+import { addIcon, filterIcon } from '../../../assets/icons';
 
-const List = ({
-  dataList,
-  currentUser,
-  setError,
-  setMessage,
-  setAddPosition,
-  setSelectedPosition,
-}) => {
+import * as S from './style.js';
+
+// Context Imports
+import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
+import { PositionsContext } from '../../../contexts/PositionsContext';
+import { MessagesContext } from '../../../contexts/MessagesContext';
+import { useAuth } from '../../../contexts/AuthContext';
+
+const List = () => {
+  const { positions } = useContext(PositionsContext);
+  const { setSelectedPosition } = useContext(SelectedPositionContext);
+  const { information } = useContext(MessagesContext);
+  console.log('~ information', information);
+  const { currentUser } = useAuth();
+
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isViewOpen, setIsViewOpen] = useState(false);
+  const [selectedTitle, setSelectedTitle] = useState('');
+
+  const addSelectedPosition = (position) => {
+    setSelectedPosition({ data: position, selected: true });
+  };
+
+  const handleFilter = () => {
+    // TODO:Create the filter here...
+  };
+
   return (
-    <>
-      {!dataList ? (
-        <div className='d-flex justify-content-center'>
-          <div className='spinner-border text-success' role='status'></div>
-        </div>
+    <S.ListWrapper>
+      {positions.loading ? (
+        <Spinner />
       ) : (
-        <div>
-          <div className='col-md-1 addButtonWrapper  mt-2 mb-2'>
-            <button
-              type='button'
-              className='addPositionButton'
-              data-toggle='modal'
-              data-target='.bd-add-position'
-              onClick={() => setAddPosition(true)}
-            >
-              <img
-                src={addPositionSVG}
-                className='mr-3 addPositionButtonSvg'
-                alt='add button'
-              />
-            </button>
-          </div>
-          <div className='container'>
-            <div className='row row-col-6 text-center '>
-              {dataList.map((data) => (
-                <div key={data.title} className='p-2 mb-4 col-md cardLists'>
-                  <h3 className='listTitle'>{data.title}</h3>
-                  <div id='positionWrapper'>
-                    {data.items.map((position) => {
-                      const cardColorsId =
-                        position.status === 'Denied'
-                          ? 'denied'
-                          : position.status === 'Contract'
-                          ? 'contract'
-                          : position.status === 'In Progress'
-                          ? 'inProgress'
-                          : position.status === 'Received Task'
-                          ? 'receivedTask'
-                          : position.status === 'Applied'
-                          ? 'applied'
-                          : '';
-                      return (
-                        currentUser.uid === position.uid &&
-                        data.title === position.status && (
-                          <div
-                            key={position.id}
-                            className='card cardStyle mb-2 mt-3'
-                            data-toggle='modal'
-                            data-backdrop='static'
-                            data-keyboard='false'
-                            data-target='.bd-selected-position'
-                          >
-                            <div
-                              className={`p-1 cardButton`}
-                              id={`${cardColorsId}`}
-                              onClick={() => {
-                                setError('');
-                                setMessage('');
-                                setSelectedPosition(position);
-                              }}
-                            >
-                              {position.position}
-                              <br />
-                              <span className='text-white-50 font-smaller'>
-                                {position.name}
-                              </span>
-                            </div>
-                          </div>
-                        )
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        positions.data.map((positions) => {
+          return (
+            <S.List key={positions.title}>
+              <S.ListHeader title={positions.title}>
+                <S.FilterButton onClick={() => handleFilter()}>
+                  <img src={filterIcon} alt='Filter Icon' />
+                </S.FilterButton>
+                <S.HeaderTypography title={positions.title}>
+                  {positions.title}
+                </S.HeaderTypography>
+                <S.AddButton
+                  onClick={() => {
+                    setSelectedTitle(positions.title);
+                    setIsCreateOpen(true);
+                  }}
+                >
+                  <img src={addIcon} alt='Add Button' />
+                </S.AddButton>
+              </S.ListHeader>
+              {information.errorLine &&
+              positions.title === information.errorLine[0] ? (
+                information.errorLine[1] === 'bad' ? (
+                  <S.ListMessages message='bad'>
+                    <span>{information.message}</span>
+                  </S.ListMessages>
+                ) : (
+                  <S.ListMessages message='good'>
+                    <span>{information.message}</span>
+                  </S.ListMessages>
+                )
+              ) : (
+                ''
+              )}
+              <S.ListBody>
+                {positions.items.map((position) => {
+                  return (
+                    currentUser.uid === position.uid &&
+                    positions.title === position.status && (
+                      <S.PositionWrapper
+                        title={positions.title}
+                        key={position.id}
+                        onClick={() => {
+                          addSelectedPosition(position);
+                          setIsViewOpen(true);
+                        }}
+                      >
+                        <S.PositionHeader>{position.position}</S.PositionHeader>
+                        <S.PositionBody>{position.name}</S.PositionBody>
+                        <S.PositionFooter>{position.date}</S.PositionFooter>
+                      </S.PositionWrapper>
+                    )
+                  );
+                })}
+              </S.ListBody>
+            </S.List>
+          );
+        })
       )}
-      {/* <div className='d-flex justify-content-end mr-2'>
-        <button
-          type='button'
-          className='mt-3 addPositionButton'
-          data-toggle='modal'
-          data-target='.bd-add-position'
-          onClick={() => setAddPosition(true)}
-        >
-          <img src={addIcon} className='mr-3 addIcon' alt='add button' />
-          Add new Position
-        </button>
-      </div> */}
-    </>
+      <AddPositionModal
+        selectedTitle={selectedTitle}
+        open={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+      />
+      <ViewPositionModal
+        open={isViewOpen}
+        onClose={() => setIsViewOpen(false)}
+      />
+    </S.ListWrapper>
   );
 };
 
