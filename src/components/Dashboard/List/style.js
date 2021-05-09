@@ -93,15 +93,15 @@ export const PositionWrapper = styled.div`
   &:hover {
     background-color: ${({ title }) =>
       title === 'Applied'
-        ? '#D1E4FA'
+        ? '#E8F2FC'
         : title === 'In Progress'
-        ? '#EFDAF1'
+        ? '#F7EDF8'
         : title === 'Received Task'
-        ? '#F9E3D2'
+        ? '#FCF1E8'
         : title === 'Contract'
-        ? '#DCEFDD'
+        ? '#EEF7EE'
         : title === 'Denied'
-        ? '#F5D6D6'
+        ? '#FAEAEA'
         : ''};
   }
 `;
