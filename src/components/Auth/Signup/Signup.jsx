@@ -4,7 +4,6 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../assets/logos/logo.svg';
-import SmallError from '../../Errors/SmallError';
 import BigError from '../../Errors/BigError';
 import * as S from './style';
 
@@ -13,35 +12,49 @@ const Signup = () => {
   const { signup } = useAuth();
   const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const validation = (e) => {
     let isValid = true;
-
-    if (e.target[3].value !== e.target[4].value) {
-      setInformation({
-        errorCode: 4,
-        error: 'Oops! Passwords don’t match.',
-        hasError: true,
-      });
+    let error = 'Oops!';
+    if (e.target[0].value === '') {
+      error += '  Email is empty.';
       isValid = false;
     }
-
     if (e.target[1].value === '') {
-      setInformation({
-        errorCode: 1,
-        error: 'Oops! Must fill first name.',
-        hasError: true,
-      });
+      error += '  First Name is empty.';
       isValid = false;
     }
     if (e.target[2].value === '') {
-      setInformation({
-        errorCode: 2,
-        error: 'Oops! Must fill last name.',
-        hasError: true,
-      });
+      error += '  Last Name is empty.';
       isValid = false;
     }
+
+    if (e.target[3].value === '' || e.target[4].value === '') {
+      error += '  Passwords is empty.';
+      isValid = false;
+    } else if (e.target[3].value !== e.target[4].value) {
+      error += '  Passwords don’t match.';
+      isValid = false;
+    } else {
+      if (!e.target[3].value.match(process.env.REACT_APP_REGEX_PASSWORD)) {
+        error +=
+          '  Password must have 8 to 15 characters, which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.';
+        isValid = false;
+      }
+    }
+    if (!isValid)
+      setInformation({
+        errorCode: 0,
+        error: error,
+        hasError: true,
+      });
+
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let isValid = validation(e);
+
     if (isValid) {
       try {
         await signup({
@@ -53,11 +66,7 @@ const Signup = () => {
         history.push('/');
       } catch (error) {
         setInformation({
-          errorCode:
-            error.code === 'auth/email-already-in-use' ||
-            error.code === 'auth/invalid-email'
-              ? 0
-              : 3,
+          errorCode: 0,
           error:
             error.code === 'auth/email-already-in-use'
               ? 'Oops! Email already exists. '
@@ -77,7 +86,7 @@ const Signup = () => {
         error: '',
         hasError: false,
       });
-    }, 352200);
+    }, 3500);
   };
 
   return (
@@ -93,18 +102,17 @@ const Signup = () => {
         <S.SignupContainer>
           <S.Header>Join Saikai</S.Header>
           <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
-          {information.errorCode === 3 && (
-            <BigError show={information.hasError}>{information.error}</BigError>
-          )}
+          <S.ErrorWrapper>
+            <BigError
+              show={information.errorCode === 0 && information.hasError}
+            >
+              {information.error}
+            </BigError>
+          </S.ErrorWrapper>
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
               <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
               <AuthInput type='text' placeholder='Email' name='email' />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 0 &&
-                  information.error}
-              </SmallError>
 
               <S.HiddenLabel htmlFor='firstName'>First Name</S.HiddenLabel>
               <AuthInput
@@ -112,19 +120,9 @@ const Signup = () => {
                 placeholder='First Name'
                 name='firstName'
               />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 1 &&
-                  information.error}
-              </SmallError>
 
               <S.HiddenLabel htmlFor='lastName'>Last Name</S.HiddenLabel>
               <AuthInput type='text' placeholder='Last Name' name='lastName' />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 2 &&
-                  information.error}
-              </SmallError>
 
               <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
               <AuthInput
@@ -132,11 +130,6 @@ const Signup = () => {
                 placeholder='Your Password'
                 name='password'
               />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 4 &&
-                  information.error}
-              </SmallError>
 
               <S.HiddenLabel htmlFor='confirmPassword'>
                 Confirm Password
@@ -146,11 +139,6 @@ const Signup = () => {
                 placeholder='Confirm Password'
                 name='confirmPassword'
               />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 4 &&
-                  information.error}
-              </SmallError>
             </S.InputsWrapper>
             <S.SignUp type='submit'>Sign Up</S.SignUp>
 

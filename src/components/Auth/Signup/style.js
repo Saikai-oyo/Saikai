@@ -10,7 +10,7 @@ export const SignupContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 470px;
-  height: 680px;
+  height: 615px;
   background: #ffffff;
   border: 1px solid #a5add8;
   box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
@@ -18,24 +18,28 @@ export const SignupContainer = styled.div`
 `;
 
 export const Header = styled.h3`
-  margin: 54px auto 0px auto;
+  margin: 30px auto 12px auto;
   width: max-content;
   height: 33px;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
-  line-height: 31px;
+  line-height: 33px;
   color: #353535;
 `;
 
 export const Subtitle = styled.h4`
-  margin: auto;
+  margin: 0 auto;
   width: max-content;
   height: 33.26px;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 31px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
   color: #353535;
+`;
+
+export const ErrorWrapper = styled.div`
+  margin: 10px 0;
 `;
 
 export const HiddenLabel = styled.label`
@@ -73,7 +77,7 @@ export const SignUp = styled.button`
 `;
 
 export const HaveAccount = styled.div`
-  margin: 10px 145px 78px 160px;
+  margin: 10px 145px 0px 160px;
   width: 180px;
   height: 15px;
   font-style: normal;

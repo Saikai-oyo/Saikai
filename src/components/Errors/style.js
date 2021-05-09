@@ -12,14 +12,12 @@ export const BigError = styled.span`
   align-items: center;
   justify-content: center;
   width: auto;
-  height: 45px;
-  margin: 0.5rem 0;
-  font-style: normal;
-  font-weight: bold;
+  min-height: 45px;
+  font-weight: normal;
   font-size: 14px;
-  line-height: 9px;
+  line-height: 18px;
   text-align: center;
   color: #692020;
-
+  border-radius: 0;
   background-color: ${({ show }) => show && '#ffbdbd'};
 `;
