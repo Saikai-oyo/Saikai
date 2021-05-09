@@ -30,7 +30,7 @@ export const ModalWrapper = styled.div`
   transform: translate(-50%, -50%);
   background-image: url(${ViewModalBG});
   background-repeat: no-repeat;
-  background-position: right bottom;
+  ''background-position: right bottom;
 `;
 
 export const ExitBtn = styled.button`
