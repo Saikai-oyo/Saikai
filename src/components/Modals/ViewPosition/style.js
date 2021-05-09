@@ -34,7 +34,7 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ExitBtn = styled.button`
-  margin: 26px 21px 0px ${({ edit }) => (edit ? '645px' : '600px')};
+  margin: 16px 21px 0px ${({ edit }) => (edit ? '645px' : '606px')};
   width: 17px;
   height: 18px;
   outline: none;
