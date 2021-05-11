@@ -1,5 +1,15 @@
-export { default as userIcon } from './user.svg';
 export { default as settingIcon } from './setting.svg';
 export { default as logoutIcon } from './logout.svg';
 export { default as addIcon } from './add.svg';
 export { default as addPositionSVG } from './addPosition.svg';
+export { default as searchIcon } from './searchIcon.svg';
+export { default as exitIcon } from './exitIcon.svg';
+export { default as blackExitIcon } from './blackExitIcon.svg';
+export { default as downArrow } from './downArrow.svg';
+export { default as upArrow } from './upArrow.svg';
+export { default as editIcon } from './editIcon.svg';
+export { default as openDeleteIcon } from './openDeleteIcon.svg';
+export { default as closeDeleteIcon } from './closeDeleteIcon.svg';
+export { default as googleIcon } from './googleIcon.svg';
+export { default as facebookIcon } from './facebookIcon.svg';
+export { default as filterIcon } from './filterIcon.svg';
