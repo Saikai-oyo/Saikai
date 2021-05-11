@@ -24,7 +24,7 @@ const Navbar = ({ error, message, userDetails, setError, setMessage }) => {
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <a className='navbar-brand' href='/Saikai/'>
+        <a className='navbar-brand' href='/'>
           <img src={logo} width='170' height='50' alt='' />
         </a>
         <button
