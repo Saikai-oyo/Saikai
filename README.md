@@ -1,92 +1,223 @@
-# Saikai - Manage your way to work 💯
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-The user who sends a lot of resumes can easily get lost and not remember which company the resume was sent to and which company has not yet been sent. That is why the app - **_Saikai_** - (Resume in Japanese) was established.
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="https://user-images.githubusercontent.com/41434778/117974531-53c5a600-b336-11eb-8e7c-a9e15e41783f.png" alt="Logo" height="250">
+  </a>
 
-_Saikai_ is designed to create order and organization, along with determining the status and documentation of sending a resume while looking for a job.
+  <h1 style="color:#CDCDCD" align="center"><b>Saikai</b></h1>
 
-_Saikai_ helps us to track the sending of resumes to the various companies, update as soon as the resume is received by a particular company and update relevant status when receiving an answer (positive / negative / homework, etc.).
+  <p align="center">
+    Manage Your Way To Work!
+    <br />
+    <a href="https://github.com/Saikai-oyo/Saikai/blob/dev/README.md"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://saikai.me">View Website</a>
+    ·
+    <a href="https://github.com/Saikai-oyo/Saikai/issues">Report Bug</a>
+    ·
+    <a href="mailto:contactus@saikai.me">Contact Us</a>
+  </p>
+</p>
 
-## Website URL
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-🔗 Enter the website [here](https://eidan66.github.io/Saikai) ! 🥂
+<!-- ABOUT THE PROJECT -->
 
-## Preview
+## About The Project
 
-#### Home screen
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-![image](https://user-images.githubusercontent.com/41434778/117183544-56794600-ade0-11eb-8a28-e31d07f7fc97.png)
+There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
-#### Add new position
+Here's why:
 
-![image](https://user-images.githubusercontent.com/41434778/117183609-68f37f80-ade0-11eb-9d7b-7713eadfd7ca.png)
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life :smile:
 
-![image](https://user-images.githubusercontent.com/41434778/117183682-7f014000-ade0-11eb-984f-5006b780c473.png)
+Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
 
-### View Position Modal
+A list of commonly used resources that I find helpful are listed in the acknowledgements.
 
-#### Description Tab
+### Built With
 
-![image](https://user-images.githubusercontent.com/41434778/117183831-afe17500-ade0-11eb-8fc7-726b272a5683.png)
+- [React](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Styled-Components](https://styled-components.com/)
+- [Github-Pages](https://pages.github.com/)
+- [Figma](https://www.figma.com/)
 
-#### View Position Tab
+---
 
-![image](https://user-images.githubusercontent.com/41434778/117183867-bd96fa80-ade0-11eb-87c8-c0d083041f7c.png)
+<!-- GETTING STARTED -->
 
-### Auth
+## Getting Started
 
-#### Login
+### Prerequisites
 
-![image](https://user-images.githubusercontent.com/41434778/117183937-d0113400-ade0-11eb-8e1b-bb2d50a7c76a.png)
+Install Node.
 
-#### Register
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-![image](https://user-images.githubusercontent.com/41434778/117183958-da333280-ade0-11eb-8ed9-4d2c9d15a708.png)
+### Installation
 
-#### Forgot Password? -> Reset Password
+1. Get a free API Key at [Firebase](https://firebase.google.com) console.
+2. Clone the repo
+   ```sh
+   git clone https://github.com/Saikai-oyo/Saikai.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Create `.env.local` file and enter your API in (you will get 7 keys)
+   ```JS
+   REACT_APP_FIREBASE_API_KEY= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_AUTH_DOMAIN= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_PROJECT_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_STORAGE_BUCKET= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_APP_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MEASUREMENT_ID= THE_API_RELEVANT_KEY
+   ```
+5. Start the application
+   ```sh
+   npm started
+   ```
 
-![image](https://user-images.githubusercontent.com/41434778/117184011-e919e500-ade0-11eb-8bc0-9e3eae77a3ae.png)
+<!-- USAGE EXAMPLES -->
 
-### User Profile
+## Usage
 
-#### Profile
+<!-- TODO: We need to write here about the functional of the application. -->
+<!-- App can : read/write positions, DnD, search and more... -->
 
-![image](https://user-images.githubusercontent.com/41434778/117184195-1ebece00-ade1-11eb-945a-0f80fd6ed265.png)
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-#### Update Password
+_For more examples, please refer to the [Documentation](https://example.com)_
 
-![image](https://user-images.githubusercontent.com/41434778/117184231-29796300-ade1-11eb-84fc-856d91f6b984.png)
+<!-- ROADMAP -->
 
-### Demo user :
+## Roadmap
 
-- email : demo@saikai.com
-- password : playSaikai
+See the [Next Milestones](https://github.com/Saikai-oyo/Saikai/milestones) for a list of proposed features (and known issues) for the next milestones.
 
-## Why use it?
+<!-- CONTRIBUTING -->
 
-You are probably wondering what can already be done in this app, so it is possible to do a number of actions that will make it easier for us in the organization of sending our resume!
+## Contributing
 
-- Simple Login & Register to the application (**A must to see the jobs you have saved!**)
-- Update password
-- Add new position ➕
-- Edit the position ✍️
-- Delete the position 🗑️
-- View all positions 🖼️
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-and more will be add at the next version !
+0. Speak with Idan at [LinkedIn](https://www.linkedin.com/in/idanlevian/) to be formal contributing
+1. Fork the Project.
+2. Create your Feature Branch.
+3. Commit your Changes.
+4. Push to the Branch.
+5. Open a Pull Request.
 
-### Clone
+<!-- LICENSE -->
 
-If you want to clone this project, PM me at [Linkedin](https://www.linkedin.com/in/idanlevian/) to get Keys.
-Firebase use here for DB and Auth.
+## Convention
 
-**THE APP WON'T WORK WITHOUT THOSE KEYS**
+### Branch
 
-### License
+Branch naming convention is as following :
 
-Distributed under the `MIT License`. See [LICENSE](https://github.com/eidan66/Saikai/blob/main/LICENSE) for more information.
+```
+TYPE-ISSUE_ID-DESCRIPTION
 
-### Contact
+examples:
+feat-45-add-new-button
+fix-741-change-localstorage-get-function
+```
 
-Idan Levian - [Linkedin](https://www.linkedin.com/in/idanlevian/)
+### Pull Request (PR)
 
-Project Link - [Saikai](https://eidan66.github.io/Saikai)
+Pull Request (PR) title convention is as following :
+
+```
+[TYPE-ISSUE_ID]-DESCRIPTION
+
+example:
+[Feat-45] Add button to login component
+[Fix-114] Change localstorage get function
+```
+
+### Type
+
+When type can be:
+
+    * feat - is a new feature
+    * doc - documentation only changes
+    * fix - a bug fix
+    * refactor - code change that neither fixes a bug nor adds a feature
+
+**All PRs must include commit message with the changes description!**
+
+---
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](https://github.com/Saikai-oyo/Saikai/blob/dev/LICENSE) for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+📧 Via email - ContactUs@Saikai.me
+
+🔥 Project Github Link: https://github.com/Saikai-oyo/Saikai
+
+🔗 Website : https://saikai.me
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/Saikai-oyo/Saikai.svg?style=for-the-badge
+[contributors-url]: https://github.com/Saikai-oyo/Saikai/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Saikai-oyo/Saikai.svg?style=for-the-badge
+[forks-url]: https://github.com/Saikai-oyo/Saikai/network/members
+[stars-shield]: https://img.shields.io/github/stars/Saikai-oyo/Saikai.svg?style=for-the-badge
+[stars-url]: https://github.com/Saikai-oyo/Saikai/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Saikai-oyo/Saikai.svg?style=for-the-badge
+[issues-url]: https://github.com/Saikai-oyo/Saikai/issues
+[license-shield]: https://img.shields.io/github/license/Saikai-oyo/Saikai.svg?style=for-the-badge
+[license-url]: https://github.com/Saikai-oyo/Saikai/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/company/72704625
+[product-screenshot]: images/screenshot.png
