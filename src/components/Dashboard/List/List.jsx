@@ -2,21 +2,19 @@ import React, { useContext, useState } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
-import { addIcon, filterIcon } from '../../../assets/icons';
-
+import ListHeader from './ListHeader/ListHeader';
+import ListCard from './ListCard/ListCard';
+import Messages from '../../Messages/Messages';
 import * as S from './style.js';
 
 // Context Imports
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { PositionsContext } from '../../../contexts/PositionsContext';
-import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
 const List = () => {
   const { positions } = useContext(PositionsContext);
   const { setSelectedPosition } = useContext(SelectedPositionContext);
-  const { information } = useContext(MessagesContext);
-  console.log('~ information', information);
   const { currentUser } = useAuth();
 
   const [isCreateOpen, setIsCreateOpen] = useState(false);
@@ -39,53 +37,26 @@ const List = () => {
         positions.data.map((positions) => {
           return (
             <S.List key={positions.title}>
-              <S.ListHeader title={positions.title}>
-                <S.FilterButton onClick={() => handleFilter()}>
-                  <img src={filterIcon} alt='Filter Icon' />
-                </S.FilterButton>
-                <S.HeaderTypography title={positions.title}>
-                  {positions.title}
-                </S.HeaderTypography>
-                <S.AddButton
-                  onClick={() => {
-                    setSelectedTitle(positions.title);
-                    setIsCreateOpen(true);
-                  }}
-                >
-                  <img src={addIcon} alt='Add Button' />
-                </S.AddButton>
-              </S.ListHeader>
-              {information.errorLine &&
-              positions.title === information.errorLine[0] ? (
-                information.errorLine[1] === 'bad' ? (
-                  <S.ListMessages message='bad'>
-                    <span>{information.message}</span>
-                  </S.ListMessages>
-                ) : (
-                  <S.ListMessages message='good'>
-                    <span>{information.message}</span>
-                  </S.ListMessages>
-                )
-              ) : (
-                ''
-              )}
+              <ListHeader
+                positions={positions}
+                handleFilter={handleFilter}
+                setSelectedTitle={setSelectedTitle}
+                setIsCreateOpen={setIsCreateOpen}
+              />
+
+              <Messages positions={positions} />
+
               <S.ListBody>
                 {positions.items.map((position) => {
                   return (
                     currentUser.uid === position.uid &&
                     positions.title === position.status && (
-                      <S.PositionWrapper
-                        title={positions.title}
-                        key={position.id}
-                        onClick={() => {
-                          addSelectedPosition(position);
-                          setIsViewOpen(true);
-                        }}
-                      >
-                        <S.PositionHeader>{position.position}</S.PositionHeader>
-                        <S.PositionBody>{position.name}</S.PositionBody>
-                        <S.PositionFooter>{position.date}</S.PositionFooter>
-                      </S.PositionWrapper>
+                      <ListCard
+                        positions={positions}
+                        position={position}
+                        addSelectedPosition={addSelectedPosition}
+                        setIsViewOpen={setIsViewOpen}
+                      />
                     )
                   );
                 })}
