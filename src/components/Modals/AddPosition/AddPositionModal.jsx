@@ -22,7 +22,6 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [title, setTitle] = useState(selectedTitle);
   const [advance, setAdvance] = useState(false);
   const [positionForm, setPositionForm] = useState([]);
-  console.log('~ positionForm', positionForm);
   const { setInformation } = useContext(MessagesContext);
 
   useEffect(() => {
@@ -111,6 +110,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               onClose();
               setAdvance(false);
             }}
+            data-tooltip='Exit'
           >
             <img src={exitIcon} alt='X' />
           </S.ExitBtn>
@@ -310,7 +310,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         </S.Body>
       </S.ModalWrapper>
     </>,
-    document.getElementById('portal')
+    document.getElementById('portal'),
   );
 };
 
