@@ -197,6 +197,7 @@ const ViewPositionModal = ({ open, onClose }) => {
             setEdit(false);
             onClose();
           }}
+          data-tooltip="Exit"
         >
           <img src={blackExitIcon} alt='X' />
         </S.ExitBtn>
@@ -259,6 +260,7 @@ const ViewPositionModal = ({ open, onClose }) => {
                       )
                         handleDelete(selectedPosition.data.id);
                     }}
+                    data-tooltip="Delete position"
                   />
                   <S.IconsBtn
                     icon='edit'

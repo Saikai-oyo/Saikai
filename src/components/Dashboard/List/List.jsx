@@ -40,7 +40,10 @@ const List = () => {
           return (
             <S.List key={positions.title}>
               <S.ListHeader title={positions.title}>
-                <S.FilterButton onClick={() => handleFilter()}>
+                <S.FilterButton
+                  onClick={() => handleFilter()}
+                  data-tooltip='Filter'
+                >
                   <img src={filterIcon} alt='Filter Icon' />
                 </S.FilterButton>
                 <S.HeaderTypography title={positions.title}>
@@ -51,6 +54,7 @@ const List = () => {
                     setSelectedTitle(positions.title);
                     setIsCreateOpen(true);
                   }}
+                  data-tooltip='Add a new position'
                 >
                   <img src={addIcon} alt='Add Button' />
                 </S.AddButton>
