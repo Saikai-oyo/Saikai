@@ -2,6 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Pulls][pulls-shield]][pulls-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
@@ -57,19 +58,18 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Dashboard][product-screenshot]](https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png)
 
-There are many great README templates available on GitHub, however, I didn't find one that really suit my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+400 job applications ➡ 100 interviews ➡ 10 home tasks ➡ 1 contract.
 
-Here's why:
+Pretty simple, right? Until you need to keep track of your job search!
+And that's where <b>Saikai</b> comes in.
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should element DRY principles to the rest of your life :smile:
+<b>Saikai</b> is a web platform, where job seekers can keep track of their job applications and organize their job search.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+In <b>Saikai</b>, you can log any detail regarding the job applications and quickly get a clear vision of how your job search is going.
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+<b>Saikai</b> helps you to manage all the information you need in order to be right on ready once you get a call back from your dream company. Here you can organize all the position details including position description, status, applied date and many more!
 
 ### Built With
 
@@ -78,8 +78,6 @@ A list of commonly used resources that I find helpful are listed in the acknowle
 - [Styled-Components](https://styled-components.com/)
 - [Github-Pages](https://pages.github.com/)
 - [Figma](https://www.figma.com/)
-
----
 
 <!-- GETTING STARTED -->
 
@@ -124,12 +122,25 @@ Install Node.
 
 ## Usage
 
-<!-- TODO: We need to write here about the functional of the application. -->
-<!-- App can : read/write positions, DnD, search and more... -->
+1️⃣ Create your own Saikai profile, to keep track of your personal progress
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+2️⃣ Add new position you applied your CV to and log all the details you need (title, company, description, status, applied date, HR details, position link etc.)
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+3️⃣ Watch all the entered information of the position by clicking on it from the main board. Navigate between position details and position description
+
+4️⃣ Edit position details, by clicking on the pencil of the "view position" modal
+
+5️⃣ Watch all positions on the main board, and get a quick access to each position information.
+
+6️⃣ Drag positions between different status bar as you progress with the process of the specific job, in order to update the position status (You can also change the status manually on "edit position" mode)
+
+7️⃣ Order the positions in each status bar by preferred order: by date, alphabet and free-style
+
+8️⃣ Search for a specific position in the search bar at the top - search by position title, company name or description key words (very useful once you get a call and need a quick reminder of this application 😉)
+
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life.
 
 <!-- ROADMAP -->
 
@@ -205,6 +216,8 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Saikai-oyo
 
 🔗 Website : https://saikai.me
 
+👨🏾‍💻 Open-source Manager (Idan) - [LinkedIn](https://www.linkedin.com/in/idanlevian/)
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
@@ -216,8 +229,10 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Saikai-oyo
 [stars-url]: https://github.com/Saikai-oyo/Saikai/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Saikai-oyo/Saikai.svg?style=for-the-badge
 [issues-url]: https://github.com/Saikai-oyo/Saikai/issues
+[pulls-url]: https://github.com/Saikai-oyo/Saikai/pulls
+[pulls-shield]: https://img.shields.io/github/issues-pr/Saikai-oyo/Saikai.svg?style=for-the-badge
 [license-shield]: https://img.shields.io/github/license/Saikai-oyo/Saikai.svg?style=for-the-badge
 [license-url]: https://github.com/Saikai-oyo/Saikai/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/72704625
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png
