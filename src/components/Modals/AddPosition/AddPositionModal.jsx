@@ -22,7 +22,6 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [title, setTitle] = useState(selectedTitle);
   const [advance, setAdvance] = useState(false);
   const [positionForm, setPositionForm] = useState([]);
-  console.log('~ positionForm', positionForm);
   const { setInformation } = useContext(MessagesContext);
 
   useEffect(() => {
