@@ -111,6 +111,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               onClose();
               setAdvance(false);
             }}
+            data-tooltip='Exit'
           >
             <img src={exitIcon} alt='X' />
           </S.ExitBtn>
@@ -310,7 +311,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         </S.Body>
       </S.ModalWrapper>
     </>,
-    document.getElementById('portal')
+    document.getElementById('portal'),
   );
 };
 

@@ -99,21 +99,30 @@ const Navbar = () => {
               )}
               !
             </span>
-            <span className='mr-3 navLink navResponsive'>
+            <span
+              className='mr-3 navLink navResponsive'
+              aria-label='Settings'
+              data-tooltip='Settings'
+            >
               <Link to='/profile'>
                 <img
                   src={settingIcon}
                   alt='setting icon'
                   className='userIcon mr-3'
-                ></img>
+                />
               </Link>
             </span>
-            <span className='mr-3 navLink' onClick={handleLogout}>
+            <span
+              className='mr-3 navLink'
+              onClick={handleLogout}
+              aria-label='Logout'
+              data-tooltip='Logout'
+            >
               <img
                 src={logoutIcon}
                 alt='logout icon'
                 className='userIcon mr-1'
-              ></img>
+              />
             </span>
           </span>
         </div>

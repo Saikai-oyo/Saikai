@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Assistant', sans-serif;
 }
 
 html,
@@ -13,6 +12,8 @@ body,
 #root > div {
   min-height: 100vh;
   overflow-y: auto;
+
+  font-family: 'Assistant', sans-serif;
 }
 
 body > #root > div {
@@ -21,4 +22,33 @@ body > #root > div {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+}
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:after {
+  content: attr(data-tooltip);
+  position: fixed;
+  transform: translate(-75%, 100%);
+  color: #353535;
+  font-size: 18px;
+  font-weight: normal;
+  background-color: white;
+  border: 1px solid #a5add8;
+  border-radius: 4px;
+  text-align: center;
+  padding: 5px 15px;
+  z-index: 10;
+
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+}
+
+[data-tooltip]:hover:after {
+  opacity: 1;
+  transition: all 0.1s ease 0.5s;
+  visibility: visible;
 }
