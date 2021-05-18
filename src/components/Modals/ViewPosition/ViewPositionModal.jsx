@@ -211,7 +211,8 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
             handleDecTab();
             setEdit(false);
             onClose();
-          }}>
+          }}
+          data-tooltip='Exit'>
           <img src={blackExitIcon} alt='X' />
         </S.ExitBtn>
         <S.Body>
@@ -251,6 +252,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                       if (window.confirm('Are you sure you want to delete this position?'))
                         handleDelete(selectedPosition.data.id);
                     }}
+                    data-tooltip='Delete position'
                   />
                   <S.IconsBtn icon='edit' type='button' onClick={() => handleEdit()} />
                 </div>

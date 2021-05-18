@@ -16,7 +16,6 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
   const [title, setTitle] = useState(selectedTitle);
   const [advance, setAdvance] = useState(false);
   const [positionForm, setPositionForm] = useState([]);
-  console.log('~ positionForm', positionForm);
   const { setInformation } = useContext(MessagesContext);
 
   useEffect(() => {
@@ -109,7 +108,8 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             onClick={() => {
               onClose();
               setAdvance(false);
-            }}>
+            }}
+            data-tooltip='Exit'>
             <img src={exitIcon} alt='X' />
           </S.ExitBtn>
         </S.Header>
