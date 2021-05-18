@@ -18,10 +18,7 @@ const useKanban = (userId) => {
         const respondedData = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
         }));
-        /* const sortedPositionsData = organizedData(respondedData); */
-        console.log(isEqual(positions.data, respondedData));
         if (!isEqual(positions.data, respondedData)) {
-          console.log(isEqual(positions.data, respondedData));
           setPositions({
             ...positions,
             data: respondedData,
@@ -32,7 +29,6 @@ const useKanban = (userId) => {
   }, [userId, positions, setPositions]);
 
   useEffect(() => {
-    console.log(userId);
     app
       .firestore()
       .collection(`users`)
@@ -50,14 +46,35 @@ const useKanban = (userId) => {
   useEffect(() => {
     if (positions.data && columns) {
       const finalObject = {};
+      finalObject.columns = [];
 
-      finalObject.columns = columns;
+      columns.forEach((col) => {
+        switch (col.title) {
+          case 'Applied':
+            finalObject.columns[0] = col;
+            break;
+          case 'In Progress':
+            finalObject.columns[1] = col;
+            break;
+          case 'Received Task':
+            finalObject.columns[2] = col;
+            break;
+          case 'Contract':
+            finalObject.columns[3] = col;
+            break;
+          case 'Denied':
+            finalObject.columns[4] = col;
+            break;
+          default:
+            break;
+        }
+      });
+
       finalObject.positions = {};
 
       positions.data.forEach((position) => {
         finalObject.positions[position.id] = position;
       });
-
       setFinal(finalObject);
     }
   }, [columns, positions]);

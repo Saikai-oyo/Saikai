@@ -12,9 +12,6 @@ export const MessagesContext = React.createContext(initialState);
 
 export const MessagesContextProvider = ({ children }) => {
   const [information, setInformation] = useState(initialState);
-  return (
-    <MessagesContext.Provider value={{ information, setInformation }}>
-      {children}
-    </MessagesContext.Provider>
-  );
+  console.log('information', information);
+  return <MessagesContext.Provider value={{ information, setInformation }}>{children}</MessagesContext.Provider>;
 };

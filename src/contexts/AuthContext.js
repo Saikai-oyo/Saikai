@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         { Applied: { positionIds: [], title: 'Applied' } },
         { Contract: { positionIds: [], title: 'Contract' } },
         { Denied: { positionIds: [], title: 'Denied' } },
-        { InPrograss: { positionIds: [], title: 'In Progress' } },
+        { InProgress: { positionIds: [], title: 'In Progress' } },
         { ReceivedTask: { positionIds: [], title: 'Received Task' } },
       ];
 
