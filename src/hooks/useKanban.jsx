@@ -18,10 +18,7 @@ const useKanban = (userId) => {
         const respondedData = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
         }));
-        /* const sortedPositionsData = organizedData(respondedData); */
-        console.log(isEqual(positions.data, respondedData));
         if (!isEqual(positions.data, respondedData)) {
-          console.log(isEqual(positions.data, respondedData));
           setPositions({
             ...positions,
             data: respondedData,
@@ -32,7 +29,6 @@ const useKanban = (userId) => {
   }, [userId, positions, setPositions]);
 
   useEffect(() => {
-    console.log(userId);
     app
       .firestore()
       .collection(`users`)

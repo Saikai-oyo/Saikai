@@ -139,7 +139,7 @@ const List = () => {
                       <img src={addIcon} alt='Add Button' />
                     </S.AddButton>
                   </S.ListHeader>
-                  {information.errorLine && positions.title === information.errorLine[0] ? (
+                  {information.errorLine && column.title === information.errorLine[0] ? (
                     information.errorLine[1] === 'bad' ? (
                       <S.ListMessages message='bad'>
                         <span>{information.message}</span>
