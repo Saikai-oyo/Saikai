@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Assistant', sans-serif;
+}
+
+html,
+body,
+#root,
+#root > div {
+  min-height: 100vh;
+}
+
+body > #root > div {
+  background-image: url('./assets/images/backgroundVector.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}

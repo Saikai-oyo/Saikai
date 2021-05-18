@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import Navbar from '../Navbar/Navbar';
 import List from '../List/List';
-import { organizedData } from '../../../helpers';
 import { app } from '../../../config/firebase';
 import { PositionsContext } from '../../../contexts/PositionsContext';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -24,7 +23,7 @@ const Homepage = () => {
         }));
         positionContext.setPositions({
           ...positionContext.positions,
-          data: organizedData(respondedData),
+          data: respondedData,
           loading: false,
         });
       });
