@@ -18,13 +18,9 @@ const ViewPositionModal = ({ open, onClose }) => {
   const [descriptionTab, setDescriptionTab] = useState(true);
   const [viewTab, setViewTab] = useState(!descriptionTab);
   const [edit, setEdit] = useState(false);
-  const { selectedPosition, setSelectedPosition } = useContext(
-    SelectedPositionContext
-  );
-  const { updatedPosition, setUpdatedPosition } = useContext(
-    UpdatedPositionContext
-  );
-
+  const { selectedPosition, setSelectedPosition } = useContext(SelectedPositionContext);
+  const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
+  console.log('selected position', selectedPosition);
   const { setInformation } = useContext(MessagesContext);
 
   const handleUpdate = async () => {
@@ -46,9 +42,7 @@ const ViewPositionModal = ({ open, onClose }) => {
       setEdit(false);
       removeSelectedPosition();
     } else {
-      var title = updatedPosition.updated.status
-        ? updatedPosition.updated.status
-        : selectedPosition.data.status;
+      var title = updatedPosition.updated.status ? updatedPosition.updated.status : selectedPosition.data.status;
       try {
         await app
           .firestore()
@@ -61,30 +55,18 @@ const ViewPositionModal = ({ open, onClose }) => {
             position: updatedPosition.updated.position
               ? updatedPosition.updated.position
               : selectedPosition.data.position,
-            name: updatedPosition.updated.name
-              ? updatedPosition.updated.name
-              : selectedPosition.data.name,
+            name: updatedPosition.updated.name ? updatedPosition.updated.name : selectedPosition.data.name,
             position_url: updatedPosition.updated.position_url
               ? updatedPosition.updated.position_url
               : selectedPosition.data.position_url,
-            hr_name: updatedPosition.updated.hr_name
-              ? updatedPosition.updated.hr_name
-              : selectedPosition.data.hr_name,
-            city: updatedPosition.updated.city
-              ? updatedPosition.updated.city
-              : selectedPosition.data.city,
-            hr_mail: updatedPosition.updated.hr_mail
-              ? updatedPosition.updated.hr_mail
-              : selectedPosition.data.hr_mail,
+            hr_name: updatedPosition.updated.hr_name ? updatedPosition.updated.hr_name : selectedPosition.data.hr_name,
+            city: updatedPosition.updated.city ? updatedPosition.updated.city : selectedPosition.data.city,
+            hr_mail: updatedPosition.updated.hr_mail ? updatedPosition.updated.hr_mail : selectedPosition.data.hr_mail,
             appliedBy: updatedPosition.updated.appliedBy
               ? updatedPosition.updated.appliedBy
               : selectedPosition.data.appliedBy,
-            date: updatedPosition.updated.date
-              ? formatDate(updatedPosition.updated.date)
-              : selectedPosition.data.date,
-            status: updatedPosition.updated.status
-              ? updatedPosition.updated.status
-              : selectedPosition.data.status,
+            date: updatedPosition.updated.date ? formatDate(updatedPosition.updated.date) : selectedPosition.data.date,
+            status: updatedPosition.updated.status ? updatedPosition.updated.status : selectedPosition.data.status,
 
             //TODO: Maybe will use it in later versions.
             // company_url: updatedPosition.updated.companyUrl
@@ -159,8 +141,7 @@ const ViewPositionModal = ({ open, onClose }) => {
     }, 3500);
   };
 
-  const removeSelectedPosition = () =>
-    setSelectedPosition({ data: [], selected: false });
+  const removeSelectedPosition = () => setSelectedPosition({ data: [], selected: false });
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -196,39 +177,22 @@ const ViewPositionModal = ({ open, onClose }) => {
             handleDecTab();
             setEdit(false);
             onClose();
-          }}
-        >
+          }}>
           <img src={blackExitIcon} alt='X' />
         </S.ExitBtn>
         <S.Body>
           <form onSubmit={(e) => handleOnSubmit(e)}>
             <S.Tabs>
-              <S.DescriptionTab
-                edit={edit}
-                onClick={() => handleDecTab()}
-                descriptionTab={descriptionTab}
-              >
+              <S.DescriptionTab edit={edit} onClick={() => handleDecTab()} descriptionTab={descriptionTab}>
                 Description
               </S.DescriptionTab>
-              <S.ViewTab
-                onClick={() => handleViewTab()}
-                viewTab={viewTab}
-                edit={edit}
-              >
+              <S.ViewTab onClick={() => handleViewTab()} viewTab={viewTab} edit={edit}>
                 View Position
               </S.ViewTab>
             </S.Tabs>
 
-            <DesTab
-              edit={edit}
-              descriptionTab={descriptionTab}
-              position={selectedPosition.data}
-            />
-            <ViewTab
-              edit={edit}
-              viewTab={viewTab}
-              position={selectedPosition.data}
-            />
+            <DesTab edit={edit} descriptionTab={descriptionTab} position={selectedPosition.data} />
+            <ViewTab edit={edit} viewTab={viewTab} position={selectedPosition.data} />
             {!edit ? (
               <S.ButtonsWrapper>
                 <S.CloseButton
@@ -237,8 +201,7 @@ const ViewPositionModal = ({ open, onClose }) => {
                     handleDecTab();
                     setEdit(false);
                     onClose();
-                  }}
-                >
+                  }}>
                   Close
                 </S.CloseButton>
 
@@ -247,31 +210,20 @@ const ViewPositionModal = ({ open, onClose }) => {
                     width: '6rem',
                     display: 'flex',
                     justifyContent: 'space-between',
-                  }}
-                >
+                  }}>
                   <S.IconsBtn
                     icon='delete'
                     onClick={() => {
-                      if (
-                        window.confirm(
-                          'Are you sure you want to delete this position?'
-                        )
-                      )
+                      if (window.confirm('Are you sure you want to delete this position?'))
                         handleDelete(selectedPosition.data.id);
                     }}
                   />
-                  <S.IconsBtn
-                    icon='edit'
-                    type='button'
-                    onClick={() => handleEdit()}
-                  />
+                  <S.IconsBtn icon='edit' type='button' onClick={() => handleEdit()} />
                 </div>
               </S.ButtonsWrapper>
             ) : (
               <S.ButtonsWrapper edit={edit}>
-                <S.CloseButton onClick={() => handleEdit()}>
-                  Cancel
-                </S.CloseButton>
+                <S.CloseButton onClick={() => handleEdit()}>Cancel</S.CloseButton>
                 <S.SubmitButton type='button' onClick={handleUpdate}>
                   Save
                 </S.SubmitButton>
@@ -281,7 +233,7 @@ const ViewPositionModal = ({ open, onClose }) => {
         </S.Body>
       </S.ModalWrapper>
     </>,
-    document.getElementById('portal')
+    document.getElementById('portal'),
   );
 };
 

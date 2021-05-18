@@ -1,22 +1,3 @@
-export const organizedData = (positions) => {
-  const newData = [
-    { title: 'Applied', items: [] },
-    { title: 'In Progress', items: [] },
-    { title: 'Received Task', items: [] },
-    { title: 'Contract', items: [] },
-    { title: 'Denied', items: [] },
-  ];
-
-  // TODO: Replace it to forEach (we don't need return array).
-  newData.map((data) => {
-    positions.map((position) => {
-      data.title === position.doc.status && data.items.push(position.doc);
-    });
-  });
-
-  return newData;
-};
-
 export const todayDate = () => {
   var todayDate = new Date();
 
