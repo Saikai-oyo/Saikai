@@ -196,7 +196,11 @@ const List = () => {
         </DragDropContext>
       )}
       <AddPositionModal selectedTitle={selectedTitle} open={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
-      <ViewPositionModal open={isViewOpen} onClose={() => setIsViewOpen(false)} />
+      <ViewPositionModal
+        columns={initialData && initialData.columns}
+        open={isViewOpen}
+        onClose={() => setIsViewOpen(false)}
+      />
     </S.ListWrapper>
   );
 };

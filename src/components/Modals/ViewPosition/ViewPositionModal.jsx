@@ -13,7 +13,7 @@ import { app } from '../../../config/firebase';
 
 import * as S from './style';
 
-const ViewPositionModal = ({ open, onClose }) => {
+const ViewPositionModal = ({ open, onClose, columns }) => {
   // TODO: When we update the state, the page rerender and we need to use UseMemo maybe.
   const [descriptionTab, setDescriptionTab] = useState(true);
   const [viewTab, setViewTab] = useState(!descriptionTab);
@@ -42,7 +42,9 @@ const ViewPositionModal = ({ open, onClose }) => {
       setEdit(false);
       removeSelectedPosition();
     } else {
-      var title = updatedPosition.updated.status ? updatedPosition.updated.status : selectedPosition.data.status;
+      const title = updatedPosition.updated.status ? updatedPosition.updated.status : selectedPosition.data.status;
+      const statusChanged = updatedPosition.updated.status ? true : false;
+
       try {
         await app
           .firestore()
@@ -74,6 +76,27 @@ const ViewPositionModal = ({ open, onClose }) => {
             // personalNote: updatedPosition.updated.personalNote
             //   && updatedPosition.updated.personalNote
           });
+        if (statusChanged) {
+          const userId = selectedPosition.data.uid;
+          const positionId = selectedPosition.data.id;
+
+          const oldColumn = columns.find((col) => col.title === selectedPosition.data.status);
+          const newColumn = columns.find((col) => col.title === updatedPosition.updated.status);
+
+          const startPositionIDs = Array.from(oldColumn.positionIds);
+          startPositionIDs.splice(oldColumn.positionIds.indexOf(positionId), 1);
+
+          const finishPositionIDs = Array.from(newColumn.positionIds);
+          finishPositionIDs.push(positionId);
+
+          app.firestore().collection(`users/${userId}/columns`).doc(`${oldColumn.id}`).update({
+            positionIds: startPositionIDs,
+          });
+
+          app.firestore().collection(`users/${userId}/columns`).doc(`${newColumn.id}`).update({
+            positionIds: finishPositionIDs,
+          });
+        }
 
         setInformation({
           errorLine: [title, 'good'],
@@ -114,7 +137,18 @@ const ViewPositionModal = ({ open, onClose }) => {
       haveMessage: false,
     });
     try {
+      const positionId = selectedPosition.data.id;
+      const column = columns.find((col) => col.title === selectedPosition.data.status);
+      const userId = selectedPosition.data.uid;
+
+      const newPositionIDs = Array.from(column.positionIds);
+      newPositionIDs.splice(column.positionIds.indexOf(positionId), 1);
+
+      app.firestore().collection(`users/${userId}/columns`).doc(`${column.id}`).update({
+        positionIds: newPositionIDs,
+      });
       await app.firestore().collection('positions').doc(`${id}`).delete();
+
       setInformation({
         errorLine: [selectedPosition.data.status, 'bad'],
         message: 'Successfully Deleted!',
