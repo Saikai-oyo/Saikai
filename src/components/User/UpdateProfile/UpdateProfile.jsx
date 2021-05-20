@@ -3,7 +3,7 @@ import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import logo from '../../../assets/logos/logo.svg';
+import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
 import * as S from './style';
 
@@ -79,18 +79,12 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <a
-        className='navbar-brand'
-        style={{ marginBottom: '34px' }}
-        href='/Saikai/'
-      >
-        <img src={logo} width='265' height='80' alt='Saikai' />
-      </a>
+      <GeneralNav />
       <S.Wrapper>
         <S.UpdatePassContainer>
           <div className='card-header-pills'>
             <Link to='/profile'>
-              <S.GoBack></S.GoBack>
+              <S.GoBack />
             </Link>
           </div>
           <S.Header>Update Password</S.Header>

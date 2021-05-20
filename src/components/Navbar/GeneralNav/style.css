@@ -1,0 +1,16 @@
+.nav-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.go-back {
+  display: none;
+  margin: 26px 2px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .go-back {
+    display: block;
+  }
+}
