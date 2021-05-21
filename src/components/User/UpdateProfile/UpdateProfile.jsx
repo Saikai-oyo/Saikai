@@ -79,7 +79,7 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <GeneralNav />
+      <GeneralNav path='profile' />
       <S.Wrapper>
         <S.UpdatePassContainer>
           <div className='card-header-pills'>

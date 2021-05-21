@@ -4,11 +4,11 @@ import goBack from '../../../assets/icons/goBack.svg';
 import './style.css';
 import { Link } from 'react-router-dom';
 
-const GeneralNav = () => {
+const GeneralNav = ({ path = '', display }) => {
   return (
     <div className='nav-wrapper'>
-      <Link to='/profile'>
-        <div className='go-back'>
+      <Link to={`/${path}`}>
+        <div className={`${display === 'hide' ? 'hide' : 'go-back'}`}>
           <img src={goBack} alt='Go Back' />
         </div>
       </Link>

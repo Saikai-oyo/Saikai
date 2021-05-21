@@ -1,16 +1,25 @@
 .nav-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .go-back {
   display: none;
-  margin: 26px 2px;
+  margin: 26px 0;
   cursor: pointer;
+}
+
+.hide {
+  display: none !important;
 }
 
 @media screen and (max-width: 500px) {
   .go-back {
     display: block;
+  }
+
+  .hide {
+    display: none !important;
   }
 }
