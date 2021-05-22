@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
+import Sort from '../Sort/Sort.jsx'
 import { addIcon, filterIcon } from '../../../assets/icons';
 
 import * as S from './style.js';
@@ -21,10 +22,18 @@ const List = () => {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
+  const [isSortOpen, setToggle] = useState(false);
 
   const addSelectedPosition = (position) => {
     setSelectedPosition({ data: position, selected: true });
   };
+
+  const toggleSort = (isSortOpen) => {
+    // isSortOpen = !isSortOpen
+    console.log('isSortOpen')
+    setToggle(!isSortOpen)
+    console.log(isSortOpen)
+  }
 
   const handleFilter = () => {
     // TODO:Create the filter here...
@@ -43,15 +52,17 @@ const List = () => {
                   onClick={() => handleFilter()}
                   data-tooltip='Filter'
                 >
-                  <img src={filterIcon} alt='Filter Icon' />
+                  <img onClick={() => {
+                    toggleSort(isSortOpen);
+                  }} src={filterIcon} alt='Filter Icon' />
                 </S.FilterButton>
+                {isSortOpen &&<Sort title={positions.title}></Sort>  } 
                 <S.HeaderTypography title={positions.title}>
                   {positions.title}
                 </S.HeaderTypography>
                 <S.AddButton
                   onClick={() => {
-                    setSelectedTitle(positions.title);
-                    setIsCreateOpen(true);
+                    setIsCreateOpen();
                   }}
                   data-tooltip='Add a new position'
                 >
@@ -59,7 +70,7 @@ const List = () => {
                 </S.AddButton>
               </S.ListHeader>
               {information.errorLine &&
-              positions.title === information.errorLine[0] ? (
+                positions.title === information.errorLine[0] ? (
                 information.errorLine[1] === 'bad' ? (
                   <S.ListMessages message='bad'>
                     <span>{information.message}</span>
@@ -87,6 +98,7 @@ const List = () => {
                       >
                         <S.PositionHeader>{position.position}</S.PositionHeader>
                         <S.PositionBody>{position.name}</S.PositionBody>
+
                         <S.PositionFooter>{position.date}</S.PositionFooter>
                       </S.PositionWrapper>
                     )
