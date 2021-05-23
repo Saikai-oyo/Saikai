@@ -189,7 +189,7 @@ const List = () => {
                                   >
                                     {(provided, snapshot) => (
                                       <S.PositionWrapper
-                                        title={position.doc.title}
+                                        title={position.doc.status}
                                         key={position.doc.id}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
