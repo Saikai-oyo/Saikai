@@ -76,17 +76,16 @@ export const FilterButton = styled.button`
 `;
 
 export const InnerList = styled.div`
-  overflow: auto;
   height: 100%;
 `;
 
 export const ListBody = styled.div`
   display: flex;
-  overflow: hidden;
   flex-direction: column;
   text-align: center;
   min-height: 90%;
   max-height: 90%;
+  position: relative;
 `;
 
 export const PositionWrapper = styled.div`
