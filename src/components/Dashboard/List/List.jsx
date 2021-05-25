@@ -44,10 +44,18 @@ const List = () => {
 
     if (!destination) return;
 
-    const startColumn = initialData.columns.find((col) => col.id === source.droppableId);
-    const startColumnIndex = initialData.columns.findIndex((col) => col.id === source.droppableId);
-    const endColumn = initialData.columns.find((col) => col.id === destination.droppableId);
-    const endColumnIndex = initialData.columns.findIndex((col) => col.id === destination.droppableId);
+    const startColumn = initialData.columns.find(
+      (col) => col.id === source.droppableId
+    );
+    const startColumnIndex = initialData.columns.findIndex(
+      (col) => col.id === source.droppableId
+    );
+    const endColumn = initialData.columns.find(
+      (col) => col.id === destination.droppableId
+    );
+    const endColumnIndex = initialData.columns.findIndex(
+      (col) => col.id === destination.droppableId
+    );
 
     if (startColumn === endColumn) {
       const newPositionIds = Array.from(endColumn.positionIds);
@@ -118,7 +126,11 @@ const List = () => {
       .doc(`${endColumn.id}`)
       .update({ positionIds: finishPositionIDs });
 
-    app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
+    app
+      .firestore()
+      .collection('positions')
+      .doc(`${draggableId}`)
+      .update({ status: endColumn.title });
     setInitialData(newState);
   };
   const toggleSort = (index) => {
@@ -139,8 +151,9 @@ const List = () => {
             initialData.columns.map((column, index) => {
               return (
                 <S.List key={column.id}>
-                  <S.ListHeader title={column.title}>
-                    <S.FilterButton>
+
+                  <S.ListHeader positionTitle={column.title}>
+                    <S.FilterButton data-tooltip='Sort By'>
                       {isSortOpen[index] && <Sort title={selectedTitle.title} onClick={()=>{
                         toggleSort(index)
                       }}/>}
@@ -150,16 +163,20 @@ const List = () => {
                         setSelectedTitle(column);
                       }} src={filterIcon} alt='Filter Icon' />
                     </S.FilterButton >
-                    <S.HeaderTypography title={column.title}>{column.title}</S.HeaderTypography>
+                    <S.HeaderTypography >{column.title}</S.HeaderTypography>
+
                     <S.AddButton
+                      data-tooltip='Add Position'
                       onClick={() => {
                         setSelectedTitle(column);
                         setIsCreateOpen(true);
-                      }}>
+                      }}
+                    >
                       <img src={addIcon} alt='Add Button' />
                     </S.AddButton>
                   </S.ListHeader>
-                  {information.errorLine && column.title === information.errorLine[0] ? (
+                  {information.errorLine &&
+                  column.title === information.errorLine[0] ? (
                     information.errorLine[1] === 'bad' ? (
                       <S.ListMessages message='bad'>
                         <span>{information.message}</span>
@@ -176,17 +193,25 @@ const List = () => {
                   <S.ListBody>
                     <Droppable droppableId={column.id} type='position'>
                       {(provided) => (
-                        <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
+                        <S.InnerList
+                          ref={provided.innerRef}
+                          {...provided.droppableProps}
+                        >
                           {column.positionIds.map((positionId, index) => {
                             const position = initialData.positions[positionId];
                             if (position)
                               return (
                                 currentUser.uid === position.doc.uid &&
                                 column.title === position.doc.status && (
-                                  <Draggable draggableId={position.doc.id} index={index} key={position.doc.id}>
+                                  <Draggable
+                                    draggableId={position.doc.id}
+                                    index={index}
+                                    key={position.doc.id}
+                                  >
                                     {(provided, snapshot) => (
                                       <S.PositionWrapper
-                                        title={position.doc.title}
+                                        data-tooltip={position.doc.position}
+                                        positionTitle={position.doc.status}
                                         key={position.doc.id}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
@@ -194,10 +219,17 @@ const List = () => {
                                         onClick={() => {
                                           addSelectedPosition(position);
                                           setIsViewOpen(true);
-                                        }}>
-                                        <S.PositionHeader>{position.doc.position}</S.PositionHeader>
-                                        <S.PositionBody>{position.doc.name}</S.PositionBody>
-                                        <S.PositionFooter>{position.doc.date}</S.PositionFooter>
+                                        }}
+                                      >
+                                        <S.PositionHeader>
+                                          {position.doc.position}
+                                        </S.PositionHeader>
+                                        <S.PositionBody>
+                                          {position.doc.name}
+                                        </S.PositionBody>
+                                        <S.PositionFooter>
+                                          {position.doc.date}
+                                        </S.PositionFooter>
                                       </S.PositionWrapper>
                                     )}
                                   </Draggable>
@@ -215,7 +247,11 @@ const List = () => {
 
         </DragDropContext>
       )}
-      <AddPositionModal selectedTitle={selectedTitle} open={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
+      <AddPositionModal
+        selectedTitle={selectedTitle}
+        open={isCreateOpen}
+        onClose={() => setIsCreateOpen(false)}
+      />
       <ViewPositionModal
         columns={initialData && initialData.columns}
         open={isViewOpen}

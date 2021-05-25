@@ -39,6 +39,13 @@ export const AuthInput = styled.input`
   font-size: 14px;
   line-height: 18px;
   color: #525252;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 17rem;
+      height: 3rem;
+    }
+  }
 `;
 
 export const PositionsInput = styled.input`

@@ -1,5 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { StatusInput, PositionsInput, DescriptionInput, LinkInput, AdvanceInputs } from '../../Input';
+import {
+  StatusInput,
+  PositionsInput,
+  DescriptionInput,
+  LinkInput,
+  AdvanceInputs,
+} from '../../Input';
 
 import DateInput from '../../Input/DateInput';
 import * as S from './style';
@@ -43,11 +49,15 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         .set({
           uid: currentUser.uid,
           id: id,
-          position: positionForm.position ? positionForm.position : 'Unknown Position',
+          position: positionForm.position
+            ? positionForm.position
+            : 'Unknown Position',
           name: positionForm.name ? positionForm.name : 'Unknown Company',
           city: positionForm.city ? positionForm.city : '',
           // company_url: positionForm.company_url ? positionForm.company_url : '',
-          position_url: positionForm.position_url ? positionForm.position_url : '',
+          position_url: positionForm.position_url
+            ? positionForm.position_url
+            : '',
           hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
           hr_name: positionForm.hr_name ? positionForm.hr_name : '',
           status: positionForm.status ? positionForm.status : title,
@@ -109,14 +119,17 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
               onClose();
               setAdvance(false);
             }}
-            data-tooltip='Exit'>
+            data-tooltip='Exit'
+          >
             <img src={exitIcon} alt='X' />
           </S.ExitBtn>
         </S.Header>
         <S.Body advance={advance}>
           <form onSubmit={(e) => handleOnSubmit(e)}>
             <S.InputLineOne>
-              <S.HiddenLabel htmlFor='positionName'>Position Name</S.HiddenLabel>
+              <S.HiddenLabel htmlFor='positionName'>
+                Position Name
+              </S.HiddenLabel>
               <PositionsInput
                 tabIndex='1'
                 type='text'
@@ -166,7 +179,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
             </S.InputLineTow>
 
             <S.InputLineThree>
-              <S.HiddenLabel htmlFor='description'>Position Description</S.HiddenLabel>
+              <S.HiddenLabel htmlFor='description'>
+                Position Description
+              </S.HiddenLabel>
               <DescriptionInput
                 tabIndex='3'
                 onChange={(e) =>
@@ -177,7 +192,8 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 }
                 placeholder='Position Description'
                 name='description'
-                id='description'></DescriptionInput>
+                id='description'
+              ></DescriptionInput>
             </S.InputLineThree>
 
             <S.InputLineFour advance={advance}>
@@ -198,7 +214,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
 
             <S.InputAdvancedGroup advance={advance}>
               <S.InputAdvancedLineOne>
-                <S.HiddenLabel htmlFor='positionUrl'>Position Link</S.HiddenLabel>
+                <S.HiddenLabel htmlFor='positionUrl'>
+                  Position Link
+                </S.HiddenLabel>
                 <LinkInput
                   tabIndex='6'
                   name='positionUrl'
@@ -281,17 +299,20 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                 onClick={() => {
                   onClose();
                   setAdvance(false);
-                }}>
+                }}
+              >
                 Cancel
               </S.CancelButton>
             </S.InputLineFive>
             <S.InputLineSix>
               <S.AdvanceBtn
+                data-tooltip='Advanced'
                 type='button'
                 advance={advance}
                 onClick={() => {
                   setAdvance(!advance);
-                }}>
+                }}
+              >
                 Advanced
               </S.AdvanceBtn>
             </S.InputLineSix>
@@ -299,7 +320,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
         </S.Body>
       </S.ModalWrapper>
     </>,
-    document.getElementById('portal'),
+    document.getElementById('portal')
   );
 };
 
