@@ -79,6 +79,7 @@ export const FilterButton = styled.button`
 
 export const InnerList = styled.div`
   height: 100%;
+  overflow-y: auto;
 `;
 
 export const ListBody = styled.div`
