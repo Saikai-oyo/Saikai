@@ -1,0 +1,21 @@
+name: Prettier
+on:
+  push:
+    branches-ignore:
+      - dev
+      - master
+
+jobs: Prettier
+  build:
+    name: Prettier
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v1
+      - uses: bahmutov/npm-install@v1
+
+      - run: npm run format
+      - run: git status
+
+      - uses: Saikai-oyo/Saikai@dev
+        env:
+          CI:true
