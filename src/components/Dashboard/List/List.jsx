@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
+import Sort from '../Sort/Sort.jsx'
 import { addIcon, filterIcon } from '../../../assets/icons';
 import useKanban from '../../../hooks/useKanban';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -23,6 +24,15 @@ const List = () => {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
+  const [isSortOpen, setToggle] = useState(Array(5).fill(false))
+
+  // const [isSortOpen, setToggle] = useState([
+  //   {title:'Applied',isOpen:false},
+  //   {title:'In Progress',isOpen:false},
+  //   {title:'Received Task',isOpen:false},
+  //   {title:'Contract',isOpen:false},
+  //   {title:'Denied',isOpen:false},
+  // ]);
 
   const addSelectedPosition = (position) => {
     setSelectedPosition({ data: position.doc, selected: true });
@@ -123,35 +133,38 @@ const List = () => {
       .update({ status: endColumn.title });
     setInitialData(newState);
   };
+  const toggleSort = (index) => {
+    const newState = [...isSortOpen]
+    newState[index] = !newState[index]
 
-  const handleFilter = () => {
-    // TODO:Create the filter here...
-  };
-
+    setToggle( [...newState] )
+  }
+  
   return (
     <S.ListWrapper>
       {positions.loading ? (
         <Spinner />
       ) : (
         <DragDropContext onDragEnd={onDragEnd}>
+
           {initialData &&
             initialData.columns.map((column, index) => {
               return (
                 <S.List key={column.id}>
+
                   <S.ListHeader positionTitle={column.title}>
-                    <S.FilterButton
-                      data-tooltip='Sort By'
-                      onClick={() => handleFilter()}
-                    >
-                      <img src={filterIcon} alt='Sort Icon' />
-                    </S.FilterButton>
-                    <S.HeaderTypography
-                      data-tooltip={
-                        column.title
-                      } /* positionTitle={column.title} */
-                    >
-                      {column.title}
-                    </S.HeaderTypography>
+                    <S.FilterButton data-tooltip='Sort By'>
+                      {isSortOpen[index] && <Sort title={selectedTitle.title} onClick={()=>{
+                        toggleSort(index)
+                      }}/>}
+
+                      <img onClick={() => {
+                        toggleSort(index);
+                        setSelectedTitle(column);
+                      }} src={filterIcon} alt='Filter Icon' />
+                    </S.FilterButton >
+                    <S.HeaderTypography >{column.title}</S.HeaderTypography>
+
                     <S.AddButton
                       data-tooltip='Add Position'
                       onClick={() => {
@@ -231,6 +244,7 @@ const List = () => {
                 </S.List>
               );
             })}
+
         </DragDropContext>
       )}
       <AddPositionModal

@@ -74,6 +74,7 @@ export const FilterButton = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
+  position: relative;
 `;
 
 export const InnerList = styled.div`
