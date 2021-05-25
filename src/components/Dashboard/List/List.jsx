@@ -211,7 +211,8 @@ const List = (props = {}) => {
                                       <Draggable draggableId={position.doc.id} index={index} key={position.doc.id}>
                                         {(provided, snapshot) => (
                                           <S.PositionWrapper
-                                            title={position.doc.title}
+                                            data-tooltip={position.doc.position}
+                                            positionTitle={position.doc.status}
                                             key={position.doc.id}
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
