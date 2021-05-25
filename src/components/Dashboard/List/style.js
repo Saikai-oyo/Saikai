@@ -50,7 +50,7 @@ export const ListHeader = styled.div`
   border-radius: 3px 3px 0px 0px;
   min-height: 39px;
   max-height: 39px;
-  background-color: ${({ title }) => colorForTitle(title)};
+  background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
 `;
 
 export const HeaderTypography = styled.span`
@@ -60,6 +60,7 @@ export const HeaderTypography = styled.span`
   font-size: 20px;
   line-height: 25px;
   color: #ffffff;
+  cursor: context-menu;
 `;
 
 export const AddButton = styled.button`
@@ -94,7 +95,8 @@ export const PositionWrapper = styled.div`
   align-items: center;
   padding: 1rem;
   text-align: center;
-  border-bottom: 2.5px solid ${({ title }) => colorForTitle(title)};
+  border-bottom: 2.5px solid
+    ${({ positionTitle }) => colorForTitle(positionTitle)};
   cursor: pointer;
   &:hover {
     background-color: ${({ title }) =>
