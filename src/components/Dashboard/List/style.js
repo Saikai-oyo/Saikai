@@ -96,20 +96,19 @@ export const PositionWrapper = styled.div`
   align-items: center;
   padding: 1rem;
   text-align: center;
-  border-bottom: 2.5px solid
-    ${({ positionTitle }) => colorForTitle(positionTitle)};
+  border-bottom: 2.5px solid ${({ positionTitle }) => colorForTitle(positionTitle)};
   cursor: pointer;
   &:hover {
-    background-color: ${({ title }) =>
-      title === 'Applied'
+    background-color: ${({ positionTitle }) =>
+      positionTitle === 'Applied'
         ? '#E8F2FC'
-        : title === 'In Progress'
+        : positionTitle === 'In Progress'
         ? '#F7EDF8'
-        : title === 'Received Task'
+        : positionTitle === 'Received Task'
         ? '#FCF1E8'
-        : title === 'Contract'
+        : positionTitle === 'Contract'
         ? '#EEF7EE'
-        : title === 'Denied'
+        : positionTitle === 'Denied'
         ? '#FAEAEA'
         : ''};
   }

@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
-import Sort from '../Sort/Sort.jsx'
+import Sort from '../Sort/Sort.jsx';
 import { addIcon, filterIcon } from '../../../assets/icons';
 import useKanban from '../../../hooks/useKanban';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -24,15 +24,7 @@ const List = () => {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
-  const [isSortOpen, setToggle] = useState(Array(5).fill(false))
-
-  // const [isSortOpen, setToggle] = useState([
-  //   {title:'Applied',isOpen:false},
-  //   {title:'In Progress',isOpen:false},
-  //   {title:'Received Task',isOpen:false},
-  //   {title:'Contract',isOpen:false},
-  //   {title:'Denied',isOpen:false},
-  // ]);
+  const [isSortOpen, setToggle] = useState(Array(5).fill(false));
 
   const addSelectedPosition = (position) => {
     setSelectedPosition({ data: position.doc, selected: true });
@@ -44,18 +36,10 @@ const List = () => {
 
     if (!destination) return;
 
-    const startColumn = initialData.columns.find(
-      (col) => col.id === source.droppableId
-    );
-    const startColumnIndex = initialData.columns.findIndex(
-      (col) => col.id === source.droppableId
-    );
-    const endColumn = initialData.columns.find(
-      (col) => col.id === destination.droppableId
-    );
-    const endColumnIndex = initialData.columns.findIndex(
-      (col) => col.id === destination.droppableId
-    );
+    const startColumn = initialData.columns.find((col) => col.id === source.droppableId);
+    const startColumnIndex = initialData.columns.findIndex((col) => col.id === source.droppableId);
+    const endColumn = initialData.columns.find((col) => col.id === destination.droppableId);
+    const endColumnIndex = initialData.columns.findIndex((col) => col.id === destination.droppableId);
 
     if (startColumn === endColumn) {
       const newPositionIds = Array.from(endColumn.positionIds);
@@ -126,63 +110,64 @@ const List = () => {
       .doc(`${endColumn.id}`)
       .update({ positionIds: finishPositionIDs });
 
-    app
-      .firestore()
-      .collection('positions')
-      .doc(`${draggableId}`)
-      .update({ status: endColumn.title });
+    app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
     setInitialData(newState);
   };
   const toggleSort = (index) => {
-    const newState = [...isSortOpen]
-    newState[index] = !newState[index]
+    const newState = [...isSortOpen];
+    newState[index] = !newState[index];
 
-    setToggle( [...newState] )
-  }
-  
+    setToggle([...newState]);
+  };
+
   return (
     <S.ListWrapper>
       {positions.loading ? (
         <Spinner />
       ) : (
         <DragDropContext onDragEnd={onDragEnd}>
-
           {initialData &&
             initialData.columns.map((column, index) => {
               return (
                 <S.List key={column.id}>
-
                   <S.ListHeader positionTitle={column.title}>
-                    <S.FilterButton data-tooltip='Sort By'>
-                      {isSortOpen[index] && <Sort title={selectedTitle.title} onClick={()=>{
-                        toggleSort(index)
-                      }}/>}
+                    <S.FilterButton data-tooltip="Sort By">
+                      {isSortOpen[index] && (
+                        <Sort
+                          title={selectedTitle.title}
+                          onClick={() => {
+                            toggleSort(index);
+                          }}
+                        />
+                      )}
 
-                      <img onClick={() => {
-                        toggleSort(index);
-                        setSelectedTitle(column);
-                      }} src={filterIcon} alt='Filter Icon' />
-                    </S.FilterButton >
-                    <S.HeaderTypography >{column.title}</S.HeaderTypography>
+                      <img
+                        onClick={() => {
+                          toggleSort(index);
+                          setSelectedTitle(column);
+                        }}
+                        src={filterIcon}
+                        alt="Filter Icon"
+                      />
+                    </S.FilterButton>
+                    <S.HeaderTypography>{column.title}</S.HeaderTypography>
 
                     <S.AddButton
-                      data-tooltip='Add Position'
+                      data-tooltip="Add Position"
                       onClick={() => {
                         setSelectedTitle(column);
                         setIsCreateOpen(true);
-                      }}
-                    >
-                      <img src={addIcon} alt='Add Button' />
+                      }}>
+                      <img src={addIcon} alt="Add Button" />
                     </S.AddButton>
                   </S.ListHeader>
-                  {information.errorLine &&
-                  column.title === information.errorLine[0] ? (
+                  {information.errorLine && column.title === information.errorLine[0] ? (
                     information.errorLine[1] === 'bad' ? (
-                      <S.ListMessages message='bad'>
+                      <S.ListMessages message="bad">
                         <span>{information.message}</span>
                       </S.ListMessages>
                     ) : (
-                      <S.ListMessages message='good'>
+                      <S.ListMessages message="good">
                         <span>{information.message}</span>
                       </S.ListMessages>
                     )
@@ -191,23 +176,16 @@ const List = () => {
                   )}
 
                   <S.ListBody>
-                    <Droppable droppableId={column.id} type='position'>
+                    <Droppable droppableId={column.id} type="position">
                       {(provided) => (
-                        <S.InnerList
-                          ref={provided.innerRef}
-                          {...provided.droppableProps}
-                        >
+                        <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
                           {column.positionIds.map((positionId, index) => {
                             const position = initialData.positions[positionId];
                             if (position)
                               return (
                                 currentUser.uid === position.doc.uid &&
                                 column.title === position.doc.status && (
-                                  <Draggable
-                                    draggableId={position.doc.id}
-                                    index={index}
-                                    key={position.doc.id}
-                                  >
+                                  <Draggable draggableId={position.doc.id} index={index} key={position.doc.id}>
                                     {(provided, snapshot) => (
                                       <S.PositionWrapper
                                         data-tooltip={position.doc.position}
@@ -219,17 +197,10 @@ const List = () => {
                                         onClick={() => {
                                           addSelectedPosition(position);
                                           setIsViewOpen(true);
-                                        }}
-                                      >
-                                        <S.PositionHeader>
-                                          {position.doc.position}
-                                        </S.PositionHeader>
-                                        <S.PositionBody>
-                                          {position.doc.name}
-                                        </S.PositionBody>
-                                        <S.PositionFooter>
-                                          {position.doc.date}
-                                        </S.PositionFooter>
+                                        }}>
+                                        <S.PositionHeader>{position.doc.position}</S.PositionHeader>
+                                        <S.PositionBody>{position.doc.name}</S.PositionBody>
+                                        <S.PositionFooter>{position.doc.date}</S.PositionFooter>
                                       </S.PositionWrapper>
                                     )}
                                   </Draggable>
@@ -244,14 +215,9 @@ const List = () => {
                 </S.List>
               );
             })}
-
         </DragDropContext>
       )}
-      <AddPositionModal
-        selectedTitle={selectedTitle}
-        open={isCreateOpen}
-        onClose={() => setIsCreateOpen(false)}
-      />
+      <AddPositionModal selectedTitle={selectedTitle} open={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
       <ViewPositionModal
         columns={initialData && initialData.columns}
         open={isViewOpen}
