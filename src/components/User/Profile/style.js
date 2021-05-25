@@ -58,7 +58,8 @@ export const Header = styled.h3`
 
   @media screen and (max-width: 500px) {
     & {
-      height: 3rem;
+      margin: 11px 12.5rem 5rem 12.5rem;
+      font-size: 30px;
     }
   }
 `;
@@ -74,14 +75,19 @@ export const DetailsWrapper = styled.div`
   @media screen and (max-width: 500px) {
     & {
       height: 18%;
-      font-size: large;
+      margin: 0px auto 3rem auto;
+    }
+
+    &,
+    span {
+      font-size: 20px;
     }
   }
 `;
 
 export const EmailText = styled.span`
-  width: 160px;
-  height: 18px;
+  width: 10rem;
+  height: 1rem;
   font-style: normal;
   font-weight: 300;
   font-size: 14px;
@@ -142,11 +148,11 @@ export const Logout = styled.button`
       margin: 0px 91px 14px 91px;
       width: 18rem;
       height: 3rem;
-      border: 1px solid #a5add8;
-      box-sizing: border-box;
-      border-radius: 4px;
+      /* border: 1px solid #a5add8; */
+      /* box-sizing: border-box; */
+      /* border-radius: 4px; */
 
-      font-weight: normal;
+      font-weight: bold;
       font-size: 20px;
       line-height: 39px;
       color: #353535;
