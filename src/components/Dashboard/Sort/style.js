@@ -16,8 +16,8 @@ export const container = styled.div `
   z-index:100;
   background-color:white;
   position: absolute;
-  /* top: 35px;
-  left:-55px; */
+   top: 1rem;
+  left:0.5rem; 
   
 `;
 export const title = styled.div `

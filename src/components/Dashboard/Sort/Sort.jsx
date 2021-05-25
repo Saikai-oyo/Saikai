@@ -7,7 +7,7 @@ import useKanban from '../../../hooks/useKanban';
 import { app } from '../../../config/firebase';
 
 
-const Sort = ({ title }) => {
+const Sort = ({ title ,onClick}) => {
   const { currentUser } = useAuth();
   const { positions } = useContext(PositionsContext);
   const { initialData, setInitialData } = useKanban(currentUser.uid);
@@ -58,21 +58,22 @@ const Sort = ({ title }) => {
       .doc(`${title.replace(/\s/g, '')}`)
       .update({ positionIds: ArraySortedPositions });
 
+        onClick();
   }
 
   return <S.container>
     <S.title> Added Date</S.title>
-    <S.item title={title} onClick={() => handleFilter(title, 'createdDate', 'asc')}>First To Last</S.item>
-    <S.item title={title} onClick={() => handleFilter(title, 'createdDate', 'desc')}  >Last To First</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'createdDate', 'asc');}}>First To Last</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'createdDate', 'desc');}}  >Last To First</S.item>
 
     <S.title> Position Name</S.title>
-    <S.item title={title} onClick={() => handleFilter(title, 'position', 'asc')}>A-Z</S.item>
-    <S.item title={title} onClick={() => handleFilter(title, 'position', 'desc')}>Z-A</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'position', 'asc');}}>A-Z</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'position', 'desc');}}>Z-A</S.item>
 
 
     <S.title> Company Name</S.title>
-    <S.item title={title} onClick={() => handleFilter(title, 'name', 'asc')}>A-Z</S.item>
-    <S.item title={title} onClick={() => handleFilter(title, 'name', 'desc')} >Z-A</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'name', 'asc');}}>A-Z</S.item>
+    <S.item title={title} onClick={() => {handleFilter(title, 'name', 'desc');}} >Z-A</S.item>
 
 
   </S.container>

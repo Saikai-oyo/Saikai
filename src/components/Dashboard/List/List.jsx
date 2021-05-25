@@ -24,7 +24,15 @@ const List = () => {
   const [isCreateOpen, setIsCreateOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [selectedTitle, setSelectedTitle] = useState('');
-  const [isSortOpen, setToggle] = useState(false);
+  const [isSortOpen, setToggle] = useState(Array(5).fill(false))
+
+  // const [isSortOpen, setToggle] = useState([
+  //   {title:'Applied',isOpen:false},
+  //   {title:'In Progress',isOpen:false},
+  //   {title:'Received Task',isOpen:false},
+  //   {title:'Contract',isOpen:false},
+  //   {title:'Denied',isOpen:false},
+  // ]);
 
   const addSelectedPosition = (position) => {
     setSelectedPosition({ data: position.doc, selected: true });
@@ -113,34 +121,32 @@ const List = () => {
     app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
     setInitialData(newState);
   };
+  const toggleSort = (index) => {
+    const newState = [...isSortOpen]
+    newState[index] = !newState[index]
 
-  const toggleSort = (isSortOpen) => {
-    // isSortOpen = !isSortOpen
-    setToggle(!isSortOpen)
+    setToggle( [...newState] )
   }
-
-  const handleFilter = (column) => {
-  //   console.log('column' , column)
-  //   console.log(initialData, ' initialData')
-  //   // TODO:Create the filter here...
-  };
-
+  
   return (
     <S.ListWrapper>
       {positions.loading ? (
         <Spinner />
       ) : (
         <DragDropContext onDragEnd={onDragEnd}>
-          { isSortOpen && <Sort title={selectedTitle.title}></Sort>}
 
           {initialData &&
             initialData.columns.map((column, index) => {
               return (
                 <S.List key={column.id}>
                   <S.ListHeader title={column.title}>
-                    <S.FilterButton onClick={() => handleFilter(column)}>
+                    <S.FilterButton>
+                      {isSortOpen[index] && <Sort title={selectedTitle.title} onClick={()=>{
+                        toggleSort(index)
+                      }}/>}
+
                       <img onClick={() => {
-                        toggleSort(isSortOpen);
+                        toggleSort(index);
                         setSelectedTitle(column);
                       }} src={filterIcon} alt='Filter Icon' />
                     </S.FilterButton >
