@@ -8,7 +8,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import logo from '../../../assets/logos/logo.svg';
 import './style.css';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const { logout } = useAuth();
   const history = useHistory();
   const { userDetails } = useContext(UserDetailsContext);
@@ -85,7 +85,7 @@ const Navbar = () => {
             )}
           </div>
           <span className='navbar-text navResponsive'>
-            <SearchBar />
+            <SearchBar onSearch={props.onSearch} />
 
             <span className='mr-4 navResponsive'>
               Welcome back
