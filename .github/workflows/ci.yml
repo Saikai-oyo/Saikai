@@ -5,17 +5,15 @@ on:
       - dev
       - master
 
-jobs: Prettier
+jobs:
   build:
-    name: Prettier
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v1
-      - uses: bahmutov/npm-install@v1
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: bahmutov/npm-install@v1
 
-      - run: npm run format
-      - run: git status
+    - run: npm run format
+    - run: git status
 
-      - uses: Saikai-oyo/Saikai@dev
-        env:
-          CI:true
+    - uses: Saikai-oyo/Saikai@dev
+
