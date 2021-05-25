@@ -73,13 +73,21 @@ export const FilterButton = styled.button`
   background-color: transparent;
   border: none;
   outline: none;
+  position: relative;
+`;
+
+export const InnerList = styled.div`
+  overflow: auto;
+  height: 100%;
 `;
 
 export const ListBody = styled.div`
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   text-align: center;
-  overflow-y: auto;
+  min-height: 90%;
+  max-height: 90%;
 `;
 
 export const PositionWrapper = styled.div`

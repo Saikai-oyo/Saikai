@@ -8,14 +8,17 @@ export const container = styled.div `
   display: flex;
   flex-direction:column;
   min-width: 200px;
-  height: 250px;
+  height: 190px;
   border:1px solid #A5ADD8;
   border-radius:8px;
   /* justify-content: space-evenly; */
   align-items: center;
   z-index:100;
   background-color:white;
-  /* position:absolute; */
+  position: absolute;
+  /* top: 35px;
+  left:-55px; */
+  
 `;
 export const title = styled.div `
 /* width: 81px; */
@@ -43,9 +46,6 @@ font-weight: 300;
 font-size: 14px;
 line-height: 18px;
 color: #000000;
-/* background-color: ${({ title }) => colorForTitle(title)}; */
-
-
 
 &:hover {
     background-color: ${({ title }) => colorForTitle(title)};

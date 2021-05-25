@@ -12,12 +12,34 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const { setUserDetails } = useContext(UserDetailsContext);
 
+  /**
+   * @todo: do this!*/
   const signup = ({ email, password, firstName, lastName }) => {
-    return auth.createUserWithEmailAndPassword(email, password).then((resp) => {
-      return app.firestore().collection('users').doc(resp.user.uid).set({
+    auth.createUserWithEmailAndPassword(email, password).then((resp) => {
+      app.firestore().collection('users').doc(resp.user.uid).set({
         firstName,
         lastName,
       });
+
+      const batch = app.firestore().batch();
+      const initData = [
+        { Applied: { positionIds: [], title: 'Applied' } },
+        { Contract: { positionIds: [], title: 'Contract' } },
+        { Denied: { positionIds: [], title: 'Denied' } },
+        { InProgress: { positionIds: [], title: 'In Progress' } },
+        { ReceivedTask: { positionIds: [], title: 'Received Task' } },
+      ];
+
+      initData.forEach((doc) => {
+        const docRef = app
+          .firestore()
+          .collection('users')
+          .doc(resp.user.uid)
+          .collection('columns')
+          .doc(Object.keys(doc)[0]);
+        batch.set(docRef, Object.values(doc)[0]);
+      });
+      return batch.commit();
     });
   };
 
@@ -62,7 +84,7 @@ export const AuthProvider = ({ children }) => {
     });
 
     return unsubscribe;
-  }, []);
+  }, [setUserDetails]);
 
   const value = {
     currentUser,
@@ -73,9 +95,5 @@ export const AuthProvider = ({ children }) => {
     updatePassword,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 };
