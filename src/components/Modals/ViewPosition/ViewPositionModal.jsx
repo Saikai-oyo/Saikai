@@ -18,13 +18,9 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
   const [descriptionTab, setDescriptionTab] = useState(true);
   const [viewTab, setViewTab] = useState(!descriptionTab);
   const [edit, setEdit] = useState(false);
-  const { selectedPosition, setSelectedPosition } = useContext(
-    SelectedPositionContext
-  );
-  const { updatedPosition, setUpdatedPosition } = useContext(
-    UpdatedPositionContext
-  );
-  console.log('selected position', selectedPosition);
+
+  const { selectedPosition, setSelectedPosition } = useContext(SelectedPositionContext);
+  const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
   const { setInformation } = useContext(MessagesContext);
 
   const handleUpdate = async () => {

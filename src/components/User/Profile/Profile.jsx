@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
-import logo from '../../../assets/logos/logo.svg';
 import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
+import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
 import * as S from './style';
 
@@ -30,13 +30,8 @@ const Profile = () => {
   };
   return (
     <div>
-      <a
-        className='navbar-brand'
-        style={{ marginBottom: '34px' }}
-        href='/Saikai/'
-      >
-        <img src={logo} width='265' height='80' alt='Saikai' />
-      </a>
+      <GeneralNav />
+
       <S.Wrapper>
         <S.ProfileContainer>
           <div className='card-header-pills'>
