@@ -138,14 +138,22 @@ const List = () => {
             initialData.columns.map((column, index) => {
               return (
                 <S.List key={column.id}>
-                  <S.ListHeader title={column.title}>
-                    <S.FilterButton onClick={() => handleFilter()}>
-                      <img src={filterIcon} alt='Filter Icon' />
+                  <S.ListHeader positionTitle={column.title}>
+                    <S.FilterButton
+                      data-tooltip='Sort By'
+                      onClick={() => handleFilter()}
+                    >
+                      <img src={filterIcon} alt='Sort Icon' />
                     </S.FilterButton>
-                    <S.HeaderTypography title={column.title}>
+                    <S.HeaderTypography
+                      data-tooltip={
+                        column.title
+                      } /* positionTitle={column.title} */
+                    >
                       {column.title}
                     </S.HeaderTypography>
                     <S.AddButton
+                      data-tooltip='Add Position'
                       onClick={() => {
                         setSelectedTitle(column);
                         setIsCreateOpen(true);
@@ -189,7 +197,8 @@ const List = () => {
                                   >
                                     {(provided, snapshot) => (
                                       <S.PositionWrapper
-                                        title={position.doc.status}
+                                        data-tooltip={position.doc.position}
+                                        positionTitle={position.doc.status}
                                         key={position.doc.id}
                                         ref={provided.innerRef}
                                         {...provided.draggableProps}
