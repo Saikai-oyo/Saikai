@@ -82,6 +82,13 @@ export const PositionsInput = styled.input`
   &:hover {
     border: 1px solid #c282f4;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      height: 3rem;
+    }
+  }
 `;
 
 export const DescriptionInput = styled.textarea`
@@ -120,6 +127,13 @@ export const DescriptionInput = styled.textarea`
   font-weight: 300;
   line-height: 15px;
   color: #3f3f3f;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      height: 8rem;
+    }
+  }
 `;
 
 export const LinkInput = styled.input`
@@ -158,6 +172,13 @@ export const LinkInput = styled.input`
   font-weight: 300;
   line-height: 15px;
   color: #3f3f3f;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      height: 3rem;
+    }
+  }
 `;
 
 export const AdvanceInputs = styled.input`
@@ -196,6 +217,13 @@ export const AdvanceInputs = styled.input`
   font-weight: 300;
   line-height: 15px;
   color: #3f3f3f;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      height: 3rem;
+    }
+  }
 `;
 
 export const DateInput = styled.input`
@@ -237,8 +265,7 @@ export const DateInput = styled.input`
 export const StatusInput = styled.select`
   width: ${({ edit }) => (edit ? '153px' : '190px')};
   height: 37px;
-  padding: ${({ edit }) =>
-    edit ? '.5rem .5rem .6rem .5rem' : '10px 0px 10px 10px'};
+  padding: ${({ edit }) => (edit ? '.5rem .5rem .6rem .5rem' : '10px 0px 10px 10px')};
   background: #fff;
   border: 1px solid #a5add8;
   border-radius: 4px;
@@ -263,6 +290,10 @@ export const StatusInput = styled.select`
   background-position-x: 90%;
   background-position-y: 50%;
 
+  font-weight: 300;
+  line-height: 15px;
+  color: #3f3f3f;
+
   &:focus {
     background-image: url(${downArrow});
     border: 1px solid #c282f4;
@@ -277,7 +308,10 @@ export const StatusInput = styled.select`
     border: 1px solid #c282f4;
   }
 
-  font-weight: 300;
-  line-height: 15px;
-  color: #3f3f3f;
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      height: 3rem;
+    }
+  }
 `;

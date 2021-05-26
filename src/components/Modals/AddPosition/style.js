@@ -24,6 +24,15 @@ export const ModalWrapper = styled.div`
   border-radius: 8px;
   z-index: 1000;
   transform: translate(-50%, -50%);
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 90%;
+      border: 3px solid #a5add8;
+      border-radius: 8px;
+      height: 80vh;
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -35,6 +44,11 @@ export const Header = styled.div`
   width: 621px;
   height: 55px;
   background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
+  @media screen and (max-width: 500px) {
+    & {
+      display: none;
+    }
+  }
 `;
 
 export const HeaderTitle = styled.span`
@@ -61,19 +75,46 @@ export const Body = styled.div`
   width: 100%;
   max-height: ${({ advance }) => (advance ? 'auto' : '453px')};
   transition: all 0.3s;
+
+  @media screen and (max-width: 500px) {
+    & {
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 100%;
+      padding: 1rem;
+      max-height: unset;
+    }
+  }
 `;
 
 export const HiddenLabel = styled.label`
   display: none;
   visibility: hidden;
   opacity: 0;
+
+  @media screen and (max-width: 500px) {
+    & {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 `;
 
 export const InputLineOne = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-revers;
   justify-content: space-between;
   padding: 31px 50px 21px 40px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const Date = styled.div`
@@ -85,6 +126,12 @@ export const Date = styled.div`
   padding: 0px;
   width: min-content;
   height: 30px;
+  @media screen and (max-width: 500px) {
+    & {
+      padding: 1rem 0 0 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const DateLabel = styled.label`
@@ -95,6 +142,12 @@ export const DateLabel = styled.label`
   width: 110px;
   margin: 0px 5px;
   white-space: nowrap;
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-weight: 500;
+    }
+  }
 `;
 
 export const InputDate = styled.input`
@@ -114,6 +167,15 @@ export const InputLineTow = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 320px 20px 40px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputLineThree = styled.div`
@@ -121,6 +183,15 @@ export const InputLineThree = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 40px 20px 40px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputLineFour = styled.div`
@@ -128,6 +199,15 @@ export const InputLineFour = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0px 391px ${({ advance }) => (advance ? '31px' : '58px')} 40px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputLineFive = styled.div`
@@ -135,6 +215,40 @@ export const InputLineFive = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin: 0px 185px 0px 40px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+    }
+  }
+`;
+
+export const SubmitButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  outline: none;
+  width: 190px;
+  height: 33px;
+  background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
+  /* background: #5f50e6; */
+  border-radius: 4px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 23px;
+  color: #ffffff;
+  border: 1px solid #5f50e6;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 export const CancelButton = styled.button`
@@ -154,31 +268,27 @@ export const CancelButton = styled.button`
   color: #5f50e6;
   margin-right: 5px;
   background-color: transparent;
-`;
-export const SubmitButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px 10px;
-  outline: none;
-  width: 190px;
-  height: 33px;
-  background: #5f50e6;
-  border-radius: 4px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 23px;
-  color: #ffffff;
-  border: 1px solid #5f50e6;
+
+  @media screen and (max-width: 500px) {
+    & {
+      width: 100%;
+    }
+  }
 `;
 
 export const InputLineSix = styled.div`
   display: flex;
   flex-direction: row;
   padding: 0px 26px 26px 495px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      padding: 0;
+    }
+  }
 `;
 
+// Advance inputs group from here
 export const AdvanceBtn = styled.button`
   width: 100px;
   height: 20px;
@@ -198,10 +308,7 @@ export const AdvanceBtn = styled.button`
   padding-right: 1rem;
   background-position-x: 100%;
   background-position-y: 50%;
-  ${({ advance }) =>
-    advance
-      ? `background-image: url(${downArrow});`
-      : `background-image: url(${upArrow});`};
+  ${({ advance }) => (advance ? `background-image: url(${downArrow});` : `background-image: url(${upArrow});`)};
 `;
 
 export const InputAdvancedGroup = styled.div`
@@ -210,11 +317,29 @@ export const InputAdvancedGroup = styled.div`
       ? `display: flex;flex-direction: column;padding: 0px 180px 63px 40px;visibility:visible; opacity:1;`
       : `display:none; opacity:0; visibility:hidden;`}
   transition: all 7s;
+  @media screen and (max-width: 500px) {
+    & {
+      font-weight: 600;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputAdvancedLineOne = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+    }
+    & > input {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputAdvancedLineTwo = styled.div`
@@ -222,10 +347,32 @@ export const InputAdvancedLineTwo = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 29px 0px 29px 0px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+    }
+    & > input {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 export const InputAdvancedLineThree = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  @media screen and (max-width: 500px) {
+    & {
+      flex-direction: column;
+      font-weight: 600;
+      padding: 0;
+    }
+    & > input {
+      margin-bottom: 1rem;
+    }
+  }
 `;
