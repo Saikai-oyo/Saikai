@@ -15,6 +15,15 @@ export const SignupContainer = styled.div`
   border: 1px solid #a5add8;
   box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
   border-radius: 8px;
+
+  @media screen and (max-width: 500px) {
+    & {
+      background: none;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
 `;
 
 export const Header = styled.h3`
@@ -36,6 +45,14 @@ export const Subtitle = styled.h4`
   font-size: 18px;
   line-height: 24px;
   color: #353535;
+  @media screen and (max-width: 500px) {
+    & {
+      display: block;
+      width: 17rem;
+      word-wrap: break-word;
+      text-align: center;
+    }
+  }
 `;
 
 export const ErrorWrapper = styled.div`
@@ -55,6 +72,12 @@ export const InputsWrapper = styled.div`
   height: 295.71px;
   margin: 0px 74px 27px 74px;
   width: 337px;
+  @media screen and (max-width: 500px) {
+    & {
+      margin: 0px 74px 27px 103px;
+      width: max-content;
+    }
+  }
 `;
 
 export const SignUp = styled.button`
@@ -74,6 +97,11 @@ export const SignUp = styled.button`
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
+  @media screen and (max-width: 500px) {
+    & {
+      margin: 0px 102px 2rem 102px;
+    }
+  }
 `;
 
 export const HaveAccount = styled.div`
@@ -87,5 +115,13 @@ export const HaveAccount = styled.div`
   & > a {
     color: #353535;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 1rem;
+      width: max-content;
+      margin: 10px auto 0px auto;
+    }
   }
 `;
