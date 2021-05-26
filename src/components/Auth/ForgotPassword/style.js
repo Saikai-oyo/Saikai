@@ -15,17 +15,32 @@ export const ResetPassContainer = styled.div`
   border: 1px solid #a5add8;
   box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
   border-radius: 8px;
+  @media screen and (max-width: 500px) {
+    & {
+      background: none;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  }
 `;
 
 export const Header = styled.h3`
-  margin: 62px 137px 43px 150px;
-  width: 204px;
-  height: 33px;
+  margin: 3.5rem auto 2.5rem auto;
+  width: 13rem;
+  height: 2rem;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 31px;
   color: #353535;
+
+  @media screen and (max-width: 500px) {
+    & {
+      margin: 0 auto 8rem auto;
+      font-size: 30px;
+    }
+  }
 `;
 
 export const HiddenLabel = styled.label`
@@ -39,8 +54,15 @@ export const InputsWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin: 0px 74px 35px 73px;
-  width: 331px;
-  height: 38px;
+  width: 20.5rem;
+  height: 2rem;
+
+  @media screen and (max-width: 500px) {
+    & {
+      margin: 0px 0 35px 6.25rem;
+      height: 3rem;
+    }
+  }
 `;
 
 export const ResetPassword = styled.button`
@@ -60,6 +82,12 @@ export const ResetPassword = styled.button`
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
+
+  @media screen and (max-width: 500px) {
+    & {
+      margin: 0px 102px 3rem 102px;
+    }
+  }
 `;
 
 export const NeedAccount = styled.div`
@@ -74,6 +102,13 @@ export const NeedAccount = styled.div`
     color: #353535;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 1rem;
+      margin: auto;
+    }
+  }
 `;
 
 export const HaveAccount = styled.div`
@@ -87,5 +122,13 @@ export const HaveAccount = styled.div`
   & > a {
     color: #353535;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 500px) {
+    & {
+      font-size: 1rem;
+      margin: 20px auto 0 auto;
+      width: max-content;
+    }
   }
 `;
