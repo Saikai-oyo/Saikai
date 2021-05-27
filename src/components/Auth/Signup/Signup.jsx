@@ -3,7 +3,7 @@ import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import logo from '../../../assets/logos/logo.svg';
+import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
 import * as S from './style';
 
@@ -90,57 +90,55 @@ const Signup = () => {
     };
 
     return (
-        <div>
-            <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/Saikai/">
-                <img src={logo} width="265" height="80" alt="Saikai" />
-            </a>
-            <S.Wrapper>
-                <S.SignupContainer>
-                    <S.Header>Join Saikai</S.Header>
-                    <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
-                    <S.ErrorWrapper>
-                        <BigError show={information.errorCode === 0 && information.hasError}>
-                            {information.error}
-                        </BigError>
-                    </S.ErrorWrapper>
-                    <form onSubmit={handleSubmit}>
-                        <S.InputsWrapper>
-                            <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Email" name="email" />
+      <div>
+        <GeneralNav display="hide" />
+        <S.Wrapper>
+          <S.SignupContainer>
+            <S.Header>Join Saikai</S.Header>
+            <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
+            <S.ErrorWrapper>
+              <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
+            </S.ErrorWrapper>
+            <form onSubmit={handleSubmit}>
+              <S.InputsWrapper>
+                <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
+                <AuthInput type="text" placeholder="Email" name="email" />
 
-                            <S.HiddenLabel htmlFor="firstName">First Name</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="First Name" name="firstName" />
+                <S.HiddenLabel htmlFor="firstName">First Name</S.HiddenLabel>
+                <AuthInput type="text" placeholder="First Name" name="firstName" />
 
-                            <S.HiddenLabel htmlFor="lastName">Last Name</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Last Name" name="lastName" />
+                <S.HiddenLabel htmlFor="lastName">Last Name</S.HiddenLabel>
+                <AuthInput type="text" placeholder="Last Name" name="lastName" />
 
-                            <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
-                            <AuthInput type="password" placeholder="Your Password" name="password" />
+                <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
+                <AuthInput type="password" placeholder="Your Password" name="password" />
 
-                            <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
-                            <AuthInput type="password" placeholder="Confirm Password" name="confirmPassword" />
-                        </S.InputsWrapper>
-                        <S.SignUp type="submit">Sign Up</S.SignUp>
+                <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
+                <AuthInput type="password" placeholder="Confirm Password" name="confirmPassword" />
+              </S.InputsWrapper>
+              <S.SignUp type="submit">Sign Up</S.SignUp>
 
-                        <S.HaveAccount>
-                            Already have an account?
-                            <Link
-                                to="/login"
-                                onClick={() =>
-                                    setInformation({
-                                        errorCode: null,
-                                        error: '',
-                                        hasError: false,
-                                    })
-                                }>
-                                Log in
-                            </Link>
-                        </S.HaveAccount>
-                    </form>
-                </S.SignupContainer>
-            </S.Wrapper>
-        </div>
+              <S.HaveAccount>
+                Already have an account?
+                <Link
+                  to="/login"
+                  onClick={() =>
+                    setInformation({
+                      errorCode: null,
+                      error: '',
+                      hasError: false,
+                    })
+                  }>
+                  {' '}
+                  Log in
+                </Link>
+              </S.HaveAccount>
+            </form>
+          </S.SignupContainer>
+        </S.Wrapper>
+      </div>
     );
+
 };
 
 export default Signup;
