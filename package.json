@@ -23,8 +23,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier-check": "prettier --check \"**/*.{js,jsx,json}\"",
-    "prettier-format": "prettier --write \"**/*.{js,jsx,json}\"",
+    "prettier-check": "prettier --check \"src/**/*.{js,jsx,json}\"",
+    "prettier-format": "prettier --write \"src/**/*.{js,jsx,json}\"",
     "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
@@ -55,22 +55,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "gh-pages": "^3.1.0",
     "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
     "prettier": "^2.3.0",
     "react-is": "^17.0.1"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint"
-    ],
-    "*.+(js|jsx|json|css)": [
-      "prettier --check",
-      "git add"
-    ]
   }
 }
