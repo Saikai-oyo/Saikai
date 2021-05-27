@@ -167,7 +167,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ### Branch
 
-Branch naming convention is as following :
+Branch naming convention is as following:
 
 ```
 TYPE-ISSUE_ID-DESCRIPTION
@@ -179,7 +179,19 @@ fix-741-change-localstorage-get-function
 
 ### Pull Request (PR)
 
-Pull Request (PR) title convention is as following :
+Pull Request (PR) title convention is as following:
+
+```
+[TYPE-ISSUE_ID]-DESCRIPTION
+
+example:
+[Feat-45] Add button to login component
+[Fix-114] Change localstorage get function
+```
+
+### Commits
+
+Commit information convention is as following:
 
 ```
 [TYPE-ISSUE_ID]-DESCRIPTION
