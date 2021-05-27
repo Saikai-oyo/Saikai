@@ -3,7 +3,7 @@ import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import logo from '../../../assets/logos/logo.svg';
+import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
 import * as S from './style';
 
@@ -59,9 +59,7 @@ const ForgotPassword = () => {
 
     return (
         <div>
-            <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/Saikai/">
-                <img src={logo} width="265" height="80" alt="Saikai" />
-            </a>
+            <GeneralNav display="hide" />
             <S.Wrapper>
                 <S.ResetPassContainer>
                     <S.Header>Reset Password</S.Header>
@@ -79,7 +77,7 @@ const ForgotPassword = () => {
                         <S.ResetPassword type="submit">Reset Password</S.ResetPassword>
 
                         <S.NeedAccount>
-                            Need an account ?{' '}
+                            Need an account?{' '}
                             <Link
                                 to="/signup"
                                 onClick={() =>
