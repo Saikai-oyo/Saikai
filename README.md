@@ -58,7 +58,7 @@
 
 ## About The Project
 
-[![Dashboard][product-screenshot]](https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png)
+![product-screenshot](https://user-images.githubusercontent.com/41434778/119908285-ee3eff80-bf5a-11eb-929e-519affb5177c.gif)
 
 400 job applications ➡ 100 interviews ➡ 10 home tasks ➡ 1 contract.
 
