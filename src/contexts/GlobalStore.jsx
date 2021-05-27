@@ -7,21 +7,19 @@ import { UserDetailsContextProvider } from './UserDetailsContext';
 import { UpdatedPositionContextProvider } from './UpdatedPositionContext';
 
 const GlobalStore = ({ children }) => {
-  return (
-    <UserDetailsContextProvider>
-      <AuthProvider>
-        <MessagesContextProvider>
-          <PositionsContextProvider>
-            <UpdatedPositionContextProvider>
-              <SelectedPositionContextProvider>
-                {children}
-              </SelectedPositionContextProvider>
-            </UpdatedPositionContextProvider>
-          </PositionsContextProvider>
-        </MessagesContextProvider>
-      </AuthProvider>
-    </UserDetailsContextProvider>
-  );
+    return (
+        <UserDetailsContextProvider>
+            <AuthProvider>
+                <MessagesContextProvider>
+                    <PositionsContextProvider>
+                        <UpdatedPositionContextProvider>
+                            <SelectedPositionContextProvider>{children}</SelectedPositionContextProvider>
+                        </UpdatedPositionContextProvider>
+                    </PositionsContextProvider>
+                </MessagesContextProvider>
+            </AuthProvider>
+        </UserDetailsContextProvider>
+    );
 };
 
 export default GlobalStore;

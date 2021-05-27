@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const SignupContainer = styled.div`
+
   display: flex;
   flex-direction: column;
   width: 470px;
@@ -27,17 +28,18 @@ export const SignupContainer = styled.div`
 `;
 
 export const Header = styled.h3`
-  margin: 30px auto 12px auto;
-  width: max-content;
-  height: 33px;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 33px;
-  color: #353535;
+    margin: 30px auto 12px auto;
+    width: max-content;
+    height: 33px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 33px;
+    color: #353535;
 `;
 
 export const Subtitle = styled.h4`
+
   margin: 0 auto;
   width: max-content;
   height: 33.26px;
@@ -56,13 +58,13 @@ export const Subtitle = styled.h4`
 `;
 
 export const ErrorWrapper = styled.div`
-  margin: 10px 0;
+    margin: 10px 0;
 `;
 
 export const HiddenLabel = styled.label`
-  display: none;
-  visibility: hidden;
-  opacity: 0;
+    display: none;
+    visibility: hidden;
+    opacity: 0;
 `;
 
 export const InputsWrapper = styled.div`
