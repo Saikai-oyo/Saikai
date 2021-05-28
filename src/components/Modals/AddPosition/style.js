@@ -140,7 +140,7 @@ export const DateLabel = styled.label`
   font-size: 16px;
   line-height: 20px;
   width: 110px;
-  margin: 0px 5px;
+  margin: 0 1rem 0 0;
   white-space: nowrap;
 
   @media screen and (max-width: 500px) {
