@@ -4,7 +4,7 @@ import Sort from '../Sort/Sort';
 
 import { addIcon, filterIcon } from '../../../assets/icons';
 
-const ListHeader = (props) => {
+const ListHeader = ({ column, setSelectedTitle, setIsCreateOpen }) => {
     const [isSortOpen, setToggle] = useState(false);
 
     const toggleSort = () => {
@@ -12,26 +12,26 @@ const ListHeader = (props) => {
     };
 
     return (
-        <S.ListHeader positionTitle={props.column.title}>
+        <S.ListHeader positionTitle={column.title}>
             <S.FilterButton data-tooltip="Sort By">
-                {isSortOpen && <Sort toggleSort={toggleSort} title={props.title} />}
+                {isSortOpen && <Sort toggleSort={toggleSort} title={column.title} />}
 
                 <img
                     onClick={() => {
                         toggleSort();
-                        props.setSelectedTitle(props.column);
+                        setSelectedTitle(column);
                     }}
                     src={filterIcon}
                     alt="Filter Icon"
                 />
             </S.FilterButton>
-            <S.HeaderTypography>{props.column.title}</S.HeaderTypography>
+            <S.HeaderTypography>{column.title}</S.HeaderTypography>
 
             <S.AddButton
                 data-tooltip="Add Position"
                 onClick={() => {
-                    props.setSelectedTitle(props.column);
-                    props.setIsCreateOpen(true);
+                    setSelectedTitle(column);
+                    setIsCreateOpen(true);
                 }}>
                 <img src={addIcon} alt="Add Button" />
             </S.AddButton>
