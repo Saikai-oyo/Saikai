@@ -10,7 +10,7 @@ import ListBody from './ListBody';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { app } from '../../../config/firebase';
 import * as S from './style.js';
-
+import Messages from '../../Messages/Messages';
 // Context Imports
 
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
@@ -131,19 +131,9 @@ const List = (props = {}) => {
                                         setSelectedTitle={setSelectedTitle}
                                         column={column}
                                     />
-                                    {information.errorLine && column.title === information.errorLine[0] ? (
-                                        information.errorLine[1] === 'bad' ? (
-                                            <S.ListMessages message="bad">
-                                                <span>{information.message}</span>
-                                            </S.ListMessages>
-                                        ) : (
-                                            <S.ListMessages message="good">
-                                                <span>{information.message}</span>
-                                            </S.ListMessages>
-                                        )
-                                    ) : (
-                                        ''
-                                    )}
+
+                                    <Messages column={column} />
+
                                     <ListBody
                                         searchTerm={searchTerm}
                                         uid={currentUser.uid}
