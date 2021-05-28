@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
 import onDragEnd from '../../../Utils/Dnd';
-
+import { useMediaQuery } from 'react-responsive';
+import { Accordion, AccordionToggle } from 'react-bootstrap';
 import useKanban from '../../../hooks/useKanban';
 import ListHeader from './ListHeader';
 import ListBody from './ListBody';
@@ -27,7 +28,12 @@ const List = (props = {}) => {
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [selectedTitle, setSelectedTitle] = useState('');
+    const [isCollapse, setIsCollapse] = useState(null);
 
+    const handleMediaQueryChange = () => {
+        setIsCollapse(!isMobile);
+        console.log('~ isMobile', isMobile);
+    };
     const addSelectedPosition = (position) => {
         setSelectedPosition({ data: position.doc, selected: true });
     };
@@ -35,6 +41,12 @@ const List = (props = {}) => {
 
     const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
+    const isMobile = useMediaQuery({ query: '(max-width: 500px)' }, undefined, handleMediaQueryChange);
+    useEffect(() => {
+        console.log('~ isCollapse', isCollapse);
+    }, [isMobile]);
+
+    // defaultActiveKey={isCollapse ? '' : index + 1}
     return (
         <S.ListWrapper>
             {positions.loading ? (
@@ -42,28 +54,42 @@ const List = (props = {}) => {
             ) : (
                 <DragDropContext onDragEnd={endDragHandler}>
                     {initialData &&
-                        initialData.columns.map((column, index) => {
-                            return (
-                                <S.List key={column.id}>
-                                    <ListHeader
-                                        setIsCreateOpen={setIsCreateOpen}
-                                        setSelectedTitle={setSelectedTitle}
-                                        column={column}
-                                    />
-
+                        initialData.columns.map((column, index) => (
+                            <Accordion key={column.id}>
+                                <S.List collapse={isMobile} key={column.id}>
+                                    <AccordionToggle eventKey={index + 1} as={'div'}>
+                                        <ListHeader
+                                            setIsCreateOpen={setIsCreateOpen}
+                                            setSelectedTitle={setSelectedTitle}
+                                            column={column}
+                                        />
+                                    </AccordionToggle>
                                     <Messages column={column} />
 
-                                    <ListBody
-                                        searchTerm={searchTerm}
-                                        uid={currentUser.uid}
-                                        setIsViewOpen={setIsViewOpen}
-                                        addSelectedPosition={addSelectedPosition}
-                                        column={column}
-                                        initialData={initialData}
-                                    />
+                                    {isMobile ? (
+                                        <Accordion.Collapse eventKey={index + 1}>
+                                            <ListBody
+                                                searchTerm={searchTerm}
+                                                uid={currentUser.uid}
+                                                setIsViewOpen={setIsViewOpen}
+                                                addSelectedPosition={addSelectedPosition}
+                                                column={column}
+                                                initialData={initialData}
+                                            />
+                                        </Accordion.Collapse>
+                                    ) : (
+                                        <ListBody
+                                            searchTerm={searchTerm}
+                                            uid={currentUser.uid}
+                                            setIsViewOpen={setIsViewOpen}
+                                            addSelectedPosition={addSelectedPosition}
+                                            column={column}
+                                            initialData={initialData}
+                                        />
+                                    )}
                                 </S.List>
-                            );
-                        })}
+                            </Accordion>
+                        ))}
                 </DragDropContext>
             )}
             <AddPositionModal

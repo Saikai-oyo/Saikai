@@ -7,6 +7,14 @@ export const ListWrapper = styled.div`
     justify-content: space-evenly;
     align-items: center;
     height: inherit;
+
+    @media screen and (max-width: 500px) {
+        & {
+            flex-direction: column;
+            height: auto;
+            overflow-y: auto;
+        }
+    }
 `;
 
 export const List = styled.div`
@@ -14,12 +22,27 @@ export const List = styled.div`
     flex-direction: column;
     padding: 0px;
     width: 260px;
-    height: 35rem;
+    height: ${({ collapse }) => (!collapse ? '35rem' : 'auto')};
+    max-height: ${({ collapse }) => (!collapse ? 'unset' : '35rem')};
     background: #ffffff;
     border: 1px solid #c8c8c8;
     box-sizing: border-box;
     box-shadow: 0px 4px 40px -6px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
+
+    @media screen and (max-width: 500px) {
+        & {
+            margin-bottom: 1rem;
+        }
+
+        & > div.show {
+            overflow-y: auto;
+        }
+    }
+
+    & > div.show {
+        height: 100%;
+    }
 `;
 
 export const ListHeader = styled.div`
