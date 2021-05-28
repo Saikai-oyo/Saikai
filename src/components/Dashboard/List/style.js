@@ -58,6 +58,12 @@ export const ListHeader = styled.div`
     min-height: 39px;
     max-height: 39px;
     background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
+
+    @media screen and (max-width: 500) {
+        & {
+            cursor: pointer;
+        }
+    }
 `;
 
 export const HeaderTypography = styled.span`
