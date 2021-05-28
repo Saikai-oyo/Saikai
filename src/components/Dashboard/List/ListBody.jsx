@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
-import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { Droppable } from 'react-beautiful-dnd';
+import Position from './Position';
 
 const ListBody = ({ column, initialData, searchTerm, uid, addSelectedPosition, setIsViewOpen }) => {
     return (
@@ -34,28 +35,14 @@ const ListBody = ({ column, initialData, searchTerm, uid, addSelectedPosition, s
                                         return (
                                             uid === position.doc.uid &&
                                             column.title === position.doc.status && (
-                                                <Draggable
-                                                    draggableId={position.doc.id}
+                                                <Position
+                                                    key={position.doc.id}
+                                                    doc={position.doc}
+                                                    position={position}
                                                     index={index}
-                                                    key={position.doc.id}>
-                                                    {(provided, snapshot) => (
-                                                        <S.PositionWrapper
-                                                            data-tooltip={position.doc.position}
-                                                            positionTitle={position.doc.status}
-                                                            key={position.doc.id}
-                                                            ref={provided.innerRef}
-                                                            {...provided.draggableProps}
-                                                            {...provided.dragHandleProps}
-                                                            onClick={() => {
-                                                                addSelectedPosition(position);
-                                                                setIsViewOpen(true);
-                                                            }}>
-                                                            <S.PositionHeader>{position.doc.position}</S.PositionHeader>
-                                                            <S.PositionBody>{position.doc.name}</S.PositionBody>
-                                                            <S.PositionFooter>{position.doc.date}</S.PositionFooter>
-                                                        </S.PositionWrapper>
-                                                    )}
-                                                </Draggable>
+                                                    addSelectedPosition={addSelectedPosition}
+                                                    setIsViewOpen={setIsViewOpen}
+                                                />
                                             )
                                         );
                                     }
