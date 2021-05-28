@@ -2,39 +2,38 @@ import React from 'react';
 import * as S from './style';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 
-const ListBody = (props) => {
+const ListBody = ({ column, initialData, searchTerm, uid, addSelectedPosition, setIsViewOpen }) => {
     return (
         <S.ListBody>
-            <Droppable droppableId={props.column.id} type="position" key={props}>
+            <Droppable droppableId={column.id} type="position" key={column.id}>
                 {(provided) => {
                     return (
                         <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
-                            {props.column.positionIds
-
+                            {column.positionIds
                                 .filter((value) => {
-                                    let position = props.initialData.positions[value];
+                                    let position = initialData.positions[value];
 
-                                    if (props.searchTerm === '') {
+                                    if (searchTerm === '') {
                                         return value;
                                     } else if (
                                         position &&
-                                        position.doc.name.toLowerCase().includes(props.searchTerm.toLowerCase())
+                                        position.doc.name.toLowerCase().includes(searchTerm.toLowerCase())
                                     ) {
                                         return value;
                                     } else if (
                                         position &&
-                                        position.doc.position.toLowerCase().includes(props.searchTerm.toLowerCase())
+                                        position.doc.position.toLowerCase().includes(searchTerm.toLowerCase())
                                     ) {
                                         return value;
                                     }
                                 })
                                 .map((positionId, index) => {
-                                    let position = props.initialData.positions[positionId];
+                                    let position = initialData.positions[positionId];
 
                                     if (position) {
                                         return (
-                                            props.uid === position.doc.uid &&
-                                            props.column.title === position.doc.status && (
+                                            uid === position.doc.uid &&
+                                            column.title === position.doc.status && (
                                                 <Draggable
                                                     draggableId={position.doc.id}
                                                     index={index}
@@ -48,8 +47,8 @@ const ListBody = (props) => {
                                                             {...provided.draggableProps}
                                                             {...provided.dragHandleProps}
                                                             onClick={() => {
-                                                                props.addSelectedPosition(position);
-                                                                props.setIsViewOpen(true);
+                                                                addSelectedPosition(position);
+                                                                setIsViewOpen(true);
                                                             }}>
                                                             <S.PositionHeader>{position.doc.position}</S.PositionHeader>
                                                             <S.PositionBody>{position.doc.name}</S.PositionBody>
