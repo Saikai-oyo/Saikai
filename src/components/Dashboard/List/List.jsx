@@ -3,20 +3,21 @@ import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
 import Sort from '../Sort/Sort.jsx';
-import { addIcon, filterIcon } from '../../../assets/icons';
+
 import useKanban from '../../../hooks/useKanban';
+import ListHeader from './ListHeader';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { app } from '../../../config/firebase';
 import * as S from './style.js';
 
 // Context Imports
+
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { PositionsContext } from '../../../contexts/PositionsContext';
+
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
-// props = { searchTerm: ""}
-// List = (props)
 const List = (props = {}) => {
     const searchTerm = props.searchTerm || '';
 
@@ -28,7 +29,6 @@ const List = (props = {}) => {
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [selectedTitle, setSelectedTitle] = useState('');
-    const [isSortOpen, setToggle] = useState(Array(5).fill(false));
 
     const addSelectedPosition = (position) => {
         setSelectedPosition({ data: position.doc, selected: true });
@@ -114,12 +114,6 @@ const List = (props = {}) => {
         app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
         setInitialData(newState);
     };
-    const toggleSort = (index) => {
-        const newState = [...isSortOpen];
-        newState[index] = !newState[index];
-
-        setToggle([...newState]);
-    };
 
     return (
         <S.ListWrapper>
@@ -131,37 +125,14 @@ const List = (props = {}) => {
                         initialData.columns.map((column, index) => {
                             return (
                                 <S.List key={column.id}>
-                                    <S.ListHeader positionTitle={column.title}>
-                                        <S.FilterButton data-tooltip="Sort By">
-                                            {isSortOpen[index] && (
-                                                <Sort
-                                                    title={selectedTitle.title}
-                                                    onClick={() => {
-                                                        toggleSort(index);
-                                                    }}
-                                                />
-                                            )}
-
-                                            <img
-                                                onClick={() => {
-                                                    toggleSort(index);
-                                                    setSelectedTitle(column);
-                                                }}
-                                                src={filterIcon}
-                                                alt="Filter Icon"
-                                            />
-                                        </S.FilterButton>
-                                        <S.HeaderTypography>{column.title}</S.HeaderTypography>
-
-                                        <S.AddButton
-                                            data-tooltip="Add Position"
-                                            onClick={() => {
-                                                setSelectedTitle(column);
-                                                setIsCreateOpen(true);
-                                            }}>
-                                            <img src={addIcon} alt="Add Button" />
-                                        </S.AddButton>
-                                    </S.ListHeader>
+                                    <ListHeader
+                                        setIsCreateOpen={setIsCreateOpen}
+                                        title={selectedTitle.title}
+                                        setSelectedTitle={setSelectedTitle}
+                                        // isSortOpen={isSortOpen}
+                                        column={column}
+                                        index={index}
+                                    />
                                     {information.errorLine && column.title === information.errorLine[0] ? (
                                         information.errorLine[1] === 'bad' ? (
                                             <S.ListMessages message="bad">
@@ -175,7 +146,6 @@ const List = (props = {}) => {
                                     ) : (
                                         ''
                                     )}
-
                                     <S.ListBody>
                                         <Droppable droppableId={column.id} type="position" key={props}>
                                             {(provided) => {

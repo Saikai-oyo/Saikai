@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { PositionsContext } from '../../../contexts/PositionsContext';
 import * as S from './style.js';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -6,10 +6,18 @@ import { PositionHeader } from '../List/style';
 import useKanban from '../../../hooks/useKanban';
 import { app } from '../../../config/firebase';
 
-const Sort = ({ title, onClick }) => {
+const Sort = ({ title, onClick, toggleSort }) => {
     const { currentUser } = useAuth();
     const { positions } = useContext(PositionsContext);
     const { initialData, setInitialData } = useKanban(currentUser.uid);
+
+    useEffect(() => {
+        const addListener = document.addEventListener('click', toggleSort);
+        const removeListener = () => {
+            document.removeEventListener('click', toggleSort);
+        };
+        return removeListener;
+    }, []);
 
     const handleFilter = (title, category, order) => {
         const sortedPositions = positions.data.filter((position) => {
@@ -76,7 +84,7 @@ const Sort = ({ title, onClick }) => {
             .doc(`${title.replace(/\s/g, '')}`)
             .update({ positionIds: ArraySortedPositions });
 
-        onClick();
+        toggleSort();
     };
 
     return (
