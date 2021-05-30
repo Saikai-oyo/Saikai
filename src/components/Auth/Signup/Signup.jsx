@@ -86,7 +86,7 @@ const Signup = () => {
                 error: '',
                 hasError: false,
             });
-        }, 3500);
+        }, 7000);
     };
 
     return (
