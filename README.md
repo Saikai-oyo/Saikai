@@ -58,7 +58,7 @@
 
 ## About The Project
 
-[![Dashboard][product-screenshot]](https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png)
+![product-screenshot](https://user-images.githubusercontent.com/41434778/119908285-ee3eff80-bf5a-11eb-929e-519affb5177c.gif)
 
 400 job applications ➡ 100 interviews ➡ 10 home tasks ➡ 1 contract.
 
@@ -167,7 +167,7 @@ Contributions are what make the open source community such an amazing place to b
 
 ### Branch
 
-Branch naming convention is as following :
+Branch naming convention is as following:
 
 ```
 TYPE-ISSUE_ID-DESCRIPTION
@@ -179,7 +179,19 @@ fix-741-change-localstorage-get-function
 
 ### Pull Request (PR)
 
-Pull Request (PR) title convention is as following :
+Pull Request (PR) title convention is as following:
+
+```
+[TYPE-ISSUE_ID]-DESCRIPTION
+
+example:
+[Feat-45] Add button to login component
+[Fix-114] Change localstorage get function
+```
+
+### Commits
+
+Commit information convention is as following:
 
 ```
 [TYPE-ISSUE_ID]-DESCRIPTION

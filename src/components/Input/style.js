@@ -2,50 +2,50 @@ import styled from 'styled-components';
 import { upArrow, downArrow } from '../../assets/icons';
 
 export const AuthInput = styled.input`
-  padding: 1rem;
-  width: 329.84px;
-  height: 37.6px;
-  background: #fff;
-  border: 1px solid #a5add8;
+    padding: 1rem;
+    width: 329.84px;
+    height: 37.6px;
+    background: #fff;
+    border: 1px solid #a5add8;
 
-  box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
-  border-radius: 4px;
-  outline: none;
+    box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    outline: none;
 
-  &:autofill,
-  &:-webkit-autofill {
-    background-color: #ffffff;
-  }
-
-  &:focus {
-    filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-    border: 1px solid #c282f4;
-  }
-
-  &:invalid {
-    border: 1px solid #fe4c4c;
-    color: #bdbdbd;
-  }
-  &:disabled {
-    border: 1px solid #9e9e9e;
-    color: #bdbdbd;
-  }
-
-  &:hover {
-    border: 1px solid #c282f4;
-  }
-
-  font-weight: 300;
-  font-size: 14px;
-  line-height: 18px;
-  color: #525252;
-
-  @media screen and (max-width: 500px) {
-    & {
-      width: 17rem;
-      height: 3rem;
+    &:autofill,
+    &:-webkit-autofill {
+        background-color: #ffffff;
     }
-  }
+
+    &:focus {
+        filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
+        border: 1px solid #c282f4;
+    }
+
+    &:invalid {
+        border: 1px solid #fe4c4c;
+        color: #bdbdbd;
+    }
+    &:disabled {
+        border: 1px solid #9e9e9e;
+        color: #bdbdbd;
+    }
+
+    &:hover {
+        border: 1px solid #c282f4;
+    }
+
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 18px;
+    color: #525252;
+
+    @media screen and (max-width: 500px) {
+        & {
+            width: 17rem;
+            height: 3rem;
+        }
+    }
 `;
 
 export const PositionsInput = styled.input`
@@ -239,39 +239,39 @@ export const AdvanceInputs = styled.input`
 `;
 
 export const DateInput = styled.input`
-  width: 137px;
-  height: 30px;
-  background: #fff;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-  outline: none;
+    width: 137px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid #a5add8;
+    border-radius: 4px;
+    outline: none;
 
-  &:autofill,
-  &:-webkit-autofill {
-    background-color: #ffffff;
-  }
+    &:autofill,
+    &:-webkit-autofill {
+        background-color: #ffffff;
+    }
 
-  &:focus {
-    filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-    border: 1px solid #c282f4;
-  }
+    &:focus {
+        filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
+        border: 1px solid #c282f4;
+    }
 
-  &:invalid {
-    border: 1px solid #fe4c4c;
-    color: #bdbdbd;
-  }
-  &:disabled {
-    border: 1px solid #9e9e9e;
-    color: #bdbdbd;
-  }
+    &:invalid {
+        border: 1px solid #fe4c4c;
+        color: #bdbdbd;
+    }
+    &:disabled {
+        border: 1px solid #9e9e9e;
+        color: #bdbdbd;
+    }
 
-  &:hover {
-    border: 1px solid #c282f4;
-  }
+    &:hover {
+        border: 1px solid #c282f4;
+    }
 
-  font-weight: 300;
-  line-height: 15px;
-  color: #3f3f3f;
+    font-weight: 300;
+    line-height: 15px;
+    color: #3f3f3f;
 `;
 
 export const StatusInput = styled.select`

@@ -3,14 +3,14 @@ import { addPositionBG } from '../../../assets/images';
 import { upArrow, downArrow } from '../../../assets/icons';
 
 export const BackDrop = styled.div`
-  position: fixed;
-  transition: all 1.3s;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
+    position: fixed;
+    transition: all 1.3s;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 `;
 
 export const ModalWrapper = styled.div`
@@ -49,23 +49,24 @@ export const Header = styled.div`
       display: none;
     }
   }
+
 `;
 
 export const HeaderTitle = styled.span`
-  width: 214px;
-  height: 31px;
-  font-weight: bold;
-  font-size: 25px;
-  line-height: 31px;
-  color: #ffffff;
+    width: 214px;
+    height: 31px;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 31px;
+    color: #ffffff;
 `;
 
 export const ExitBtn = styled.button`
-  width: 17px;
-  height: 18px;
-  outline: none;
-  border: none;
-  background-color: transparent;
+    width: 17px;
+    height: 18px;
+    outline: none;
+    border: none;
+    background-color: transparent;
 `;
 
 export const Body = styled.div`
@@ -151,15 +152,15 @@ export const DateLabel = styled.label`
 `;
 
 export const InputDate = styled.input`
-  width: 8rem;
-  height: 30px;
-  border: 1px solid #a5add8;
-  border-radius: 4px;
-  outline: none;
+    width: 8rem;
+    height: 30px;
+    border: 1px solid #a5add8;
+    border-radius: 4px;
+    outline: none;
 
-  &:focus {
-    border: 2px solid #4c94e5;
-  }
+    &:focus {
+        border: 2px solid #4c94e5;
+    }
 `;
 
 export const InputLineTow = styled.div`

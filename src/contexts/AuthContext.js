@@ -4,96 +4,95 @@ import { UserDetailsContext } from './UserDetailsContext';
 const AuthContext = React.createContext();
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+    return useContext(AuthContext);
 };
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
-  const { setUserDetails } = useContext(UserDetailsContext);
+    const [currentUser, setCurrentUser] = useState();
+    const [loading, setLoading] = useState(true);
+    const { setUserDetails } = useContext(UserDetailsContext);
 
-  /**
-   * @todo: do this!*/
-  const signup = ({ email, password, firstName, lastName }) => {
-    auth.createUserWithEmailAndPassword(email, password).then((resp) => {
-      app.firestore().collection('users').doc(resp.user.uid).set({
-        firstName,
-        lastName,
-      });
-
-      const batch = app.firestore().batch();
-      const initData = [
-        { Applied: { positionIds: [], title: 'Applied' } },
-        { Contract: { positionIds: [], title: 'Contract' } },
-        { Denied: { positionIds: [], title: 'Denied' } },
-        { InProgress: { positionIds: [], title: 'In Progress' } },
-        { ReceivedTask: { positionIds: [], title: 'Received Task' } },
-      ];
-
-      initData.forEach((doc) => {
-        const docRef = app
-          .firestore()
-          .collection('users')
-          .doc(resp.user.uid)
-          .collection('columns')
-          .doc(Object.keys(doc)[0]);
-        batch.set(docRef, Object.values(doc)[0]);
-      });
-      return batch.commit();
-    });
-  };
-
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
-
-  const logout = () => {
-    return auth.signOut();
-  };
-
-  const resetPassword = (email) => {
-    return auth.sendPasswordResetEmail(email);
-  };
-
-  const updatePassword = (password) => {
-    return currentUser.updatePassword(password);
-  };
-
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-      setLoading(false);
-
-      app
-        .firestore()
-        .collection('users')
-        .doc(`${user.uid}`)
-        .get()
-        .then((doc) => {
-          if (doc.exists) {
-            setUserDetails({
-              firstName: doc.data().firstName,
-              lastName: doc.data().lastName,
-              loading: false,
+    /**
+     * @todo: do this!*/
+    const signup = ({ email, password, firstName, lastName }) => {
+        auth.createUserWithEmailAndPassword(email, password).then((resp) => {
+            app.firestore().collection('users').doc(resp.user.uid).set({
+                firstName,
+                lastName,
             });
-          } else {
-            console.error('No doc');
-          }
-        })
-        .catch((err) => console.error(err));
-    });
 
-    return unsubscribe;
-  }, [setUserDetails]);
+            const batch = app.firestore().batch();
+            const initData = [
+                { Applied: { positionIds: [], title: 'Applied' } },
+                { Contract: { positionIds: [], title: 'Contract' } },
+                { Denied: { positionIds: [], title: 'Denied' } },
+                { InProgress: { positionIds: [], title: 'In Progress' } },
+                { ReceivedTask: { positionIds: [], title: 'Received Task' } },
+            ];
 
-  const value = {
-    currentUser,
-    login,
-    signup,
-    logout,
-    resetPassword,
-    updatePassword,
-  };
+            initData.forEach((doc) => {
+                const docRef = app
+                    .firestore()
+                    .collection('users')
+                    .doc(resp.user.uid)
+                    .collection('columns')
+                    .doc(Object.keys(doc)[0]);
+                batch.set(docRef, Object.values(doc)[0]);
+            });
+            return batch.commit();
+        });
+    };
 
-  return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
+    const login = (email, password) => {
+        return auth.signInWithEmailAndPassword(email, password);
+    };
+
+    const logout = () => {
+        return auth.signOut();
+    };
+
+    const resetPassword = (email) => {
+        return auth.sendPasswordResetEmail(email);
+    };
+
+    const updatePassword = (password) => {
+        return currentUser.updatePassword(password);
+    };
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            setCurrentUser(user);
+            setLoading(false);
+
+            app.firestore()
+                .collection('users')
+                .doc(`${user.uid}`)
+                .get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        setUserDetails({
+                            firstName: doc.data().firstName,
+                            lastName: doc.data().lastName,
+                            loading: false,
+                        });
+                    } else {
+                        console.error('No doc');
+                    }
+                })
+                .catch((err) => console.error(err));
+        });
+
+        return unsubscribe;
+    }, [setUserDetails]);
+
+    const value = {
+        currentUser,
+        login,
+        signup,
+        logout,
+        resetPassword,
+        updatePassword,
+    };
+
+    return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
 };

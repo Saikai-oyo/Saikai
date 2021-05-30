@@ -13,84 +13,83 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { v4 as uuidv4 } from 'uuid';
 
 const AddPositionModal = ({ selectedTitle, open, onClose }) => {
-  const [title, setTitle] = useState(selectedTitle);
-  const [advance, setAdvance] = useState(false);
-  const [positionForm, setPositionForm] = useState([]);
-  const { setInformation } = useContext(MessagesContext);
+    const [title, setTitle] = useState(selectedTitle);
+    const [advance, setAdvance] = useState(false);
+    const [positionForm, setPositionForm] = useState([]);
+    const { setInformation } = useContext(MessagesContext);
 
-  useEffect(() => {
-    setTitle(selectedTitle.title);
-  }, [selectedTitle]);
+    useEffect(() => {
+        setTitle(selectedTitle.title);
+    }, [selectedTitle]);
 
-  const { currentUser } = useAuth();
+    const { currentUser } = useAuth();
 
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
-
-    setInformation({
-      errorLine: null,
-      error: '',
-      message: '',
-      haveError: false,
-      haveMessage: false,
-    });
-    try {
-      const id = uuidv4();
-      await app
-        .firestore()
-        .collection('positions')
-        .doc(`${id}`)
-        .set({
-          uid: currentUser.uid,
-          id: id,
-          position: positionForm.position ? positionForm.position : 'Unknown Position',
-          name: positionForm.name ? positionForm.name : 'Unknown Company',
-          city: positionForm.city ? positionForm.city : '',
-          // company_url: positionForm.company_url ? positionForm.company_url : '',
-          position_url: positionForm.position_url ? positionForm.position_url : '',
-          hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
-          hr_name: positionForm.hr_name ? positionForm.hr_name : '',
-          status: positionForm.status ? positionForm.status : title,
-          description: positionForm.description ? positionForm.description : '',
-          appliedBy: positionForm.appliedBy ? positionForm.appliedBy : '',
-          date: positionForm.date ? positionForm.date : formatDate(todayDate()),
-          createdDate: new Date().getTime(),
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        setInformation({
+            errorLine: null,
+            error: '',
+            message: '',
+            haveError: false,
+            haveMessage: false,
         });
+        try {
+            const id = uuidv4();
+            await app
+                .firestore()
+                .collection('positions')
+                .doc(`${id}`)
+                .set({
+                    uid: currentUser.uid,
+                    id: id,
+                    position: positionForm.position ? positionForm.position : 'Unknown Position',
+                    name: positionForm.name ? positionForm.name : 'Unknown Company',
+                    city: positionForm.city ? positionForm.city : '',
+                    // company_url: positionForm.company_url ? positionForm.company_url : '',
+                    position_url: positionForm.position_url ? positionForm.position_url : '',
+                    hr_mail: positionForm.hr_mail ? positionForm.hr_mail : '',
+                    hr_name: positionForm.hr_name ? positionForm.hr_name : '',
+                    status: positionForm.status ? positionForm.status : title,
+                    description: positionForm.description ? positionForm.description : '',
+                    appliedBy: positionForm.appliedBy ? positionForm.appliedBy : '',
+                    date: positionForm.date ? positionForm.date : formatDate(todayDate()),
+                    createdDate: new Date().getTime(),
+                });
 
-      selectedTitle.positionIds.push(id);
-      await app
-        .firestore()
-        .collection('users')
-        .doc(`${currentUser.uid}`)
-        .collection('columns')
-        .doc(`${selectedTitle.id}`)
-        .update(selectedTitle);
+            selectedTitle.positionIds.push(id);
+            await app
+                .firestore()
+                .collection('users')
+                .doc(`${currentUser.uid}`)
+                .collection('columns')
+                .doc(`${selectedTitle.id}`)
+                .update(selectedTitle);
 
-      setInformation({
-        errorLine: [title, 'good'],
-        message: 'Successfully Added',
-        haveMessage: true,
-      });
-      setPositionForm(null);
-    } catch (error) {
-      setInformation({
-        error: error.message,
-        hasError: true,
-      });
-      console.error(error);
-    }
-    onClose();
-    setAdvance(false);
-    setTimeout(() => {
-      setInformation({
-        errorLine: null,
-        error: '',
-        message: '',
-        haveError: false,
-        haveMessage: false,
-      });
-    }, 3500);
-  };
+            setInformation({
+                errorLine: [title, 'good'],
+                message: 'Successfully Added',
+                haveMessage: true,
+            });
+            setPositionForm(null);
+        } catch (error) {
+            setInformation({
+                error: error.message,
+                hasError: true,
+            });
+            console.error(error);
+        }
+        onClose();
+        setAdvance(false);
+        setTimeout(() => {
+            setInformation({
+                errorLine: null,
+                error: '',
+                message: '',
+                haveError: false,
+                haveMessage: false,
+            });
+        }, 3500);
+    };
 
   if (!open) return null;
   return ReactDOM.createPortal(
