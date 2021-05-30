@@ -62,9 +62,6 @@ const Login = () => {
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
                             <AuthInput type="text" placeholder="Email" name="email" />
-                            <SmallError>
-                                {information.hasError && information.errorCode === 0 && information.error}
-                            </SmallError>
                             <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
                             <AuthInput type="password" placeholder="Password" name="password" />
                         </S.InputsWrapper>
