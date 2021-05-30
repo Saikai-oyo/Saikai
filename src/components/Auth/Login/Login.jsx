@@ -8,6 +8,7 @@ import SmallError from '../../Errors/SmallError';
 import BigError from '../../Errors/BigError';
 import { googleIcon, facebookIcon } from '../../../assets/icons/';
 import * as S from './style';
+import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
 const Login = () => {
     const { information, setInformation } = useContext(MessagesContext);
@@ -51,9 +52,7 @@ const Login = () => {
 
     return (
         <div>
-            <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/Saikai/">
-                <img src={logo} width="265" height="80" alt="Saikai" />
-            </a>
+            <GeneralNav />
             <S.Wrapper>
                 <S.LoginContainer>
                     <S.Header>Welcome!</S.Header>
@@ -71,14 +70,20 @@ const Login = () => {
                         </S.InputsWrapper>
                         <S.LogIn type="submit">Log in</S.LogIn>
                         <S.LoginsWrappers>
-                            <S.LoginWith login="facebook">
-                                Sign in with{' '}
-                                <img style={{ paddingLeft: '.5rem' }} src={facebookIcon} alt="FaceBook Icon" />
-                            </S.LoginWith>
-                            <S.LoginWith login="google">
-                                Sign in with <img style={{ paddingLeft: '.5rem' }} src={googleIcon} alt="GOOGLE Icon" />
-                            </S.LoginWith>
+                            <div>
+                                <S.LoginWith login="facebook">
+                                    Sign in with{' '}
+                                    <img style={{ paddingLeft: '.5rem' }} src={facebookIcon} alt="FaceBook Icon" />
+                                </S.LoginWith>
+                            </div>
+                            <div>
+                                <S.LoginWith login="google">
+                                    Sign in with{' '}
+                                    <img style={{ paddingLeft: '.5rem' }} src={googleIcon} alt="GOOGLE Icon" />
+                                </S.LoginWith>
+                            </div>
                         </S.LoginsWrappers>
+
                         <S.ForgotPassword>
                             <Link
                                 to="/forgot-password"
