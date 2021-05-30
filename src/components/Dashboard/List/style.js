@@ -175,6 +175,10 @@ export const PositionHeader = styled.p`
     order: 0;
     flex-grow: 0;
     margin: 3px 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
     @media screen and (max-width: 991px) {
         & {
             font-size: smaller;
