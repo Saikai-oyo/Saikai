@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from '../Navbar/Navbar';
+import DashboardNav from '../../Navbar/DashboardNav/DashboardNav';
 import List from '../List/List';
 import { app } from '../../../config/firebase';
 import { PositionsContext } from '../../../contexts/PositionsContext';
@@ -31,7 +31,7 @@ const Homepage = () => {
 
     return (
         <S.HomepageWrapper>
-            <Navbar onSearch={setSearchTerm} />
+            <DashboardNav onSearch={setSearchTerm} />
             <List searchTerm={searchTerm} />
         </S.HomepageWrapper>
     );
