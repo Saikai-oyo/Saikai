@@ -3,8 +3,6 @@ import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
-import logo from '../../../assets/logos/logo.svg';
-import SmallError from '../../Errors/SmallError';
 import BigError from '../../Errors/BigError';
 import { googleIcon, facebookIcon } from '../../../assets/icons/';
 import * as S from './style';
