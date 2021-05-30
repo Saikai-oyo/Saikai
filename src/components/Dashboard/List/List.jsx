@@ -1,262 +1,100 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ViewPositionModal from '../../Modals/ViewPosition/ViewPositionModal';
 import AddPositionModal from '../../Modals/AddPosition/AddPositionModal';
 import Spinner from '../../Spinner/Spinner';
-import Sort from '../Sort/Sort.jsx';
-import { addIcon, filterIcon } from '../../../assets/icons';
+import onDragEnd from '../../../Utils/Dnd';
+import { useMediaQuery } from 'react-responsive';
+import { Accordion, AccordionToggle } from 'react-bootstrap';
 import useKanban from '../../../hooks/useKanban';
-import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import ListHeader from './ListHeader';
+import ListBody from './ListBody';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { app } from '../../../config/firebase';
 import * as S from './style.js';
+import Messages from '../../Messages/Messages';
 
 // Context Imports
+
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
 import { PositionsContext } from '../../../contexts/PositionsContext';
-import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 
-// props = { searchTerm: ""}
-// List = (props)
 const List = (props = {}) => {
     const searchTerm = props.searchTerm || '';
 
     const { positions } = useContext(PositionsContext);
     const { setSelectedPosition } = useContext(SelectedPositionContext);
-    const { information } = useContext(MessagesContext);
     const { currentUser } = useAuth();
 
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [selectedTitle, setSelectedTitle] = useState('');
-    const [isSortOpen, setToggle] = useState(Array(5).fill(false));
+    const [isCollapse, setIsCollapse] = useState(null);
 
+    const handleMediaQueryChange = () => {
+        setIsCollapse(!isMobile);
+    };
     const addSelectedPosition = (position) => {
         setSelectedPosition({ data: position.doc, selected: true });
     };
     const { initialData, setInitialData } = useKanban(currentUser.uid);
 
-    const onDragEnd = (result) => {
-        const { destination, source, draggableId } = result;
+    const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
-        if (!destination) return;
-
-        const startColumn = initialData.columns.find((col) => col.id === source.droppableId);
-        const startColumnIndex = initialData.columns.findIndex((col) => col.id === source.droppableId);
-        const endColumn = initialData.columns.find((col) => col.id === destination.droppableId);
-        const endColumnIndex = initialData.columns.findIndex((col) => col.id === destination.droppableId);
-
-        if (startColumn === endColumn) {
-            const newPositionIds = Array.from(endColumn.positionIds);
-
-            newPositionIds.splice(source.index, 1);
-            newPositionIds.splice(destination.index, 0, draggableId);
-
-            const newColumn = {
-                ...endColumn,
-                positionIds: newPositionIds,
-            };
-
-            const newState = {
-                ...initialData,
-                columns: [...initialData.columns],
-            };
-
-            newState.columns[endColumnIndex] = newColumn;
-
-            app.firestore()
-                .collection('users')
-                .doc(`${currentUser.uid}`)
-                .collection('columns')
-                .doc(`${startColumn.id}`)
-                .update({ positionIds: newPositionIds });
-
-            setInitialData(newState);
-
-            return;
-        }
-
-        const startPositionIDs = Array.from(startColumn.positionIds);
-        startPositionIDs.splice(source.index, 1);
-        const newStart = {
-            ...startColumn,
-            taskIds: startPositionIDs,
-        };
-
-        const finishPositionIDs = Array.from(endColumn.positionIds);
-        finishPositionIDs.splice(destination.index, 0, draggableId);
-        const newFinish = {
-            ...endColumn,
-            taskIds: finishPositionIDs,
-        };
-
-        const newState = {
-            ...initialData,
-            columns: [...initialData.columns],
-        };
-
-        newState.columns[startColumnIndex] = newStart;
-        newState.columns[endColumnIndex] = newFinish;
-
-        app.firestore()
-            .collection('users')
-            .doc(`${currentUser.uid}`)
-            .collection('columns')
-            .doc(`${startColumn.id}`)
-            .update({ positionIds: startPositionIDs });
-
-        app.firestore()
-            .collection('users')
-            .doc(`${currentUser.uid}`)
-            .collection('columns')
-            .doc(`${endColumn.id}`)
-            .update({ positionIds: finishPositionIDs });
-
-        app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
-        setInitialData(newState);
-    };
-    const toggleSort = (index) => {
-        const newState = [...isSortOpen];
-        newState[index] = !newState[index];
-
-        setToggle([...newState]);
-    };
+    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined, handleMediaQueryChange);
+    useEffect(() => {}, [isMobile]);
 
     return (
         <S.ListWrapper>
             {positions.loading ? (
                 <Spinner />
             ) : (
-                <DragDropContext onDragEnd={onDragEnd}>
+                <DragDropContext onDragEnd={endDragHandler}>
                     {initialData &&
-                        initialData.columns.map((column, index) => {
-                            return (
-                                <S.List key={column.id}>
-                                    <S.ListHeader positionTitle={column.title}>
-                                        <S.FilterButton data-tooltip="Sort By">
-                                            {isSortOpen[index] && (
-                                                <Sort
-                                                    title={selectedTitle.title}
-                                                    onClick={() => {
-                                                        toggleSort(index);
-                                                    }}
-                                                />
-                                            )}
+                        initialData.columns.map((column, index) => (
+                            <Accordion key={column.id}>
+                                <S.List collapse={isMobile} key={column.id}>
+                                    <AccordionToggle eventKey={index + 1} as={'div'}>
+                                        <ListHeader
+                                            setIsCreateOpen={setIsCreateOpen}
+                                            setSelectedTitle={setSelectedTitle}
+                                            isMobile={isMobile}
+                                            column={column}
+                                        />
+                                    </AccordionToggle>
 
-                                            <img
-                                                onClick={() => {
-                                                    toggleSort(index);
-                                                    setSelectedTitle(column);
-                                                }}
-                                                src={filterIcon}
-                                                alt="Filter Icon"
+                                    <Messages column={column} />
+
+                                    {isMobile ? (
+                                        <Accordion.Collapse eventKey={index + 1}>
+                                            <ListBody
+                                                setIsCreateOpen={setIsCreateOpen}
+                                                setSelectedTitle={setSelectedTitle}
+                                                isMobile={isMobile}
+                                                searchTerm={searchTerm}
+                                                uid={currentUser.uid}
+                                                setIsViewOpen={setIsViewOpen}
+                                                addSelectedPosition={addSelectedPosition}
+                                                column={column}
+                                                initialData={initialData}
                                             />
-                                        </S.FilterButton>
-                                        <S.HeaderTypography>{column.title}</S.HeaderTypography>
-
-                                        <S.AddButton
-                                            data-tooltip="Add Position"
-                                            onClick={() => {
-                                                setSelectedTitle(column);
-                                                setIsCreateOpen(true);
-                                            }}>
-                                            <img src={addIcon} alt="Add Button" />
-                                        </S.AddButton>
-                                    </S.ListHeader>
-                                    {information.errorLine && column.title === information.errorLine[0] ? (
-                                        information.errorLine[1] === 'bad' ? (
-                                            <S.ListMessages message="bad">
-                                                <span>{information.message}</span>
-                                            </S.ListMessages>
-                                        ) : (
-                                            <S.ListMessages message="good">
-                                                <span>{information.message}</span>
-                                            </S.ListMessages>
-                                        )
+                                        </Accordion.Collapse>
                                     ) : (
-                                        ''
+                                        <ListBody
+                                            setIsCreateOpen={setIsCreateOpen}
+                                            setSelectedTitle={setSelectedTitle}
+                                            isMobile={isMobile}
+                                            searchTerm={searchTerm}
+                                            uid={currentUser.uid}
+                                            setIsViewOpen={setIsViewOpen}
+                                            addSelectedPosition={addSelectedPosition}
+                                            column={column}
+                                            initialData={initialData}
+                                        />
                                     )}
-
-                                    <S.ListBody>
-                                        <Droppable droppableId={column.id} type="position" key={props}>
-                                            {(provided) => {
-                                                return (
-                                                    <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
-                                                        {column.positionIds
-                                                            .filter((value) => {
-                                                                let position = initialData.positions[value];
-                                                                if (searchTerm === '') {
-                                                                    return value;
-                                                                } else if (
-                                                                    position &&
-                                                                    position.doc.name
-                                                                        .toLowerCase()
-                                                                        .includes(searchTerm.toLowerCase())
-                                                                ) {
-                                                                    return value;
-                                                                } else if (
-                                                                    position &&
-                                                                    position.doc.position
-                                                                        .toLowerCase()
-                                                                        .includes(searchTerm.toLowerCase())
-                                                                ) {
-                                                                    return value;
-                                                                }
-                                                            })
-                                                            .map((positionId, index) => {
-                                                                let position = initialData.positions[positionId];
-
-                                                                if (position) {
-                                                                    return (
-                                                                        currentUser.uid === position.doc.uid &&
-                                                                        column.title === position.doc.status && (
-                                                                            <Draggable
-                                                                                draggableId={position.doc.id}
-                                                                                index={index}
-                                                                                key={position.doc.id}>
-                                                                                {(provided, snapshot) => (
-                                                                                    <S.PositionWrapper
-                                                                                        data-tooltip={
-                                                                                            position.doc.position
-                                                                                        }
-                                                                                        positionTitle={
-                                                                                            position.doc.status
-                                                                                        }
-                                                                                        key={position.doc.id}
-                                                                                        ref={provided.innerRef}
-                                                                                        {...provided.draggableProps}
-                                                                                        {...provided.dragHandleProps}
-                                                                                        onClick={() => {
-                                                                                            addSelectedPosition(
-                                                                                                position,
-                                                                                            );
-                                                                                            setIsViewOpen(true);
-                                                                                        }}>
-                                                                                        <S.PositionHeader>
-                                                                                            {position.doc.position}
-                                                                                        </S.PositionHeader>
-                                                                                        <S.PositionBody>
-                                                                                            {position.doc.name}
-                                                                                        </S.PositionBody>
-                                                                                        <S.PositionFooter>
-                                                                                            {position.doc.date}
-                                                                                        </S.PositionFooter>
-                                                                                    </S.PositionWrapper>
-                                                                                )}
-                                                                            </Draggable>
-                                                                        )
-                                                                    );
-                                                                }
-                                                            })}
-
-                                                        {provided.placeholder}
-                                                    </S.InnerList>
-                                                );
-                                            }}
-                                        </Droppable>
-                                    </S.ListBody>
                                 </S.List>
-                            );
-                        })}
+                            </Accordion>
+                        ))}
                 </DragDropContext>
             )}
             <AddPositionModal

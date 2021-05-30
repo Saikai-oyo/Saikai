@@ -14,3 +14,5 @@ export { default as googleIcon } from './googleIcon.svg';
 export { default as facebookIcon } from './facebookIcon.svg';
 export { default as filterIcon } from './filterIcon.svg';
 export { default as goBack } from './goBack.svg';
+export { default as blackAdd } from './blackAdd.svg';
+export { default as blackFilter } from './blackFilter.svg';
