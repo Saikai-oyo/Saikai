@@ -9,6 +9,11 @@ const SFooter = styled.div`
     font-weight: 300;
     font-size: 12px;
     line-height: 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
     &,
     & > a {
         color: #353535;
