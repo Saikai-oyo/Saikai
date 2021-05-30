@@ -14,6 +14,12 @@ export const SBigError = styled.span`
     color: #692020;
     border-radius: 0;
     background-color: ${({ show }) => show && '#ffbdbd'};
+
+    @media screen and (max-width: 500px) {
+        & {
+            margin: 1rem 20%;
+        }
+    }
 `;
 const BigError = ({ children, show }) => {
     return <SBigError show={show}>{children}</SBigError>;

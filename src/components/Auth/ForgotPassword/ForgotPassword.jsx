@@ -4,6 +4,7 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
+import BigError from '../../Errors/BigError';
 
 import * as S from './style';
 
@@ -17,11 +18,13 @@ const ForgotPassword = () => {
 
         if (e.target[0].value === 'demo@saikai.com') {
             setInformation({
+                errorCode: 0,
                 error: 'Can not reset Demo password! 😉',
                 hasError: true,
             });
             return setTimeout(() => {
                 setInformation({
+                    errorCode: null,
                     error: '',
                     hasError: false,
                 });
@@ -37,6 +40,7 @@ const ForgotPassword = () => {
             history.push('/login');
         } catch (error) {
             setInformation({
+                errorCode: 0,
                 error:
                     error.code === 'auth/invalid-email'
                         ? 'Oops! Wrong email format.'
@@ -53,7 +57,7 @@ const ForgotPassword = () => {
                     error: '',
                     hasError: false,
                 });
-            }, 2500);
+            }, 7000);
         }
     };
 
@@ -63,11 +67,7 @@ const ForgotPassword = () => {
             <S.Wrapper>
                 <S.ResetPassContainer>
                     <S.Header>Reset Password</S.Header>
-                    {information.hasError && (
-                        <div className="alert alert-danger" role="alert">
-                            {information.error}
-                        </div>
-                    )}
+                    <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>

@@ -4,6 +4,7 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
+import BigError from '../../Errors/BigError';
 
 import * as S from './style';
 
@@ -17,12 +18,13 @@ const UpdateProfile = () => {
 
         if (currentUser.email === 'demo@saikai.com') {
             setInformation({
+                errorCode: 0,
                 error: 'Can not update Demo password! 😉',
                 hasError: true,
             });
             return setTimeout(() => {
                 setInformation({
-                    ...information,
+                    errorCode: null,
                     error: '',
                     hasError: false,
                 });
@@ -31,31 +33,33 @@ const UpdateProfile = () => {
 
         if (e.target[0].value !== e.target[1].value) {
             setInformation({
+                errorCode: 0,
                 error: 'Passwords do not match!',
                 hasError: true,
             });
             return setTimeout(() => {
                 setInformation({
-                    ...information,
+                    errorCode: null,
                     error: '',
                     hasError: false,
                 });
-            }, 2500);
+            }, 7000);
         }
 
         if (!e.target[0].value || !e.target[1].value) {
             setInformation({
+                errorCode: 0,
                 error: 'Must fill password!',
                 hasError: true,
             });
 
             return setTimeout(() => {
                 setInformation({
-                    ...information,
+                    errorCode: null,
                     error: '',
                     hasError: false,
                 });
-            }, 2500);
+            }, 7000);
         }
 
         try {
@@ -63,17 +67,18 @@ const UpdateProfile = () => {
             history.push('/profile');
         } catch (error) {
             setInformation({
+                errorCode: 0,
                 error: error.message,
                 hasError: true,
             });
             console.error(error);
             setTimeout(() => {
                 setInformation({
-                    ...information,
+                    errorCode: null,
                     error: '',
                     hasError: false,
                 });
-            }, 2500);
+            }, 7000);
         }
     };
 
@@ -88,11 +93,12 @@ const UpdateProfile = () => {
                         </Link>
                     </div>
                     <S.Header>Update Password</S.Header>
-                    {information.hasError && (
+                    <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
+                    {/* {information.hasError && (
                         <div className="alert alert-danger" role="alert">
                             {information.error}
                         </div>
-                    )}
+                    )} */}
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
