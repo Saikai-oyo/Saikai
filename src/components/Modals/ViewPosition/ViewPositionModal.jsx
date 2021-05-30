@@ -253,12 +253,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                                     Close
                                 </S.CloseButton>
 
-                                <div
-                                    style={{
-                                        width: '6rem',
-                                        display: 'flex',
-                                        justifyContent: 'space-between',
-                                    }}>
+                                <S.IconsEditModeWrapper edit={edit}>
                                     <S.IconsBtn
                                         icon="delete"
                                         onClick={() => {
@@ -273,7 +268,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                                         type="button"
                                         onClick={() => handleEdit()}
                                     />
-                                </div>
+                                </S.IconsEditModeWrapper>
                             </S.ButtonsWrapper>
                         ) : (
                             <S.ButtonsWrapper edit={edit}>

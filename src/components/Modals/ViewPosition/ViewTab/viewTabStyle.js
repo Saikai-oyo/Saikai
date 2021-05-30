@@ -8,11 +8,26 @@ export const Label = styled.label`
     line-height: 13px;
     color: #9e9e9e;
     margin: 0;
+
+    @media screen and (max-width: 625px) {
+        & {
+            font-weight: 600;
+            color: black;
+        }
+    }
 `;
 
 export const ViewPositionWrapper = styled.div`
     ${({ viewTab }) => (viewTab ? 'display: flex;opacity: 1;flex-direction: column;' : 'display: none;opacity: 0;')}
     margin: 0px 45px;
+    @media screen and (max-width: 625px) {
+        & {
+            flex-direction: column;
+            font-weight: 600;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+    }
 `;
 
 export const WrapperDate = styled.div`
@@ -25,6 +40,12 @@ export const WrapperDate = styled.div`
     width: max-content;
     height: 25px;
     margin: ${({ edit }) => (edit ? '0px 0px 21px 342px' : '0px 0px 21px 336px')};
+
+    @media screen and (max-width: 625px) {
+        & {
+            margin: 0px auto 21px auto;
+        }
+    }
 `;
 export const DateLabel = styled.label`
     font-style: normal;
@@ -51,11 +72,25 @@ export const ViewLineOne = styled.div`
     width: ${({ edit }) => (edit ? 'auto' : '481px')};
     height: 31px;
     margin: 0px ${({ edit }) => (edit ? '-3px' : '106px')} 28px 0px;
+
+    @media screen and (max-width: 625px) {
+        & {
+            flex-direction: column;
+            font-weight: 600;
+            height: 100%;
+            margin: 0;
+        }
+    }
 `;
 
 export const PositionGroup = styled.div`
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 625px) {
+        & {
+            margin-bottom: 3rem;
+        }
+    }
 `;
 
 export const PositionText = styled.span`
@@ -120,6 +155,15 @@ export const ViewLineTwo = styled.div`
         display: inline-block;
         width: 20rem;
     }
+
+    @media screen and (max-width: 625px) {
+        & {
+            flex-direction: column;
+            font-weight: 600;
+            height: 100%;
+            margin: 0;
+        }
+    }
 `;
 
 export const ViewLineThree = styled.div`
@@ -129,6 +173,16 @@ export const ViewLineThree = styled.div`
     width: 369px;
     height: 85px;
     margin: ${({ edit }) => (edit ? '0 159px 44px 0px' : '0px 159px 44px 0px')};
+
+    @media screen and (max-width: 625px) {
+        & {
+            flex-direction: column;
+            font-weight: 600;
+            margin: 0;
+            height: 100%;
+            flex-direction: column;
+        }
+    }
 `;
 
 export const GroupWrapper = styled.div`
@@ -137,4 +191,12 @@ export const GroupWrapper = styled.div`
     justify-content: space-between;
     margin-right: ${({ edit }) => (edit ? '1rem' : '13px')};
     ${({ edit }) => edit && 'height: 6.5rem;'}
+
+    @media screen and (max-width: 625px) {
+        & {
+            font-weight: 600;
+            height: 100%;
+            margin: 0;
+        }
+    }
 `;

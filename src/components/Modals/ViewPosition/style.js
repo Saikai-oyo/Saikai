@@ -27,6 +27,15 @@ export const ModalWrapper = styled.div`
     background-image: url(${ViewModalBG});
     background-repeat: no-repeat;
     background-position: right bottom;
+
+    @media screen and (max-width: 625px) {
+        & {
+            width: 100%;
+            border: 3px solid #a5add8;
+            border-radius: 8px;
+            height: 100%;
+        }
+    }
 `;
 
 export const ExitBtn = styled.button`
@@ -36,17 +45,37 @@ export const ExitBtn = styled.button`
     outline: none;
     border: none;
     background-color: transparent;
+    @media screen and (max-width: 625px) {
+        & {
+            display: none;
+        }
+    }
 `;
 
 export const Body = styled.div`
     width: 100%;
     height: 410px;
+
+    @media screen and (max-width: 625px) {
+        & {
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 100%;
+            padding: 1rem;
+            max-height: unset;
+        }
+    }
 `;
 
 export const Tabs = styled.div`
     display: flex;
     flex-direction: row;
     margin: 7px 19px 21px 45px;
+    @media screen and (max-width: 625px) {
+        & {
+            margin: 7px auto 21px auto;
+        }
+    }
 `;
 
 export const DescriptionTab = styled.button`
@@ -62,6 +91,17 @@ export const DescriptionTab = styled.button`
     font-size: 18px;
     line-height: 23px;
     color: ${({ descriptionTab }) => (descriptionTab ? '#ffffff' : '#353535')};
+
+    @media screen and (max-width: 625px) {
+        & {
+            width: 90vw;
+            height: 75px;
+            margin-right: 1rem;
+            border-radius: 8px;
+            font-size: 25px;
+            line-height: 33px;
+        }
+    }
 `;
 
 export const ViewTab = styled.button`
@@ -76,6 +116,16 @@ export const ViewTab = styled.button`
     font-size: 18px;
     line-height: 23px;
     color: ${({ viewTab }) => (viewTab ? '#ffffff' : '#353535')};
+
+    @media screen and (max-width: 625px) {
+        & {
+            height: 75px;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 25px;
+            line-height: 33px;
+        }
+    }
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -83,6 +133,13 @@ export const ButtonsWrapper = styled.div`
     flex-direction: row;
     justify-content: space-between;
     margin: ${({ edit }) => (edit ? '40px 245px 0px 45px' : '0px 56px 0px 45px')};
+
+    @media screen and (max-width: 625px) {
+        & {
+            margin: 1rem 0;
+            ${({ edit }) => (edit ? 'flex-direction: row;' : 'flex-direction: column-reverse')}
+        }
+    }
 `;
 
 export const CloseButton = styled.button`
@@ -101,6 +158,25 @@ export const CloseButton = styled.button`
     color: #5f50e6;
     margin-right: 5px;
     background-color: transparent;
+
+    @media screen and (max-width: 625px) {
+        & {
+            height: 75px;
+            width: 100%;
+        }
+    }
+`;
+export const IconsEditModeWrapper = styled.div`
+    display: flex;
+    width: 6rem;
+    justify-content: space-between;
+
+    @media screen and (max-width: 625px) {
+        & {
+            height: 3rem;
+            width: 100%;
+        }
+    }
 `;
 
 export const IconsBtn = styled.button`
@@ -138,4 +214,11 @@ export const SubmitButton = styled.button`
     line-height: 23px;
     color: #ffffff;
     border: none;
+
+    @media screen and (max-width: 625px) {
+        & {
+            height: 75px;
+            width: 100%;
+        }
+    }
 `;
