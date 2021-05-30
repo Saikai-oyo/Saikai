@@ -83,10 +83,13 @@ export const PositionsInput = styled.input`
     border: 1px solid #c282f4;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       height: 3rem;
+    }
+    &::placeholder {
+      color: transparent;
     }
   }
 `;
@@ -128,10 +131,13 @@ export const DescriptionInput = styled.textarea`
   line-height: 15px;
   color: #3f3f3f;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       height: 8rem;
+    }
+    &::placeholder {
+      color: transparent;
     }
   }
 `;
@@ -173,10 +179,13 @@ export const LinkInput = styled.input`
   line-height: 15px;
   color: #3f3f3f;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       height: 3rem;
+    }
+    &::placeholder {
+      color: transparent;
     }
   }
 `;
@@ -218,10 +227,13 @@ export const AdvanceInputs = styled.input`
   line-height: 15px;
   color: #3f3f3f;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       height: 3rem;
+    }
+    &::placeholder {
+      color: transparent;
     }
   }
 `;
@@ -308,7 +320,7 @@ export const StatusInput = styled.select`
     border: 1px solid #c282f4;
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       height: 3rem;

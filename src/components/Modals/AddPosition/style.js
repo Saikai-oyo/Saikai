@@ -25,12 +25,12 @@ export const ModalWrapper = styled.div`
   z-index: 1000;
   transform: translate(-50%, -50%);
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
-      width: 90%;
+      width: 100%;
       border: 3px solid #a5add8;
       border-radius: 8px;
-      height: 80vh;
+      height: 100%;
     }
   }
 `;
@@ -44,7 +44,7 @@ export const Header = styled.div`
   width: 621px;
   height: 55px;
   background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       display: none;
     }
@@ -76,7 +76,7 @@ export const Body = styled.div`
   max-height: ${({ advance }) => (advance ? 'auto' : '453px')};
   transition: all 0.3s;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       overflow-y: auto;
       overflow-x: hidden;
@@ -92,7 +92,7 @@ export const HiddenLabel = styled.label`
   visibility: hidden;
   opacity: 0;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       display: block;
       visibility: visible;
@@ -107,7 +107,7 @@ export const InputLineOne = styled.div`
   justify-content: space-between;
   padding: 31px 50px 21px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -126,7 +126,7 @@ export const Date = styled.div`
   padding: 0px;
   width: min-content;
   height: 30px;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       padding: 1rem 0 0 0;
       margin-bottom: 1rem;
@@ -143,7 +143,7 @@ export const DateLabel = styled.label`
   margin: 0 1rem 0 0;
   white-space: nowrap;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       font-weight: 500;
     }
@@ -168,7 +168,7 @@ export const InputLineTow = styled.div`
   justify-content: space-between;
   padding: 0px 320px 20px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -184,7 +184,7 @@ export const InputLineThree = styled.div`
   justify-content: space-between;
   padding: 0px 40px 20px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -200,7 +200,7 @@ export const InputLineFour = styled.div`
   justify-content: space-between;
   padding: 0px 391px ${({ advance }) => (advance ? '31px' : '58px')} 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -216,7 +216,7 @@ export const InputLineFive = styled.div`
   justify-content: space-between;
   margin: 0px 185px 0px 40px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -243,10 +243,12 @@ export const SubmitButton = styled.button`
   color: #ffffff;
   border: 1px solid #5f50e6;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
       margin-bottom: 0.5rem;
+      font-size: 25px;
+      height: 55px;
     }
   }
 `;
@@ -269,9 +271,11 @@ export const CancelButton = styled.button`
   margin-right: 5px;
   background-color: transparent;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       width: 100%;
+      font-size: 25px;
+      height: 55px;
     }
   }
 `;
@@ -281,7 +285,7 @@ export const InputLineSix = styled.div`
   flex-direction: row;
   padding: 0px 26px 26px 495px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       padding: 0;
     }
@@ -317,7 +321,7 @@ export const InputAdvancedGroup = styled.div`
       ? `display: flex;flex-direction: column;padding: 0px 180px 63px 40px;visibility:visible; opacity:1;`
       : `display:none; opacity:0; visibility:hidden;`}
   transition: all 7s;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       font-weight: 600;
       padding: 0;
@@ -330,7 +334,7 @@ export const InputAdvancedLineOne = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -348,7 +352,7 @@ export const InputAdvancedLineTwo = styled.div`
   justify-content: space-between;
   padding: 29px 0px 29px 0px;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
@@ -365,7 +369,7 @@ export const InputAdvancedLineThree = styled.div`
   flex-direction: row;
   justify-content: space-between;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 625px) {
     & {
       flex-direction: column;
       font-weight: 600;
