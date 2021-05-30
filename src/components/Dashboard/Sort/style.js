@@ -8,16 +8,14 @@ export const container = styled.div`
     height: 190px;
     border: 1px solid #a5add8;
     border-radius: 8px;
-    /* justify-content: space-evenly; */
     align-items: center;
-    z-index: 100;
+    z-index: 9999;
     background-color: white;
     position: absolute;
     top: 1rem;
     left: 0.5rem;
 `;
 export const title = styled.div`
-    /* width: 81px; */
     height: 21px;
     padding: 3px 0px;
     margin: 2px 0px;
@@ -32,8 +30,6 @@ export const title = styled.div`
 export const item = styled.div`
     width: 100%;
     cursor: pointer;
-    /* padding: 2px 0px; */
-    /* margin: 1px 0px; */
     text-align: center;
     height: 18px;
     font-family: Assistant;

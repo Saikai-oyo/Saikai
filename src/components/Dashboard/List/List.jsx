@@ -12,6 +12,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { app } from '../../../config/firebase';
 import * as S from './style.js';
 import Messages from '../../Messages/Messages';
+
 // Context Imports
 
 import { SelectedPositionContext } from '../../../contexts/SelectedPositionContext';
@@ -32,7 +33,6 @@ const List = (props = {}) => {
 
     const handleMediaQueryChange = () => {
         setIsCollapse(!isMobile);
-        console.log('~ isMobile', isMobile);
     };
     const addSelectedPosition = (position) => {
         setSelectedPosition({ data: position.doc, selected: true });
@@ -41,12 +41,9 @@ const List = (props = {}) => {
 
     const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
-    const isMobile = useMediaQuery({ query: '(max-width: 500px)' }, undefined, handleMediaQueryChange);
-    useEffect(() => {
-        console.log('~ isCollapse', isCollapse);
-    }, [isMobile]);
+    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined, handleMediaQueryChange);
+    useEffect(() => {}, [isMobile]);
 
-    // defaultActiveKey={isCollapse ? '' : index + 1}
     return (
         <S.ListWrapper>
             {positions.loading ? (
@@ -61,14 +58,19 @@ const List = (props = {}) => {
                                         <ListHeader
                                             setIsCreateOpen={setIsCreateOpen}
                                             setSelectedTitle={setSelectedTitle}
+                                            isMobile={isMobile}
                                             column={column}
                                         />
                                     </AccordionToggle>
+
                                     <Messages column={column} />
 
                                     {isMobile ? (
                                         <Accordion.Collapse eventKey={index + 1}>
                                             <ListBody
+                                                setIsCreateOpen={setIsCreateOpen}
+                                                setSelectedTitle={setSelectedTitle}
+                                                isMobile={isMobile}
                                                 searchTerm={searchTerm}
                                                 uid={currentUser.uid}
                                                 setIsViewOpen={setIsViewOpen}
@@ -79,6 +81,9 @@ const List = (props = {}) => {
                                         </Accordion.Collapse>
                                     ) : (
                                         <ListBody
+                                            setIsCreateOpen={setIsCreateOpen}
+                                            setSelectedTitle={setSelectedTitle}
+                                            isMobile={isMobile}
                                             searchTerm={searchTerm}
                                             uid={currentUser.uid}
                                             setIsViewOpen={setIsViewOpen}

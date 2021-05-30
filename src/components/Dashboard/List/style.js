@@ -8,7 +8,7 @@ export const ListWrapper = styled.div`
     align-items: center;
     height: inherit;
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 850px) {
         & {
             flex-direction: column;
             height: auto;
@@ -21,27 +21,44 @@ export const List = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0px;
-    width: 260px;
+    width: 16.5rem;
     height: ${({ collapse }) => (!collapse ? '35rem' : 'auto')};
     max-height: ${({ collapse }) => (!collapse ? 'unset' : '35rem')};
     background: #ffffff;
     border: 1px solid #c8c8c8;
     box-sizing: border-box;
     box-shadow: 0px 4px 40px -6px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
+    border-radius: 8px;
 
-    @media screen and (max-width: 500px) {
+    & > div.show {
+        height: 100%;
+    }
+
+    @media screen and (max-width: 1345px) {
         & {
-            margin-bottom: 1rem;
+            width: 14rem;
+        }
+    }
+    @media screen and (max-width: 1160px) {
+        & {
+            width: 12rem;
+        }
+    }
+    @media screen and (max-width: 991px) {
+        & {
+            width: 10.5rem;
+        }
+    }
+
+    @media screen and (max-width: 850px) {
+        & {
+            margin-bottom: 3rem;
+            width: 90vw;
         }
 
         & > div.show {
             overflow-y: auto;
         }
-    }
-
-    & > div.show {
-        height: 100%;
     }
 `;
 
@@ -58,12 +75,15 @@ export const ListHeader = styled.div`
     min-height: 39px;
     max-height: 39px;
     background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
+`;
 
-    @media screen and (max-width: 500) {
-        & {
-            cursor: pointer;
-        }
-    }
+export const ListButtonsWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    ${({ padding }) => (padding === 'show' ? 'padding: 0 1rem;' : 'padding:0')};
 `;
 
 export const HeaderTypography = styled.span`
@@ -74,16 +94,33 @@ export const HeaderTypography = styled.span`
     line-height: 25px;
     color: #ffffff;
     cursor: context-menu;
+
+    @media screen and (max-width: 1160px) {
+        & {
+            font-size: 1rem;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        & {
+            font-size: smaller;
+        }
+    }
+    @media screen and (max-width: 850px) {
+        & {
+            font-size: 20px;
+        }
+    }
 `;
 
 export const AddButton = styled.button`
-    display: flex;
+    display: ${({ display }) => (display === 'show' ? 'flex' : 'none')};
     background-color: transparent;
     border: 0px solid transparent;
 `;
 
 export const FilterButton = styled.button`
-    display: flex;
+    display: ${({ display }) => (display === 'show' ? 'flex' : 'none')};
     background-color: transparent;
     border: none;
     outline: none;
@@ -138,6 +175,16 @@ export const PositionHeader = styled.p`
     order: 0;
     flex-grow: 0;
     margin: 3px 0px;
+    @media screen and (max-width: 991px) {
+        & {
+            font-size: smaller;
+        }
+    }
+    @media screen and (max-width: 850px) {
+        & {
+            font-size: 18px;
+        }
+    }
 `;
 
 export const PositionBody = styled.p`
@@ -151,6 +198,17 @@ export const PositionBody = styled.p`
     order: 1;
     flex-grow: 0;
     margin: 3px 0px;
+    @media screen and (max-width: 991px) {
+        & {
+            font-size: smaller;
+        }
+    }
+
+    @media screen and (max-width: 850px) {
+        & {
+            font-size: 16px;
+        }
+    }
 `;
 
 export const PositionFooter = styled.p`
@@ -162,4 +220,14 @@ export const PositionFooter = styled.p`
     order: 3;
     flex-grow: 0;
     margin: 3px 0px;
+    @media screen and (max-width: 991px) {
+        & {
+            font-size: smaller;
+        }
+    }
+    @media screen and (max-width: 850px) {
+        & {
+            font-size: 14px;
+        }
+    }
 `;

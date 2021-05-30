@@ -2,10 +2,29 @@ import React from 'react';
 import * as S from './style';
 import { Droppable } from 'react-beautiful-dnd';
 import Position from './Position';
+import ListButtons from './ListButtons';
 
-const ListBody = ({ column, initialData, searchTerm, uid, addSelectedPosition, setIsViewOpen }) => {
+const ListBody = ({
+    setSelectedTitle,
+    setIsCreateOpen,
+    isMobile,
+    column,
+    initialData,
+    searchTerm,
+    uid,
+    addSelectedPosition,
+    setIsViewOpen,
+}) => {
     return (
         <S.ListBody>
+            <ListButtons
+                padding="show"
+                display={`${isMobile ? 'show' : 'none'}`}
+                column={column}
+                setSelectedTitle={setSelectedTitle}
+                setIsCreateOpen={setIsCreateOpen}
+                isMobile={isMobile}
+            />
             <Droppable droppableId={column.id} type="position" key={column.id}>
                 {(provided) => {
                     return (

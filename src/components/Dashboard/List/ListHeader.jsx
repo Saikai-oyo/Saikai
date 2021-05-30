@@ -1,40 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style';
-import Sort from '../Sort/Sort';
+import ListButtons from './ListButtons';
 
-import { addIcon, filterIcon } from '../../../assets/icons';
-
-const ListHeader = ({ column, setSelectedTitle, setIsCreateOpen }) => {
-    const [isSortOpen, setToggle] = useState(false);
-
-    const toggleSort = () => {
-        setToggle(!isSortOpen);
-    };
-
+const ListHeader = ({ column, setSelectedTitle, setIsCreateOpen, isMobile }) => {
     return (
         <S.ListHeader positionTitle={column.title}>
-            <S.FilterButton data-tooltip="Sort By">
-                {isSortOpen && <Sort toggleSort={toggleSort} title={column.title} />}
-
-                <img
-                    onClick={() => {
-                        toggleSort();
-                        setSelectedTitle(column);
-                    }}
-                    src={filterIcon}
-                    alt="Filter Icon"
-                />
-            </S.FilterButton>
-            <S.HeaderTypography>{column.title}</S.HeaderTypography>
-
-            <S.AddButton
-                data-tooltip="Add Position"
-                onClick={() => {
-                    setSelectedTitle(column);
-                    setIsCreateOpen(true);
-                }}>
-                <img src={addIcon} alt="Add Button" />
-            </S.AddButton>
+            <ListButtons
+                display={`${isMobile ? 'none' : 'show'}`}
+                column={column}
+                setSelectedTitle={setSelectedTitle}
+                setIsCreateOpen={setIsCreateOpen}
+                isMobile={isMobile}
+            />
         </S.ListHeader>
     );
 };
