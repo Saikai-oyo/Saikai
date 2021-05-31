@@ -104,7 +104,7 @@ export const HiddenLabel = styled.label`
 
 export const InputLineOne = styled.div`
   display: flex;
-  flex-direction: row-revers;
+  flex-direction: row-reverse;
   justify-content: space-between;
   padding: 31px 50px 21px 40px;
 
