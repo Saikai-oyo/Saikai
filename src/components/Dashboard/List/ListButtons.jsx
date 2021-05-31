@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as S from './style';
 import Sort from '../Sort/Sort';
 import { addIcon, filterIcon, blackAdd, blackFilter } from '../../../assets/icons';
@@ -10,6 +10,15 @@ const ListButtons = ({ display, column, padding = '', setSelectedTitle, setIsCre
         setToggle(!isSortOpen);
     };
 
+    useEffect(() => {
+        const close = (e) => {
+            if (e.keyCode === 27) {
+                setToggle(false);
+            }
+        };
+        window.addEventListener('keydown', close);
+        return () => window.removeEventListener('keydown', close);
+    }, []);
     const iconStyle = {
         height: '19px',
         width: '19px',
