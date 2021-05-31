@@ -27,6 +27,7 @@
         "eject": "react-scripts eject",
         "prettier-check": "prettier --check \"src/**/*.{js,jsx,json}\"",
         "prettier-format": "prettier --write \"**/*.{js,jsx,json}\"",
+        "firebase-deploy": "npm run build && firebase deploy --only hosting:saikai-develop",
         "deploy": "npm run build && gh-pages -d build"
     },
     "eslintConfig": {
