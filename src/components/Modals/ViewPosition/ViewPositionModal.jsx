@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ViewTab from './ViewTab/ViewTab';
 import DesTab from './DesTab/DesTab';
@@ -22,6 +22,16 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
     const { selectedPosition, setSelectedPosition } = useContext(SelectedPositionContext);
     const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
     const { setInformation } = useContext(MessagesContext);
+
+    useEffect(() => {
+        const close = (e) => {
+            if (e.keyCode === 27) {
+                onClose();
+            }
+        };
+        window.addEventListener('keydown', close);
+        return () => window.removeEventListener('keydown', close);
+    }, []);
 
     const handleUpdate = async () => {
         setInformation({
