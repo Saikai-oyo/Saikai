@@ -6,7 +6,8 @@ import { Link, useHistory } from 'react-router-dom';
 import logo from '../../../assets/logos/logo.svg';
 import SmallError from '../../Errors/SmallError';
 import BigError from '../../Errors/BigError';
-import { googleIcon, facebookIcon } from '../../../assets/icons/';
+import { facebookLogin } from './FacebookLogin/facebookLogin';
+import { googleLogin } from './GoogleLogin/googleLogin';
 import * as S from './style';
 
 const Login = () => {
@@ -15,8 +16,8 @@ const Login = () => {
   const history = useHistory();
 
   const handleSubmit = async (e) => {
+    console.info('going to email login');
     e.preventDefault();
-
     if (e.target[0].value === '' || e.target[1].value === '') {
       setInformation({
         error: 'Fields cannot be empty',
@@ -32,8 +33,7 @@ const Login = () => {
           error:
             error.code === 'auth/invalid-email'
               ? 'Oops! Wrong email format.'
-              : error.code === 'auth/wrong-password' ||
-                error.code === 'auth/user-not-found'
+              : error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found'
               ? 'Oops! Wrong email or password.'
               : 'Something went wrong!',
           hasError: true,
@@ -47,17 +47,26 @@ const Login = () => {
         error: '',
         hasError: false,
       });
-    }, 3500);
+    }, 7000);
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    let buttonId = e.target.id;
+    if (buttonId === 'google-login') {
+      console.info('going to google login');
+      googleLogin(history);
+    }
+    if (buttonId === 'facebook-login') {
+      console.info('going to facebook login');
+      facebookLogin(history);
+    }
   };
 
   return (
     <div>
-      <a
-        className='navbar-brand'
-        style={{ marginBottom: '34px' }}
-        href='/Saikai/'
-      >
-        <img src={logo} width='265' height='80' alt='Saikai' />
+      <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/Saikai/">
+        <img src={logo} width="265" height="80" alt="Saikai" />
       </a>
       <S.Wrapper>
         <S.LoginContainer>
@@ -66,42 +75,24 @@ const Login = () => {
           <S.Subtitle>Log in to your account</S.Subtitle>
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
-              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <AuthInput type='text' placeholder='Email' name='email' />
-              <SmallError>
-                {information.hasError &&
-                  information.errorCode === 0 &&
-                  information.error}
-              </SmallError>
-              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <AuthInput
-                type='password'
-                placeholder='Password'
-                name='password'
-              />
+              <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
+              <AuthInput type="text" placeholder="Email" name="email" />
+              <SmallError>{information.hasError && information.errorCode === 0 && information.error}</SmallError>
+              <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
+              <AuthInput type="password" placeholder="Password" name="password" />
             </S.InputsWrapper>
-            <S.LogIn type='submit'>Log in</S.LogIn>
+            <S.LogIn type="submit">Log in</S.LogIn>
             <S.LoginsWrappers>
-              <S.LoginWith login='facebook'>
-                Sign in with{' '}
-                <img
-                  style={{ paddingLeft: '.5rem' }}
-                  src={facebookIcon}
-                  alt='FaceBook Icon'
-                />
+              <S.LoginWith login="facebook" id="facebook-login" type="button" onClick={(e) => handleClick(e)}>
+                Sign in with
               </S.LoginWith>
-              <S.LoginWith login='google'>
-                Sign in with{' '}
-                <img
-                  style={{ paddingLeft: '.5rem' }}
-                  src={googleIcon}
-                  alt='GOOGLE Icon'
-                />
+              <S.LoginWith login="google" id="google-login" type="button" onClick={(e) => handleClick(e)}>
+                Sign in with
               </S.LoginWith>
             </S.LoginsWrappers>
             <S.ForgotPassword>
               <Link
-                to='/forgot-password'
+                to="/forgot-password"
                 onClick={() =>
                   setInformation({
                     ...information,
@@ -109,15 +100,14 @@ const Login = () => {
                     error: '',
                     hasError: false,
                   })
-                }
-              >
+                }>
                 Forgot password?
               </Link>
             </S.ForgotPassword>
             <S.NeedAccount>
               Need an account?
               <Link
-                to='/signup'
+                to="/signup"
                 onClick={() =>
                   setInformation({
                     ...information,
@@ -125,8 +115,7 @@ const Login = () => {
                     error: '',
                     hasError: false,
                   })
-                }
-              >
+                }>
                 Sign up
               </Link>
             </S.NeedAccount>

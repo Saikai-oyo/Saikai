@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, app } from '../config/firebase';
+
 import { UserDetailsContext } from './UserDetailsContext';
+
 const AuthContext = React.createContext();
 
 export const useAuth = () => {
@@ -62,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false);
+      setLoading(false);  
 
       app
         .firestore()
@@ -77,13 +79,13 @@ export const AuthProvider = ({ children }) => {
               loading: false,
             });
           } else {
-            console.error('No doc');
+            console.info('No document found!');
           }
         })
         .catch((err) => console.error(err));
     });
 
-    return unsubscribe;
+    return ()=>unsubscribe;
   }, [setUserDetails]);
 
   const value = {

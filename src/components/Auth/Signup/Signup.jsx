@@ -86,74 +86,51 @@ const Signup = () => {
         error: '',
         hasError: false,
       });
-    }, 3500);
+    }, 7000);
   };
 
   return (
     <div>
-      <a
-        className='navbar-brand'
-        style={{ marginBottom: '34px' }}
-        href='/Saikai/'
-      >
-        <img src={logo} width='265' height='80' alt='Saikai' />
+      <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/Saikai/">
+        <img src={logo} width="265" height="80" alt="Saikai" />
       </a>
       <S.Wrapper>
         <S.SignupContainer>
           <S.Header>Join Saikai</S.Header>
           <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
           <S.ErrorWrapper>
-            <BigError
-              show={information.errorCode === 0 && information.hasError}
-            >
-              {information.error}
-            </BigError>
+            <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
           </S.ErrorWrapper>
           <form onSubmit={handleSubmit}>
             <S.InputsWrapper>
-              <S.HiddenLabel htmlFor='email'>Email</S.HiddenLabel>
-              <AuthInput type='text' placeholder='Email' name='email' />
+              <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
+              <AuthInput type="text" placeholder="Email" name="email" />
 
-              <S.HiddenLabel htmlFor='firstName'>First Name</S.HiddenLabel>
-              <AuthInput
-                type='text'
-                placeholder='First Name'
-                name='firstName'
-              />
+              <S.HiddenLabel htmlFor="firstName">First Name</S.HiddenLabel>
+              <AuthInput type="text" placeholder="First Name" name="firstName" />
 
-              <S.HiddenLabel htmlFor='lastName'>Last Name</S.HiddenLabel>
-              <AuthInput type='text' placeholder='Last Name' name='lastName' />
+              <S.HiddenLabel htmlFor="lastName">Last Name</S.HiddenLabel>
+              <AuthInput type="text" placeholder="Last Name" name="lastName" />
 
-              <S.HiddenLabel htmlFor='password'>Password</S.HiddenLabel>
-              <AuthInput
-                type='password'
-                placeholder='Your Password'
-                name='password'
-              />
+              <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
+              <AuthInput type="password" placeholder="Your Password" name="password" />
 
-              <S.HiddenLabel htmlFor='confirmPassword'>
-                Confirm Password
-              </S.HiddenLabel>
-              <AuthInput
-                type='password'
-                placeholder='Confirm Password'
-                name='confirmPassword'
-              />
+              <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
+              <AuthInput type="password" placeholder="Confirm Password" name="confirmPassword" />
             </S.InputsWrapper>
-            <S.SignUp type='submit'>Sign Up</S.SignUp>
+            <S.SignUp type="submit">Sign Up</S.SignUp>
 
             <S.HaveAccount>
               Already have an account?
               <Link
-                to='/login'
+                to="/login"
                 onClick={() =>
                   setInformation({
                     errorCode: null,
                     error: '',
                     hasError: false,
                   })
-                }
-              >
+                }>
                 Log in
               </Link>
             </S.HaveAccount>
