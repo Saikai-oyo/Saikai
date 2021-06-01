@@ -6,6 +6,7 @@ import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
 import * as S from './style';
+import { information as info } from '../../../assets/icons';
 
 const Signup = () => {
     const { information, setInformation } = useContext(MessagesContext);
@@ -37,7 +38,7 @@ const Signup = () => {
         } else {
             if (!e.target[3].value.match(process.env.REACT_APP_REGEX_PASSWORD)) {
                 error +=
-                    '  Password must have 8 to 15 characters, which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.';
+                    ' Password must contain 8 to 15 characters with at least:\n- one lowercase letter\n- one uppercase letter\n- one numeric digit';
                 isValid = false;
             }
         }
@@ -73,7 +74,7 @@ const Signup = () => {
                             : error.code === 'auth/invalid-email'
                             ? 'Oops! Wrong email format.'
                             : error.code === 'auth/weak-password'
-                            ? 'Password must have 8 to 15 characters, which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character.'
+                            ? 'Password must contain 8 to 15 characters with at least:\n- one lowercase letter\n- one uppercase letter\n- one numeric digit'
                             : 'Something went wrong!',
                     hasError: true,
                 });
@@ -86,7 +87,7 @@ const Signup = () => {
                 error: '',
                 hasError: false,
             });
-        }, 7000);
+        }, 700000);
     };
 
     return (
@@ -105,18 +106,26 @@ const Signup = () => {
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
                             <AuthInput type="text" placeholder="Email" name="email" />
-
                             <S.HiddenLabel htmlFor="firstName">First Name</S.HiddenLabel>
                             <AuthInput type="text" placeholder="First Name" name="firstName" />
-
                             <S.HiddenLabel htmlFor="lastName">Last Name</S.HiddenLabel>
                             <AuthInput type="text" placeholder="Last Name" name="lastName" />
-
                             <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
                             <AuthInput type="password" placeholder="Your Password" name="password" />
 
                             <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
                             <AuthInput type="password" placeholder="Confirm Password" name="confirmPassword" />
+                        </S.InputsWrapper>
+                        <S.InputsWrapper pass={true}>
+                            <p
+                                style={{
+                                    fontSize: '10px',
+                                    width: 'max-content',
+                                }}>
+                                * Password must contain:
+                                <br />- one lowercase letter & one uppercase letter
+                                <br />- one numeric digit & 8 to 15 characters
+                            </p>
                         </S.InputsWrapper>
                         <S.SignUp type="submit">Sign Up</S.SignUp>
 
