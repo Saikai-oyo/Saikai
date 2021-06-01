@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, app } from '../config/firebase';
+
 import { UserDetailsContext } from './UserDetailsContext';
+
 const AuthContext = React.createContext();
 
 export const useAuth = () => {
@@ -59,31 +61,32 @@ export const AuthProvider = ({ children }) => {
         return currentUser.updatePassword(password);
     };
 
-    useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
-            setLoading(false);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setCurrentUser(user);
+      setLoading(false);  
 
-            app.firestore()
-                .collection('users')
-                .doc(`${user.uid}`)
-                .get()
-                .then((doc) => {
-                    if (doc.exists) {
-                        setUserDetails({
-                            firstName: doc.data().firstName,
-                            lastName: doc.data().lastName,
-                            loading: false,
-                        });
-                    } else {
-                        console.error('No doc');
-                    }
-                })
-                .catch((err) => console.error(err));
-        });
+      app
+        .firestore()
+        .collection('users')
+        .doc(`${user.uid}`)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            setUserDetails({
+              firstName: doc.data().firstName,
+              lastName: doc.data().lastName,
+              loading: false,
+            });
+          } else {
+            console.info('No document found!');
+          }
+        })
+        .catch((err) => console.error(err));
+    });
 
-        return unsubscribe;
-    }, [setUserDetails]);
+    return ()=>unsubscribe;
+  }, [setUserDetails]);
 
     const value = {
         currentUser,
