@@ -22,14 +22,13 @@ const SFooter = styled.div`
 
     @media screen and (max-height: 780px) {
         & {
-            // margin-top: 10rem;
-            // position: relative;
-            // position: fixed;
-            // bottom: 0;
             // margin-top: 4rem;
-            position: initial;
+            // display: inline-block;
             bottom: 0;
-            margin-top: 2rem;
+            // position: initial;
+            // bottom: 0;
+            // position: relative;
+            display: inline-block;
         }
     }
     // @media screen and (max-height: 600px) {
@@ -42,7 +41,7 @@ const SFooter = styled.div`
 
 const Footer = () => {
     return (
-        <SFooter>
+        <SFooter id="footerElement">
             Copyright: © 2021 <a href="https://github.com/Saikai-oyo/Saikai"> Saikai.</a>
             All Rights Reserved. <b />
             <a href="https://www.privacypolicies.com/live/2d6d691c-4def-4f5f-bcb4-77c3762ae877"> Terms Of Service </a>

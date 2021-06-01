@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -12,6 +12,11 @@ const ForgotPassword = () => {
     const { information, setInformation } = useContext(MessagesContext);
     const { resetPassword } = useAuth();
     const history = useHistory();
+
+    useEffect(() => {
+        document.getElementById('footerElement').classList.add('pass-reset');
+        return () => document.getElementById('footerElement').classList.remove('pass-reset');
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();

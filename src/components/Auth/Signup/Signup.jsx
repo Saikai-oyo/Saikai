@@ -1,4 +1,4 @@
-import React, { useContext, us } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -6,12 +6,16 @@ import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
 import * as S from './style';
-import { information as info } from '../../../assets/icons';
 
 const Signup = () => {
     const { information, setInformation } = useContext(MessagesContext);
     const { signup } = useAuth();
     const history = useHistory();
+
+    useEffect(() => {
+        document.getElementById('footerElement').classList.add('pass-reset');
+        return () => document.getElementById('footerElement').classList.remove('pass-reset');
+    }, []);
 
     const validation = (e) => {
         let isValid = true;
