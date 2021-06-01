@@ -23,7 +23,6 @@ const DashboardNav = (props) => {
 
     const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined, handleMediaQueryChange);
     useEffect(() => {}, [isMobile]);
-    console.log('~ isMobile', isMobile);
     const handleLogout = async () => {
         setInformation({
             errorLine: null,
