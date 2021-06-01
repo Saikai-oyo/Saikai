@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { googleIcon, facebookIcon } from '../../../assets/icons/';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -85,6 +86,16 @@ export const LoginWith = styled.button`
   color: #ffffff;
   border: none;
   outline: none;
+
+  /* Arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-repeat: no-repeat;
+  padding-right: 1rem;
+  background-position-x: 85%;
+  background-position-y: 50%;
+  ${({ login }) => (login==='facebook' ? `background-image: url(${ facebookIcon});` : `background-image: url(${googleIcon});`)};
+
 `;
 
 export const ForgotPassword = styled.div`
