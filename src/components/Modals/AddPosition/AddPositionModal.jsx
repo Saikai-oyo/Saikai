@@ -217,7 +217,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                                             position_url: e.target.value,
                                         })
                                     }
-                                    type="url"
+                                    type="text"
                                     placeholder="Position Link"
                                 />
                             </S.InputAdvancedLineOne>
@@ -246,7 +246,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                                             hr_mail: e.target.value,
                                         })
                                     }
-                                    type="email"
+                                    type="text"
                                     placeholder="HR Mail"
                                 />
                             </S.InputAdvancedLineTwo>
