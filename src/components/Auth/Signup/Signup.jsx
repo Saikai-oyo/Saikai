@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, us } from 'react';
 import AuthInput from '../../Input/AuthInput';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -87,7 +87,7 @@ const Signup = () => {
                 error: '',
                 hasError: false,
             });
-        }, 700000);
+        }, 7000);
     };
 
     return (
