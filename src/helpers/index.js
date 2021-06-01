@@ -42,3 +42,16 @@ export const colorForTitle = (title) =>
         : title === 'Denied'
         ? '#b92c2c'
         : '';
+
+export const colorHoverForTitle = (title) =>
+    title === 'Applied'
+        ? '#E8F2FC'
+        : title === 'In Progress'
+        ? '#F7EDF8'
+        : title === 'Received Task'
+        ? '#FCF1E8'
+        : title === 'Contract'
+        ? '#EEF7EE'
+        : title === 'Denied'
+        ? '#FAEAEA'
+        : '';
