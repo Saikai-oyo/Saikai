@@ -4,7 +4,8 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import BigError from '../../Errors/BigError';
-import { googleIcon, facebookIcon } from '../../../assets/icons/';
+import { facebookLogin } from './FacebookLogin/facebookLogin';
+import { googleLogin } from './GoogleLogin/googleLogin';
 import * as S from './style';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
@@ -14,8 +15,8 @@ const Login = () => {
     const history = useHistory();
 
     const handleSubmit = async (e) => {
+        console.info('going to email login');
         e.preventDefault();
-
         if (e.target[0].value === '' || e.target[1].value === '') {
             setInformation({
                 error: 'Fields cannot be empty',
@@ -45,7 +46,20 @@ const Login = () => {
                 error: '',
                 hasError: false,
             });
-        }, 3500);
+        }, 7000);
+    };
+
+    const handleClick = async (e) => {
+        e.preventDefault();
+        let buttonId = e.target.id;
+        if (buttonId === 'google-login') {
+            console.info('going to google login');
+            googleLogin(history);
+        }
+        if (buttonId === 'facebook-login') {
+            console.info('going to facebook login');
+            facebookLogin(history);
+        }
     };
 
     return (
@@ -65,20 +79,17 @@ const Login = () => {
                         </S.InputsWrapper>
                         <S.LogIn type="submit">Log in</S.LogIn>
                         <S.LoginsWrappers>
-                            <div>
-                                <S.LoginWith login="facebook">
-                                    Sign in with{' '}
-                                    <img style={{ paddingLeft: '.5rem' }} src={facebookIcon} alt="FaceBook Icon" />
-                                </S.LoginWith>
-                            </div>
-                            <div>
-                                <S.LoginWith login="google">
-                                    Sign in with{' '}
-                                    <img style={{ paddingLeft: '.5rem' }} src={googleIcon} alt="GOOGLE Icon" />
-                                </S.LoginWith>
-                            </div>
+                            <S.LoginWith
+                                login="facebook"
+                                id="facebook-login"
+                                type="button"
+                                onClick={(e) => handleClick(e)}>
+                                Sign in with
+                            </S.LoginWith>
+                            <S.LoginWith login="google" id="google-login" type="button" onClick={(e) => handleClick(e)}>
+                                Sign in with
+                            </S.LoginWith>
                         </S.LoginsWrappers>
-
                         <S.ForgotPassword>
                             <Link
                                 to="/forgot-password"
