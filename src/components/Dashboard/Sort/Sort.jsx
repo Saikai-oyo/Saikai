@@ -91,50 +91,50 @@ const Sort = ({ title, onClick, toggleSort }) => {
         <S.container>
             <S.title> Added Date</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'createdDate', 'asc');
                 }}>
-                First To Last
+                oldest to newest
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'createdDate', 'desc');
                 }}>
-                Last To First
+                Newest to oldest
             </S.item>
 
             <S.title> Position Name</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'asc');
                 }}>
-                A-Z
+                A to Z
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'desc');
                 }}>
-                Z-A
+                Z to A
             </S.item>
 
             <S.title> Company Name</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'asc');
                 }}>
-                A-Z
+                A to Z
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'desc');
                 }}>
-                Z-A
+                Z to A
             </S.item>
         </S.container>
     );

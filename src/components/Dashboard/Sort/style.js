@@ -40,6 +40,6 @@ export const item = styled.div`
     color: #000000;
 
     &:hover {
-        background-color: ${({ title }) => colorForTitle(title)};
+        background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
     }
 `;
