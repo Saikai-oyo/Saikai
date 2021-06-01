@@ -45,6 +45,7 @@ export const NavbarItemsWrapper = styled.span`
     justify-content: space-between;
     flex-grow: 1;
     align-items: center;
+    cursor: default;
 `;
 
 export const NavbarAlerts = styled.div`
@@ -97,7 +98,7 @@ export const NavbarSearch = styled.div`
 
 export const NavbarItem = styled.span`
     margin-right: 1.5rem;
-
+    cursor: pointer;
     @media screen and (max-width: 1125px) {
         & {
             margin-right: 0.5rem;
