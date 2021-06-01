@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from './style';
 
 const SearchBar = (props) => {
@@ -7,7 +7,7 @@ const SearchBar = (props) => {
         <S.SearchWrapper>
             <S.LabelSearchBar>
                 <S.SearchBar
-                    placeholder="Job Title, Company Name"
+                    placeholder="Job Title or Company Name"
                     type="text"
                     onChange={(e) => {
                         props.onSearch(e.target.value);
