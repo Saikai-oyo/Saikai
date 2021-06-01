@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { googleIcon, facebookIcon } from '../../../assets/icons/';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -125,8 +126,8 @@ export const LoginsWrappers = styled.div`
 `;
 
 export const LoginWith = styled.button`
-    width: 8rem;
-    height: 2.5rem;
+    width: 133px;
+    height: 28px;
     background: ${({ login }) => (login === 'facebook' ? '#3C7AFF' : '#DF492E')};
     border-radius: 4px;
     font-size: 12px;
@@ -135,13 +136,15 @@ export const LoginWith = styled.button`
     border: none;
     outline: none;
 
-    @media screen and (max-width: 500px) {
-        & {
-            height: 3.5rem;
-            font-size: 17px;
-            line-height: 20px;
-        }
-    }
+    /* Arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-repeat: no-repeat;
+    padding-right: 1rem;
+    background-position-x: 85%;
+    background-position-y: 50%;
+    ${({ login }) =>
+        login === 'facebook' ? `background-image: url(${facebookIcon});` : `background-image: url(${googleIcon});`};
 `;
 
 export const ForgotPassword = styled.div`
