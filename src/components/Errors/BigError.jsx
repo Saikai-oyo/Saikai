@@ -14,6 +14,7 @@ export const SBigError = styled.span`
     color: #692020;
     border-radius: 0;
     background-color: ${({ show }) => show && '#ffbdbd'};
+    margin: 10px 0;
 
     @media screen and (max-width: 500px) {
         & {
