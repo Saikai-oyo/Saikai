@@ -17,14 +17,16 @@ const ListBody = ({
 }) => {
     return (
         <S.ListBody>
-            <ListButtons
-                padding="show"
-                display={`${isMobile ? 'show' : 'none'}`}
-                column={column}
-                setSelectedTitle={setSelectedTitle}
-                setIsCreateOpen={setIsCreateOpen}
-                isMobile={isMobile}
-            />
+            {isMobile && (
+                <ListButtons
+                    padding="show"
+                    display={`${isMobile ? 'show' : 'none'}`}
+                    column={column}
+                    setSelectedTitle={setSelectedTitle}
+                    setIsCreateOpen={setIsCreateOpen}
+                    isMobile={isMobile}
+                />
+            )}
             <Droppable droppableId={column.id} type="position" key={column.id}>
                 {(provided) => {
                     return (

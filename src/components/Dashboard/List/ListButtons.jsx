@@ -39,7 +39,7 @@ const ListButtons = ({ display, column, padding = '', setSelectedTitle, setIsCre
                     alt="Filter Icon"
                 />
             </S.FilterButton>
-            <S.HeaderTypography>{column.title}</S.HeaderTypography>
+            {<S.HeaderTypography>{column.title}</S.HeaderTypography>}
             <S.AddButton
                 display={display}
                 data-tooltip="Add Position"
