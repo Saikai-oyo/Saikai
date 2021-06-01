@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorForTitle } from '../../../helpers';
+import { colorHoverForTitle } from '../../../helpers';
 
 export const container = styled.div`
     display: flex;
@@ -40,6 +40,6 @@ export const item = styled.div`
     color: #000000;
 
     &:hover {
-        background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
+        background-color: ${({ positionTitle }) => colorHoverForTitle(positionTitle)};
     }
 `;
