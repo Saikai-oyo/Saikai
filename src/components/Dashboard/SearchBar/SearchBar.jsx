@@ -7,7 +7,7 @@ const SearchBar = (props) => {
         <S.SearchWrapper>
             <S.LabelSearchBar>
                 <S.SearchBar
-                    placeholder="Job Title, Company, or Keywords"
+                    placeholder="Job Title, Company Name"
                     type="text"
                     onChange={(e) => {
                         props.onSearch(e.target.value);
