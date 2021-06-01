@@ -76,6 +76,25 @@ export const SignUp = styled.button`
   color: #ffffff;
 `;
 
+export const LoginsWrappers = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 10px 102px;
+`;
+
+export const LoginWith = styled.button`
+  width: 133px;
+  height: 28px;
+  background: ${({ login }) => (login === 'facebook' ? '#3C7AFF' : '#DF492E')};
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+`;
+
 export const HaveAccount = styled.div`
   margin: 10px 145px 0px 160px;
   width: 180px;
