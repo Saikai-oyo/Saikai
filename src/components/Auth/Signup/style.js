@@ -69,14 +69,23 @@ export const InputsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 295.71px;
-    margin: 0px 74px 27px 74px;
+    height: ${({ pass }) => (pass ? 'auto' : '15.5rem')};
+    margin: 0px 74px 10px 74px;
     width: 337px;
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 74px 27px 103px;
+            margin: 0px 74px ${({ pass }) => (pass ? '0' : '27px')} 103px;
             width: max-content;
         }
+    }
+`;
+
+export const TextWrapper = styled.p`
+    font-size: 12px;
+    width: max-content;
+
+    @media screen and (max-width: 500px) {
+        font-size: 10px;
     }
 `;
 

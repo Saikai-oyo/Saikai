@@ -1,15 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { PositionsContext } from '../../../contexts/PositionsContext';
-import * as S from './style.js';
 import { useAuth } from '../../../contexts/AuthContext';
-import { PositionHeader } from '../List/style';
-import useKanban from '../../../hooks/useKanban';
 import { app } from '../../../config/firebase';
+import * as S from './style.js';
 
-const Sort = ({ title, onClick, toggleSort }) => {
+const Sort = ({ title, toggleSort }) => {
     const { currentUser } = useAuth();
     const { positions } = useContext(PositionsContext);
-    const { initialData, setInitialData } = useKanban(currentUser.uid);
 
     useEffect(() => {
         const addListener = document.addEventListener('click', toggleSort);
@@ -27,18 +24,19 @@ const Sort = ({ title, onClick, toggleSort }) => {
         switch (order) {
             case 'asc':
                 if (category !== 'createdDate') {
-                    sortedPositions.sort((positonA, positonB) =>
-                        positonA.doc[category].toLowerCase() > positonB.doc[category].toLowerCase()
+                    sortedPositions.sort((positionA, positionB) =>
+                        positionA.doc[category].toLowerCase().trim() > positionB.doc[category].toLowerCase().trim()
                             ? 1
-                            : positonB.doc[category].toLowerCase() > positonA.doc[category].toLowerCase()
+                            : positionB.doc[category].toLowerCase().trim() >
+                              positionA.doc[category].toLowerCase().trim()
                             ? -1
                             : 0,
                     );
                 } else {
-                    sortedPositions.sort((positonA, positonB) =>
-                        positonA.doc[category] > positonB.doc[category]
+                    sortedPositions.sort((positionA, positionB) =>
+                        positionA.doc[category] > positionB.doc[category]
                             ? 1
-                            : positonB.doc[category] > positonA.doc[category]
+                            : positionB.doc[category] > positionA.doc[category]
                             ? -1
                             : 0,
                     );
@@ -47,18 +45,19 @@ const Sort = ({ title, onClick, toggleSort }) => {
 
             case 'desc':
                 if (category !== 'createdDate') {
-                    sortedPositions.sort((positonA, positonB) =>
-                        positonB.doc[category].toLowerCase() > positonA.doc[category].toLowerCase()
+                    sortedPositions.sort((positionA, positionB) =>
+                        positionB.doc[category].toLowerCase().trim() > positionA.doc[category].toLowerCase().trim()
                             ? 1
-                            : positonA.doc[category].toLowerCase() > positonB.doc[category].toLowerCase()
+                            : positionA.doc[category].toLowerCase().trim() >
+                              positionB.doc[category].toLowerCase().trim()
                             ? -1
                             : 0,
                     );
                 } else {
-                    sortedPositions.sort((positonA, positonB) =>
-                        positonB.doc[category] > positonA.doc[category]
+                    sortedPositions.sort((positionA, positionB) =>
+                        positionB.doc[category] > positionA.doc[category]
                             ? 1
-                            : positonA.doc[category] > positonB.doc[category]
+                            : positionA.doc[category] > positionB.doc[category]
                             ? -1
                             : 0,
                     );
@@ -66,12 +65,6 @@ const Sort = ({ title, onClick, toggleSort }) => {
                 break;
             default:
         }
-        const idx = initialData.columns.findIndex((column) => {
-            return column.id === title.replace(/\s/g, '');
-        });
-        const newPositionIds = {
-            ...initialData.columns,
-        };
         const ArraySortedPositions = [];
         sortedPositions.forEach((position) => {
             ArraySortedPositions.push(position.id);
@@ -91,50 +84,50 @@ const Sort = ({ title, onClick, toggleSort }) => {
         <S.container>
             <S.title> Added Date</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'createdDate', 'asc');
                 }}>
-                First To Last
+                oldest to newest
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'createdDate', 'desc');
                 }}>
-                Last To First
+                Newest to oldest
             </S.item>
 
             <S.title> Position Name</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'asc');
                 }}>
-                A-Z
+                A to Z
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'desc');
                 }}>
-                Z-A
+                Z to A
             </S.item>
 
             <S.title> Company Name</S.title>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'asc');
                 }}>
-                A-Z
+                A to Z
             </S.item>
             <S.item
-                title={title}
+                positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'desc');
                 }}>
-                Z-A
+                Z to A
             </S.item>
         </S.container>
     );

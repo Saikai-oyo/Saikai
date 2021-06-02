@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './style';
 import { Draggable } from 'react-beautiful-dnd';
+import { formatDate } from '../../../helpers';
 
 const Position = ({ doc, index, addSelectedPosition, setIsViewOpen, position }) => {
     return (
@@ -19,7 +20,7 @@ const Position = ({ doc, index, addSelectedPosition, setIsViewOpen, position }) 
                     }}>
                     <S.PositionHeader>{doc.position}</S.PositionHeader>
                     <S.PositionBody>{doc.name}</S.PositionBody>
-                    <S.PositionFooter>{doc.date}</S.PositionFooter>
+                    <S.PositionFooter>{formatDate(doc.date)}</S.PositionFooter>
                 </S.PositionWrapper>
             )}
         </Draggable>

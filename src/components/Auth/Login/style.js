@@ -149,7 +149,7 @@ export const LoginWith = styled.button`
 
 export const ForgotPassword = styled.div`
     margin: 0px 182px 10px 194px;
-    width: 104px;
+    width: max-content;
     height: 15px;
     font-style: normal;
     font-weight: bold;

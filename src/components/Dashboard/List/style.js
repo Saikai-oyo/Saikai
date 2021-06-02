@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colorForTitle } from '../../../helpers';
+import { colorForTitle, colorHoverForTitle } from '../../../helpers';
 
 export const ListWrapper = styled.div`
     display: flex;
@@ -150,18 +150,7 @@ export const PositionWrapper = styled.div`
     border-bottom: 2.5px solid ${({ positionTitle }) => colorForTitle(positionTitle)};
     cursor: pointer;
     &:hover {
-        background-color: ${({ positionTitle }) =>
-            positionTitle === 'Applied'
-                ? '#E8F2FC'
-                : positionTitle === 'In Progress'
-                ? '#F7EDF8'
-                : positionTitle === 'Received Task'
-                ? '#FCF1E8'
-                : positionTitle === 'Contract'
-                ? '#EEF7EE'
-                : positionTitle === 'Denied'
-                ? '#FAEAEA'
-                : ''};
+        background-color: ${({ positionTitle }) => colorHoverForTitle(positionTitle)};
     }
 `;
 
