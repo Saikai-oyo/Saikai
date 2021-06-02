@@ -29,11 +29,7 @@ const List = (props = {}) => {
     const [isCreateOpen, setIsCreateOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [selectedTitle, setSelectedTitle] = useState('');
-    const [isCollapse, setIsCollapse] = useState(null);
 
-    const handleMediaQueryChange = () => {
-        setIsCollapse(!isMobile);
-    };
     const addSelectedPosition = (position) => {
         setSelectedPosition({ data: position.doc, selected: true });
     };
@@ -41,7 +37,7 @@ const List = (props = {}) => {
 
     const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
-    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined, handleMediaQueryChange);
+    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined);
     useEffect(() => {}, [isMobile]);
 
     return (
