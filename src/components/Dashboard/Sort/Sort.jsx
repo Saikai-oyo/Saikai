@@ -9,11 +9,13 @@ const Sort = ({ title, toggleSort }) => {
     const { positions } = useContext(PositionsContext);
 
     useEffect(() => {
-        const addListener = document.addEventListener('click', toggleSort);
-        const removeListener = () => {
+        const toggleSortListener = () => document.addEventListener('click', toggleSort);
+        toggleSortListener();
+
+        return () => {
             document.removeEventListener('click', toggleSort);
         };
-        return removeListener;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleFilter = (title, category, order) => {

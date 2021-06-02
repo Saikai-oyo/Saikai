@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import { auth, app } from '../../../../config/firebase';
+import { app } from '../../../../config/firebase';
 
 const signupWithFacebook = (user, userInfo) => {
     console.log('%cinside signuo fb', 'background:orange');

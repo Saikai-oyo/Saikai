@@ -27,6 +27,7 @@ const Homepage = () => {
                     loading: false,
                 });
             });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

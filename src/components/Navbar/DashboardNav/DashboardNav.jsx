@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { settingIcon, logoutIcon } from '../../../assets/icons';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
@@ -15,13 +15,8 @@ const DashboardNav = (props) => {
     const history = useHistory();
     const { userDetails } = useContext(UserDetailsContext);
     const { information, setInformation } = useContext(MessagesContext);
-    const [isCollapse, setIsCollapse] = useState(null);
 
-    const handleMediaQueryChange = () => {
-        setIsCollapse(!isMobile);
-    };
-
-    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined, handleMediaQueryChange);
+    const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined);
     useEffect(() => {}, [isMobile]);
     const handleLogout = async () => {
         setInformation({
