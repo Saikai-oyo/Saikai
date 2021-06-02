@@ -12,8 +12,9 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { v4 as uuidv4 } from 'uuid';
 
-const AddPositionModal = ({ selectedTitle, open, onClose }) => {
+const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
     const [title, setTitle] = useState(selectedTitle);
+    const [titlePositions, setTitlePositions] = useState(selectedTitle);
     const [advance, setAdvance] = useState(false);
     const [positionForm, setPositionForm] = useState([]);
     const { setInformation } = useContext(MessagesContext);
@@ -21,6 +22,8 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
     useEffect(() => {
         setTitle(selectedTitle.title);
     }, [selectedTitle]);
+
+    useEffect(() => {}, [titlePositions]);
 
     useEffect(() => {
         const close = (e) => {
@@ -66,14 +69,14 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                     createdDate: new Date().getTime(),
                 });
 
-            selectedTitle.positionIds.push(id);
+            columnInfo.forEach((column) => (column.id === titlePositions.id ? column.positionIds.push(id) : null));
             await app
                 .firestore()
                 .collection('users')
                 .doc(`${currentUser.uid}`)
                 .collection('columns')
-                .doc(`${selectedTitle.id}`)
-                .update(selectedTitle);
+                .doc(`${titlePositions.id}`)
+                .update(titlePositions);
 
             setInformation({
                 errorLine: [title, 'good'],
@@ -196,6 +199,11 @@ const AddPositionModal = ({ selectedTitle, open, onClose }) => {
                                 name="status"
                                 value={title}
                                 onChange={(e) => {
+                                    columnInfo.forEach(
+                                        (column) =>
+                                            e.target.value.replace(/\s/g, '') === column.id &&
+                                            setTitlePositions(column),
+                                    );
                                     setTitle(e.target.value);
                                     setPositionForm({
                                         ...positionForm,

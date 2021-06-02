@@ -98,6 +98,7 @@ const List = (props = {}) => {
                 </DragDropContext>
             )}
             <AddPositionModal
+                columnInfo={initialData && initialData.columns}
                 selectedTitle={selectedTitle}
                 open={isCreateOpen}
                 onClose={() => setIsCreateOpen(false)}
