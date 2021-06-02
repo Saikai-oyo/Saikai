@@ -12,7 +12,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             # Add any build steps here. For example:
-            - run: npm ci && npm run build
+            - run: npm run build
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
