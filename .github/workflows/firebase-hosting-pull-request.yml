@@ -16,10 +16,9 @@ jobs:
             - run: npm run build --silent
             - uses: FirebaseExtended/action-hosting-deploy@v0
               with:
-                  continue-on-error: true
                   repoToken: '${{ secrets.GITHUB_TOKEN }}'
                   firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
                   expires: 30d
                   projectId: saikai-production
               env:
-                  CI: false
+                  CI: true
