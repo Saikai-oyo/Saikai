@@ -1,12 +1,5 @@
 {
   "projects": {
     "default": "saikai-production"
-  },
-  "targets": {
-    "saikai-production": {
-      "hosting": {
-        "saikai-develop"
-      }
-    }
   }
 }
