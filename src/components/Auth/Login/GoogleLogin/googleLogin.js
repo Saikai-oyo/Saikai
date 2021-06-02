@@ -1,4 +1,3 @@
-import React from 'react';
 import firebase from 'firebase/app';
 import { app } from '../../../../config/firebase';
 

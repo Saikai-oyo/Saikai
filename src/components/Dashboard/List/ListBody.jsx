@@ -48,6 +48,7 @@ const ListBody = ({
                                     ) {
                                         return value;
                                     }
+                                    return null;
                                 })
                                 .map((positionId, index) => {
                                     let position = initialData.positions[positionId];
@@ -67,6 +68,7 @@ const ListBody = ({
                                             )
                                         );
                                     }
+                                    return null;
                                 })}
 
                             {provided.placeholder}

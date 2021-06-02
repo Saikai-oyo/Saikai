@@ -31,6 +31,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
         };
         window.addEventListener('keydown', close);
         return () => window.removeEventListener('keydown', close);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleUpdate = async () => {
