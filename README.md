@@ -1,92 +1,250 @@
-# Saikai - Manage your way to work 💯
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![Pulls][pulls-shield]][pulls-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
-The user who sends a lot of resumes can easily get lost and not remember which company the resume was sent to and which company has not yet been sent. That is why the app - **_Saikai_** - (Resume in Japanese) was established.
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="https://user-images.githubusercontent.com/41434778/117974531-53c5a600-b336-11eb-8e7c-a9e15e41783f.png" alt="Logo" height="250">
+  </a>
 
-_Saikai_ is designed to create order and organization, along with determining the status and documentation of sending a resume while looking for a job.
+  <h1 style="color:#CDCDCD" align="center"><b>Saikai</b></h1>
 
-_Saikai_ helps us to track the sending of resumes to the various companies, update as soon as the resume is received by a particular company and update relevant status when receiving an answer (positive / negative / homework, etc.).
+  <p align="center">
+    Manage Your Way To Work!
+    <br />
+    <a href="https://github.com/Saikai-oyo/Saikai/blob/dev/README.md"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://saikai.me">View Website</a>
+    ·
+    <a href="https://github.com/Saikai-oyo/Saikai/issues">Report Bug</a>
+    ·
+    <a href="mailto:contactus@saikai.me">Contact Us</a>
+  </p>
+</p>
 
-## Website URL
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-🔗 Enter the website [here](https://eidan66.github.io/Saikai) ! 🥂
+<!-- ABOUT THE PROJECT -->
 
-## Preview
+## About The Project
 
-#### Home screen
+![product-screenshot](https://user-images.githubusercontent.com/41434778/119908285-ee3eff80-bf5a-11eb-929e-519affb5177c.gif)
 
-![image](https://user-images.githubusercontent.com/41434778/117183544-56794600-ade0-11eb-8a28-e31d07f7fc97.png)
+400 job applications ➡ 100 interviews ➡ 10 home tasks ➡ 1 contract.
 
-#### Add new position
+Pretty simple, right? Until you need to keep track of your job search!
+And that's where <b>Saikai</b> comes in.
 
-![image](https://user-images.githubusercontent.com/41434778/117183609-68f37f80-ade0-11eb-9d7b-7713eadfd7ca.png)
+<b>Saikai</b> is a web platform, where job seekers can keep track of their job applications and organize their job search.
 
-![image](https://user-images.githubusercontent.com/41434778/117183682-7f014000-ade0-11eb-984f-5006b780c473.png)
+In <b>Saikai</b>, you can log any detail regarding the job applications and quickly get a clear vision of how your job search is going.
 
-### View Position Modal
+<b>Saikai</b> helps you to manage all the information you need in order to be right on ready once you get a call back from your dream company. Here you can organize all the position details including position description, status, applied date and many more!
 
-#### Description Tab
+### Built With
 
-![image](https://user-images.githubusercontent.com/41434778/117183831-afe17500-ade0-11eb-8fc7-726b272a5683.png)
+- [React](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Styled-Components](https://styled-components.com/)
+- [Github-Pages](https://pages.github.com/)
+- [Figma](https://www.figma.com/)
 
-#### View Position Tab
+<!-- GETTING STARTED -->
 
-![image](https://user-images.githubusercontent.com/41434778/117183867-bd96fa80-ade0-11eb-87c8-c0d083041f7c.png)
+## Getting Started
 
-### Auth
+### Prerequisites
 
-#### Login
+Install Node.
 
-![image](https://user-images.githubusercontent.com/41434778/117183937-d0113400-ade0-11eb-8e1b-bb2d50a7c76a.png)
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-#### Register
+### Installation
 
-![image](https://user-images.githubusercontent.com/41434778/117183958-da333280-ade0-11eb-8ed9-4d2c9d15a708.png)
+1. Get a free API Key at [Firebase](https://firebase.google.com) console.
+2. Clone the repo
+   ```sh
+   git clone https://github.com/Saikai-oyo/Saikai.git
+   ```
+3. Install NPM packages
+   ```sh
+   npm install
+   ```
+4. Create `.env.local` file and enter your API in (you will get 7 keys)
+   ```JS
+   REACT_APP_FIREBASE_API_KEY= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_AUTH_DOMAIN= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_PROJECT_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_STORAGE_BUCKET= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_APP_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MEASUREMENT_ID= THE_API_RELEVANT_KEY
+   ```
+5. Start the application
+   ```sh
+   npm started
+   ```
 
-#### Forgot Password? -> Reset Password
+<!-- USAGE EXAMPLES -->
 
-![image](https://user-images.githubusercontent.com/41434778/117184011-e919e500-ade0-11eb-8bc0-9e3eae77a3ae.png)
+## Usage
 
-### User Profile
+1️⃣ Create your own Saikai profile, to keep track of your personal progress
 
-#### Profile
+2️⃣ Add new position you applied your CV to and log all the details you need (title, company, description, status, applied date, HR details, position link etc.)
 
-![image](https://user-images.githubusercontent.com/41434778/117184195-1ebece00-ade1-11eb-945a-0f80fd6ed265.png)
+3️⃣ Watch all the entered information of the position by clicking on it from the main board. Navigate between position details and position description
 
-#### Update Password
+4️⃣ Edit position details, by clicking on the pencil of the "view position" modal
 
-![image](https://user-images.githubusercontent.com/41434778/117184231-29796300-ade1-11eb-84fc-856d91f6b984.png)
+5️⃣ Watch all positions on the main board, and get a quick access to each position information.
 
-### Demo user :
+6️⃣ Drag positions between different status bar as you progress with the process of the specific job, in order to update the position status (You can also change the status manually on "edit position" mode)
 
-- email : demo@saikai.com
-- password : playSaikai
+7️⃣ Order the positions in each status bar by preferred order: by date, alphabet and free-style
 
-## Why use it?
+8️⃣ Search for a specific position in the search bar at the top - search by position title, company name or description key words (very useful once you get a call and need a quick reminder of this application 😉)
 
-You are probably wondering what can already be done in this app, so it is possible to do a number of actions that will make it easier for us in the organization of sending our resume!
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life.
 
-- Simple Login & Register to the application (**A must to see the jobs you have saved!**)
-- Update password
-- Add new position ➕
-- Edit the position ✍️
-- Delete the position 🗑️
-- View all positions 🖼️
+<!-- ROADMAP -->
 
-and more will be add at the next version !
+## Roadmap
 
-### Clone
+See the [Next Milestones](https://github.com/Saikai-oyo/Saikai/milestones) for a list of proposed features (and known issues) for the next milestones.
 
-If you want to clone this project, PM me at [Linkedin](https://www.linkedin.com/in/idanlevian/) to get Keys.
-Firebase use here for DB and Auth.
+<!-- CONTRIBUTING -->
 
-**THE APP WON'T WORK WITHOUT THOSE KEYS**
+## Contributing
 
-### License
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-Distributed under the `MIT License`. See [LICENSE](https://github.com/eidan66/Saikai/blob/main/LICENSE) for more information.
+0. Speak with Idan at [LinkedIn](https://www.linkedin.com/in/idanlevian/) to be formal contributing
+1. Fork the Project.
+2. Create your Feature Branch.
+3. Commit your Changes.
+4. Push to the Branch.
+5. Open a Pull Request.
 
-### Contact
+<!-- LICENSE -->
 
-Idan Levian - [Linkedin](https://www.linkedin.com/in/idanlevian/)
+## Convention
 
-Project Link - [Saikai](https://eidan66.github.io/Saikai)
+### Branch
+
+Branch naming convention is as following:
+
+```
+TYPE-ISSUE_ID-DESCRIPTION
+
+examples:
+feat-45-add-new-button
+fix-741-change-localstorage-get-function
+```
+
+### Pull Request (PR)
+
+Pull Request (PR) title convention is as following:
+
+```
+[TYPE-ISSUE_ID]-DESCRIPTION
+
+example:
+[Feat-45] Add button to login component
+[Fix-114] Change localstorage get function
+```
+
+### Commits
+
+Commit information convention is as following:
+
+```
+[TYPE-ISSUE_ID]-DESCRIPTION
+
+example:
+[Feat-45] Add button to login component
+[Fix-114] Change localstorage get function
+```
+
+### Type
+
+When type can be:
+
+    * feat - is a new feature
+    * doc - documentation only changes
+    * fix - a bug fix
+    * refactor - code change that neither fixes a bug nor adds a feature
+
+**All PRs must include commit message with the changes description!**
+
+---
+
+## License
+
+Distributed under the MIT License. See [`LICENSE`](https://github.com/Saikai-oyo/Saikai/blob/dev/LICENSE) for more information.
+
+<!-- CONTACT -->
+
+## Contact
+
+📧 Via email - ContactUs@Saikai.me
+
+🔥 Project Github Link: https://github.com/Saikai-oyo/Saikai
+
+🔗 Website : https://saikai.me
+
+👨🏾‍💻 Open-source Manager (Idan) - [LinkedIn](https://www.linkedin.com/in/idanlevian/)
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/Saikai-oyo/Saikai.svg?style=for-the-badge
+[contributors-url]: https://github.com/Saikai-oyo/Saikai/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Saikai-oyo/Saikai.svg?style=for-the-badge
+[forks-url]: https://github.com/Saikai-oyo/Saikai/network/members
+[stars-shield]: https://img.shields.io/github/stars/Saikai-oyo/Saikai.svg?style=for-the-badge
+[stars-url]: https://github.com/Saikai-oyo/Saikai/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Saikai-oyo/Saikai.svg?style=for-the-badge
+[issues-url]: https://github.com/Saikai-oyo/Saikai/issues
+[pulls-url]: https://github.com/Saikai-oyo/Saikai/pulls
+[pulls-shield]: https://img.shields.io/github/issues-pr/Saikai-oyo/Saikai.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Saikai-oyo/Saikai.svg?style=for-the-badge
+[license-url]: https://github.com/Saikai-oyo/Saikai/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/company/72704625
+[product-screenshot]: https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png
