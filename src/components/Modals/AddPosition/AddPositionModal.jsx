@@ -70,14 +70,25 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                     createdDate: new Date().getTime(),
                 });
 
-            columnInfo.forEach((column) => (column.id === titlePositions.id ? column.positionIds.push(id) : null));
-            await app
-                .firestore()
-                .collection('users')
-                .doc(`${currentUser.uid}`)
-                .collection('columns')
-                .doc(`${titlePositions.id}`)
-                .update(titlePositions);
+            if (!titlePositions) {
+                selectedTitle.positionIds.push(id);
+                await app
+                    .firestore()
+                    .collection('users')
+                    .doc(`${currentUser.uid}`)
+                    .collection('columns')
+                    .doc(`${selectedTitle.id}`)
+                    .update(selectedTitle);
+            } else {
+                columnInfo.forEach((column) => (column.id === titlePositions.id ? column.positionIds.push(id) : null));
+                await app
+                    .firestore()
+                    .collection('users')
+                    .doc(`${currentUser.uid}`)
+                    .collection('columns')
+                    .doc(`${titlePositions.id}`)
+                    .update(titlePositions);
+            }
 
             setInformation({
                 errorLine: [title, 'good'],
