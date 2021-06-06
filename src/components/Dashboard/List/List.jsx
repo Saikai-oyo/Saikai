@@ -22,7 +22,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 const List = (props = {}) => {
     const searchTerm = props.searchTerm || '';
 
-    const { positions, setPositions } = useContext(PositionsContext);
+    const { positions } = useContext(PositionsContext);
     const { setSelectedPosition } = useContext(SelectedPositionContext);
     const { currentUser } = useAuth();
 
@@ -63,6 +63,7 @@ const List = (props = {}) => {
                                     {isMobile ? (
                                         <Accordion.Collapse eventKey={index + 1}>
                                             <ListBody
+                                                index={index}
                                                 setIsCreateOpen={setIsCreateOpen}
                                                 setSelectedTitle={setSelectedTitle}
                                                 isMobile={isMobile}
@@ -76,6 +77,7 @@ const List = (props = {}) => {
                                         </Accordion.Collapse>
                                     ) : (
                                         <ListBody
+                                            index={index}
                                             setIsCreateOpen={setIsCreateOpen}
                                             setSelectedTitle={setSelectedTitle}
                                             isMobile={isMobile}

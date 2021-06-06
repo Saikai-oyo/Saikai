@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as S from './style';
 import { Droppable } from 'react-beautiful-dnd';
 import Position from './Position';
@@ -14,6 +14,7 @@ const ListBody = ({
     uid,
     addSelectedPosition,
     setIsViewOpen,
+    index,
 }) => {
     return (
         <S.ListBody>
@@ -27,7 +28,7 @@ const ListBody = ({
                     isMobile={isMobile}
                 />
             )}
-            <Droppable droppableId={column.id} type="position" key={column.id}>
+            <Droppable droppableId={column.id} type="position" key={column.id + index}>
                 {(provided) => {
                     return (
                         <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
@@ -57,7 +58,7 @@ const ListBody = ({
                                             uid === position.doc.uid &&
                                             column.title === position.doc.status && (
                                                 <Position
-                                                    key={position.id}
+                                                    key={position.id + index}
                                                     position={position.doc}
                                                     index={index}
                                                     addSelectedPosition={addSelectedPosition}

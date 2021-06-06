@@ -61,10 +61,6 @@ const onDragEnd = (initialData, currentUser, setInitialData, app) => {
         newState.columns[startColumnIndex] = newStart;
         newState.columns[endColumnIndex] = newFinish;
         newState.positions[draggableId].status = endColumn.title;
-        console.log('~ draggableId', draggableId);
-        console.log('~ newState', newState);
-
-        console.log('~ initialData', initialData);
 
         app.firestore()
             .collection('users')

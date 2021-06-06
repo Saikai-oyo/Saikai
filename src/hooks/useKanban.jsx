@@ -9,33 +9,44 @@ const useKanban = (userId) => {
     const [final, setFinal] = useState(null);
 
     useEffect(() => {
-        console.log('%crunning before', 'background-color:green');
-        return app
+        const unsubscribe = app
             .firestore()
             .collection('positions')
             .where('uid', '==', `${userId}`)
-            .get()
-            .then((querySnapshot) => {
-                const source = querySnapshot.metadata.hasPendingWrites ? 'Local' : 'Server';
-                const respondedData = querySnapshot.docs.map((doc) => ({
-                    id: doc.id,
-                    doc: doc.data(),
-                }));
-                console.log('%csource', 'background-color:lightblue;color:black', source);
-                // .then((respondedData) => {
-                if (
-                    (!isEqual(positions.data, respondedData) && source !== 'Local') ||
-                    (isEqual(positions.data, respondedData) && source !== 'Server')
-                ) {
-                    console.log('%crunning after', 'background-color:blue');
-                    console.log('positions', positions);
-                    setPositions({
-                        ...positions,
-                        data: respondedData,
-                        loading: false,
+            .orderBy('createdDate', 'desc')
+            .onSnapshot(
+                (snapshot) => {
+                    let modified = false;
+                    let added = false;
+                    snapshot.docChanges().forEach((change) => {
+                        if (change.type === 'modified') {
+                            modified = true;
+                        }
+                        if (change.type === 'added') {
+                            added = true;
+                        }
                     });
-                }
-            });
+                    const source = snapshot.metadata.hasPendingWrites ? 'Local' : 'Server';
+                    const respondedData = snapshot.docs.map((doc) => ({
+                        id: doc.id,
+                        doc: doc.data(),
+                    }));
+                    if (
+                        (!isEqual(positions.data, respondedData) && source !== 'Local') ||
+                        (!isEqual(positions.data, respondedData) && source === 'Local' && modified) ||
+                        (positions.data < respondedData && source === 'Local' && added)
+                    ) {
+                        setPositions({
+                            ...positions,
+                            data: respondedData,
+                            loading: false,
+                        });
+                    }
+                },
+                (error) => console.error(error.message),
+            );
+
+        return () => unsubscribe();
     }, [userId, positions, setPositions]);
 
     useEffect(() => {

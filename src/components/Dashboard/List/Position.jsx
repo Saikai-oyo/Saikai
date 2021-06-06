@@ -5,7 +5,7 @@ import { formatDate } from '../../../helpers';
 
 const Position = ({ index, addSelectedPosition, setIsViewOpen, position }) => {
     return (
-        <Draggable draggableId={position.id.toString()} index={index}>
+        <Draggable draggableId={position.id} index={index}>
             {(provided) => (
                 <S.PositionWrapper
                     data-tooltip={position.position}
