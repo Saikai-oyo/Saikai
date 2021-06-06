@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { app } from '../config/firebase';
 import { PositionsContext } from '../contexts/PositionsContext';
-import isEqual from 'lodash';
+import { isEqual } from 'lodash';
 
 const useKanban = (userId) => {
     const { positions, setPositions } = useContext(PositionsContext);
@@ -9,16 +9,26 @@ const useKanban = (userId) => {
     const [final, setFinal] = useState(null);
 
     useEffect(() => {
+        console.log('%crunning before', 'background-color:green');
         return app
             .firestore()
             .collection('positions')
             .where('uid', '==', `${userId}`)
-            .orderBy('createdDate', 'desc')
-            .onSnapshot((querySnapshot) => {
+            .get()
+            .then((querySnapshot) => {
+                const source = querySnapshot.metadata.hasPendingWrites ? 'Local' : 'Server';
                 const respondedData = querySnapshot.docs.map((doc) => ({
-                    ...doc.data(),
+                    id: doc.id,
+                    doc: doc.data(),
                 }));
-                if (!isEqual(positions.data, respondedData)) {
+                console.log('%csource', 'background-color:lightblue;color:black', source);
+                // .then((respondedData) => {
+                if (
+                    (!isEqual(positions.data, respondedData) && source !== 'Local') ||
+                    (isEqual(positions.data, respondedData) && source !== 'Server')
+                ) {
+                    console.log('%crunning after', 'background-color:blue');
+                    console.log('positions', positions);
                     setPositions({
                         ...positions,
                         data: respondedData,

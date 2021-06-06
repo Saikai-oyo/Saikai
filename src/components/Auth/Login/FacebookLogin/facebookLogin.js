@@ -2,7 +2,6 @@ import firebase from 'firebase/app';
 import { app } from '../../../../config/firebase';
 
 const signupWithFacebook = (user, userInfo) => {
-    console.log('%cinside signuo fb', 'background:orange');
     app.firestore().collection('users').doc(user.uid).set({
         firstName: userInfo.profile.first_name,
         lastName: userInfo.profile.last_name,
