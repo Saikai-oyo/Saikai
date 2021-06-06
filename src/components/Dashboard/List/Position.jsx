@@ -3,14 +3,14 @@ import * as S from './style';
 import { Draggable } from 'react-beautiful-dnd';
 import { formatDate } from '../../../helpers';
 
-const Position = ({ doc, index, addSelectedPosition, setIsViewOpen, position }) => {
+const Position = ({ index, addSelectedPosition, setIsViewOpen, position }) => {
     return (
-        <Draggable draggableId={doc.id} index={index}>
+        <Draggable draggableId={position.id} index={index}>
             {(provided) => (
                 <S.PositionWrapper
-                    data-tooltip={doc.position}
-                    positionTitle={doc.status}
-                    key={doc.id}
+                    data-tooltip={position.position}
+                    positionTitle={position.status}
+                    key={position.id}
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
@@ -18,9 +18,9 @@ const Position = ({ doc, index, addSelectedPosition, setIsViewOpen, position }) 
                         addSelectedPosition(position);
                         setIsViewOpen(true);
                     }}>
-                    <S.PositionHeader>{doc.position}</S.PositionHeader>
-                    <S.PositionBody>{doc.name}</S.PositionBody>
-                    <S.PositionFooter>{formatDate(doc.date)}</S.PositionFooter>
+                    <S.PositionHeader>{position.position}</S.PositionHeader>
+                    <S.PositionBody>{position.name}</S.PositionBody>
+                    <S.PositionFooter>{formatDate(position.date)}</S.PositionFooter>
                 </S.PositionWrapper>
             )}
         </Draggable>

@@ -22,10 +22,9 @@ const Sort = ({ title, toggleSort }) => {
         const sortedPositions = positions.data.filter((position) => {
             return position.doc.status === title && position.doc.uid === currentUser.uid;
         });
-
         switch (order) {
             case 'asc':
-                if (category !== 'createdDate') {
+                if (category !== 'date') {
                     sortedPositions.sort((positionA, positionB) =>
                         positionA.doc[category].toLowerCase().trim() > positionB.doc[category].toLowerCase().trim()
                             ? 1
@@ -36,9 +35,11 @@ const Sort = ({ title, toggleSort }) => {
                     );
                 } else {
                     sortedPositions.sort((positionA, positionB) =>
-                        positionA.doc[category] > positionB.doc[category]
+                        positionA.doc[category].split('-').reverse().join() >
+                        positionB.doc[category].split('-').reverse().join()
                             ? 1
-                            : positionB.doc[category] > positionA.doc[category]
+                            : positionB.doc[category].split('-').reverse().join() >
+                              positionA.doc[category].split('-').reverse().join()
                             ? -1
                             : 0,
                     );
@@ -46,7 +47,7 @@ const Sort = ({ title, toggleSort }) => {
                 break;
 
             case 'desc':
-                if (category !== 'createdDate') {
+                if (category !== 'date') {
                     sortedPositions.sort((positionA, positionB) =>
                         positionB.doc[category].toLowerCase().trim() > positionA.doc[category].toLowerCase().trim()
                             ? 1
@@ -57,9 +58,11 @@ const Sort = ({ title, toggleSort }) => {
                     );
                 } else {
                     sortedPositions.sort((positionA, positionB) =>
-                        positionB.doc[category] > positionA.doc[category]
+                        positionB.doc[category].split('-').reverse().join() >
+                        positionA.doc[category].split('-').reverse().join()
                             ? 1
-                            : positionA.doc[category] > positionB.doc[category]
+                            : positionA.doc[category].split('-').reverse().join() >
+                              positionB.doc[category].split('-').reverse().join()
                             ? -1
                             : 0,
                     );
@@ -88,14 +91,14 @@ const Sort = ({ title, toggleSort }) => {
             <S.item
                 positionTitle={title}
                 onClick={() => {
-                    handleFilter(title, 'createdDate', 'asc');
+                    handleFilter(title, 'date', 'asc');
                 }}>
                 oldest to newest
             </S.item>
             <S.item
                 positionTitle={title}
                 onClick={() => {
-                    handleFilter(title, 'createdDate', 'desc');
+                    handleFilter(title, 'date', 'desc');
                 }}>
                 Newest to oldest
             </S.item>

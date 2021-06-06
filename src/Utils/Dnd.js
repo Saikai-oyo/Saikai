@@ -43,14 +43,14 @@ const onDragEnd = (initialData, currentUser, setInitialData, app) => {
         startPositionIDs.splice(source.index, 1);
         const newStart = {
             ...startColumn,
-            taskIds: startPositionIDs,
+            positionIds: startPositionIDs,
         };
 
         const finishPositionIDs = Array.from(endColumn.positionIds);
         finishPositionIDs.splice(destination.index, 0, draggableId);
         const newFinish = {
             ...endColumn,
-            taskIds: finishPositionIDs,
+            positionIds: finishPositionIDs,
         };
 
         const newState = {
@@ -60,6 +60,7 @@ const onDragEnd = (initialData, currentUser, setInitialData, app) => {
 
         newState.columns[startColumnIndex] = newStart;
         newState.columns[endColumnIndex] = newFinish;
+        newState.positions[draggableId].status = endColumn.title;
 
         app.firestore()
             .collection('users')
@@ -76,6 +77,7 @@ const onDragEnd = (initialData, currentUser, setInitialData, app) => {
             .update({ positionIds: finishPositionIDs });
 
         app.firestore().collection('positions').doc(`${draggableId}`).update({ status: endColumn.title });
+
         setInitialData(newState);
     };
 };

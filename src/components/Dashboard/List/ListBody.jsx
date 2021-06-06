@@ -14,6 +14,7 @@ const ListBody = ({
     uid,
     addSelectedPosition,
     setIsViewOpen,
+    index,
 }) => {
     return (
         <S.ListBody>
@@ -27,7 +28,7 @@ const ListBody = ({
                     isMobile={isMobile}
                 />
             )}
-            <Droppable droppableId={column.id} type="position" key={column.id}>
+            <Droppable droppableId={column.id} type="position" key={column.id + index}>
                 {(provided) => {
                     return (
                         <S.InnerList ref={provided.innerRef} {...provided.droppableProps}>
@@ -52,15 +53,13 @@ const ListBody = ({
                                 })
                                 .map((positionId, index) => {
                                     let position = initialData.positions[positionId];
-
                                     if (position) {
                                         return (
                                             uid === position.doc.uid &&
                                             column.title === position.doc.status && (
                                                 <Position
-                                                    key={position.doc.id}
-                                                    doc={position.doc}
-                                                    position={position}
+                                                    key={position.id + index}
+                                                    position={position.doc}
                                                     index={index}
                                                     addSelectedPosition={addSelectedPosition}
                                                     setIsViewOpen={setIsViewOpen}

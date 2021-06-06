@@ -31,15 +31,14 @@ const List = (props = {}) => {
     const [selectedTitle, setSelectedTitle] = useState('');
 
     const addSelectedPosition = (position) => {
-        setSelectedPosition({ data: position.doc, selected: true });
+        setSelectedPosition({ data: position, selected: true });
     };
     const { initialData, setInitialData } = useKanban(currentUser.uid);
 
     const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
     const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined);
-    useEffect(() => {}, [isMobile]);
-
+    useEffect(() => {}, [isMobile, initialData]);
     return (
         <S.ListWrapper>
             {positions.loading ? (
@@ -64,6 +63,7 @@ const List = (props = {}) => {
                                     {isMobile ? (
                                         <Accordion.Collapse eventKey={index + 1}>
                                             <ListBody
+                                                index={index}
                                                 setIsCreateOpen={setIsCreateOpen}
                                                 setSelectedTitle={setSelectedTitle}
                                                 isMobile={isMobile}
@@ -77,6 +77,7 @@ const List = (props = {}) => {
                                         </Accordion.Collapse>
                                     ) : (
                                         <ListBody
+                                            index={index}
                                             setIsCreateOpen={setIsCreateOpen}
                                             setSelectedTitle={setSelectedTitle}
                                             isMobile={isMobile}
