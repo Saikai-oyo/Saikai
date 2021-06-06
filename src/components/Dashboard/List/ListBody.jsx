@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from './style';
 import { Droppable } from 'react-beautiful-dnd';
 import Position from './Position';
@@ -52,15 +52,13 @@ const ListBody = ({
                                 })
                                 .map((positionId, index) => {
                                     let position = initialData.positions[positionId];
-
                                     if (position) {
                                         return (
                                             uid === position.doc.uid &&
                                             column.title === position.doc.status && (
                                                 <Position
-                                                    key={position.doc.id}
-                                                    doc={position.doc}
-                                                    position={position}
+                                                    key={position.id}
+                                                    position={position.doc}
                                                     index={index}
                                                     addSelectedPosition={addSelectedPosition}
                                                     setIsViewOpen={setIsViewOpen}

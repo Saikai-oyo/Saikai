@@ -22,7 +22,6 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
     const { selectedPosition, setSelectedPosition } = useContext(SelectedPositionContext);
     const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
     const { setInformation } = useContext(MessagesContext);
-
     useEffect(() => {
         const close = (e) => {
             if (e.keyCode === 27) {

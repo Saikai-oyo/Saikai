@@ -22,7 +22,7 @@ import { useAuth } from '../../../contexts/AuthContext';
 const List = (props = {}) => {
     const searchTerm = props.searchTerm || '';
 
-    const { positions } = useContext(PositionsContext);
+    const { positions, setPositions } = useContext(PositionsContext);
     const { setSelectedPosition } = useContext(SelectedPositionContext);
     const { currentUser } = useAuth();
 
@@ -31,15 +31,14 @@ const List = (props = {}) => {
     const [selectedTitle, setSelectedTitle] = useState('');
 
     const addSelectedPosition = (position) => {
-        setSelectedPosition({ data: position.doc, selected: true });
+        setSelectedPosition({ data: position, selected: true });
     };
     const { initialData, setInitialData } = useKanban(currentUser.uid);
 
     const endDragHandler = onDragEnd(initialData, currentUser, setInitialData, app);
 
     const isMobile = useMediaQuery({ query: '(max-width: 850px)' }, undefined);
-    useEffect(() => {}, [isMobile]);
-
+    useEffect(() => {}, [isMobile, initialData]);
     return (
         <S.ListWrapper>
             {positions.loading ? (
