@@ -131,3 +131,4 @@ node_modules
 /src/mockup
 /.env
 /.vscode
+/.firebase
