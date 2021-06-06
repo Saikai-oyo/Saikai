@@ -13,7 +13,7 @@ const useKanban = (userId) => {
             .firestore()
             .collection('positions')
             .where('uid', '==', `${userId}`)
-            .orderBy('createdDate', 'desc')
+            .orderBy('date', 'desc')
             .onSnapshot(
                 (snapshot) => {
                     let modified = false;
