@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
                         console.info('No document found!');
                     }
                 })
-                .catch((err) => console.error(err));
+                .catch((err) => console.error(err.message));
         });
 
         return () => unsubscribe;
