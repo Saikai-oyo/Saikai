@@ -3,11 +3,12 @@ import { app } from '../config/firebase';
 import { PositionsContext } from '../contexts/PositionsContext';
 import { isEqual } from 'lodash';
 
+let firstTimeRender = true;
+
 const useKanban = (userId) => {
     const { positions, setPositions } = useContext(PositionsContext);
     const [columns, setColumns] = useState(null);
     const [final, setFinal] = useState(null);
-
     useEffect(() => {
         const unsubscribe = app
             .firestore()
@@ -36,6 +37,13 @@ const useKanban = (userId) => {
                         (!isEqual(positions.data, respondedData) && source === 'Local' && modified) ||
                         (positions.data < respondedData && source === 'Local' && added)
                     ) {
+                        setPositions({
+                            ...positions,
+                            data: respondedData,
+                            loading: false,
+                        });
+                    } else if (firstTimeRender) {
+                        firstTimeRender = false;
                         setPositions({
                             ...positions,
                             data: respondedData,
