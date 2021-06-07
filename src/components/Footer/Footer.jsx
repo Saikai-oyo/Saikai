@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const SFooter = styled.div`
     margin: auto;
-    // margin-top: 2rem;
     width: max-content;
     height: 15px;
     font-style: normal;
@@ -19,24 +18,16 @@ const SFooter = styled.div`
     & > a {
         color: #353535;
     }
+    & > a {
+        cursor: pointer;
+    }
 
     @media screen and (max-height: 780px) {
         & {
-            // margin-top: 4rem;
-            // display: inline-block;
             bottom: 0;
-            // position: initial;
-            // bottom: 0;
-            // position: relative;
             display: inline-block;
         }
     }
-    // @media screen and (max-height: 600px) {
-    //     & {
-    //         margin-top: 4rem;
-    //         position: relative;
-    //     }
-    // }
 `;
 
 const Footer = () => {
