@@ -71,7 +71,7 @@ export const ListHeader = styled.div`
     padding: 0 20px;
     width: 100%;
     height: 39px;
-    border-radius: 3px 3px 0px 0px;
+    border-radius: 7px 7px 0 0;
     min-height: 39px;
     max-height: 39px;
     background-color: ${({ positionTitle }) => colorForTitle(positionTitle)};
