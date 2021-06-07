@@ -26,8 +26,8 @@ export const SearchBar = styled.input`
     padding-left: 3rem;
 
     background: #ffffff;
-    border: 1px solid #c6c6c6;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #a5add8;
+    box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
     border-radius: 80px;
 
     &:focus {

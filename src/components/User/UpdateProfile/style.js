@@ -82,13 +82,20 @@ export const InputsWrapper = styled.div`
     }
 `;
 
+export const ButtonsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+`;
+
 export const Update = styled.button`
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 6.5px;
-    margin: 0px 102px 14px 102px;
+    margin: 0px 102px 0 102px;
     width: 17rem;
     height: 2.5rem;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
@@ -101,7 +108,7 @@ export const Update = styled.button`
     color: #ffffff;
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 91px 14px 91px;
+            margin: 0px 91px 0 91px;
             width: 18rem;
             height: 3rem;
             font-size: 20px;
@@ -111,24 +118,25 @@ export const Update = styled.button`
 `;
 
 export const Cancel = styled.button`
-    margin: 0px 165px 57px 152px;
+    margin: 0px 165px 0 152px;
     width: 180px;
     height: 1rem;
     border: none;
     outline: none;
     font-style: normal;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 15px;
     background: none;
+    font-weight: bold;
+    color: #353535;
+    text-decoration: none;
     & > a {
-        color: #353535;
-        font-weight: bold;
     }
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 91px 14px 91px;
+            margin: 0px 91px 0 91px;
             width: 18rem;
             height: 3rem;
             border: 1px solid #a5add8;

@@ -94,11 +94,6 @@ const UpdateProfile = () => {
                     </div>
                     <S.Header>Update Password</S.Header>
                     <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
-                    {/* {information.hasError && (
-                        <div className="alert alert-danger" role="alert">
-                            {information.error}
-                        </div>
-                    )} */}
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
@@ -107,11 +102,13 @@ const UpdateProfile = () => {
                             <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
                             <AuthInput type="password" placeholder="Confirm New Password" name="confirmPassword" />
                         </S.InputsWrapper>
-                        <S.Update type="submit">Update</S.Update>
+                        <S.ButtonsWrapper>
+                            <S.Update type="submit">Update</S.Update>
 
-                        <S.Cancel>
-                            <Link to="/profile">Cancel</Link>
-                        </S.Cancel>
+                            <Link to="/profile">
+                                <S.Cancel type="button">Cancel</S.Cancel>
+                            </Link>
+                        </S.ButtonsWrapper>
                     </form>
                     <S.FooterWrapper></S.FooterWrapper>
                 </S.UpdatePassContainer>
