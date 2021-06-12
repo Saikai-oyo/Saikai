@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colorForTitle, colorHoverForTitle } from '../../../helpers';
+import { black, doveGrey, lightGrey, white } from '../../../styles/_color';
 
 export const ListWrapper = styled.div`
     display: flex;
@@ -24,8 +25,8 @@ export const List = styled.div`
     width: 16.5rem;
     height: ${({ collapse }) => (!collapse ? '35rem' : 'auto')};
     max-height: ${({ collapse }) => (!collapse ? 'unset' : '35rem')};
-    background: #ffffff;
-    border: 1px solid #c8c8c8;
+    background: ${white};
+    border: 1px solid ${lightGrey};
     box-sizing: border-box;
     box-shadow: 0px 4px 40px -6px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
@@ -92,7 +93,7 @@ export const HeaderTypography = styled.span`
     font-weight: bold;
     font-size: 20px;
     line-height: 25px;
-    color: #ffffff;
+    color: ${white};
     cursor: context-menu;
 
     @media screen and (max-width: 1160px) {
@@ -159,7 +160,7 @@ export const PositionHeader = styled.p`
     font-weight: 600;
     font-size: 18px;
     line-height: 23px;
-    color: #000000;
+    color: ${black};
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -186,7 +187,7 @@ export const PositionBody = styled.p`
     font-size: 16px;
     line-height: 20px;
     text-align: center;
-    color: #6d6d6d;
+    color: ${doveGrey};
     flex: none;
     order: 1;
     flex-grow: 0;
@@ -208,7 +209,7 @@ export const PositionFooter = styled.p`
     font-size: 14px;
     line-height: 15px;
     text-align: center;
-    color: #000000;
+    color: ${black};
     flex: none;
     order: 3;
     flex-grow: 0;

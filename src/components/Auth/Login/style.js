@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { googleIcon, facebookIcon } from '../../../assets/icons/';
+import { white, middleBlue, darkBlack, facebookBlue, googleRed } from '../../../styles/_color';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -12,8 +13,8 @@ export const LoginContainer = styled.div`
     flex-direction: column;
     width: 30rem;
     height: 31.25rem;
-    background: #ffffff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
     border-radius: 8px;
 
@@ -34,7 +35,7 @@ export const Header = styled.h3`
     font-weight: bold;
     font-size: 35px;
     line-height: 31px;
-    color: #353535;
+    color: ${darkBlack};
 `;
 
 export const Subtitle = styled.h4`
@@ -42,7 +43,7 @@ export const Subtitle = styled.h4`
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
-    color: #353535;
+    color: ${darkBlack};
     @media screen and (max-width: 500px) {
         & {
             margin: 0px 74px 10px 2.5rem;
@@ -99,7 +100,7 @@ export const LogIn = styled.button`
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    color: #ffffff;
+    color: ${white};
 
     @media screen and (max-width: 500px) {
         & {
@@ -128,11 +129,11 @@ export const LoginsWrappers = styled.div`
 export const LoginWith = styled.button`
     width: 133px;
     height: 28px;
-    background: ${({ login }) => (login === 'facebook' ? '#3C7AFF' : '#DF492E')};
+    background: ${({ login }) => (login === 'facebook' ? facebookBlue : googleRed)};
     border-radius: 4px;
     font-size: 12px;
     line-height: 15px;
-    color: #ffffff;
+    color: ${white};
     border: none;
     outline: none;
 
@@ -156,7 +157,7 @@ export const ForgotPassword = styled.div`
     font-size: 12px;
     line-height: 15px;
     & > a {
-        color: #353535;
+        color: ${darkBlack};
     }
 
     @media screen and (max-width: 500px) {
@@ -179,7 +180,7 @@ export const NeedAccount = styled.div`
     font-size: 12px;
     line-height: 15px;
     & > a {
-        color: #353535;
+        color: ${darkBlack};
         width: max-content;
         font-weight: bold;
     }

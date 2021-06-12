@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darkBlack } from '../../styles/_color';
 
 const SFooter = styled.div`
     margin: auto;
@@ -16,7 +17,7 @@ const SFooter = styled.div`
 
     &,
     & > a {
-        color: #353535;
+        color: ${darkBlack};
     }
     & > a {
         cursor: pointer;

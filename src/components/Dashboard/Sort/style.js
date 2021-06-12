@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { colorHoverForTitle } from '../../../helpers';
+import { black, middleBlue } from '../../../styles/_color';
 
 export const container = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 200px;
     height: 190px;
-    border: 1px solid #a5add8;
+    border: 1px solid ${middleBlue};
     border-radius: 8px;
     align-items: center;
     z-index: 9999;
@@ -24,7 +25,7 @@ export const title = styled.div`
     font-weight: bold;
     font-size: 16px;
     line-height: 21px;
-    color: #000000;
+    color: ${black};
 `;
 
 export const item = styled.div`
@@ -37,7 +38,7 @@ export const item = styled.div`
     font-weight: 300;
     font-size: 14px;
     line-height: 18px;
-    color: #000000;
+    color: ${black};
 
     &:hover {
         background-color: ${({ positionTitle }) => colorHoverForTitle(positionTitle)};

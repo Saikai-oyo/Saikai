@@ -1,3 +1,16 @@
+import {
+    blue,
+    purple,
+    orange,
+    green,
+    red,
+    lightBlue,
+    lightPurple,
+    lightOrange,
+    lightGreen,
+    lightRed,
+} from '../styles/_color';
+
 export const todayDate = () => {
     var todayDate = new Date();
 
@@ -44,26 +57,26 @@ export const formatReversDate = (date) => {
 
 export const colorForTitle = (title) =>
     title === 'Applied'
-        ? '#4c94e5'
+        ? blue
         : title === 'In Progress'
-        ? '#c685cd'
+        ? purple
         : title === 'Received Task'
-        ? '#E78C49'
+        ? orange
         : title === 'Contract'
-        ? '#63b767'
+        ? green
         : title === 'Denied'
-        ? '#b92c2c'
+        ? red
         : '';
 
 export const colorHoverForTitle = (title) =>
     title === 'Applied'
-        ? '#E8F2FC'
+        ? lightBlue
         : title === 'In Progress'
-        ? '#F7EDF8'
+        ? lightPurple
         : title === 'Received Task'
-        ? '#FCF1E8'
+        ? lightOrange
         : title === 'Contract'
-        ? '#EEF7EE'
+        ? lightGreen
         : title === 'Denied'
-        ? '#FAEAEA'
+        ? lightRed
         : '';

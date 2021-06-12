@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { blue, purple, orange, green, red, middleGrey, middleBlue, veryDarkGrey } from '../../../../styles/_color';
 
 export const Label = styled.label`
     width: max-content;
@@ -6,7 +7,7 @@ export const Label = styled.label`
     font-weight: 300;
     font-size: 14px;
     line-height: 13px;
-    color: #9e9e9e;
+    color: ${middleGrey};
     margin: 0;
 
     @media screen and (max-width: 625px) {
@@ -55,13 +56,13 @@ export const DateLabel = styled.label`
     width: 110px;
     margin: 0px 5px;
     white-space: nowrap;
-    color: #9e9e9e;
+    color: ${middleGrey};
 `;
 
 export const Date = styled.span`
     width: 6rem;
     height: 30px;
-    border: 1px solid #a5add8;
+    border: 1px solid ${middleBlue};
     border-radius: 4px;
     outline: none;
 `;
@@ -98,7 +99,7 @@ export const PositionText = styled.span`
     height: 18px;
     font-weight: 300;
     line-height: 18px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 `;
 export const UnderLineStatus = styled.div`
     width: ${({ title }) =>
@@ -118,27 +119,27 @@ export const UnderLineStatus = styled.div`
     border: 2.5px solid
         ${({ title }) =>
             title === 'Applied'
-                ? '#4c94e5'
+                ? blue
                 : title === 'In Progress'
-                ? '#c685cd'
+                ? purple
                 : title === 'Received Task'
-                ? '#E78C49'
+                ? orange
                 : title === 'Contract'
-                ? '#63b767'
+                ? green
                 : title === 'Denied'
-                ? '#b92c2c'
+                ? red
                 : ''};
     background-color: ${({ title }) =>
         title === 'Applied'
-            ? '#4c94e5'
+            ? blue
             : title === 'In Progress'
-            ? '#c685cd'
+            ? purple
             : title === 'Received Task'
-            ? '#E78C49'
+            ? orange
             : title === 'Contract'
-            ? '#63b767'
+            ? green
             : title === 'Denied'
-            ? '#b92c2c'
+            ? red
             : ''}; ;
 `;
 

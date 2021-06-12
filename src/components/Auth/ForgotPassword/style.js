@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { white, middleBlue, darkBlack } from '../../../styles/_color';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -11,8 +12,8 @@ export const ResetPassContainer = styled.div`
     flex-direction: column;
     width: 477px;
     height: 417px;
-    background: #ffffff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
     border-radius: 8px;
     @media screen and (max-width: 500px) {
@@ -33,7 +34,7 @@ export const Header = styled.h3`
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
-    color: #353535;
+    color: ${darkBlack};
 
     @media screen and (max-width: 500px) {
         & {
@@ -81,7 +82,7 @@ export const ResetPassword = styled.button`
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    color: #ffffff;
+    color: ${white};
 
     @media screen and (max-width: 500px) {
         & {
@@ -99,7 +100,7 @@ export const NeedAccount = styled.div`
     font-size: 12px;
     line-height: 15px;
     & > a {
-        color: #353535;
+        color: ${darkBlack};
         font-weight: bold;
     }
 
@@ -120,7 +121,7 @@ export const HaveAccount = styled.div`
     font-size: 12px;
     line-height: 15px;
     & > a {
-        color: #353535;
+        color: ${darkBlack};
         font-weight: bold;
     }
 

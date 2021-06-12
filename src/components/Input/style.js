@@ -1,12 +1,23 @@
 import styled from 'styled-components';
 import { upArrow, downArrow } from '../../assets/icons';
+import {
+    black,
+    middleBlue,
+    middleGrey,
+    middlePurple,
+    middleRed,
+    white,
+    disabledGrey,
+    darkGrey,
+    veryDarkGrey,
+} from '../../styles/_color';
 
 export const AuthInput = styled.input`
     padding: 1rem;
     width: 329.84px;
     height: 37.6px;
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
 
     box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
@@ -14,31 +25,31 @@ export const AuthInput = styled.input`
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     font-weight: 300;
     font-size: 14px;
     line-height: 18px;
-    color: #525252;
+    color: ${darkGrey};
 
     @media screen and (max-width: 500px) {
         & {
@@ -52,35 +63,35 @@ export const PositionsInput = styled.input`
     padding: 1rem;
     width: ${({ edit }) => (edit ? '183px' : '261px')};
     height: ${({ edit }) => (edit ? '21px' : '35px')};
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     font-weight: 300;
     line-height: 15px;
-    color: #000000;
+    color: ${black};
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     @media screen and (max-width: 625px) {
@@ -98,38 +109,38 @@ export const DescriptionInput = styled.textarea`
     padding: 1rem;
     width: ${({ edit }) => (edit ? '600px' : '541px')};
     height: ${({ edit }) => (edit ? '280px' : '114px')};
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
 
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     font-weight: 300;
     line-height: 15px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 
     @media screen and (max-width: 625px) {
         & {
@@ -146,38 +157,38 @@ export const LinkInput = styled.input`
     padding: 1rem;
     width: ${({ edit }) => (edit ? '383px' : '400px')};
     height: 35px;
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
 
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     font-weight: 300;
     line-height: 15px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 
     @media screen and (max-width: 625px) {
         & {
@@ -194,38 +205,38 @@ export const AdvanceInputs = styled.input`
     padding: 1rem;
     width: ${({ edit }) => (edit ? '115px' : '190px')};
     height: ${({ edit }) => (edit ? '21px' : '35px')};
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
 
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     font-weight: 300;
     line-height: 15px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 
     @media screen and (max-width: 625px) {
         & {
@@ -241,56 +252,56 @@ export const AdvanceInputs = styled.input`
 export const DateInput = styled.input`
     width: 137px;
     height: 30px;
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     &:focus {
         filter: drop-shadow(0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:invalid {
-        border: 1px solid #fe4c4c;
-        color: #bdbdbd;
+        border: 1px solid ${middleRed};
+        color: ${disabledGrey};
     }
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     font-weight: 300;
     line-height: 15px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 `;
 
 export const StatusInput = styled.select`
     width: ${({ edit }) => (edit ? '153px' : '190px')};
     height: 3rem;
     padding: ${({ edit }) => (edit ? '.5rem .5rem .6rem .5rem' : '10px 0px 10px 10px')};
-    background: #fff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     border-radius: 4px;
     outline: none;
 
     &:autofill,
     &:-webkit-autofill {
-        background-color: #ffffff;
+        background-color: ${white};
     }
 
     & > option {
-        background: #ffffff;
-        border: 1px solid #a5add8;
+        background: ${white};
+        border: 1px solid ${middleBlue};
         border-radius: 4px;
     }
 
@@ -304,20 +315,20 @@ export const StatusInput = styled.select`
 
     font-weight: 300;
     line-height: 15px;
-    color: #3f3f3f;
+    color: ${veryDarkGrey};
 
     &:focus {
         background-image: url(${downArrow});
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 
     @media screen and (max-width: 625px) {

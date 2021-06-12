@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { searchIcon } from '../../../assets/icons';
+import { middleBlue, middleGrey, middlePurple, white, disabledGrey } from '../../../styles/_color';
 
 export const SearchWrapper = styled.span`
     padding-right: 2rem;
@@ -25,23 +26,23 @@ export const SearchBar = styled.input`
     height: 45px;
     padding-left: 3rem;
 
-    background: #ffffff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     box-shadow: 0px 2.5px 6px rgba(0, 0, 0, 0.25);
     border-radius: 80px;
 
     &:focus {
         box-shadow: (0px 4px 9px rgba(0, 0, 0, 0.25));
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
         outline: none;
     }
 
     &:disabled {
-        border: 1px solid #9e9e9e;
-        color: #bdbdbd;
+        border: 1px solid ${middleGrey};
+        color: ${disabledGrey};
     }
 
     &:hover {
-        border: 1px solid #c282f4;
+        border: 1px solid ${middlePurple};
     }
 `;

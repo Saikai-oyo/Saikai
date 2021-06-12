@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ViewModalBG } from '../../../assets/images';
 import { editIcon, openDeleteIcon, closeDeleteIcon } from '../../../assets/icons';
+import { darkBlack, middleBlue, white, slateBlue } from '../../../styles/_color';
 
 export const BackDrop = styled.div`
     position: fixed;
@@ -19,7 +20,7 @@ export const ModalWrapper = styled.div`
     left: 50%;
     width: ${({ edit }) => (edit ? '685px' : '635px')};
     height: ${({ edit }) => (edit ? '530px' : 'auto')};
-    background: #ffffff;
+    background: ${white};
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     z-index: 1000;
@@ -31,7 +32,7 @@ export const ModalWrapper = styled.div`
     @media screen and (max-width: 625px) {
         & {
             width: 100%;
-            border: 3px solid #a5add8;
+            border: 3px solid ${middleBlue};
             border-radius: 8px;
             height: 100%;
         }
@@ -84,13 +85,13 @@ export const DescriptionTab = styled.button`
     width: ${({ edit }) => (edit ? '300px' : '277px')};
     height: 31px;
     background: ${({ descriptionTab }) =>
-        descriptionTab ? 'linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);' : '#ffffff'};
-    border: 1px solid #a5add8;
+        descriptionTab ? 'linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);' : white};
+    border: 1px solid ${middleBlue};
     border-radius: 5px 0px 0px 0px;
     font-weight: ${({ descriptionTab }) => (descriptionTab ? 'bold' : 'normal')};
     font-size: 18px;
     line-height: 23px;
-    color: ${({ descriptionTab }) => (descriptionTab ? '#ffffff' : '#353535')};
+    color: ${({ descriptionTab }) => (descriptionTab ? white : darkBlack)};
 
     @media screen and (max-width: 625px) {
         & {
@@ -109,13 +110,13 @@ export const ViewTab = styled.button`
     outline: none;
     width: ${({ edit }) => (edit ? '300px' : '277px')};
     height: 31px;
-    background: ${({ viewTab }) => (viewTab ? 'linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%)' : '#ffffff')};
-    border: 1px solid #a5add8;
+    background: ${({ viewTab }) => (viewTab ? 'linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%)' : white)};
+    border: 1px solid ${middleBlue};
     border-radius: 0px 5px 0px 0px;
     font-weight: ${({ viewTab }) => (viewTab ? 'bold' : 'normal')};
     font-size: 18px;
     line-height: 23px;
-    color: ${({ viewTab }) => (viewTab ? '#ffffff' : '#353535')};
+    color: ${({ viewTab }) => (viewTab ? white : darkBlack)};
 
     @media screen and (max-width: 625px) {
         & {
@@ -149,13 +150,13 @@ export const CloseButton = styled.button`
     padding: 5px 10px;
     width: 183px;
     height: 33px;
-    border: 1px solid #5f50e6;
+    border: 1px solid ${slateBlue};
     border-radius: 4px;
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
     outline: none;
-    color: #5f50e6;
+    color: ${slateBlue};
     margin-right: 5px;
     background-color: transparent;
 
@@ -206,13 +207,13 @@ export const SubmitButton = styled.button`
     outline: none;
     width: 183px;
     height: 33px;
-    background: #5f50e6;
+    background: ${slateBlue};
     border-radius: 4px;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
-    color: #ffffff;
+    color: ${white};
     border: none;
 
     @media screen and (max-width: 625px) {
