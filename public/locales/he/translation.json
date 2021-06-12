@@ -1,0 +1,152 @@
+{
+    "email": "אימייל",
+    "needAccount": "צריך חשבון?",
+    "signUp": "הרשמה",
+    "password": "סיסמה",
+    "errors": {
+        "empty": "השדות לא יכולים להיות ריקים.",
+        "emailFormat": "אופס! האימייל לא תקין.",
+        "emailOrPassword": "אופס! אימייל או סיסמה לא נכונים.",
+        "resetDeme": "אין אפשרות לשנות את הסמסה של הדמו 😉",
+        "resetSent": "בידקו את המייל שלכם להוראות נוספות.",
+        "general": "משהו השתבש."
+    },
+    "login": {
+        "title": "ברוכים הבאים!",
+        "subtitle": "התחבר לחשבון שלך",
+        "login": "כניסה",
+        "signInWith": "התחבר דרך",
+        "forgotPassword": "שכחת סיסמה?"
+    },
+    "forgotPassword": {
+        "title": "איפוס סיסמה",
+        "rememberPassword": "זוכר את הסמסה?",
+        "logIn": "כניסה"
+    },
+    "signUpPage": {
+        "title": "הצטרפות ל - Saikai",
+        "subtitle": "צור חשבון כדי לנהל את הדרך שלך למציאת עבודה",
+        "firstName": "שם פרטי",
+        "lastName": "שם משפחה",
+        "yourPassword": "הסיסמה שלך",
+        "confirmPassword": "אימות הסיסמה שלך",
+        "haveAccount": "יש לך כבר חשבון?",
+        "logIn": "כניסה",
+        "errors": {
+            "oops": "אופס!",
+            "empty": {
+                "email": " השדה של האימייל ריק.",
+                "firstName": " השדה של השם פרטי ריק.",
+                "lastName": "  השדה של שם המשפחה ריק.",
+                "password": "  השדה של הסיסמה ריק."
+            },
+            "passwordDontMatch": "  הסיסמאות לא תואמות.",
+            "passwordContain": " הסיסמא צריכה להכיל בין 8 ל - 15 תווים שבתוכם:\n- לפחות אות באנגלית קטנה אחת\n- לפחות אות באנגלית גדולה אחת\n- לפחות מספר אחד\n-לפחות תו מיוחד אחד (#?!@%^&*-_.)",
+            "exists": "אופס! האימייל כבר קיים."
+        },
+        "contain": {
+            "passwordMustContain": "הסיסמה חייבת להכיל:",
+            "letters": "אות באנגלית אחת קטנה & אות באנגלית אחת גדולה",
+            "characters": "לפחות מספר אחד & אורכה צריך להיות בין 8 ל - 15",
+            "special": "לפחות תו מיוחד אחד ( #?!@%^&*-_. )"
+        }
+    },
+    "profile": {
+        "title": "פרופיל",
+        "email": "אימייל",
+        "fullName": "שם מלא",
+        "updatePassword": "עדכן סיסמה",
+        "logout": "יציאה מהמערכת",
+        "errors": {
+            "logout": "היציאה מהמערכת נכשלה."
+        }
+    },
+    "updatePassword": {
+        "title": "עדכון סיסמה",
+        "newPassword": "סיסמה חדשה",
+        "confirmNewPassword": "אימות הסיסמה החדשה",
+        "update": "עדכן",
+        "cancel": "ביטול",
+        "errors": {
+            "passwordDoNotMatch": "הסיסמאות לא תואמות!",
+            "fillPassword": "חובה למלא סיסמה!"
+        }
+    },
+    "dashboard": {
+        "titles": {
+            "applied": "הוגש",
+            "inProgress": "נמצא בתהליך",
+            "receivedTask": "קבלת משימה",
+            "contract": "חוזה",
+            "denied": "סירוב"
+        },
+        "tooltips": {
+            "addPosition": "הוספת משרה חדשה",
+            "sortBy": "סידור לפי",
+            "setting": "הגדרות",
+            "logout": "יציאה מהמערכת",
+            "deletePosition": "מחק משרה",
+            "editPosition": "ערוך משרה",
+            "exit": "יציאה",
+            "advanced": "מתקדם",
+            "language": "החלף שפה"
+        },
+        "navbar": {
+            "errors": {
+                "failed": "ההתנתקות מהמערכת נכשלה."
+            },
+            "searchBar": "שם משרה ו/או שם החברה",
+            "welcome": "שלום"
+        }
+    },
+    "sort": {
+        "addedDate": "תאריך הוספה",
+        "positionName": "שם המשרה",
+        "companyName": "שם החברה",
+        "date": {
+            "oldToNew": "מהיישן לחדש",
+            "newToOld": "מהחדש ליישן"
+        },
+        "aToz": "סדר עולה (א - ת)",
+        "zToa": "סדר יורד (ת - א)"
+    },
+    "modals": {
+        "addNewPosition": {
+            "successfullyAdded": "נוסף בהצלחה!",
+            "title": "הוספת משרה חדשה",
+            "applicationDate": "תאריך הגשה",
+            "positionName": "שם המשרה",
+            "companyName": "שם החברה",
+            "positionDescription": "תיאור המשרה",
+            "status": "סטאטוס",
+            "positionLink": "לינק למשרה",
+            "hrName": "שם המגייס/ת",
+            "hrMail": "מייל המגייס/ת",
+            "city": "עיר",
+            "appliedThrough": "הוגש דרך",
+            "submit": "הוסף",
+            "cancel": "ביטול",
+            "advanced": "מתקדם"
+        },
+        "viewAndEdit": {
+            "errors": {
+                "noChanges": "לא התבצעו שינויים!",
+                "update": "עודכן בהצלחה!",
+                "delete": "נמחק בהצלחה!",
+                "cantDelete": "לא היה ניתן למחוק!"
+            },
+            "tabs": {
+                "description": {
+                    "description": "תיאור",
+                    "positionDescription": "תיאור המשרה"
+                },
+                "view": {
+                    "view": "מידע על המשרה"
+                }
+            },
+            "close": "סגירה",
+            "cancel": "ביטול",
+            "save": "שמירה"
+        }
+    }
+}

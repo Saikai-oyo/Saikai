@@ -5,10 +5,12 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './style';
 
 const ForgotPassword = () => {
+    const { t } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { resetPassword } = useAuth();
     const history = useHistory();
@@ -24,7 +26,7 @@ const ForgotPassword = () => {
         if (e.target[0].value === 'demo@saikai.com') {
             setInformation({
                 errorCode: 0,
-                error: 'Can not reset Demo password! 😉',
+                error: t('errors.resetDemo'),
                 hasError: true,
             });
             return setTimeout(() => {
@@ -33,13 +35,13 @@ const ForgotPassword = () => {
                     error: '',
                     hasError: false,
                 });
-            }, 2500);
+            }, 5000);
         }
 
         try {
             await resetPassword(e.target[0].value);
             setInformation({
-                message: 'Check your inbox for further instructions.',
+                message: t('errors.resetSent'),
                 hasMessage: true,
             });
             history.push('/login');
@@ -48,10 +50,10 @@ const ForgotPassword = () => {
                 errorCode: 0,
                 error:
                     error.code === 'auth/invalid-email'
-                        ? 'Oops! Wrong email format.'
+                        ? t('errors.emailFormat')
                         : error.code === 'auth/user-not-found'
-                        ? 'Oops! Wrong email or password.'
-                        : 'Something went wrong!',
+                        ? t('errors.emailOrPassword')
+                        : t('errors.general'),
                 hasError: true,
             });
             console.error(error);
@@ -71,18 +73,18 @@ const ForgotPassword = () => {
             <GeneralNav display="hide" />
             <S.Wrapper>
                 <S.ResetPassContainer>
-                    <S.Header>Reset Password</S.Header>
+                    <S.Header>{t('forgotPassword.title')}</S.Header>
                     <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
-                            <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Email" name="email" />
+                            <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
+                            <AuthInput type="text" placeholder={t('email')} name="email" />
                         </S.InputsWrapper>
 
-                        <S.ResetPassword type="submit">Reset Password</S.ResetPassword>
+                        <S.ResetPassword type="submit">{t('forgotPassword.title')}</S.ResetPassword>
 
                         <S.NeedAccount>
-                            Need an account?{' '}
+                            {t('needAccount')}{' '}
                             <Link
                                 to="/signup"
                                 onClick={() =>
@@ -92,11 +94,11 @@ const ForgotPassword = () => {
                                         hasError: false,
                                     })
                                 }>
-                                Sign Up
+                                {t('signUp')}
                             </Link>
                         </S.NeedAccount>
                         <S.HaveAccount>
-                            Remember the password?{' '}
+                            {t('forgotPassword.rememberPassword')}{' '}
                             <Link
                                 to="/login"
                                 onClick={() =>
@@ -106,7 +108,7 @@ const ForgotPassword = () => {
                                         hasError: false,
                                     })
                                 }>
-                                Log in
+                                {t('forgotPassword.logIn')}
                             </Link>
                         </S.HaveAccount>
                     </form>

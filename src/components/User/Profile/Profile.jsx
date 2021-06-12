@@ -4,10 +4,12 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { useHistory, Link } from 'react-router-dom';
 import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './style';
 
 const Profile = () => {
+    const { t } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { logout, currentUser } = useAuth();
     const history = useHistory();
@@ -19,14 +21,14 @@ const Profile = () => {
             history.push('/login');
         } catch (error) {
             setInformation({
-                error: 'Failed to log out',
+                error: t('profile.errors.logout'),
                 haveError: true,
             });
             console.error(error.message);
         }
         setTimeout(() => {
             setInformation({ hasError: false });
-        }, 2500);
+        }, 5000);
     };
     return (
         <div>
@@ -36,10 +38,10 @@ const Profile = () => {
                 <S.ProfileContainer>
                     <div className="card-header-pills">
                         <Link to="/">
-                            <S.GoBack></S.GoBack>
+                            <S.GoBack />
                         </Link>
                     </div>
-                    <S.Header>Profile</S.Header>
+                    <S.Header>{t('profile.title')}</S.Header>
                     {information.hasError && (
                         <div className="alert alert-danger" role="alert">
                             {information.error}
@@ -47,18 +49,18 @@ const Profile = () => {
                     )}
                     <S.DetailsWrapper>
                         <div>
-                            <b>Email:</b> <S.EmailText>{currentUser.email}</S.EmailText>
+                            <b>{t('profile.email')}:</b> <S.EmailText>{currentUser.email}</S.EmailText>
                         </div>
                         <div>
-                            <b>Full Name:</b>
+                            <b>{t('profile.fullName')}:</b>
                             <S.EmailText>{` ${userDetails.firstName} ${userDetails.lastName}`}</S.EmailText>
                         </div>
                     </S.DetailsWrapper>
                     <S.Update>
-                        <Link to="/update-profile">Update Password</Link>
+                        <Link to="/update-profile">{t('profile.updatePassword')}</Link>
                     </S.Update>
 
-                    <S.Logout onClick={handleLogout}>Log Out</S.Logout>
+                    <S.Logout onClick={handleLogout}>{t('profile.logout')}</S.Logout>
                     <S.FooterWrapper></S.FooterWrapper>
                 </S.ProfileContainer>
             </S.Wrapper>

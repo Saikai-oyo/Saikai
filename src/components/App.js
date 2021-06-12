@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ForgotPassword from './Auth/ForgotPassword/ForgotPassword';
 import Login from './Auth/Login/Login';
 import Signup from './Auth/Signup/Signup';
@@ -10,6 +10,7 @@ import UpdateProfile from './User/UpdateProfile/UpdateProfile';
 import GlobalStore from '../contexts/GlobalStore';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../constants/PrivateRoute';
+import { useTranslation } from 'react-i18next';
 
 const wrapper = {
     display: ' flex',
@@ -18,6 +19,12 @@ const wrapper = {
 };
 
 function App() {
+    const { i18n } = useTranslation();
+    const appDirection = i18n.dir();
+
+    useEffect(() => {
+        document.body.dir = appDirection;
+    }, [i18n, appDirection]);
     return (
         <GlobalStore>
             <div style={wrapper}>

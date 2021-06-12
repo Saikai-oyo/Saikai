@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import * as S from './style';
 import Sort from '../Sort/Sort';
 import { addIcon, filterIcon, blackAdd, blackFilter } from '../../../assets/icons';
+import { useTranslation } from 'react-i18next';
+import translatedListTitles from '../../../helpers/translatedListTitles';
+
+import * as S from './style';
 
 const ListButtons = ({ display, column, padding = '', setSelectedTitle, setIsCreateOpen, isMobile }) => {
+    const { t } = useTranslation();
     const [isSortOpen, setToggle] = useState(false);
 
     const toggleSort = () => {
@@ -26,7 +30,7 @@ const ListButtons = ({ display, column, padding = '', setSelectedTitle, setIsCre
 
     return (
         <S.ListButtonsWrapper padding={padding} display={display}>
-            <S.FilterButton display={display} data-tooltip="Sort By">
+            <S.FilterButton display={display} data-tooltip={t('dashboard.tooltips.sortBy')}>
                 {isSortOpen && <Sort toggleSort={toggleSort} title={column.title} />}
 
                 <img
@@ -36,13 +40,13 @@ const ListButtons = ({ display, column, padding = '', setSelectedTitle, setIsCre
                         setSelectedTitle(column);
                     }}
                     src={isMobile ? blackFilter : filterIcon}
-                    alt="Filter Icon"
+                    alt="Sort Icon"
                 />
             </S.FilterButton>
-            {<S.HeaderTypography>{column.title}</S.HeaderTypography>}
+            {<S.HeaderTypography>{translatedListTitles(t, column.title)}</S.HeaderTypography>}
             <S.AddButton
                 display={display}
-                data-tooltip="Add Position"
+                data-tooltip={t('dashboard.tooltips.addPosition')}
                 onClick={() => {
                     setSelectedTitle(column);
                     setIsCreateOpen(true);

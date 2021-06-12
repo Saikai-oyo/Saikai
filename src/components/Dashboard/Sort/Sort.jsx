@@ -2,9 +2,11 @@ import React, { useContext, useEffect } from 'react';
 import { PositionsContext } from '../../../contexts/PositionsContext';
 import { useAuth } from '../../../contexts/AuthContext';
 import { app } from '../../../config/firebase';
+import { useTranslation } from 'react-i18next';
 import * as S from './style.js';
 
 const Sort = ({ title, toggleSort }) => {
+    const { t } = useTranslation();
     const { currentUser } = useAuth();
     const { positions } = useContext(PositionsContext);
 
@@ -87,52 +89,52 @@ const Sort = ({ title, toggleSort }) => {
 
     return (
         <S.container>
-            <S.title> Added Date</S.title>
+            <S.title>{t('sort.addedDate')}</S.title>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'date', 'asc');
                 }}>
-                oldest to newest
+                {t('sort.date.oldToNew')}
             </S.item>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'date', 'desc');
                 }}>
-                Newest to oldest
+                {t('sort.date.newToOld')}
             </S.item>
 
-            <S.title> Position Name</S.title>
+            <S.title> {t('sort.positionName')}</S.title>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'asc');
                 }}>
-                A to Z
+                {t('sort.aToz')}
             </S.item>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'position', 'desc');
                 }}>
-                Z to A
+                {t('sort.zToa')}
             </S.item>
 
-            <S.title> Company Name</S.title>
+            <S.title> {t('sort.companyName')}</S.title>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'asc');
                 }}>
-                A to Z
+                {t('sort.aToz')}
             </S.item>
             <S.item
                 positionTitle={title}
                 onClick={() => {
                     handleFilter(title, 'name', 'desc');
                 }}>
-                Z to A
+                {t('sort.zToa')}
             </S.item>
         </S.container>
     );

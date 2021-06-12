@@ -1,8 +1,8 @@
 import React from 'react';
 import * as S from './style';
 import titles from '../../helpers/titles';
-
-const StatusInput = ({ tabIndex, edit, id, placeholder, name, onChange, value }) => {
+import translatedListTitles from '../../helpers/translatedListTitles';
+const StatusInput = ({ tabIndex, edit, id, placeholder, name, onChange, value, t }) => {
     return (
         <S.StatusInput
             value={value}
@@ -14,7 +14,7 @@ const StatusInput = ({ tabIndex, edit, id, placeholder, name, onChange, value })
             onChange={onChange}>
             {titles.map((title) => (
                 <option key={title.label} value={title.value}>
-                    {title.label}
+                    {translatedListTitles(t, title.label)}
                 </option>
             ))}
         </S.StatusInput>

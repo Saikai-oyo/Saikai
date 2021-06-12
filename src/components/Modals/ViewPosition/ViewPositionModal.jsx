@@ -10,11 +10,13 @@ import { SelectedPositionContext } from '../../../contexts/SelectedPositionConte
 import { UpdatedPositionContext } from '../../../contexts/UpdatedPositionContext';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { app } from '../../../config/firebase';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './style';
 
 const ViewPositionModal = ({ open, onClose, columns }) => {
-    // TODO: When we update the state, the page rerender and we need to use UseMemo maybe.
+    const { t } = useTranslation();
+    // TODO: When we update the state, the page reRender and we need to use UseMemo maybe.
     const [descriptionTab, setDescriptionTab] = useState(true);
     const [viewTab, setViewTab] = useState(!descriptionTab);
     const [edit, setEdit] = useState(false);
@@ -44,7 +46,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
         if (!updatedPosition.didUpdate) {
             setInformation({
                 errorLine: [selectedPosition.data.status, 'bad'],
-                message: 'No changes was made!',
+                message: t('modals.viewAndEdit.noChanges'),
                 haveError: true,
             });
             onClose();
@@ -120,7 +122,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
 
                 setInformation({
                     errorLine: [title, 'good'],
-                    message: 'Successfully Updated',
+                    message: t('modals.viewAndEdit.update'),
                     haveMessage: true,
                 });
                 setUpdatedPosition({ updated: [], didUpdate: false });
@@ -171,12 +173,12 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
 
             setInformation({
                 errorLine: [selectedPosition.data.status, 'bad'],
-                message: 'Successfully Deleted!',
+                message: t('modals.viewAndEdit.delete'),
                 haveMessage: true,
             });
         } catch (error) {
             setInformation({
-                error: 'Can not delete position!',
+                error: t('modals.viewAndEdit.cantDelete'),
                 haveError: true,
             });
             console.error(error);
@@ -232,7 +234,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                         setEdit(false);
                         onClose();
                     }}
-                    data-tooltip="Exit">
+                    data-tooltip={t('dashboard.tooltips.exit')}>
                     <img src={blackExitIcon} alt="X" />
                 </S.ExitBtn>
                 <S.Body>
@@ -242,10 +244,10 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                                 edit={edit}
                                 onClick={() => handleDecTab()}
                                 descriptionTab={descriptionTab}>
-                                Description
+                                {t('modals.viewAndEdit.tabs.description.description')}
                             </S.DescriptionTab>
                             <S.ViewTab onClick={() => handleViewTab()} viewTab={viewTab} edit={edit}>
-                                View Position
+                                {t('modals.viewAndEdit.tabs.view.view')}
                             </S.ViewTab>
                         </S.Tabs>
 
@@ -260,7 +262,7 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                                         setEdit(false);
                                         onClose();
                                     }}>
-                                    Close
+                                    {t('modals.viewAndEdit.close')}
                                 </S.CloseButton>
 
                                 <S.IconsEditModeWrapper edit={edit}>
@@ -270,10 +272,10 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                                             if (window.confirm('Are you sure you want to delete this position?'))
                                                 handleDelete(selectedPosition.data.id);
                                         }}
-                                        data-tooltip="Delete position"
+                                        data-tooltip={t('dashboard.tooltips.deletePosition')}
                                     />
                                     <S.IconsBtn
-                                        data-tooltip="Edit Position"
+                                        data-tooltip={t('dashboard.tooltips.editPosition')}
                                         icon="edit"
                                         type="button"
                                         onClick={() => handleEdit()}
@@ -282,9 +284,11 @@ const ViewPositionModal = ({ open, onClose, columns }) => {
                             </S.ButtonsWrapper>
                         ) : (
                             <S.ButtonsWrapper edit={edit}>
-                                <S.CloseButton onClick={() => handleEdit()}>Cancel</S.CloseButton>
+                                <S.CloseButton onClick={() => handleEdit()}>
+                                    {t('modals.viewAndEdit.cancel')}
+                                </S.CloseButton>
                                 <S.SubmitButton type="button" onClick={handleUpdate}>
-                                    Save
+                                    {t('modals.viewAndEdit.save')}
                                 </S.SubmitButton>
                             </S.ButtonsWrapper>
                         )}

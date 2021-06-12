@@ -3,6 +3,7 @@ import * as S from './DesTabStyle';
 import { DescriptionInput } from '../../../Input';
 import { UpdatedPositionContext } from '../../../../contexts/UpdatedPositionContext';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 const Pre = styled.pre`
     white-space: pre-wrap;
@@ -14,10 +15,11 @@ const Pre = styled.pre`
 `;
 
 const DesTab = ({ edit, descriptionTab, position }) => {
+    const { t } = useTranslation();
     const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
     return (
         <S.DescriptionPositionWrapper descriptionTab={descriptionTab}>
-            <S.Label>Position Description</S.Label>
+            <S.Label>{t('modals.viewAndEdit.tabs.description.positionDescription')}</S.Label>
 
             {edit ? (
                 <DescriptionInput

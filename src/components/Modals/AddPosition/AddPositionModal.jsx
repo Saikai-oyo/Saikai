@@ -11,8 +11,10 @@ import { formatDate, todayDate } from '../../../helpers';
 import { useAuth } from '../../../contexts/AuthContext';
 import { MessagesContext } from '../../../contexts/MessagesContext';
 import { v4 as uuidv4 } from 'uuid';
+import { useTranslation } from 'react-i18next';
 
 const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
+    const { t } = useTranslation();
     const [title, setTitle] = useState(selectedTitle);
     const [titlePositions, setTitlePositions] = useState(selectedTitle);
     const [advance, setAdvance] = useState(false);
@@ -92,7 +94,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
 
             setInformation({
                 errorLine: [title, 'good'],
-                message: 'Successfully Added',
+                message: t('modals.addNewPosition.successfullyAdded'),
                 haveMessage: true,
             });
             setPositionForm(null);
@@ -113,7 +115,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                 haveError: false,
                 haveMessage: false,
             });
-        }, 3500);
+        }, 4000);
     };
 
     if (!open) return null;
@@ -127,13 +129,13 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
             />
             <S.ModalWrapper>
                 <S.Header>
-                    <S.HeaderTitle>Add New Position</S.HeaderTitle>
+                    <S.HeaderTitle>{t('modals.addNewPosition.title')}</S.HeaderTitle>
                     <S.ExitBtn
                         onClick={() => {
                             onClose();
                             setAdvance(false);
                         }}
-                        data-tooltip="Exit">
+                        data-tooltip={t('dashboard.tooltips.exit')}>
                         <img src={exitIcon} alt="X" />
                     </S.ExitBtn>
                 </S.Header>
@@ -141,7 +143,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                     <form onSubmit={(e) => handleOnSubmit(e)}>
                         <S.InputLineOne>
                             <S.Date>
-                                <S.DateLabel htmlFor="addDate">Application Date:</S.DateLabel>
+                                <S.DateLabel htmlFor="addDate">
+                                    {t('modals.addNewPosition.applicationDate')}:
+                                </S.DateLabel>
                                 <DateInput
                                     tabIndex="4"
                                     type="date"
@@ -156,13 +160,15 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                     }
                                 />
                             </S.Date>
-                            <S.HiddenLabel htmlFor="positionName">Position Name</S.HiddenLabel>
+                            <S.HiddenLabel htmlFor="positionName">
+                                {t('modals.addNewPosition.positionName')}
+                            </S.HiddenLabel>
                             <PositionsInput
                                 tabIndex="1"
                                 type="text"
                                 id="positionName"
                                 name="positionName"
-                                placeholder="Position Name"
+                                placeholder={t('modals.addNewPosition.positionName')}
                                 onChange={(e) =>
                                     setPositionForm({
                                         ...positionForm,
@@ -173,13 +179,15 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                         </S.InputLineOne>
 
                         <S.InputLineTow>
-                            <S.HiddenLabel htmlFor="companyName">Company Name</S.HiddenLabel>
+                            <S.HiddenLabel htmlFor="companyName">
+                                {t('modals.addNewPosition.companyName')}
+                            </S.HiddenLabel>
                             <PositionsInput
                                 tabIndex="2"
                                 type="text"
                                 id="companyName"
                                 name="companyName"
-                                placeholder="Company Name"
+                                placeholder={t('modals.addNewPosition.companyName')}
                                 onChange={(e) =>
                                     setPositionForm({
                                         ...positionForm,
@@ -190,7 +198,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                         </S.InputLineTow>
 
                         <S.InputLineThree>
-                            <S.HiddenLabel htmlFor="description">Position Description</S.HiddenLabel>
+                            <S.HiddenLabel htmlFor="description">
+                                {t('modals.addNewPosition.positionDescription')}
+                            </S.HiddenLabel>
                             <DescriptionInput
                                 tabIndex="3"
                                 onChange={(e) =>
@@ -199,17 +209,18 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         description: e.target.value,
                                     })
                                 }
-                                placeholder="Position Description"
+                                placeholder={t('modals.addNewPosition.positionDescription')}
                                 name="description"
                                 id="description"></DescriptionInput>
                         </S.InputLineThree>
 
                         <S.InputLineFour advance={advance}>
-                            <S.HiddenLabel htmlFor="status">Status</S.HiddenLabel>
+                            <S.HiddenLabel htmlFor="status"> {t('modals.addNewPosition.status')}</S.HiddenLabel>
                             <StatusInput
                                 tabIndex="5"
                                 name="status"
                                 value={title}
+                                t={t} // t={t} belongs to translation!
                                 onChange={(e) => {
                                     columnInfo.forEach(
                                         (column) =>
@@ -227,7 +238,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
 
                         <S.InputAdvancedGroup advance={advance}>
                             <S.InputAdvancedLineOne>
-                                <S.HiddenLabel htmlFor="positionUrl">Position Link</S.HiddenLabel>
+                                <S.HiddenLabel htmlFor="positionUrl">
+                                    {t('modals.addNewPosition.positionLink')}
+                                </S.HiddenLabel>
                                 <LinkInput
                                     tabIndex="6"
                                     name="positionUrl"
@@ -238,11 +251,11 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         })
                                     }
                                     type="text"
-                                    placeholder="Position Link"
+                                    placeholder={t('modals.addNewPosition.positionLink')}
                                 />
                             </S.InputAdvancedLineOne>
                             <S.InputAdvancedLineTwo>
-                                <S.HiddenLabel htmlFor="hrName">HR Name</S.HiddenLabel>
+                                <S.HiddenLabel htmlFor="hrName">{t('modals.addNewPosition.hrName')}</S.HiddenLabel>
                                 <AdvanceInputs
                                     tabIndex="7"
                                     name="hrName"
@@ -253,9 +266,9 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         })
                                     }
                                     type="text"
-                                    placeholder="HR Name"
+                                    placeholder={t('modals.addNewPosition.hrName')}
                                 />
-                                <S.HiddenLabel htmlFor="hrMail">HR Mail</S.HiddenLabel>
+                                <S.HiddenLabel htmlFor="hrMail">{t('modals.addNewPosition.hrMail')}</S.HiddenLabel>
 
                                 <AdvanceInputs
                                     name="hrMail"
@@ -267,11 +280,11 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         })
                                     }
                                     type="text"
-                                    placeholder="HR Mail"
+                                    placeholder={t('modals.addNewPosition.hrMail')}
                                 />
                             </S.InputAdvancedLineTwo>
                             <S.InputAdvancedLineThree>
-                                <S.HiddenLabel htmlFor="city">City</S.HiddenLabel>
+                                <S.HiddenLabel htmlFor="city">{t('modals.addNewPosition.city')}</S.HiddenLabel>
 
                                 <AdvanceInputs
                                     tabIndex="9"
@@ -283,9 +296,11 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         })
                                     }
                                     type="text"
-                                    placeholder="City"
+                                    placeholder={t('modals.addNewPosition.city')}
                                 />
-                                <S.HiddenLabel htmlFor="addBy">Applied through</S.HiddenLabel>
+                                <S.HiddenLabel htmlFor="addBy">
+                                    {t('modals.addNewPosition.appliedThrough')}
+                                </S.HiddenLabel>
 
                                 <AdvanceInputs
                                     tabIndex="10"
@@ -297,32 +312,32 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                         })
                                     }
                                     type="text"
-                                    placeholder="Applied through"
+                                    placeholder={t('modals.addNewPosition.appliedThrough')}
                                 />
                             </S.InputAdvancedLineThree>
                         </S.InputAdvancedGroup>
 
                         <S.InputLineFive>
                             <S.SubmitButton type="submit" onClick={handleOnSubmit}>
-                                Submit
+                                {t('modals.addNewPosition.submit')}
                             </S.SubmitButton>
                             <S.CancelButton
                                 onClick={() => {
                                     onClose();
                                     setAdvance(false);
                                 }}>
-                                Cancel
+                                {t('modals.addNewPosition.cancel')}
                             </S.CancelButton>
                         </S.InputLineFive>
                         <S.InputLineSix>
                             <S.AdvanceBtn
-                                data-tooltip="Advanced"
+                                data-tooltip={t('dashboard.tooltips.advanced')}
                                 type="button"
                                 advance={advance}
                                 onClick={() => {
                                     setAdvance(!advance);
                                 }}>
-                                Advanced
+                                {t('modals.addNewPosition.advanced')}
                             </S.AdvanceBtn>
                         </S.InputLineSix>
                     </form>

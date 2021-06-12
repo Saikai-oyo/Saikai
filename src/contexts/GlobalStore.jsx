@@ -5,20 +5,23 @@ import { SelectedPositionContextProvider } from './SelectedPositionContext';
 import { MessagesContextProvider } from './MessagesContext';
 import { UserDetailsContextProvider } from './UserDetailsContext';
 import { UpdatedPositionContextProvider } from './UpdatedPositionContext';
+import { LanguageContextProvider } from './LanguageContext';
 
 const GlobalStore = ({ children }) => {
     return (
-        <UserDetailsContextProvider>
-            <AuthProvider>
-                <MessagesContextProvider>
-                    <PositionsContextProvider>
-                        <UpdatedPositionContextProvider>
-                            <SelectedPositionContextProvider>{children}</SelectedPositionContextProvider>
-                        </UpdatedPositionContextProvider>
-                    </PositionsContextProvider>
-                </MessagesContextProvider>
-            </AuthProvider>
-        </UserDetailsContextProvider>
+        <LanguageContextProvider>
+            <UserDetailsContextProvider>
+                <AuthProvider>
+                    <MessagesContextProvider>
+                        <PositionsContextProvider>
+                            <UpdatedPositionContextProvider>
+                                <SelectedPositionContextProvider>{children}</SelectedPositionContextProvider>
+                            </UpdatedPositionContextProvider>
+                        </PositionsContextProvider>
+                    </MessagesContextProvider>
+                </AuthProvider>
+            </UserDetailsContextProvider>
+        </LanguageContextProvider>
     );
 };
 

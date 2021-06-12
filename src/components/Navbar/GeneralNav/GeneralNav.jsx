@@ -1,8 +1,9 @@
 import React from 'react';
-import logo from '../../../assets/logos/logo.svg';
-import goBack from '../../../assets/icons/goBack.svg';
-import './style.css';
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/logos/logo.svg';
+import { goBack } from '../../../assets/icons';
+import Language from '../../Language/Language';
+import './style.css';
 
 const GeneralNav = ({ path = '', display }) => {
     return (
@@ -12,9 +13,14 @@ const GeneralNav = ({ path = '', display }) => {
                     <img src={goBack} alt="Go Back" />
                 </div>
             </Link>
-            <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/">
-                <img src={logo} width="265" height="80" alt="Saikai" />
-            </a>
+            <div className="body-wrapper">
+                <div>
+                    <a className="navbar-brand" style={{ marginBottom: '34px' }} href="/">
+                        <img src={logo} width="265" height="80" alt="Saikai" />
+                    </a>
+                </div>
+                <Language />
+            </div>
         </div>
     );
 };

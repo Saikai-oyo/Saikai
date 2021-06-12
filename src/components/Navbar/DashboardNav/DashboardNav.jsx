@@ -7,10 +7,13 @@ import { MessagesContext } from '../../../contexts/MessagesContext';
 import SearchBar from '../../Dashboard/SearchBar/SearchBar';
 import logo from '../../../assets/logos/logo.svg';
 import { useMediaQuery } from 'react-responsive';
+import Language from '../../Language/Language';
+import { useTranslation } from 'react-i18next';
 
 import * as S from './style.js';
 
 const DashboardNav = (props) => {
+    const { t } = useTranslation();
     const { logout } = useAuth();
     const history = useHistory();
     const { userDetails } = useContext(UserDetailsContext);
@@ -33,7 +36,7 @@ const DashboardNav = (props) => {
         } catch (error) {
             setInformation({
                 errorLine: 'navbar',
-                error: 'Failed to logout.',
+                error: t('dashboard.navbar.errors.failed'),
                 hasError: true,
             });
             console.error(error.message);
@@ -80,7 +83,7 @@ const DashboardNav = (props) => {
                         </S.NavbarSearch>
 
                         <S.NavbarWelcomeText>
-                            Welcome
+                            {t('dashboard.navbar.welcome')}
                             {!userDetails.loading ? (
                                 ', ' + userDetails.firstName + ' ' + userDetails.lastName
                             ) : (
@@ -89,12 +92,19 @@ const DashboardNav = (props) => {
                             !
                         </S.NavbarWelcomeText>
                         <S.NavbarIcons>
-                            <S.NavbarItem aria-label="Settings" data-tooltip="Settings">
+                            <S.NavbarItem aria-label="Language">
+                                <Language />
+                            </S.NavbarItem>
+
+                            <S.NavbarItem aria-label="Settings" data-tooltip={t('dashboard.tooltips.setting')}>
                                 <Link to="/profile">
                                     <img src={settingIcon} alt="setting icon" />
                                 </Link>
                             </S.NavbarItem>
-                            <S.NavbarItem onClick={handleLogout} aria-label="Logout" data-tooltip="Logout">
+                            <S.NavbarItem
+                                onClick={handleLogout}
+                                aria-label="Logout"
+                                data-tooltip={t('dashboard.tooltips.logout')}>
                                 <img src={logoutIcon} alt="logout icon" />
                             </S.NavbarItem>
                         </S.NavbarIcons>
