@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { upArrow } from '../../../assets/icons';
+import { darkBlack, middleBlue, white } from '../../../styles/_color';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -12,8 +13,8 @@ export const UpdatePassContainer = styled.div`
     flex-direction: column;
     width: 474.97px;
     height: 504px;
-    background: #ffffff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
     border-radius: 8px;
 
@@ -55,7 +56,7 @@ export const Header = styled.h3`
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
-    color: #353535;
+    color: ${darkBlack};
 `;
 
 export const HiddenLabel = styled.label`
@@ -105,7 +106,7 @@ export const Update = styled.button`
     font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    color: #ffffff;
+    color: ${white};
     @media screen and (max-width: 500px) {
         & {
             margin: 0px 91px 0 91px;
@@ -129,7 +130,7 @@ export const Cancel = styled.button`
     line-height: 15px;
     background: none;
     font-weight: bold;
-    color: #353535;
+    color: ${darkBlack};
     text-decoration: none;
     & > a {
     }
@@ -139,14 +140,14 @@ export const Cancel = styled.button`
             margin: 0px 91px 0 91px;
             width: 18rem;
             height: 3rem;
-            border: 1px solid #a5add8;
+            border: 1px solid ${middleBlue};
             box-sizing: border-box;
             border-radius: 4px;
 
             font-weight: normal;
             font-size: 20px;
             line-height: 39px;
-            color: #353535;
+            color: ${darkBlack};
         }
     }
 `;

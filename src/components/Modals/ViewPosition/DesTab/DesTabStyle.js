@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { middleBlue, middleGrey, white } from '../../../../styles/_color';
 
 // TODO: Description Position - Will move to another components later!!
 
@@ -19,15 +20,15 @@ export const Label = styled.label`
     font-weight: 300;
     font-size: 14px;
     line-height: 13px;
-    color: #9e9e9e;
+    color: ${middleGrey};
     margin: 0;
 `;
 
 export const Description = styled.div`
     width: 34.5rem;
     height: 16rem;
-    background: #ffffff;
-    border: 1px solid #a5add8;
+    background: ${white};
+    border: 1px solid ${middleBlue};
     border-radius: 0px 0px 5px 5px;
     overflow-y: auto;
     padding: 0 0.5rem;

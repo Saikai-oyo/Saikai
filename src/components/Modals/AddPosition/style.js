@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { addPositionBG } from '../../../assets/images';
 import { upArrow, downArrow } from '../../../assets/icons';
+import { middleBlue, white, slateBlue } from '../../../styles/_color';
 
 export const BackDrop = styled.div`
     position: fixed;
@@ -19,7 +20,7 @@ export const ModalWrapper = styled.div`
     left: 50%;
     width: 621px;
     height: auto;
-    background: #ffffff;
+    background: ${white};
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     z-index: 1000;
@@ -28,7 +29,7 @@ export const ModalWrapper = styled.div`
     @media screen and (max-width: 625px) {
         & {
             width: 100%;
-            border: 3px solid #a5add8;
+            border: 3px solid ${middleBlue};
             border-radius: 8px;
             height: 100%;
         }
@@ -57,7 +58,7 @@ export const HeaderTitle = styled.span`
     font-weight: bold;
     font-size: 25px;
     line-height: 31px;
-    color: #ffffff;
+    color: ${white};
 `;
 
 export const ExitBtn = styled.button`
@@ -153,7 +154,7 @@ export const DateLabel = styled.label`
 export const InputDate = styled.input`
     width: 8rem;
     height: 30px;
-    border: 1px solid #a5add8;
+    border: 1px solid ${middleBlue};
     border-radius: 4px;
     outline: none;
 
@@ -234,14 +235,13 @@ export const SubmitButton = styled.button`
     width: 190px;
     height: 33px;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
-    /* background: #5f50e6; */
     border-radius: 4px;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
-    color: #ffffff;
-    border: 1px solid #5f50e6;
+    color: ${white};
+    border: 1px solid ${slateBlue};
 
     @media screen and (max-width: 625px) {
         & {
@@ -260,14 +260,14 @@ export const CancelButton = styled.button`
     padding: 5px 10px;
     width: 190px;
     height: 33px;
-    border: 1px solid #5f50e6;
+    border: 1px solid ${slateBlue};
     border-radius: 4px;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
     line-height: 23px;
     outline: none;
-    color: #5f50e6;
+    color: ${slateBlue};
     margin-right: 5px;
     background-color: transparent;
 
@@ -304,7 +304,7 @@ export const AdvanceBtn = styled.button`
     border: none;
     background: none;
     text-decoration-line: underline;
-    color: #5f50e6;
+    color: ${slateBlue};
     /* Arrow */
     -webkit-appearance: none;
     -moz-appearance: none;

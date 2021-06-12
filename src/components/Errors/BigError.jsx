@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darkRed, veryLightRed } from '../../styles/_color';
 
 export const SBigError = styled.span`
     display: flex;
@@ -11,9 +12,9 @@ export const SBigError = styled.span`
     font-size: 14px;
     line-height: 18px;
     text-align: center;
-    color: #692020;
+    color: ${darkRed};
     border-radius: 0;
-    background-color: ${({ show }) => show && '#ffbdbd'};
+    background-color: ${({ show }) => show && veryLightRed};
     margin: 10px 0;
 
     @media screen and (max-width: 500px) {
