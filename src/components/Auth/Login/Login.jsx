@@ -9,7 +9,10 @@ import { googleLogin } from './GoogleLogin/googleLogin';
 import * as S from './style';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 
+import { useTranslation } from 'react-i18next';
+
 const Login = () => {
+    const { t } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { login } = useAuth();
     const history = useHistory();
@@ -19,7 +22,7 @@ const Login = () => {
         e.preventDefault();
         if (e.target[0].value === '' || e.target[1].value === '') {
             setInformation({
-                error: 'Fields cannot be empty',
+                error: t('errors.empty'),
                 hasError: true,
             });
         } else {
@@ -31,10 +34,10 @@ const Login = () => {
                     errorCode: error.code === 'auth/invalid-email' && 0,
                     error:
                         error.code === 'auth/invalid-email'
-                            ? 'Oops! Wrong email format.'
+                            ? t('errors.emailFormat')
                             : error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found'
-                            ? 'Oops! Wrong email or password.'
-                            : 'Something went wrong!',
+                            ? t('errors.emailOrPassword')
+                            : t('errors.general'),
                     hasError: true,
                 });
             }
@@ -64,30 +67,30 @@ const Login = () => {
 
     return (
         <div>
-            <GeneralNav />
+            <GeneralNav display="hide" />
             <S.Wrapper>
                 <S.LoginContainer>
-                    <S.Header>Welcome!</S.Header>
+                    <S.Header>{t('login.title')}</S.Header>
                     <BigError show={information.hasError}>{information.error}</BigError>
-                    <S.Subtitle>Log in to your account</S.Subtitle>
+                    <S.Subtitle>{t('login.subtitle')}</S.Subtitle>
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
-                            <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Email" name="email" />
-                            <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
-                            <AuthInput type="password" placeholder="Password" name="password" />
+                            <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
+                            <AuthInput type="text" placeholder={t('email')} name="email" />
+                            <S.HiddenLabel htmlFor="password">{t('password')}</S.HiddenLabel>
+                            <AuthInput type="password" placeholder={t('password')} name="password" />
                         </S.InputsWrapper>
-                        <S.LogIn type="submit">Log in</S.LogIn>
+                        <S.LogIn type="submit">{t('login.login')}</S.LogIn>
                         <S.LoginsWrappers>
                             <S.LoginWith
                                 login="facebook"
                                 id="facebook-login"
                                 type="button"
                                 onClick={(e) => handleClick(e)}>
-                                Sign in with
+                                {t('login.signInWith')}
                             </S.LoginWith>
                             <S.LoginWith login="google" id="google-login" type="button" onClick={(e) => handleClick(e)}>
-                                Sign in with
+                                {t('login.signInWith')}
                             </S.LoginWith>
                         </S.LoginsWrappers>
                         <S.ForgotPassword>
@@ -101,11 +104,11 @@ const Login = () => {
                                         hasError: false,
                                     })
                                 }>
-                                Forgot password?
+                                {t('login.forgotPassword')}
                             </Link>
                         </S.ForgotPassword>
                         <S.NeedAccount>
-                            Need an account?
+                            {t('needAccount')}
                             <Link
                                 to="/signup"
                                 onClick={() =>
@@ -116,7 +119,8 @@ const Login = () => {
                                         hasError: false,
                                     })
                                 }>
-                                Sign up
+                                {' '}
+                                {t('signUp')}
                             </Link>
                         </S.NeedAccount>
                     </form>

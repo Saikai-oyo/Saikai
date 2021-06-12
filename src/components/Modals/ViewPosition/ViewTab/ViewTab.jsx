@@ -3,15 +3,18 @@ import * as S from './viewTabStyle';
 import { PositionsInput, LinkInput, DateInput, StatusInput } from '../../../Input';
 import { UpdatedPositionContext } from '../../../../contexts/UpdatedPositionContext';
 import { formatReversDate } from '../../../../helpers';
+import { useTranslation } from 'react-i18next';
+import translatedListTitles from '../../../../helpers/translatedListTitles';
 
 const ViewTab = ({ viewTab, position, edit }) => {
+    const { t } = useTranslation();
     const { updatedPosition, setUpdatedPosition } = useContext(UpdatedPositionContext);
     const [title, setTitle] = useState(position.status);
 
     return (
         <S.ViewPositionWrapper viewTab={viewTab}>
             <S.WrapperDate edit={true}>
-                <S.DateLabel htmlFor="addDate">Application Date</S.DateLabel>
+                <S.DateLabel htmlFor="addDate">{t('modals.addNewPosition.applicationDate')}</S.DateLabel>
                 {edit ? (
                     <DateInput
                         tabIndex="9"
@@ -35,7 +38,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
 
             <S.ViewLineOne edit={edit}>
                 <S.PositionGroup>
-                    <S.Label>Position Name</S.Label>
+                    <S.Label> {t('modals.addNewPosition.positionName')}</S.Label>
                     {edit ? (
                         <PositionsInput
                             tabIndex="1"
@@ -58,7 +61,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
                 </S.PositionGroup>
 
                 <S.PositionGroup>
-                    <S.Label>Company Name</S.Label>
+                    <S.Label>{t('modals.addNewPosition.companyName')}</S.Label>
                     {edit ? (
                         <PositionsInput
                             tabIndex="2"
@@ -78,9 +81,10 @@ const ViewTab = ({ viewTab, position, edit }) => {
                 </S.PositionGroup>
 
                 <S.PositionGroup>
-                    <S.Label>Status</S.Label>
+                    <S.Label>{t('modals.addNewPosition.status')}</S.Label>
                     {edit ? (
                         <StatusInput
+                            t={t} // t={t} belongs to translation!
                             tabIndex="3"
                             edit={edit}
                             name="status"
@@ -98,7 +102,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
                         />
                     ) : (
                         <>
-                            <S.PositionText>{position.status}</S.PositionText>
+                            <S.PositionText>{translatedListTitles(t, position.status)}</S.PositionText>
                             <S.UnderLineStatus title={position.status} />
                         </>
                     )}
@@ -107,7 +111,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
 
             <S.ViewLineTwo edit={edit}>
                 <S.PositionGroup>
-                    <S.Label>Position Link</S.Label>
+                    <S.Label> {t('modals.addNewPosition.positionLink')}</S.Label>
                     {edit ? (
                         <LinkInput
                             tabIndex="4"
@@ -140,7 +144,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
             <S.ViewLineThree edit={edit}>
                 <S.GroupWrapper edit={edit}>
                     <S.PositionGroup>
-                        <S.Label>HR Name</S.Label>
+                        <S.Label>{t('modals.addNewPosition.hrName')}</S.Label>
                         {edit ? (
                             <PositionsInput
                                 tabIndex="5"
@@ -163,7 +167,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
                     </S.PositionGroup>
 
                     <S.PositionGroup>
-                        <S.Label>City</S.Label>
+                        <S.Label>{t('modals.addNewPosition.city')}</S.Label>
                         {edit ? (
                             <PositionsInput
                                 edit={true}
@@ -188,7 +192,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
 
                 <S.GroupWrapper edit={edit}>
                     <S.PositionGroup>
-                        <S.Label>HR Email</S.Label>
+                        <S.Label>{t('modals.addNewPosition.hrMail')}</S.Label>
                         {edit ? (
                             <PositionsInput
                                 tabIndex="7"
@@ -211,7 +215,7 @@ const ViewTab = ({ viewTab, position, edit }) => {
                     </S.PositionGroup>
 
                     <S.PositionGroup>
-                        <S.Label>Applied through</S.Label>
+                        <S.Label> {t('modals.addNewPosition.appliedThrough')}</S.Label>
                         {edit ? (
                             <PositionsInput
                                 tabIndex="8"

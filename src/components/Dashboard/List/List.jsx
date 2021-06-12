@@ -21,7 +21,6 @@ import { useAuth } from '../../../contexts/AuthContext';
 
 const List = (props = {}) => {
     const searchTerm = props.searchTerm || '';
-
     const { positions } = useContext(PositionsContext);
     const { setSelectedPosition } = useContext(SelectedPositionContext);
     const { currentUser } = useAuth();

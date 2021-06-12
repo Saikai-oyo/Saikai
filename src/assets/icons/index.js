@@ -16,3 +16,4 @@ export { default as filterIcon } from './filterIcon.svg';
 export { default as goBack } from './goBack.svg';
 export { default as blackAdd } from './blackAdd.svg';
 export { default as blackFilter } from './blackFilter.svg';
+export { default as translation } from './translation.svg';

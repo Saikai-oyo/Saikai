@@ -5,9 +5,12 @@ import { useAuth } from '../../../contexts/AuthContext';
 import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
+import { useTranslation } from 'react-i18next';
+
 import * as S from './style';
 
 const Signup = () => {
+    const { t } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { signup } = useAuth();
     const history = useHistory();
@@ -19,30 +22,30 @@ const Signup = () => {
 
     const validation = (e) => {
         let isValid = true;
-        let error = 'Oops!';
+        let error = t('signUpPage.errors.oops');
         if (e.target[0].value === '') {
-            error += '  Email is empty.';
+            error += t('signUpPage.errors.empty.email');
             isValid = false;
         }
         if (e.target[1].value === '') {
-            error += '  First Name is empty.';
+            error += t('signUpPage.errors.empty.firstName');
             isValid = false;
         }
         if (e.target[2].value === '') {
-            error += '  Last Name is empty.';
+            error += t('signUpPage.errors.empty.lastName');
             isValid = false;
         }
 
         if (e.target[3].value === '' || e.target[4].value === '') {
-            error += '  Passwords is empty.';
+            error += t('signUpPage.errors.empty.password');
             isValid = false;
         } else if (e.target[3].value !== e.target[4].value) {
-            error += '  Passwords don’t match.';
+            error += t('signUpPage.errors.passwordDontMatch');
             isValid = false;
         } else {
-            if (!e.target[3].value.match(process.env.REACT_APP_REGEX_PASSWORD)) {
-                error +=
-                    ' Password must contain 8 to 15 characters with at least:\n- one lowercase letter\n- one uppercase letter\n- one numeric digit';
+            const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@%^&*-_.]).{8,15}$/;
+            if (!e.target[3].value.match(regex)) {
+                error += t('signUpPage.errors.passwordContain');
                 isValid = false;
             }
         }
@@ -74,12 +77,12 @@ const Signup = () => {
                     errorCode: 0,
                     error:
                         error.code === 'auth/email-already-in-use'
-                            ? 'Oops! Email already exists. '
+                            ? t('signUpPage.errors.exists')
                             : error.code === 'auth/invalid-email'
-                            ? 'Oops! Wrong email format.'
+                            ? t('errors.emailFormat')
                             : error.code === 'auth/weak-password'
-                            ? 'Password must contain 8 to 15 characters with at least:\n- one lowercase letter\n- one uppercase letter\n- one numeric digit'
-                            : 'Something went wrong!',
+                            ? t('signUpPage.errors.passwordContain')
+                            : t('errors.general'),
                     hasError: true,
                 });
                 console.error(error);
@@ -99,8 +102,8 @@ const Signup = () => {
             <GeneralNav display="hide" />
             <S.Wrapper>
                 <S.SignupContainer>
-                    <S.Header>Join Saikai</S.Header>
-                    <S.Subtitle>Create an account to manage your way to work</S.Subtitle>
+                    <S.Header>{t('signUpPage.title')}</S.Header>
+                    <S.Subtitle>{t('signUpPage.subtitle')}</S.Subtitle>
                     <S.ErrorWrapper>
                         <BigError show={information.errorCode === 0 && information.hasError}>
                             {information.error}
@@ -108,17 +111,21 @@ const Signup = () => {
                     </S.ErrorWrapper>
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
-                            <S.HiddenLabel htmlFor="email">Email</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Email" name="email" />
-                            <S.HiddenLabel htmlFor="firstName">First Name</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="First Name" name="firstName" />
-                            <S.HiddenLabel htmlFor="lastName">Last Name</S.HiddenLabel>
-                            <AuthInput type="text" placeholder="Last Name" name="lastName" />
-                            <S.HiddenLabel htmlFor="password">Password</S.HiddenLabel>
-                            <AuthInput type="password" placeholder="Your Password" name="password" />
+                            <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
+                            <AuthInput type="text" placeholder={t('email')} name="email" />
+                            <S.HiddenLabel htmlFor="firstName">{t('signUpPage.firstName')}</S.HiddenLabel>
+                            <AuthInput type="text" placeholder={t('signUpPage.firstName')} name="firstName" />
+                            <S.HiddenLabel htmlFor="lastName">{t('signUpPage.lastName')}</S.HiddenLabel>
+                            <AuthInput type="text" placeholder={t('signUpPage.lastName')} name="lastName" />
+                            <S.HiddenLabel htmlFor="password">{t('password')}</S.HiddenLabel>
+                            <AuthInput type="password" placeholder={t('signUpPage.yourPassword')} name="password" />
 
-                            <S.HiddenLabel htmlFor="confirmPassword">Confirm Password</S.HiddenLabel>
-                            <AuthInput type="password" placeholder="Confirm Password" name="confirmPassword" />
+                            <S.HiddenLabel htmlFor="confirmPassword">{t('signUpPage.confirmPassword')}</S.HiddenLabel>
+                            <AuthInput
+                                type="password"
+                                placeholder={t('signUpPage.confirmPassword')}
+                                name="confirmPassword"
+                            />
                         </S.InputsWrapper>
                         <S.InputsWrapper pass={true}>
                             <p
@@ -126,15 +133,16 @@ const Signup = () => {
                                     fontSize: '10px',
                                     width: 'max-content',
                                 }}>
-                                * Password must contain:
-                                <br />- one lowercase letter & one uppercase letter
-                                <br />- one numeric digit & 8 to 15 characters
+                                * {t('signUpPage.contain.passwordMustContain')}:
+                                <br />- {t('signUpPage.contain.letters')}
+                                <br />- {t('signUpPage.contain.characters')}
+                                <br />- {t('signUpPage.contain.special')}
                             </p>
                         </S.InputsWrapper>
-                        <S.SignUp type="submit">Sign Up</S.SignUp>
+                        <S.SignUp type="submit">{t('signUp')}</S.SignUp>
 
                         <S.HaveAccount>
-                            Already have an account?
+                            {t('signUpPage.haveAccount')}
                             <Link
                                 to="/login"
                                 onClick={() =>
@@ -145,7 +153,7 @@ const Signup = () => {
                                     })
                                 }>
                                 {' '}
-                                Log in
+                                {t('signUpPage.logIn')}
                             </Link>
                         </S.HaveAccount>
                     </form>
