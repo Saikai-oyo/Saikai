@@ -14,7 +14,6 @@ const LanguageDropDown = ({ toggleLang }) => {
     }, []);
 
     const { i18n } = useTranslation();
-    console.log('%ci18n', 'background-color:red', i18n);
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);

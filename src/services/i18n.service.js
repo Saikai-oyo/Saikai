@@ -5,7 +5,7 @@ import HttpApi from 'i18next-http-backend';
 const options = {
     fallbackLng: 'en',
     supportedLngs: ['en', 'he'],
-    debug: true, // TODO:Before go to production need change to `false`.
+    debug: false, // TODO:Before go to production need change to `false`.
     lng: 'en',
     interpolation: {
         escapeValue: false,

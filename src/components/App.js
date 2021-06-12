@@ -21,7 +21,6 @@ const wrapper = {
 function App() {
     const { i18n } = useTranslation();
     const appDirection = i18n.dir();
-    console.log('~ appDirection', appDirection);
 
     useEffect(() => {
         document.body.dir = appDirection;
