@@ -134,9 +134,8 @@ export const LoginWith = styled.button`
 `;
 
 export const HaveAccount = styled.div`
-    margin: 10px 145px 0px 160px;
-    width: 180px;
-    height: 15px;
+    max-width: fit-content;
+    margin: 0 auto 10px;
     font-style: normal;
     font-weight: 300;
     font-size: 12px;

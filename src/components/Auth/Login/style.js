@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
 export const LoginContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 30rem;
-    height: 31.25rem;
+    max-width: 100%;
+    padding: 0 4% 3%;
     background: ${white};
     border: 1px solid ${middleBlue};
     box-shadow: 0px 0px 70px 10px rgba(85, 85, 85, 0.25);
@@ -28,6 +28,13 @@ export const LoginContainer = styled.div`
     }
 `;
 
+export const Form = styled.form`
+    min-width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+`;
+
 export const Header = styled.h3`
     margin: 54px auto 0px auto;
     width: max-content;
@@ -39,14 +46,12 @@ export const Header = styled.h3`
 `;
 
 export const Subtitle = styled.h4`
-    margin: 0px 74px 10px 74px;
     font-weight: 300;
     font-size: 15px;
     line-height: 18px;
     color: ${darkBlack};
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 74px 10px 2.5rem;
             display: block;
             width: 17rem;
             word-wrap: break-word;
@@ -64,20 +69,13 @@ export const HiddenLabel = styled.label`
 
 export const InputsWrapper = styled.div`
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0px 74px 27px 74px;
-    width: 337px;
-    height: 95px;
-
     margin-bottom: 1.5rem;
+    gap: 1rem;
 
     @media screen and (max-width: 500px) {
-        & {
-            margin: 0px 74px 27px 103px;
-            width: max-content;
-        }
-
         & > input {
             margin-bottom: 1rem;
         }
@@ -90,7 +88,7 @@ export const LogIn = styled.button`
     justify-content: center;
     align-items: center;
     padding: 6.5px;
-    margin: 0px 102px 14px 102px;
+    margin: 0 auto 14px;
     width: 17rem;
     height: 2.6rem;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
@@ -114,12 +112,12 @@ export const LoginsWrappers = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    margin: 10px 102px;
+    margin: 0px auto 10px;
+    min-width: 17rem;
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 6.5rem 27px 102px;
-            width: auto;
+            margin: 0px auto 27px;
             display: flex;
             justify-content: space-between;
         }
@@ -136,20 +134,18 @@ export const LoginWith = styled.button`
     color: ${white};
     border: none;
     outline: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-inline: 10px;
 
     /* Arrow */
     -webkit-appearance: none;
     -moz-appearance: none;
-    background-repeat: no-repeat;
-    padding-right: 1rem;
-    background-position-x: 85%;
-    background-position-y: 50%;
-    ${({ login }) =>
-        login === 'facebook' ? `background-image: url(${facebookIcon});` : `background-image: url(${googleIcon});`};
 `;
 
 export const ForgotPassword = styled.div`
-    margin: 0px 182px 10px 194px;
+    margin: 0 auto 10px;
     width: max-content;
     height: 15px;
     font-style: normal;
@@ -162,19 +158,18 @@ export const ForgotPassword = styled.div`
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 182px 10px 10.5rem;
+            margin: 0 auto 10px;
             font-size: 18px;
             line-height: 33px;
-            width: 100%;
+            width: max-content;
             height: 3rem;
         }
     }
 `;
 
 export const NeedAccount = styled.div`
-    margin: 0px 165px 57px 175px;
-    width: 180px;
-    height: 15px;
+    max-width: fit-content;
+    margin: 0 auto 10px;
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -187,7 +182,7 @@ export const NeedAccount = styled.div`
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 165px 57px 9.5rem;
+            margin: 0 auto 10px;
             font-size: 18px;
             width: max-content;
             line-height: 33px;

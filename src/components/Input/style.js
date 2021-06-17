@@ -16,6 +16,7 @@ export const AuthInput = styled.input`
     padding: 1rem;
     width: 329.84px;
     height: 37.6px;
+
     background: ${white};
     border: 1px solid ${middleBlue};
 

@@ -8,6 +8,8 @@ import { facebookLogin } from './FacebookLogin/facebookLogin';
 import { googleLogin } from './GoogleLogin/googleLogin';
 import * as S from './style';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
+import { ReactComponent as FacebookIcon } from '../../../assets/icons/facebookIcon.svg';
+import { ReactComponent as GoogleIcon } from '../../../assets/icons/googleIcon.svg';
 
 import { useTranslation } from 'react-i18next';
 
@@ -72,8 +74,9 @@ const Login = () => {
                 <S.LoginContainer>
                     <S.Header>{t('login.title')}</S.Header>
                     <BigError show={information.hasError}>{information.error}</BigError>
-                    <S.Subtitle>{t('login.subtitle')}</S.Subtitle>
-                    <form onSubmit={handleSubmit}>
+
+                    <S.Form onSubmit={handleSubmit}>
+                        <S.Subtitle>{t('login.subtitle')}</S.Subtitle>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
                             <AuthInput type="text" placeholder={t('email')} name="email" />
@@ -88,9 +91,15 @@ const Login = () => {
                                 type="button"
                                 onClick={(e) => handleClick(e)}>
                                 {t('login.signInWith')}
+                                <span>
+                                    <FacebookIcon />
+                                </span>
                             </S.LoginWith>
                             <S.LoginWith login="google" id="google-login" type="button" onClick={(e) => handleClick(e)}>
                                 {t('login.signInWith')}
+                                <span>
+                                    <GoogleIcon />
+                                </span>
                             </S.LoginWith>
                         </S.LoginsWrappers>
                         <S.ForgotPassword>
@@ -123,7 +132,7 @@ const Login = () => {
                                 {t('signUp')}
                             </Link>
                         </S.NeedAccount>
-                    </form>
+                    </S.Form>
                 </S.LoginContainer>
             </S.Wrapper>
         </div>
