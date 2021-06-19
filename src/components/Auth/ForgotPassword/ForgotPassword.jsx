@@ -75,7 +75,7 @@ const ForgotPassword = () => {
                 <S.ResetPassContainer>
                     <S.Header>{t('forgotPassword.title')}</S.Header>
                     <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
-                    <form onSubmit={handleSubmit}>
+                    <S.Form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
                             <AuthInput type="text" placeholder={t('email')} name="email" />
@@ -111,7 +111,7 @@ const ForgotPassword = () => {
                                 {t('forgotPassword.logIn')}
                             </Link>
                         </S.HaveAccount>
-                    </form>
+                    </S.Form>
                 </S.ResetPassContainer>
             </S.Wrapper>
         </div>

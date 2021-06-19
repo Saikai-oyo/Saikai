@@ -7,6 +7,12 @@ export const Wrapper = styled.div`
     align-items: center;
 `;
 
+export const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
 export const ResetPassContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -28,8 +34,6 @@ export const ResetPassContainer = styled.div`
 
 export const Header = styled.h3`
     margin: 3.5rem auto 2.5rem auto;
-    width: 13rem;
-    height: 2rem;
     font-style: normal;
     font-weight: bold;
     font-size: 25px;
@@ -38,7 +42,7 @@ export const Header = styled.h3`
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0 auto 8rem auto;
+            margin: 0 auto 8rem;
             font-size: 30px;
         }
     }
@@ -54,13 +58,13 @@ export const InputsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0px 74px 35px 73px;
+    align-items: center;
+    margin-block-end: 35px;
     width: 20.5rem;
     height: 2rem;
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 0 35px 6.25rem;
             height: 3rem;
         }
     }
@@ -72,7 +76,7 @@ export const ResetPassword = styled.button`
     justify-content: center;
     align-items: center;
     padding: 6.5px;
-    margin: 0px 102px 14px 102px;
+    margin: 0px auto 3rem;
     width: 274.09px;
     height: 42.58px;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
@@ -86,15 +90,13 @@ export const ResetPassword = styled.button`
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 102px 3rem 102px;
+            margin: 0px auto 3rem;
         }
     }
 `;
 
 export const NeedAccount = styled.div`
     margin: 0px 165px 0px 175px;
-    width: 180px;
-    height: 15px;
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -113,9 +115,8 @@ export const NeedAccount = styled.div`
 `;
 
 export const HaveAccount = styled.div`
-    margin: 20px 145px 0px 160px;
-    width: 180px;
-    height: 15px;
+    margin: 20px auto 0px;
+    width: max-content;
     font-style: normal;
     font-weight: 300;
     font-size: 12px;
@@ -128,8 +129,7 @@ export const HaveAccount = styled.div`
     @media screen and (max-width: 500px) {
         & {
             font-size: 1rem;
-            margin: 20px auto 0 auto;
-            width: max-content;
+            margin: 20px auto 0;
         }
     }
 `;
