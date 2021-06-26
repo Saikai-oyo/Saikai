@@ -13,7 +13,8 @@ export const container = styled.div`
     background-color: white;
     position: absolute;
     padding-bottom: 5px;
-    right: 0;
+    right: ${({ language }) => (language === 'en' ? 0 : 'auto')};
+    left: ${({ language }) => (language === 'en' ? 'auto' : 0)};
 `;
 export const title = styled.div`
     height: 21px;

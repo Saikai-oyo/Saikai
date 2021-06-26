@@ -132,7 +132,7 @@ const Signup = () => {
                                         fontSize: '10px',
                                         width: 'max-content',
                                     }}>
-                                    * {t('signUpPage.contain.passwordMustContain')}:
+                                    * {t('signUpPage.contain.passwordMustContain')}
                                     <br />- {t('signUpPage.contain.letters')}
                                     <br />- {t('signUpPage.contain.characters')}
                                     <br />- {t('signUpPage.contain.special')}

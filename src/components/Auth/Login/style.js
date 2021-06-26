@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { googleIcon, facebookIcon } from '../../../assets/icons/';
 import { white, middleBlue, darkBlack, facebookBlue, googleRed } from '../../../styles/_color';
 
 export const Wrapper = styled.div`

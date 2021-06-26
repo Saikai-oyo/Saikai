@@ -14,13 +14,14 @@ const LanguageDropDown = ({ toggleLang }) => {
     }, []);
 
     const { i18n } = useTranslation();
+    const currentLanguage = i18n.language;
 
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
 
     return (
-        <S.container onClick={() => toggleLang()}>
+        <S.container onClick={() => toggleLang()} language={currentLanguage}>
             <S.title> Select Language</S.title>
             <S.item
                 onClick={() => {
