@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { darkBlack } from '../../styles/_color';
 
 const SFooter = styled.div`
-    margin: auto;
+    margin: 0 auto;
     width: max-content;
     height: 15px;
     font-style: normal;

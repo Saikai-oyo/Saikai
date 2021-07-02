@@ -104,12 +104,12 @@ const Signup = () => {
                 <S.SignupContainer>
                     <S.Header>{t('signUpPage.title')}</S.Header>
                     <S.Subtitle>{t('signUpPage.subtitle')}</S.Subtitle>
-                    <S.ErrorWrapper>
+                    <div>
                         <BigError show={information.errorCode === 0 && information.hasError}>
                             {information.error}
                         </BigError>
-                    </S.ErrorWrapper>
-                    <form onSubmit={handleSubmit}>
+                    </div>
+                    <S.Form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
                             <S.HiddenLabel htmlFor="email">{t('email')}</S.HiddenLabel>
                             <AuthInput type="text" placeholder={t('email')} name="email" />
@@ -126,18 +126,18 @@ const Signup = () => {
                                 placeholder={t('signUpPage.confirmPassword')}
                                 name="confirmPassword"
                             />
-                        </S.InputsWrapper>
-                        <S.InputsWrapper pass={true}>
-                            <p
-                                style={{
-                                    fontSize: '10px',
-                                    width: 'max-content',
-                                }}>
-                                * {t('signUpPage.contain.passwordMustContain')}:
-                                <br />- {t('signUpPage.contain.letters')}
-                                <br />- {t('signUpPage.contain.characters')}
-                                <br />- {t('signUpPage.contain.special')}
-                            </p>
+                            <S.Instructions>
+                                <p
+                                    style={{
+                                        fontSize: '10px',
+                                        width: 'max-content',
+                                    }}>
+                                    * {t('signUpPage.contain.passwordMustContain')}
+                                    <br />- {t('signUpPage.contain.letters')}
+                                    <br />- {t('signUpPage.contain.characters')}
+                                    <br />- {t('signUpPage.contain.special')}
+                                </p>
+                            </S.Instructions>
                         </S.InputsWrapper>
                         <S.SignUp type="submit">{t('signUp')}</S.SignUp>
 
@@ -156,7 +156,7 @@ const Signup = () => {
                                 {t('signUpPage.logIn')}
                             </Link>
                         </S.HaveAccount>
-                    </form>
+                    </S.Form>
                 </S.SignupContainer>
             </S.Wrapper>
         </div>

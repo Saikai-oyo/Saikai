@@ -16,6 +16,7 @@ const wrapper = {
     display: ' flex',
     flexDirection: ' column',
     justifyContent: ' space-between',
+    height: '100vh',
 };
 
 function App() {
