@@ -6,14 +6,16 @@ import { Link, useHistory } from 'react-router-dom';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import BigError from '../../Errors/BigError';
 import { useTranslation } from 'react-i18next';
+import { CardHeader, GoBack, Header } from '../../../styles/shared/formHeader';
 
 import * as S from './style';
 
 const UpdateProfile = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { updatePassword, currentUser } = useAuth();
     const history = useHistory();
+    const selectedLang = i18n.language;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -89,12 +91,10 @@ const UpdateProfile = () => {
             <GeneralNav path="profile" />
             <S.Wrapper>
                 <S.UpdatePassContainer>
-                    <div className="card-header-pills">
-                        <Link to="/profile">
-                            <S.GoBack />
-                        </Link>
-                    </div>
-                    <S.Header>{t('updatePassword.title')}</S.Header>
+                    <CardHeader>
+                        <GoBack to="/profile" lang={selectedLang} />
+                    </CardHeader>
+                    <Header>{t('updatePassword.title')}</Header>
                     <BigError show={information.errorCode === 0 && information.hasError}>{information.error}</BigError>
                     <form onSubmit={handleSubmit}>
                         <S.InputsWrapper>
@@ -113,9 +113,7 @@ const UpdateProfile = () => {
                         <S.ButtonsWrapper>
                             <S.Update type="submit">{t('updatePassword.update')}</S.Update>
 
-                            <Link to="/profile">
-                                <S.Cancel type="button">{t('updatePassword.cancel')}</S.Cancel>
-                            </Link>
+                            <S.Cancel to="/profile">{t('updatePassword.cancel')}</S.Cancel>
                         </S.ButtonsWrapper>
                     </form>
                     <S.FooterWrapper />

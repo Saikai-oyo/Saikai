@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { upArrow } from '../../../assets/icons';
 import { darkBlack, middleBlue, white, darkGrey } from '../../../styles/_color';
 
@@ -23,44 +24,6 @@ export const ProfileContainer = styled.div`
             border: none;
             box-shadow: none;
             border-radius: none;
-        }
-    }
-`;
-
-export const GoBack = styled.div`
-    margin: 25px 430px 0px 25px;
-    width: 23.39px;
-    height: 19.79px;
-
-    /* Arrow */
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url(${upArrow});
-    background-repeat: no-repeat;
-    transform: rotate(90deg);
-    cursor: pointer;
-
-    @media screen and (max-width: 500px) {
-        & {
-            display: none;
-        }
-    }
-`;
-
-export const Header = styled.h3`
-    margin: 11px 200px 33px 200px;
-    width: 5rem;
-    height: 2rem;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 25px;
-    line-height: 31px;
-    color: ${darkBlack};
-
-    @media screen and (max-width: 500px) {
-        & {
-            margin: 11px 12.5rem 5rem 12.5rem;
-            font-size: 30px;
         }
     }
 `;
@@ -102,7 +65,7 @@ export const Update = styled.button`
     justify-content: center;
     align-items: center;
     padding: 6.5px;
-    margin: 0px 102px 14px 102px;
+    margin: 2rem auto;
     width: 17rem;
     height: 2.5rem;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
@@ -119,7 +82,7 @@ export const Update = styled.button`
 
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 91px 25px 91px;
+            margin: 2rem auto;
             width: 18rem;
             height: 3rem;
             font-size: 20px;
@@ -129,7 +92,7 @@ export const Update = styled.button`
 `;
 
 export const Logout = styled.button`
-    margin: 0px 165px 57px 152px;
+    margin: 0 auto;
     width: 180px;
     height: 1rem;
     border: none;

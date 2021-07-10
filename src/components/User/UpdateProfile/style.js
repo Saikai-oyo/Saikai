@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { upArrow } from '../../../assets/icons';
 import { darkBlack, middleBlue, white } from '../../../styles/_color';
+import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -49,8 +50,9 @@ export const GoBack = styled.div`
 `;
 
 export const Header = styled.h3`
-    margin: 25px 146px 37px 147px;
+    margin: 25px auto;
     width: 100%;
+    text-align: center;
     height: 32.98px;
     font-style: normal;
     font-weight: bold;
@@ -69,7 +71,7 @@ export const InputsWrapper = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 0px 74px 27px 74px;
+    margin: 0px auto;
     width: 337px;
     height: 105px;
 
@@ -77,7 +79,7 @@ export const InputsWrapper = styled.div`
         & {
             align-items: center;
             height: 7.5rem;
-            margin: 0px 91px 27px 91px;
+            margin: 0px auto;
             width: auto;
         }
     }
@@ -88,6 +90,7 @@ export const ButtonsWrapper = styled.div`
     flex-direction: column;
     justify-content: space-between;
     height: 50%;
+    margin-block: 2rem;
 `;
 
 export const Update = styled.button`
@@ -96,7 +99,7 @@ export const Update = styled.button`
     justify-content: center;
     align-items: center;
     padding: 6.5px;
-    margin: 0px 102px 0 102px;
+    margin: 0px auto;
     width: 17rem;
     height: 2.5rem;
     background: linear-gradient(180deg, #7c6eff 21.13%, #ac00fd 277.46%);
@@ -109,7 +112,7 @@ export const Update = styled.button`
     color: ${white};
     @media screen and (max-width: 500px) {
         & {
-            margin: 0px 91px 0 91px;
+            margin: 0px auto;
             width: 18rem;
             height: 3rem;
             font-size: 20px;
@@ -118,8 +121,9 @@ export const Update = styled.button`
     }
 `;
 
-export const Cancel = styled.button`
-    margin: 0px 165px 0 152px;
+export const Cancel = styled(Link)`
+    margin: 0px auto;
+    text-align: center;
     width: 180px;
     height: 1rem;
     border: none;
