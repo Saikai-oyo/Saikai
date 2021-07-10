@@ -92,11 +92,11 @@ const DashboardNav = (props) => {
                             !
                         </S.NavbarWelcomeText>
                         <S.NavbarIcons>
-                            <S.NavbarItem aria-label="Language">
+                            <S.NavbarItem aria-label="Language" data-tooltip={t('dashboard.tooltips.language')}>
                                 <Language />
                             </S.NavbarItem>
 
-                            <S.NavbarItem aria-label="Settings" data-tooltip={t('dashboard.tooltips.setting')}>
+                            <S.NavbarItem data-tooltip={t('dashboard.tooltips.setting')} aria-label="Settings">
                                 <Link to="/profile">
                                     <img src={settingIcon} alt="setting icon" />
                                 </Link>

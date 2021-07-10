@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { searchIcon } from '../../../assets/icons';
 import { middleBlue, middleGrey, middlePurple, white, disabledGrey } from '../../../styles/_color';
 
-export const SearchWrapper = styled.span`
-    padding-right: 2rem;
-`;
+export const SearchWrapper = styled.span``;
 
 export const LabelSearchBar = styled.label`
     position: relative;
@@ -12,7 +10,7 @@ export const LabelSearchBar = styled.label`
     &::before {
         content: '';
         position: absolute;
-        left: 8px;
+        inset-inline-start: 8px;
         top: 7px;
         bottom: 9px;
         width: 30px;
@@ -24,7 +22,7 @@ export const LabelSearchBar = styled.label`
 export const SearchBar = styled.input`
     width: 415px;
     height: 45px;
-    padding-left: 3rem;
+    padding-inline-start: 3rem;
 
     background: ${white};
     border: 1px solid ${middleBlue};

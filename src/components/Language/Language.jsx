@@ -13,7 +13,7 @@ const Language = () => {
         setLangToggle(!isLangOpen);
     };
     return (
-        <div className="languages" data-tooltip={t('dashboard.tooltips.language')}>
+        <div className="languages">
             <button className="lang-btn" onClick={() => toggleLang()}>
                 <img src={translation} alt="lang" />
                 {isLangOpen && <LanguageDropDown toggleLang={toggleLang} />}

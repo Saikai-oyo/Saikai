@@ -14,7 +14,7 @@ export const container = styled.div`
     background-color: white;
     position: absolute;
     top: 1rem;
-    left: 0.5rem;
+    inset-inline-start: 0.5rem;
 `;
 export const title = styled.div`
     height: 21px;
