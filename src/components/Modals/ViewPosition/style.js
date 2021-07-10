@@ -19,7 +19,6 @@ export const ModalWrapper = styled.div`
     top: 50%;
     left: 50%;
     width: ${({ edit }) => (edit ? '685px' : '635px')};
-    height: ${({ edit }) => (edit ? '530px' : 'auto')};
     background: ${white};
     box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
@@ -40,9 +39,10 @@ export const ModalWrapper = styled.div`
 `;
 
 export const ExitBtn = styled.button`
-    margin: 16px 21px 0px ${({ edit }) => (edit ? '645px' : '606px')};
-    width: 17px;
-    height: 18px;
+    margin-inline-start: auto;
+    min-width: 17px;
+    display: block;
+    padding: 10px;
     outline: none;
     border: none;
     background-color: transparent;
@@ -55,7 +55,8 @@ export const ExitBtn = styled.button`
 
 export const Body = styled.div`
     width: 100%;
-    height: 410px;
+    padding-inline: 40px;
+    padding-block-end: 20px;
 
     @media screen and (max-width: 625px) {
         & {
@@ -71,12 +72,8 @@ export const Body = styled.div`
 export const Tabs = styled.div`
     display: flex;
     flex-direction: row;
-    margin: 7px 19px 21px 45px;
-    @media screen and (max-width: 625px) {
-        & {
-            margin: 7px auto 21px auto;
-        }
-    }
+    margin-block: 20px;
+    justify-content: center;
 `;
 
 export const DescriptionTab = styled.button`
@@ -97,7 +94,6 @@ export const DescriptionTab = styled.button`
         & {
             width: 90vw;
             height: 75px;
-            margin-right: 1rem;
             border-radius: 8px;
             font-size: 25px;
             line-height: 33px;
@@ -133,7 +129,6 @@ export const ButtonsWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: ${({ edit }) => (edit ? '40px 245px 0px 45px' : '0px 56px 0px 45px')};
 
     @media screen and (max-width: 625px) {
         & {

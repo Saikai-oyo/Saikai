@@ -287,8 +287,8 @@ export const DateInput = styled.input`
 `;
 
 export const StatusInput = styled.select`
+    height: ${({ edit }) => (edit ? '36px' : '3rem')};
     width: ${({ edit }) => (edit ? '153px' : '190px')};
-    height: 3rem;
     padding-block: ${({ edit }) => (edit ? '.5rem .6rem' : '10px')};
     padding-inline: ${({ edit }) => (edit ? '.5rem .6rem' : '10px 0px')};
     background: ${white};

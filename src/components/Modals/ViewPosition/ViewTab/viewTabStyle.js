@@ -19,8 +19,8 @@ export const Label = styled.label`
 `;
 
 export const ViewPositionWrapper = styled.div`
+    margin-block: 20px;
     ${({ viewTab }) => (viewTab ? 'display: flex;opacity: 1;flex-direction: column;' : 'display: none;opacity: 0;')}
-    margin: 0px 45px;
     @media screen and (max-width: 625px) {
         & {
             flex-direction: column;
@@ -40,7 +40,8 @@ export const WrapperDate = styled.div`
     padding: 0px;
     width: max-content;
     height: 25px;
-    margin: ${({ edit }) => (edit ? '0px 0px 21px 342px' : '0px 0px 21px 336px')};
+    margin-block: 15px;
+    margin-inline-start: auto;
 
     @media screen and (max-width: 625px) {
         & {
@@ -71,8 +72,7 @@ export const ViewLineOne = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: ${({ edit }) => (edit ? 'auto' : '481px')};
-    height: 31px;
-    margin: 0px ${({ edit }) => (edit ? '-3px' : '106px')} 28px 0px;
+    margin-block: 10px;
 
     @media screen and (max-width: 625px) {
         & {
@@ -146,9 +146,7 @@ export const UnderLineStatus = styled.div`
 export const ViewLineTwo = styled.div`
     display: flex;
     flex-direction: row;
-    height: 31px;
-    margin: ${({ edit }) => (edit ? '0px 380px 28px 0px' : '0px 380px 23px 0px')};
-
+    margin-block: 5px;
     & > div > span > a {
         overflow: hidden;
         white-space: nowrap;
@@ -172,14 +170,13 @@ export const ViewLineThree = styled.div`
     flex-direction: row;
     justify-content: space-between;
     width: 369px;
-    height: 85px;
-    margin: ${({ edit }) => (edit ? '0 159px 44px 0px' : '0px 159px 44px 0px')};
 
     @media screen and (max-width: 625px) {
         & {
             flex-direction: column;
             font-weight: 600;
             margin: 0;
+            width: 100%;
             height: 100%;
             flex-direction: column;
         }

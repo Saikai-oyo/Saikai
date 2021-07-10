@@ -6,7 +6,7 @@ import { middleBlue, middleGrey, white } from '../../../../styles/_color';
 export const DescriptionPositionWrapper = styled.div`
     ${({ descriptionTab }) =>
         descriptionTab ? 'display: flex;opacity: 1;flex-direction: column;' : 'display: none;opacity: 0;'}
-    margin: 0px 58px 20px 45px;
+    margin-block: 25px;
 
     @media screen and (max-width: 625px) {
         & {
