@@ -2,11 +2,12 @@ import React from 'react';
 import * as S from './style';
 import titles from '../../helpers/titles';
 import translatedListTitles from '../../helpers/translatedListTitles';
-const StatusInput = ({ tabIndex, edit, id, placeholder, name, onChange, value, t }) => {
+const StatusInput = ({ tabIndex, edit, id, placeholder, name, onChange, value, t, selectedLang }) => {
     return (
         <S.StatusInput
             value={value}
             edit={edit}
+            selectedLang={selectedLang}
             id={id}
             tabIndex={tabIndex}
             placeholder={placeholder}
