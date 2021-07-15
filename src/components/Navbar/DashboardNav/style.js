@@ -66,11 +66,11 @@ export const NavbarGroup = styled.span`
 `;
 
 export const NavbarWelcomeText = styled.span`
-    margin-right: 1.5rem;
+    margin-inline: 1.5rem;
 
     @media screen and (max-width: 1125px) {
         & {
-            margin-right: 0.5rem;
+            margin-inline: 0.5rem;
         }
     }
 
@@ -97,11 +97,11 @@ export const NavbarSearch = styled.div`
 `;
 
 export const NavbarItem = styled.span`
-    margin-right: 1.5rem;
+    padding: 10px;
     cursor: pointer;
     @media screen and (max-width: 1125px) {
         & {
-            margin-right: 0.5rem;
+            padding: 0.5rem;
         }
     }
 `;
