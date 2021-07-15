@@ -14,12 +14,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { useTranslation } from 'react-i18next';
 
 const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const [title, setTitle] = useState(selectedTitle);
     const [titlePositions, setTitlePositions] = useState(selectedTitle);
     const [advance, setAdvance] = useState(false);
     const [positionForm, setPositionForm] = useState([]);
     const { setInformation } = useContext(MessagesContext);
+    const selectedLang = i18n.language;
 
     useEffect(() => {
         setTitle(selectedTitle.title);
@@ -221,6 +222,7 @@ const AddPositionModal = ({ selectedTitle, open, onClose, columnInfo }) => {
                                 name="status"
                                 value={title}
                                 t={t} // t={t} belongs to translation!
+                                selectedLang={selectedLang}
                                 onChange={(e) => {
                                     columnInfo.forEach(
                                         (column) =>

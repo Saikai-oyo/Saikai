@@ -62,7 +62,7 @@ export const AuthInput = styled.input`
 
 export const PositionsInput = styled.input`
     padding: 1rem;
-    width: ${({ edit }) => (edit ? '183px' : '261px')};
+    width: ${({ edit }) => (edit ? '183px' : '250px')};
     height: ${({ edit }) => (edit ? '21px' : '35px')};
     background: ${white};
     border: 1px solid ${middleBlue};
@@ -287,9 +287,10 @@ export const DateInput = styled.input`
 `;
 
 export const StatusInput = styled.select`
+    height: ${({ edit }) => (edit ? '36px' : '3rem')};
     width: ${({ edit }) => (edit ? '153px' : '190px')};
-    height: 3rem;
-    padding: ${({ edit }) => (edit ? '.5rem .5rem .6rem .5rem' : '10px 0px 10px 10px')};
+    padding-block: ${({ edit }) => (edit ? '.5rem .6rem' : '10px')};
+    padding-inline: ${({ edit }) => (edit ? '.5rem .6rem' : '10px 0px')};
     background: ${white};
     border: 1px solid ${middleBlue};
     border-radius: 4px;
@@ -311,7 +312,7 @@ export const StatusInput = styled.select`
     -moz-appearance: none;
     background-image: url(${upArrow});
     background-repeat: no-repeat;
-    background-position-x: 90%;
+    background-position-x: ${({ selectedLang }) => (selectedLang === 'he' ? '10%' : '90%')};
     background-position-y: 50%;
 
     font-weight: 300;
