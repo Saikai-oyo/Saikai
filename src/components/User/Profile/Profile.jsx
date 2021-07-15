@@ -5,13 +5,15 @@ import { useHistory, Link } from 'react-router-dom';
 import { UserDetailsContext } from '../../../contexts/UserDetailsContext';
 import GeneralNav from '../../Navbar/GeneralNav/GeneralNav';
 import { useTranslation } from 'react-i18next';
+import { CardHeader, GoBack, Header } from '../../../styles/shared/formHeader';
 
 import * as S from './style';
 
 const Profile = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const { information, setInformation } = useContext(MessagesContext);
     const { logout, currentUser } = useAuth();
+    const selectedLang = i18n.language;
     const history = useHistory();
     const { userDetails } = useContext(UserDetailsContext);
 
@@ -36,12 +38,10 @@ const Profile = () => {
 
             <S.Wrapper>
                 <S.ProfileContainer>
-                    <div className="card-header-pills">
-                        <Link to="/">
-                            <S.GoBack />
-                        </Link>
-                    </div>
-                    <S.Header>{t('profile.title')}</S.Header>
+                    <CardHeader>
+                        <GoBack to="/" lang={selectedLang} />
+                    </CardHeader>
+                    <Header>{t('profile.title')}</Header>
                     {information.hasError && (
                         <div className="alert alert-danger" role="alert">
                             {information.error}
