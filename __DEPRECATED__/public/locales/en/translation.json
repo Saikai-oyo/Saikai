@@ -1,0 +1,152 @@
+{
+    "email": "Email",
+    "needAccount": "Need an account?",
+    "signUp": "Sign up",
+    "password": "Password",
+    "errors": {
+        "empty": "Fields cannot be empty.",
+        "emailFormat": "Oops! Wrong email format.",
+        "emailOrPassword": "Oops! Wrong email or password.",
+        "resetDemo": "Can not reset Demo password! 😉",
+        "resetSent": "Check your inbox for further instructions",
+        "general": "Something went wrong."
+    },
+    "login": {
+        "title": "Welcome!",
+        "subtitle": "Log in to your account",
+        "login": "Log in",
+        "signInWith": "Sign in with",
+        "forgotPassword": "Forgot password?"
+    },
+    "forgotPassword": {
+        "title": "Reset Password",
+        "rememberPassword": "Remember the password?",
+        "logIn": "Log in"
+    },
+    "signUpPage": {
+        "title": "Join Saikai",
+        "subtitle": "Create an account to manage your way to work",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "yourPassword": "Your Password",
+        "confirmPassword": "Confirm Password",
+        "haveAccount": "Already have an account?",
+        "logIn": "Log in",
+        "errors": {
+            "oops": "Oops!",
+            "empty": {
+                "email": " Email is empty.",
+                "firstName": " First Name is empty.",
+                "lastName": "  Last Name is empty.",
+                "password": "  Passwords is empty."
+            },
+            "passwordDontMatch": "  Passwords do not match.",
+            "passwordContain": " Password must contain 8 to 15 characters with at least:\n- one lowercase letter\n- one uppercase letter\n- one numeric digit\n- one special character (#?!@%^&*-_.)",
+            "exists": "Oops! Email already exists."
+        },
+        "contain": {
+            "passwordMustContain": "Password must contain:",
+            "letters": "one lowercase letter & one uppercase letter",
+            "characters": "one numeric digit & 8 to 15 characters",
+            "special": "one special character ( #?!@%^&*-_. )"
+        }
+    },
+    "profile": {
+        "title": "Profile",
+        "email": "Email",
+        "fullName": "Full Name",
+        "updatePassword": "Update Password",
+        "logout": "Log Out",
+        "errors": {
+            "logout": "Failed to log out."
+        }
+    },
+    "updatePassword": {
+        "title": "Update Password",
+        "newPassword": "New Password",
+        "confirmNewPassword": "Confirm New Password",
+        "update": "Update",
+        "cancel": "Cancel",
+        "errors": {
+            "passwordDoNotMatch": "Passwords do not match!",
+            "fillPassword": "Must fill password!"
+        }
+    },
+    "dashboard": {
+        "titles": {
+            "applied": "Applied",
+            "inProgress": "In Progress",
+            "receivedTask": "Received Task",
+            "contract": "Contract",
+            "denied": "Denied"
+        },
+        "tooltips": {
+            "addPosition": "Add Position",
+            "sortBy": "Sort By",
+            "setting": "Setting",
+            "logout": "Logout",
+            "deletePosition": "Delete Position",
+            "editPosition": "Edit Position",
+            "exit": "Exit",
+            "advanced": "Advanced",
+            "language": "Language"
+        },
+        "navbar": {
+            "errors": {
+                "failed": "Failed to logout."
+            },
+            "searchBar": "Job Title or Company Name",
+            "welcome": "Welcome"
+        }
+    },
+    "sort": {
+        "addedDate": "Added Date",
+        "positionName": "Position Name",
+        "companyName": "Company Name",
+        "date": {
+            "oldToNew": "Oldest to Newest",
+            "newToOld": "Newest to Oldest"
+        },
+        "aToz": "A to Z",
+        "zToa": "Z to A"
+    },
+    "modals": {
+        "addNewPosition": {
+            "successfullyAdded": "Successfully Added",
+            "title": "Add New Position",
+            "applicationDate": "Application Date",
+            "positionName": "Position Name",
+            "companyName": "Company Name",
+            "positionDescription": "Position Description",
+            "status": "Status",
+            "positionLink": "Position Link",
+            "hrName": "HR Name",
+            "hrMail": "HR Mail",
+            "city": "City",
+            "appliedThrough": "Applied through",
+            "submit": "Submit",
+            "cancel": "Cancel",
+            "advanced": "Advanced"
+        },
+        "viewAndEdit": {
+            "errors": {
+                "noChanges": "No changes was made!",
+                "update": "Successfully Updated",
+                "delete": "Successfully Deleted",
+                "cantDelete": "Can not delete position!"
+            },
+            "tabs": {
+                "description": {
+                    "description": "Description",
+                    "positionDescription": "Position Description"
+                },
+                "view": {
+                    "view": "View Position"
+                }
+            },
+            "close": "Close",
+            "cancel": "Cancel",
+            "save": "Save"
+        }
+    }
+}
