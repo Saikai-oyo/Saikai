@@ -9,7 +9,9 @@
     "web": "expo start --web",
     "test": "jest",
     "test-debug": "jest -o --watch",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch",
+    "lint": "eslint ./src/**",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -25,7 +27,19 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@react-native-community/eslint-config": "^3.2.0",
     "@types/react": "~18.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react-refresh": "^0.4.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-storybook": "^0.6.12",
+    "prettier": "^2.8.8",
     "typescript": "^4.9.4"
   },
   "jest": {
