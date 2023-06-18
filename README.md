@@ -78,11 +78,11 @@ In <b>Saikai</b>, you can log any detail regarding the job applications and quic
 
 ### Built With
 
--   [React](https://reactjs.org/)
--   [Firebase](https://firebase.google.com/)
--   [Styled-Components](https://styled-components.com/)
--   [Github-Pages](https://pages.github.com/)
--   [Figma](https://www.figma.com/)
+- [React](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [Styled-Components](https://styled-components.com/)
+- [Github-Pages](https://pages.github.com/)
+- [Figma](https://www.figma.com/)
 
 <!-- GETTING STARTED -->
 
@@ -92,36 +92,36 @@ In <b>Saikai</b>, you can log any detail regarding the job applications and quic
 
 Install Node.
 
--   npm
-    ```sh
-    npm install npm@latest -g
-    ```
+- npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
 ### Installation
 
 1. Get a free API Key at [Firebase](https://firebase.google.com) console.
 2. Clone the repo
-    ```sh
-    git clone https://github.com/Saikai-oyo/Saikai.git
-    ```
+   ```sh
+   git clone https://github.com/Saikai-oyo/Saikai.git
+   ```
 3. Install NPM packages
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 4. Create `.env.local` file and enter your API in (you will get 7 keys)
-    ```JS
-    REACT_APP_FIREBASE_API_KEY= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_AUTH_DOMAIN= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_PROJECT_ID= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_STORAGE_BUCKET= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_MESSAGING_SENDER_ID= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_APP_ID= THE_API_RELEVANT_KEY
-    REACT_APP_FIREBASE_MEASUREMENT_ID= THE_API_RELEVANT_KEY
-    ```
+   ```JS
+   REACT_APP_FIREBASE_API_KEY= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_AUTH_DOMAIN= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_PROJECT_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_STORAGE_BUCKET= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_APP_ID= THE_API_RELEVANT_KEY
+   REACT_APP_FIREBASE_MEASUREMENT_ID= THE_API_RELEVANT_KEY
+   ```
 5. Start the application
-    ```sh
-    npm started
-    ```
+   ```sh
+   npm started
+   ```
 
 <!-- USAGE EXAMPLES -->
 
@@ -143,9 +143,9 @@ Install Node.
 
 8️⃣ Search for a specific position in the search bar at the top - search by position title, company name or description key words (very useful once you get a call and need a quick reminder of this application 😉)
 
--   Your time should be focused on creating something amazing. A project that solves a problem and helps others
--   You shouldn't be doing the same tasks over and over like creating a README from scratch
--   You should element DRY principles to the rest of your life.
+- Your time should be focused on creating something amazing. A project that solves a problem and helps others
+- You shouldn't be doing the same tasks over and over like creating a README from scratch
+- You should element DRY principles to the rest of your life.
 
 <!-- ROADMAP -->
 
@@ -251,5 +251,5 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/Saikai-oyo
 [license-shield]: https://img.shields.io/github/license/Saikai-oyo/Saikai.svg?style=for-the-badge
 [license-url]: https://github.com/Saikai-oyo/Saikai/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/company/72704625
+[linkedin-url]: https://www.linkedin.com/company/saikai-oyo
 [product-screenshot]: https://user-images.githubusercontent.com/41434778/118405125-e344bf00-b67e-11eb-9f7e-9f64ef50c67c.png
