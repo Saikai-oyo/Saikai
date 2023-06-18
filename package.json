@@ -8,8 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest",
-    "test-debug": "jest -o --watch",
-    "test-watch": "jest --watch",
+    "test:debug": "jest -o --watch",
+    "test:watch": "jest --watch",
     "lint": "eslint ./src/**",
     "lint:fix": "npm run lint -- --fix"
   },
@@ -28,6 +28,8 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@react-native-community/eslint-config": "^3.2.0",
+    "@testing-library/jest-native": "^5.4.2",
+    "@testing-library/react-native": "^12.1.2",
     "@types/jest": "^29.5.2",
     "@types/react": "~18.0.14",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
