@@ -8,6 +8,7 @@ export interface InputProps extends TextInputProps {
   style?: StyleProp<TextStyle>;
   labelStyle?: StyleProp<TextStyle>;
   label?: string;
+  labelTestID?: string;
 }
 
 const styles = StyleSheet.create({
@@ -31,6 +32,7 @@ const styles = StyleSheet.create({
 export const Input: FunctionComponent<InputProps> = ({
   accessibilityLabel,
   testID,
+  labelTestID,
   placeholder,
   onChange,
   style,
@@ -39,7 +41,11 @@ export const Input: FunctionComponent<InputProps> = ({
   secureTextEntry = false,
 }) => (
   <View>
-    {label && <Typography style={[styles.label, labelStyle]}>{label}</Typography>}
+    {label && (
+      <Typography testID={labelTestID} style={[styles.label, labelStyle]}>
+        {label}
+      </Typography>
+    )}
     <TextInput
       accessibilityLabel={accessibilityLabel}
       testID={testID}
