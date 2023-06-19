@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
-        run: yarn
+        run: yarn install --frozen-lockfile
       - name: Install Playwright
         run: npx playwright install --with-deps
       - name: Build Storybook
