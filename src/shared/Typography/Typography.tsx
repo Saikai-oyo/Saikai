@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
 });
 
 const textSizeToStyle: Record<TextSize, TextStyle> = {
-  [TextSize.XS]: styles.h3,
-  [TextSize.S]: styles.h3,
+  [TextSize.XS]: styles.h5,
+  [TextSize.S]: styles.h4,
   [TextSize.M]: styles.h3,
-  [TextSize.L]: styles.h3,
+  [TextSize.L]: styles.h2,
   [TextSize.XL]: styles.h1,
 };
 
