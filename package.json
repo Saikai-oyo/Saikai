@@ -19,13 +19,13 @@
     "lint:fix": "eslint ./src/** --fix",
     "postinstall": "husky install",
     "github:deploy": "npm run build && gh-pages -d build",
-    "storybook:web": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "storybook-generate": "sb-rn-get-stories --config-path .ondevice",
-    "storybook-watch": "sb-rn-watcher --config-path .ondevice",
     "storybook": "sb-rn-get-stories --config-path .ondevice && STORYBOOK_ENABLED='true' expo start",
+    "storybook:web": "start-storybook -p 6006",
     "storybook:ios": "sb-rn-get-stories --config-path .ondevice && STORYBOOK_ENABLED='true' expo start --ios",
-    "storybook:android": "sb-rn-get-stories --config-path .ondevice && STORYBOOK_ENABLED='true' expo start --android"
+    "storybook:android": "sb-rn-get-stories --config-path .ondevice && STORYBOOK_ENABLED='true' expo start --android",
+    "storybook:generate": "sb-rn-get-stories --config-path .ondevice",
+    "storybook:build": "build-storybook",
+    "storybook:watch": "sb-rn-watcher --config-path .ondevice"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
