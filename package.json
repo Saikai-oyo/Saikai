@@ -14,7 +14,8 @@
     "test:debug": "jest -o --watch",
     "test:watch": "jest --watch",
     "lint": "eslint ./src/**",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "eslint ./src/** --fix",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
@@ -45,6 +46,8 @@
     "eslint-plugin-react-refresh": "^0.4.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-storybook": "^0.6.12",
+    "husky": "^8.0.3",
+    "pinst": "^3.0.0",
     "prettier": "^2.8.8",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
