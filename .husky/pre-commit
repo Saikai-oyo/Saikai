@@ -4,5 +4,5 @@
 if yarn lint; then 
  echo "Lint Passed!"
 
-else echo "\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
+else echo "\033[47m\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
 fi
