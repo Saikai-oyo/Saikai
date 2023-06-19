@@ -12,6 +12,7 @@ if echo "${On_White}${BCyan}Running yarn lint${Color_Off}" &&  yarn lint; then
  echo "${BGreen}Lint Passed!${Color_Off}"
 
 else echo "${On_White}${BRed}Running lint:fix${Color_Off}" && yarn lint:fix;
+    echo "${BGreen}Lint fix Passed!${Color_Off}"
 fi
 
 if echo "${On_White}${BCyan}Running yarn tsc${Color_Off}" && yarn tsc; then 
