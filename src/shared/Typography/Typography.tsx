@@ -15,19 +15,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   [TextSize.XL]: {
-    fontSize: 30,
+    fontSize: 50,
   },
   [TextSize.L]: {
-    fontSize: 20,
+    fontSize: 40,
   },
   [TextSize.M]: {
-    fontSize: 20,
+    fontSize: 30,
   },
   [TextSize.S]: {
     fontSize: 20,
   },
   [TextSize.XS]: {
-    fontSize: 20,
+    fontSize: 10,
   },
 });
 

@@ -31,7 +31,7 @@ describe('Typography', () => {
 
     const { props } = getByTestId('textWrapper');
 
-    expect(props.style).toContainEqual({ fontSize: 30 });
+    expect(props.style).toContainEqual({ fontSize: 50 });
   });
 
   it('should render disabled text', () => {
