@@ -2,6 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 if yarn lint; then 
- echo "Lint Passed!"
-else yarn lint:fix; echo "Running lint:fix"
+ echo "`yarn lint` Passed!"
+
+else echo "\033[1;31mRunning `yarn lint:fix`\e[0m" && yarn lint:fix;
 fi
