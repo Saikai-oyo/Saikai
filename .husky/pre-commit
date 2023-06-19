@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-if yarn lint; then 
+if echo "\033[1;36mRunning yarn lint\033[0m" &&  yarn lint; then 
  echo "\033[1;32mLint Passed!\033[0m"
 
 else echo "\033[47m\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
 fi
 
-if yarn tsc; then 
+if echo "\033[1;36mRunning yarn tsc\033[0m" && yarn tsc; then 
     echo echo "\033[1;32mTypescript Passed!\033[0m";
 else echo "\033[47m\033[1;31mPlease fix the Typescript problem\033[0m";
 
