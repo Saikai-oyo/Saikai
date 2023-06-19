@@ -3,6 +3,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from './src/constants/colors';
+import { Input } from './src/shared/Input/Input';
 import { Typography } from './src/shared/Typography/Typography';
 
 // eslint-disable-next-line no-console
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Typography bold>Open up App.tsx to start working on your app!</Typography>
+      <Input />
       <StatusBar style="auto" />
     </View>
   );
