@@ -18,5 +18,4 @@ fi
 if echo "${On_White}${BCyan}Running yarn tsc${Color_Off}" && yarn tsc; then 
     echo "${BGreen}Typescript Passed!${Color_Off}";
 else echo "${On_White}${BRed}Please fix the Typescript problem${Color_Off}";
-
 fi
