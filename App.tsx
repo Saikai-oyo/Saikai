@@ -16,7 +16,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Typography bold>Open up App.tsx to start working on your app!</Typography>
-      <Input />
+      <Input placeholder="lolo" />
       <StatusBar style="auto" />
     </View>
   );
