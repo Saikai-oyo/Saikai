@@ -6,3 +6,9 @@ if yarn lint; then
 
 else echo "\033[47m\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
 fi
+
+if yarn tsc; then 
+    echo echo "\033[1;32mTypescript Passed!\033[0m";
+else echo "\033[47m\033[1;31mPlease fix the Typescript problem\033[0m";
+
+fi
