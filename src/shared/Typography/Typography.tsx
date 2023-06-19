@@ -1,5 +1,6 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
+
 import { TextSize } from './types';
 
 export interface TypographyProps extends TextProps {

@@ -2,7 +2,7 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 if yarn lint; then 
- echo "Lint Passed!"
+ echo "\033[1;32mLint Passed!"
 
 else echo "\033[47m\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
 fi
