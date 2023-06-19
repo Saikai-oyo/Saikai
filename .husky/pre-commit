@@ -12,8 +12,13 @@ if echo "${On_White}${BCyan}Running yarn lint${Color_Off}" && yarn lint; then
     echo "${BGreen}Lint Passed!${Color_Off}"
 
 else
-    echo "${On_White}${BRed}Running lint:fix${Color_Off}" && yarn lint:fix && SHOULD_COMMIT=true
-    echo "${BGreen}Lint fix Passed!${Color_Off}"
+    echo "${On_White}${BRed}Running lint:fix${Color_Off}"
+    if yarn lint:fix; then
+        echo "${BGreen}Lint fix Passed!${Color_Off}"
+        SHOULD_COMMIT=true
+    else
+        echo "${BRed}Lint fix Failed!${Color_Off}"
+    fi
 fi
 
 if echo "${On_White}${BCyan}Running yarn tsc${Color_Off}" && yarn tsc; then
@@ -22,6 +27,6 @@ else
     echo "${On_White}${BRed}Please fix the Typescript problem${Color_Off}"
 fi
 
-if SHOULD_COMMIT && git commit -am "Auto commit ater lint:fix command"; then
+if $SHOULD_COMMIT && git commit -am "Auto commit after lint:fix command"; then
     echo "${BGreen}Commit done successfully!${Color_Off}"
 fi
