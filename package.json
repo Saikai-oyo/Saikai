@@ -15,7 +15,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint ./src/**",
     "lint:fix": "eslint ./src/** --fix",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "github:deploy": "npm run build && gh-pages -d build"
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
