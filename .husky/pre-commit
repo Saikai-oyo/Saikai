@@ -1,9 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint
-echo "$? -ne 0"
-
-if [[ $? -ne 0 ]]; then
-  yarn lint:fix
+if yarn lint; then 
+ echo "Lint Passed!"
+else yarn lint:fix; echo "Running lint:fix"
 fi
