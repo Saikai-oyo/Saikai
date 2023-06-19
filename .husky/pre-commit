@@ -2,8 +2,8 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 yarn lint || true
-echo "$?"
+echo "$? -ne 0"
 
-if [ $? -ne 1 ]; then
+if [ $? -ne 0 ]; then
   yarn lint:fix
 fi
