@@ -1,14 +1,21 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-if echo "\033[1;36mRunning yarn lint\033[0m" &&  yarn lint; then 
- echo "\033[1;32mLint Passed!\033[0m"
+Color_Off='\033[0m'       # Text Reset
+BRed='\033[1;31m'         # Red
+BCyan='\033[1;36m'        # Cyan
+BGreen='\033[1;32m'       # Green
+On_White='\033[47m'       # White
 
-else echo "\033[47m\033[1;31mRunning lint:fix\033[0m" && yarn lint:fix;
+
+if echo "${BCyan}Running yarn lint${Color_Off}" &&  yarn lint; then 
+ echo "${BGreen}Lint Passed!${Color_Off}"
+
+else echo "${On_White}${BRed}Running lint:fix${Color_Off}" && yarn lint:fix;
 fi
 
-if echo "\033[1;36mRunning yarn tsc\033[0m" && yarn tsc; then 
-    echo echo "\033[1;32mTypescript Passed!\033[0m";
-else echo "\033[47m\033[1;31mPlease fix the Typescript problem\033[0m";
+if echo "${BCyan}Running yarn tsc${Color_Off}" && yarn tsc; then 
+    echo echo "${BGreen}Typescript Passed!${Color_Off}";
+else echo "${On_White}${BRed}Please fix the Typescript problem${Color_Off}";
 
 fi
