@@ -20,14 +20,16 @@ export default ({ config }) => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     supportsTablet: true,
+    bundleIdentifier: 'com.eidan66.saikai',
   },
   android: {
+    package: 'com.eidan66.saikai',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
     },
   },
   web: {
     favicon: './assets/favicon.png',
+    bundler: 'metro',
   },
 });
