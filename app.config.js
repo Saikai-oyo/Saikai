@@ -19,14 +19,18 @@ export default ({ config }) => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    bundleIdentifier: 'com.saikai',
     supportsTablet: true,
   },
   android: {
+    googleServicesFile: './assets/google-services.json',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
     },
+    package: 'com.saikai',
   },
+  plugins: ['@react-native-firebase/app'],
   web: {
     favicon: './assets/favicon.png',
   },
