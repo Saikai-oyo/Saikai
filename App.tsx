@@ -1,8 +1,7 @@
 import Constants from 'expo-constants';
 import { StatusBar } from 'expo-status-bar';
+import { withExpoSnack } from 'nativewind';
 import React from 'react';
-import { withExpoSnack, styled } from 'nativewind';
-
 import { View } from 'react-native';
 
 import { Input } from './src/shared/Input/Input';
