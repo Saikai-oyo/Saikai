@@ -2,7 +2,7 @@ import { render } from '@testing-library/react-native';
 import React from 'react';
 
 import { COLORS } from '../../../constants/colors';
-import { TextSize } from '../types';
+import { TShirtSize } from '../../types/T-Shirt-size';
 import { Typography, TypographyProps } from '../Typography';
 
 const textProps: TypographyProps = {
@@ -24,7 +24,7 @@ describe('Typography', () => {
 
   it('should render text as H1', () => {
     const { getByTestId } = render(
-      <Typography bold textSize={TextSize.XL} {...textProps}>
+      <Typography bold textSize={TShirtSize.XL} {...textProps}>
         Text for test
       </Typography>,
     );
