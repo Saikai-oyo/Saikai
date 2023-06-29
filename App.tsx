@@ -1,10 +1,10 @@
 // eslint-disable-next-line import/no-named-as-default
 import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from './src/constants/colors';
+import { Icon } from './src/shared/Icon/Icon';
 import { Input } from './src/shared/Input/Input';
 import { Typography } from './src/shared/Typography/Typography';
 
@@ -27,7 +27,7 @@ const App = () => (
   <View style={styles.container}>
     <Typography bold>Open up App.tsx to start working on your app!</Typography>
     <Input placeholder="lolo" />
-    <StatusBar style="auto" />
+    <Icon type="facebook" />
   </View>
 );
 

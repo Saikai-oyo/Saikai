@@ -1,16 +1,17 @@
-import { getDefaultConfig } from 'expo/metro-config';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { getDefaultConfig } = require('metro-config');
 
-const defaultConfig = getDefaultConfig(__dirname);
-
-defaultConfig.resolver.resolverMainFields = ['sbmodern', ...defaultConfig.resolver.resolverMainFields];
-
-defaultConfig.transformer.getTransformOptions = () => ({
-  transform: {
-    experimentalImportSupport: false,
-    inlineRequires: false,
-  },
-});
-
-defaultConfig.watchFolders = [...defaultConfig.watchFolders, './.ondevice'];
-
-export default defaultConfig;
+module.exports = (async () => {
+  const {
+    resolver: { sourceExts, assetExts },
+  } = await getDefaultConfig();
+  return {
+    transformer: {
+      babelTransformerPath: require.resolve('react-native-svg-transformer'),
+    },
+    resolver: {
+      assetExts: assetExts.filter((ext) => ext !== 'svg'),
+      sourceExts: [...sourceExts, 'svg'],
+    },
+  };
+})();
