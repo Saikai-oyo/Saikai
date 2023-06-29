@@ -2,7 +2,12 @@ import type { Config } from 'jest';
 
 const config: Config = {
   verbose: true,
-  modulePathIgnorePatterns: ['<rootDir>/dist/', '<rootDir>/__DEPRECATED__/'],
+  modulePathIgnorePatterns: [
+    '<rootDir>/dist/',
+    '<rootDir>/__DEPRECATED__/',
+    '<rootDir>/.ondevice',
+    '<rootDir>/.storybook',
+  ],
   preset: 'jest-expo',
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?)|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|react-native-svg)',

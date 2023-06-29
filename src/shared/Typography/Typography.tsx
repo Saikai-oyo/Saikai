@@ -1,12 +1,13 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 
-import { TextSize } from './types';
+import { TShirtSize } from '../types/T-Shirt-size';
+import { getStyleByTShirtSize } from '../utils/size-to-styles';
 
 export interface TypographyProps extends TextProps {
   bold?: boolean;
   accessibilityLabel?: string;
-  textSize?: TextSize;
+  textSize?: TShirtSize;
   style?: StyleProp<TextStyle>;
 }
 
@@ -14,30 +15,22 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
-  [TextSize.XL]: {
+  [TShirtSize.XL]: {
     fontSize: 50,
   },
-  [TextSize.L]: {
+  [TShirtSize.L]: {
     fontSize: 40,
   },
-  [TextSize.M]: {
+  [TShirtSize.M]: {
     fontSize: 30,
   },
-  [TextSize.S]: {
+  [TShirtSize.S]: {
     fontSize: 20,
   },
-  [TextSize.XS]: {
+  [TShirtSize.XS]: {
     fontSize: 10,
   },
 });
-
-const textSizeToStyle: Record<TextSize, TextStyle> = {
-  [TextSize.XS]: styles.h5,
-  [TextSize.S]: styles.h4,
-  [TextSize.M]: styles.h3,
-  [TextSize.L]: styles.h2,
-  [TextSize.XL]: styles.h1,
-};
 
 export const Typography: FunctionComponent<PropsWithChildren<TypographyProps>> = ({
   children,
@@ -50,7 +43,7 @@ export const Typography: FunctionComponent<PropsWithChildren<TypographyProps>> =
   ...props
 }) => {
   const boldStyle = bold ? styles.bold : {};
-  const size = textSize ? textSizeToStyle[textSize] : {};
+  const size = textSize ? getStyleByTShirtSize(styles)[textSize] : {};
 
   return (
     <Text
