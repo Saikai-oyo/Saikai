@@ -51,6 +51,7 @@ describe('Typography', () => {
 
     expect(props.style).toContainEqual(additionalProps.style);
   });
+
   describe('Render typography by size', () => {
     it('should render text as XS', () => {
       const { getByTestId } = render(
