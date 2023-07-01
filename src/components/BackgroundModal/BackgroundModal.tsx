@@ -3,7 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { COLORS } from '../../constants/colors';
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     maxWidth: 325,
     minHeight: 405,
