@@ -12,11 +12,12 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "start-webpack": "webpack serve",
     "test": "jest",
     "test:debug": "jest -o --watch",
     "test:watch": "jest --watch",
-    "lint": "eslint ./src/**",
-    "lint:fix": "eslint ./src/** --fix",
+    "lint": "eslint ./src/shared/** ./src/constants/**",
+    "lint:fix": "yarn lint --fix",
     "postinstall": "husky install",
     "github:deploy": "npm run build && gh-pages -d build",
     "storybook": "sb-rn-get-stories --config-path .ondevice && STORYBOOK_ENABLED='true' expo start",
@@ -29,12 +30,12 @@
     "storybook:test": "test-storybook"
   },
   "dependencies": {
-    "@expo/webpack-config": "^18.0.1",
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-native-community/datetimepicker": "6.7.3",
     "@react-native-community/slider": "4.4.2",
     "@react-native-firebase/analytics": "^18.0.0",
     "@react-native-firebase/app": "^18.0.0",
+    "@svgr/webpack": "^8.0.1",
     "expo": "~48.0.18",
     "expo-constants": "~14.2.1",
     "expo-splash-screen": "~0.18.2",
@@ -45,11 +46,13 @@
     "react-dom": "18.2.0",
     "react-native": "0.71.8",
     "react-native-safe-area-context": "4.5.0",
+    "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.10",
     "react-test-renderer": "18.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@expo/webpack-config": "^18.0.1",
     "@react-native-community/eslint-config": "^3.2.0",
     "@storybook/addon-actions": "^6.5.16",
     "@storybook/addon-controls": "^6.5.16",
@@ -75,6 +78,7 @@
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "babel-loader": "^8.2.3",
+    "babel-plugin-inline-react-svg": "^2.0.2",
     "babel-plugin-react-docgen-typescript": "^1.5.1",
     "babel-plugin-react-native-web": "^0.18.10",
     "concurrently": "^8.2.0",
@@ -90,13 +94,18 @@
     "husky": "^8.0.3",
     "pinst": "^3.0.0",
     "prettier": "^2.8.8",
+    "react-native-svg-transformer": "^1.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4",
     "wait-on": "^7.0.1"
   },
   "resolutions": {
-    "react-docgen-typescript": "2.2.2"
+    "react-docgen-typescript": "2.2.2",
+    "svgo": "^2.8.0",
+    "@svgr/babel-preset": "^6.1.0",
+    "@svgr/plugin-jsx": "^6.1.2",
+    "@svgr/plugin-svgo": "^6.1.2"
   },
   "private": true
 }

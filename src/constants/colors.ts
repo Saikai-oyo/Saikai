@@ -12,17 +12,24 @@ export const COLORS = {
   opacity08: 'cc',
   opacity09: 'e6',
 
-  primary: '#7F56D9',
+  primary: '#1570EF',
   secondary: '#F9F5FF',
 
   black: '#000000',
   white: '#FFFFFF',
+  ghostWhite: '#F9FAFB',
   softGray: '#cccccc',
+  lightSilver: '#D0D5DD',
+  darkLiver: '#667085',
   lightGray: '#101828',
 
   purpleHeart: '#6941C6',
+  brightLavender: '#c282f4',
+  mauve: '#D6BBFB',
+  magnolia: '#F4EBFF',
 
   warning: '#D92D20',
+  salmonPink: '#FDA29B',
 };
 
 // Dark colors for dark mode

@@ -60,6 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.warning,
     borderColor: COLORS.warning,
   },
+  typography: {
+    backgroundColor: 'transparent',
+    borderColor: 'transparent',
+    borderWith: 0,
+  },
+  textTypography: {
+    color: COLORS.black,
+  },
   textPrimary: {
     color: COLORS.white,
   },
@@ -77,12 +85,10 @@ const getButtonSizeStyle = (size = TShirtSize.M) => {
       return { sizeWrapper: { ...styles[TShirtSize.XS] }, sizeTypography: { ...styles.textSizeSmall } };
     case TShirtSize.S:
       return { sizeWrapper: { ...styles[TShirtSize.S] }, sizeTypography: { ...styles.textSizeSmall } };
-
     case TShirtSize.L:
       return { sizeWrapper: { ...styles[TShirtSize.L] }, sizeTypography: { ...styles.textSizeM } };
     case TShirtSize.XL:
       return { sizeWrapper: { ...styles[TShirtSize.XL] }, sizeTypography: { ...styles.textSizeL } };
-
     case TShirtSize.M:
     default:
       return { sizeWrapper: { ...styles[TShirtSize.M] }, sizeTypography: { ...styles.textSizeM } };
@@ -95,6 +101,8 @@ const getButtonModeStyle = (mode = ButtonMode.PRIMARY) => {
       return { modeWrapper: { ...styles.secondary }, modeTypography: { ...styles.textSecondary } };
     case ButtonMode.WARNING:
       return { modeWrapper: { ...styles.warning }, modeTypography: { ...styles.textWarning } };
+    case ButtonMode.TYPOGRAPHY:
+      return { modeWrapper: { ...styles.typography }, modeTypography: { ...styles.textTypography } };
     case ButtonMode.PRIMARY:
     default:
       return { modeWrapper: { ...styles.primary }, modeTypography: { ...styles.textPrimary } };

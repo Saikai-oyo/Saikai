@@ -4,6 +4,7 @@ import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, View, ViewStyle } f
 import { useButtonStyle } from './hooks/useButtonStyle';
 import { BasicButton } from './types';
 import { COLORS } from '../../constants/colors';
+import { TShirtSize } from '../types/T-Shirt-size';
 import { Typography } from '../Typography/Typography';
 
 export interface ButtonProps extends BasicButton {
@@ -13,6 +14,9 @@ export interface ButtonProps extends BasicButton {
   containerStyle?: StyleProp<ViewStyle>;
   textStyle?: StyleProp<TextStyle>;
   icon?: FunctionComponent;
+  disabled?: boolean;
+  bold?: boolean;
+  textSize?: TShirtSize;
 }
 
 const styles = StyleSheet.create({
@@ -40,16 +44,33 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     color: COLORS.white,
   },
-  icon: {},
 });
-`1`;
-export const Button = ({ onPress, text, testID, containerStyle, textStyle, size, mode }: ButtonProps) => {
+
+export const Button = ({
+  onPress,
+  text,
+  testID,
+  containerStyle,
+  textStyle,
+  size,
+  mode,
+  bold,
+  textSize,
+  disabled = false,
+}: ButtonProps) => {
   const { wrapperStyle, typographyStyle } = useButtonStyle({ size, mode });
 
   return (
-    <TouchableOpacity testID={testID} style={[styles.container, wrapperStyle, containerStyle]} onPress={onPress}>
+    <TouchableOpacity
+      testID={testID}
+      style={[styles.container, wrapperStyle, containerStyle]}
+      onPress={onPress}
+      disabled={disabled}
+    >
       <View style={styles.wrapper}>
-        <Typography style={[styles.text, typographyStyle, textStyle]}>{text}</Typography>
+        <Typography bold={bold} textSize={textSize} style={[styles.text, typographyStyle, textStyle]}>
+          {text}
+        </Typography>
       </View>
     </TouchableOpacity>
   );
