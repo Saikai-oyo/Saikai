@@ -2,7 +2,7 @@
 import Constants from 'expo-constants';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 import { COLORS } from './src/constants/colors';
 import { Input } from './src/shared/Input/Input';
@@ -18,17 +18,26 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    alignItems: 'center',
     justifyContent: 'center',
+  },
+  scrollView: {
+    width: '100%',
+  },
+  containerStyles: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 });
 
 const App = () => (
-  <View style={styles.container}>
-    <Typography bold>Open up App.tsx to start working on your app!</Typography>
-    <Input placeholder="lolo" />
-    <StatusBar style="auto" />
-  </View>
+  <ScrollView style={styles.scrollView} contentContainerStyle={styles.containerStyles}>
+    <View style={styles.container}>
+      <Typography bold>Open up App.tsx to start working on your app!</Typography>
+      <Input placeholder="lolo" />
+      <StatusBar style="auto" />
+    </View>
+  </ScrollView>
 );
 
 let AppEntryPoint = App;

@@ -16,19 +16,24 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   [TShirtSize.XL]: {
-    fontSize: 50,
+    fontSize: 20,
+    lineHeight: 30,
   },
   [TShirtSize.L]: {
-    fontSize: 40,
+    fontSize: 18,
+    lineHeight: 28,
   },
   [TShirtSize.M]: {
-    fontSize: 30,
+    fontSize: 16,
+    lineHeight: 24,
   },
   [TShirtSize.S]: {
-    fontSize: 20,
+    fontSize: 14,
+    lineHeight: 20,
   },
   [TShirtSize.XS]: {
-    fontSize: 10,
+    fontSize: 12,
+    lineHeight: 20,
   },
 });
 
