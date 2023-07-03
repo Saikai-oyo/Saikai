@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
 });
 
 const ButtonMeta: ComponentMeta<typeof Button> = {
-  title: 'Button/Warning',
+  title: 'Button/Error',
   component: Button,
   argTypes: {
     onPress: { action: 'pressed the button' },
   },
   args: {
     text: 'Button CTA',
-    mode: ButtonMode.WARNING,
+    mode: ButtonMode.ERROR,
   },
 };
 

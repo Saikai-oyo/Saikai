@@ -49,16 +49,16 @@ const styles = StyleSheet.create({
     lineHeight: 28,
   },
   primary: {
-    backgroundColor: COLORS.primary,
-    borderColor: COLORS.primary,
+    backgroundColor: COLORS.primary600,
+    borderColor: COLORS.primary600,
   },
   secondary: {
-    backgroundColor: COLORS.secondary,
-    borderColor: COLORS.secondary,
+    backgroundColor: COLORS.primaryLight50,
+    borderColor: COLORS.primaryLight50,
   },
-  warning: {
-    backgroundColor: COLORS.warning,
-    borderColor: COLORS.warning,
+  error: {
+    backgroundColor: COLORS.error600,
+    borderColor: COLORS.error600,
   },
   typography: {
     backgroundColor: 'transparent',
@@ -66,15 +66,16 @@ const styles = StyleSheet.create({
     borderWith: 0,
   },
   textTypography: {
-    color: COLORS.black,
+    color: COLORS.gray500,
   },
   textPrimary: {
     color: COLORS.white,
   },
   textSecondary: {
-    color: COLORS.purpleHeart,
+    color: COLORS.primary700,
+    fontWeight: '600',
   },
-  textWarning: {
+  textError: {
     color: COLORS.white,
   },
 });
@@ -99,8 +100,8 @@ const getButtonModeStyle = (mode = ButtonMode.PRIMARY) => {
   switch (mode) {
     case ButtonMode.SECONDARY:
       return { modeWrapper: { ...styles.secondary }, modeTypography: { ...styles.textSecondary } };
-    case ButtonMode.WARNING:
-      return { modeWrapper: { ...styles.warning }, modeTypography: { ...styles.textWarning } };
+    case ButtonMode.ERROR:
+      return { modeWrapper: { ...styles.error }, modeTypography: { ...styles.textError } };
     case ButtonMode.TYPOGRAPHY:
       return { modeWrapper: { ...styles.typography }, modeTypography: { ...styles.textTypography } };
     case ButtonMode.PRIMARY:

@@ -10,13 +10,13 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: COLORS.white,
     borderRadius: 24,
-    borderColor: '#EAECF0',
+    borderColor: COLORS.gray200,
     borderWidth: 1,
     borderStyle: 'solid',
   },
   firstShadow: {
     elevation: 6,
-    shadowColor: 'rgba(16, 24, 40, 0.03)',
+    shadowColor: `{${COLORS.gray900}${COLORS.opacity003}}`,
     shadowOffset: {
       width: 0,
       height: 4,
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
   },
   secondShadow: {
     elevation: 16,
-    shadowColor: 'rgba(16, 24, 40, 0.03)',
+    shadowColor: `{${COLORS.gray900}${COLORS.opacity003}}`,
     shadowOffset: {
       width: 0,
       height: 12,

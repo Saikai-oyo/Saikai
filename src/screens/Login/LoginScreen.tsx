@@ -20,6 +20,7 @@ export interface LoginDetails {
 const styles = StyleSheet.create({
   title: {
     marginBottom: 16,
+    color: COLORS.gray700,
   },
   inputWrapper: {
     display: 'flex',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   grayText: {
-    color: COLORS.darkLiver,
+    color: COLORS.gray500,
   },
   lightWeight: {
     fontWeight: '400',
