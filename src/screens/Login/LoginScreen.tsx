@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
   },
   grayText: {
-    color: COLORS.darkLiver,
+    color: COLORS.gray500,
   },
   lightWeight: {
     fontWeight: '400',
