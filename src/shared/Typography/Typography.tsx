@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold',
   },
+  weight: {
+    fontWeight: '500',
+  },
   [TShirtSize.XL]: {
     fontSize: 20,
     lineHeight: 30,
@@ -52,7 +55,7 @@ export const Typography: FunctionComponent<PropsWithChildren<TypographyProps>> =
 
   return (
     <Text
-      style={[boldStyle, size, style]}
+      style={[styles.weight, boldStyle, size, style]}
       disabled={disabled}
       accessibilityLabel={accessibilityLabel}
       testID={testID}

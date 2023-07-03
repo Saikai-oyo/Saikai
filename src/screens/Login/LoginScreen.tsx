@@ -1,8 +1,10 @@
-import { Formik, FormikHelpers } from 'formik';
+import { Formik } from 'formik';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { LoginSchema, onSubmit } from './utils/form-handlers';
 import { Division } from '../../components/Division/Division';
+import { COLORS } from '../../constants/colors';
 import { Button } from '../../shared/Button/Button';
 import { ButtonMode } from '../../shared/Button/types';
 import { IconButton } from '../../shared/IconButton/IconButton';
@@ -10,7 +12,7 @@ import { Input } from '../../shared/Input/Input';
 import { TShirtSize } from '../../shared/types/T-Shirt-size';
 import { Typography } from '../../shared/Typography/Typography';
 
-interface LoginDetails {
+export interface LoginDetails {
   email: string;
   password: string;
 }
@@ -26,7 +28,8 @@ const styles = StyleSheet.create({
     height: 230,
   },
   button: {
-    marginTop: 20,
+    marginTop: 15,
+    marginBottom: 5,
     width: 'auto',
   },
   loginMethodWrapper: {
@@ -58,52 +61,54 @@ const styles = StyleSheet.create({
     width: 'fit-content',
     paddingHorizontal: 0,
   },
+  grayText: {
+    color: COLORS.darkLiver,
+  },
+  lightWeight: {
+    fontWeight: '400',
+  },
 });
 
 export const LoginScreen = () => {
-  const formValidate = ({ password, email }: LoginDetails) => {
-    const errors: Record<string, string> = {};
-    if (!password) {
-      errors.password = 'Required!';
-    }
-
-    if (!email) {
-      errors.email = 'Required!';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
-      errors.email = 'Invalid email address';
-    }
-
-    return errors;
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (values: LoginDetails, { setSubmitting }: FormikHelpers<LoginDetails>) => {
-    //TODO: Initiate this later [SFE-26]
-  };
+  const renderThirdPartyLoginButton = () => (
+    <View style={styles.buttonLoginMethods}>
+      <IconButton type="linkedin" />
+      <IconButton type="google" />
+      <IconButton type="facebook" />
+    </View>
+  );
 
   return (
     <View>
       <Typography style={styles.title} textSize={TShirtSize.L}>
         Login
       </Typography>
-      <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validate={formValidate}>
-        {({ isSubmitting, handleChange, handleSubmit, handleBlur, values, errors }) => (
+      <Formik initialValues={{ email: '', password: '' }} onSubmit={onSubmit} validationSchema={LoginSchema}>
+        {({ isSubmitting, handleChange, handleSubmit, setFieldTouched, handleBlur, values, errors, touched }) => (
           <View>
             <View>
               <Input
-                error={errors.email}
+                autoCapitalize="none"
+                error={touched.email && errors.email ? errors.email : null}
                 name="email"
-                onBlur={handleBlur('email')}
+                onBlur={() => {
+                  setFieldTouched('email');
+                  handleBlur('email');
+                }}
                 keyboardType="email-address"
-                placeholder="email"
+                placeholder="Email"
                 onChangeText={handleChange('email')}
                 value={values.email}
               />
               <Input
-                error={errors.password}
+                autoCapitalize="none"
+                error={touched.password && errors.password ? errors.password : null}
                 name="password"
-                onBlur={handleBlur('password')}
-                placeholder="password"
+                onBlur={() => {
+                  setFieldTouched('password');
+                  handleBlur('password');
+                }}
+                placeholder="Password"
                 onChangeText={handleChange('password')}
                 value={values.password}
                 secureTextEntry
@@ -114,12 +119,8 @@ export const LoginScreen = () => {
         )}
       </Formik>
       <View style={styles.loginMethodWrapper}>
-        <Division text="Or" />
-        <View style={styles.buttonLoginMethods}>
-          <IconButton type="linkedin" />
-          <IconButton type="google" />
-          <IconButton type="facebook" />
-        </View>
+        <Division style={styles.grayText} text="Or" />
+        {renderThirdPartyLoginButton()}
       </View>
       <View style={styles.footerWrapper}>
         <Button
@@ -127,19 +128,23 @@ export const LoginScreen = () => {
           textSize={TShirtSize.S}
           mode={ButtonMode.TYPOGRAPHY}
           size={TShirtSize.XS}
+          textStyle={styles.grayText}
           onPress={() => {
             // Do something
           }}
         />
         <View style={styles.footer}>
-          <Typography textSize={TShirtSize.S}>Don&#8217;t have an account? </Typography>
+          <Typography style={[styles.grayText, styles.lightWeight]} textSize={TShirtSize.S}>
+            Don&#8217;t have an account?{' '}
+          </Typography>
           <Button
             bold
-            text=" Sign up"
+            text="Sign up"
             textSize={TShirtSize.S}
             mode={ButtonMode.TYPOGRAPHY}
             size={TShirtSize.XS}
             containerStyle={styles.buttonFooter}
+            textStyle={styles.grayText}
             onPress={() => {
               // Do something
             }}

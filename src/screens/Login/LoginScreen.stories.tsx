@@ -5,7 +5,7 @@ import { LoginScreen } from './LoginScreen';
 import { BackgroundModal } from '../../components/BackgroundModal/BackgroundModal';
 
 const LoginScreenMeta: ComponentMeta<typeof LoginScreen> = {
-  title: 'LoginScreen',
+  title: 'Screens/Authentication/LoginScreen',
   component: LoginScreen,
   argTypes: {},
   args: {},

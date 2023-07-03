@@ -48,7 +48,10 @@ try {
 } catch {}
 
 const getStories = () => {
-  return {};
+  return {
+    "./src/components/BackgroundModal/BackgroundModal.stories.tsx": require("../src/components/BackgroundModal/BackgroundModal.stories.tsx"),
+    "./src/components/Division/Division.stories.tsx": require("../src/components/Division/Division.stories.tsx"),
+  };
 };
 
 configure(getStories, module, false);

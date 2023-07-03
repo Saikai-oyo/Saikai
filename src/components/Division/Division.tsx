@@ -11,7 +11,7 @@ interface DivisionProps extends TypographyProps {
 
 const styles = StyleSheet.create({
   container: {
-    borderBottomColor: COLORS.cadetGrey,
+    borderBottomColor: COLORS.lightSilver,
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   containerText: {
@@ -21,18 +21,13 @@ const styles = StyleSheet.create({
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: COLORS.cadetGrey,
+    backgroundColor: COLORS.lightSilver,
   },
   wrapperText: {
     paddingHorizontal: 23,
   },
   text: {
-    color: COLORS.cadetGrey,
-  },
-  footerText: {
-    flex: 1,
-    height: 1,
-    backgroundColor: COLORS.cadetGrey,
+    color: COLORS.lightSilver,
   },
 });
 
