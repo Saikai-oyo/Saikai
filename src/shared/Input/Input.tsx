@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     marginVertical: 3,
     backgroundColor: COLORS.white,
     color: COLORS.black,
-    borderColor: COLORS.lightSilver,
+    borderColor: COLORS.gray300,
     borderWidth: 1,
     borderStyle: 'solid',
     shadowColor: 'transparent',
@@ -83,27 +83,27 @@ const styles = StyleSheet.create({
     paddingBottom: 2,
   },
   inputError: {
-    borderColor: COLORS.salmonPink,
+    borderColor: COLORS.error300,
   },
   borderFocus: {
-    borderColor: '#c282f4',
+    borderColor: COLORS.primary300,
     shadowOffset: {
       width: 1,
       height: 0,
     },
-    shadowColor: '#c282f4',
+    shadowColor: COLORS.primary300,
     shadowOpacity: 10,
     shadowRadius: 4,
   },
   disable: {
-    backgroundColor: COLORS.ghostWhite,
-    color: COLORS.darkLiver,
+    backgroundColor: COLORS.gray50,
+    color: COLORS.gray500,
   },
   errorWrapper: {
     // marginTop: 6,
   },
   error: {
-    color: COLORS.warning,
+    color: COLORS.error600,
   },
 });
 
@@ -153,7 +153,7 @@ export const Input: FunctionComponent<InputProps> = ({
             iconType && styles.placeholderWithIcon,
             style,
           ]}
-          placeholderTextColor={COLORS.darkLiver}
+          placeholderTextColor={COLORS.gray500}
           id={name}
           accessibilityLabel={accessibilityLabel}
           testID={testID}

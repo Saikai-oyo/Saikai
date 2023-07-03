@@ -3,7 +3,7 @@ import { TShirtSize } from '../../types/T-Shirt-size';
 export enum ButtonMode {
   PRIMARY = 'primary',
   SECONDARY = 'secondary',
-  WARNING = 'warning',
+  ERROR = 'error',
   TYPOGRAPHY = 'typography',
 }
 

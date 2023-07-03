@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderStyle: 'solid',
     shadowRadius: 2,
-    shadowColor: `${COLORS.lightGray}${COLORS.opacity005}`,
+    shadowColor: `${COLORS.gray900}${COLORS.opacity005}`,
     shadowOffset: {
       height: 0,
       width: 1,

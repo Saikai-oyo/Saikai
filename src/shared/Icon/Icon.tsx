@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   iconWithBorder: {
-    borderRightColor: COLORS.lightSilver,
+    borderRightColor: COLORS.gray300,
     borderRightWidth: 1,
     paddingRight: 5,
   },
