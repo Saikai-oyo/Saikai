@@ -16,7 +16,7 @@
     "test": "jest",
     "test:debug": "jest -o --watch",
     "test:watch": "jest --watch",
-    "lint": "eslint ./src/shared/** ./src/constants/**",
+    "lint": "eslint ./src/shared/** ./src/constants/** ./src/screens/** ./src/components/**",
     "lint:fix": "yarn lint --fix",
     "postinstall": "husky install",
     "github:deploy": "npm run build && gh-pages -d build",
@@ -40,6 +40,7 @@
     "expo-constants": "~14.2.1",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
+    "formik": "^2.4.2",
     "jest": "^29.5.0",
     "jest-expo": "^48.0.2",
     "react": "18.2.0",
@@ -48,7 +49,8 @@
     "react-native-safe-area-context": "4.5.0",
     "react-native-svg": "13.4.0",
     "react-native-web": "~0.18.10",
-    "react-test-renderer": "18.2.0"
+    "react-test-renderer": "18.2.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -94,6 +96,7 @@
     "husky": "^8.0.3",
     "pinst": "^3.0.0",
     "prettier": "^2.8.8",
+    "react-docgen-typescript": "^2.2.2",
     "react-native-svg-transformer": "^1.0.0",
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",

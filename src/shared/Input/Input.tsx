@@ -23,7 +23,7 @@ export interface InputProps extends TextInputProps {
   label?: string;
   labelTestID?: string;
   name?: string;
-  error?: string;
+  error?: string | null;
   disabled?: boolean;
   iconType?: IconTypes;
   iconWithSplit?: boolean;
@@ -32,8 +32,7 @@ export interface InputProps extends TextInputProps {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'stretch',
-    height: 'auto',
-    minHeight: 45,
+    height: 80,
   },
   label: {
     fontSize: 13,
@@ -42,6 +41,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
   },
   input: {
     width: '100%',
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderRadius: 8,
     fontSize: 16,
-    height: 60,
+    minHeight: 45,
     lineHeight: 24,
     marginVertical: 3,
     backgroundColor: COLORS.white,
@@ -66,21 +66,21 @@ const styles = StyleSheet.create({
     }),
   },
   icon: {
-    position: 'relative',
-    left: 40,
+    position: 'absolute',
+    left: 20,
     alignItems: 'center',
     fontSize: 22,
   },
   passwordIcon: {
-    position: 'relative',
-    right: 40,
+    position: 'absolute',
+    right: 20,
     alignItems: 'center',
     fontSize: 5,
   },
   placeholderWithIcon: {
     paddingLeft: 50,
     paddingTop: 2,
-    paddingBottom: 9,
+    paddingBottom: 2,
   },
   inputError: {
     borderColor: COLORS.salmonPink,
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     color: COLORS.darkLiver,
   },
   errorWrapper: {
-    marginTop: 6,
+    // marginTop: 6,
   },
   error: {
     color: COLORS.warning,
@@ -174,7 +174,6 @@ export const Input: FunctionComponent<InputProps> = ({
           />
         )}
       </View>
-
       {error && (
         <View style={styles.errorWrapper}>
           <Typography textSize={TShirtSize.S} style={styles.error}>
