@@ -99,9 +99,6 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.gray50,
     color: COLORS.gray500,
   },
-  errorWrapper: {
-    // marginTop: 6,
-  },
   error: {
     color: COLORS.error600,
   },
@@ -175,7 +172,7 @@ export const Input: FunctionComponent<InputProps> = ({
         )}
       </View>
       {error && (
-        <View style={styles.errorWrapper}>
+        <View>
           <Typography textSize={TShirtSize.S} style={styles.error}>
             {error}
           </Typography>

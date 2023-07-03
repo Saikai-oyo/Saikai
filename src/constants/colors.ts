@@ -2,6 +2,7 @@
 export const COLORS = {
   // Opacity
   opacity005: 'od',
+  opacity003: '08',
   opacity01: '1a',
   opacity02: '33',
   opacity03: '4d',

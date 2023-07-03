@@ -66,13 +66,14 @@ const styles = StyleSheet.create({
     borderWith: 0,
   },
   textTypography: {
-    color: COLORS.black,
+    color: COLORS.gray500,
   },
   textPrimary: {
     color: COLORS.white,
   },
   textSecondary: {
     color: COLORS.primary700,
+    fontWeight: '600',
   },
   textError: {
     color: COLORS.white,
