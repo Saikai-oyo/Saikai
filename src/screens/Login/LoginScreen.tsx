@@ -2,7 +2,10 @@ import { Formik, FormikHelpers } from 'formik';
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { Division } from '../../components/Division/Division';
 import { Button } from '../../shared/Button/Button';
+import { ButtonMode } from '../../shared/Button/types';
+import { IconButton } from '../../shared/IconButton/IconButton';
 import { Input } from '../../shared/Input/Input';
 import { TShirtSize } from '../../shared/types/T-Shirt-size';
 import { Typography } from '../../shared/Typography/Typography';
@@ -26,13 +29,34 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 'auto',
   },
-  footer: {
-    marginTop: 40,
+  loginMethodWrapper: {
+    marginTop: 18,
+    marginBottom: 15,
+  },
+  buttonLoginMethods: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingTop: 18,
+    paddingBottom: 5,
+  },
+  footerWrapper: {
     textAlign: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '100%',
     height: 60,
+  },
+  footer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  },
+  buttonFooter: {
+    width: 'fit-content',
+    paddingHorizontal: 0,
   },
 });
 
@@ -89,14 +113,38 @@ export const LoginScreen = () => {
           </View>
         )}
       </Formik>
-      <View style={styles.footer}>
-        <Typography textSize={TShirtSize.S}>Forgot Password?</Typography>
-        <Typography textSize={TShirtSize.S}>
-          Already have an account?{' '}
-          <Typography bold textSize={TShirtSize.S}>
-            Log in
-          </Typography>
-        </Typography>
+      <View style={styles.loginMethodWrapper}>
+        <Division text="Or" />
+        <View style={styles.buttonLoginMethods}>
+          <IconButton type="linkedin" />
+          <IconButton type="google" />
+          <IconButton type="facebook" />
+        </View>
+      </View>
+      <View style={styles.footerWrapper}>
+        <Button
+          text="Forgot Password?"
+          textSize={TShirtSize.S}
+          mode={ButtonMode.TYPOGRAPHY}
+          size={TShirtSize.XS}
+          onPress={() => {
+            // Do something
+          }}
+        />
+        <View style={styles.footer}>
+          <Typography textSize={TShirtSize.S}>Don&#8217;t have an account? </Typography>
+          <Button
+            bold
+            text=" Sign up"
+            textSize={TShirtSize.S}
+            mode={ButtonMode.TYPOGRAPHY}
+            size={TShirtSize.XS}
+            containerStyle={styles.buttonFooter}
+            onPress={() => {
+              // Do something
+            }}
+          />
+        </View>
       </View>
     </View>
   );

@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+    width: '100%',
   },
   input: {
     width: '100%',
@@ -66,21 +67,21 @@ const styles = StyleSheet.create({
     }),
   },
   icon: {
-    position: 'relative',
-    left: 40,
+    position: 'absolute',
+    left: 20,
     alignItems: 'center',
     fontSize: 22,
   },
   passwordIcon: {
-    position: 'relative',
-    right: 40,
+    position: 'absolute',
+    right: 20,
     alignItems: 'center',
     fontSize: 5,
   },
   placeholderWithIcon: {
     paddingLeft: 50,
     paddingTop: 2,
-    paddingBottom: 9,
+    paddingBottom: 2,
   },
   inputError: {
     borderColor: COLORS.salmonPink,

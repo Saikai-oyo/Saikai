@@ -41,7 +41,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Inter',
-    fontWeight: '600',
     color: COLORS.white,
   },
 });

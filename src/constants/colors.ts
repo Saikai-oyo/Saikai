@@ -22,6 +22,7 @@ export const COLORS = {
   lightSilver: '#D0D5DD',
   darkLiver: '#667085',
   lightGray: '#101828',
+  cadetGrey: '#98A2B3',
 
   purpleHeart: '#6941C6',
   brightLavender: '#c282f4',
