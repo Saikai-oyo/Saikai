@@ -1,6 +1,7 @@
 import { ComponentType } from 'react';
 import { SvgProps } from 'react-native-svg';
 
+import BackIcon from '../../../assets/icons/back.svg';
 import EyeCloseIcon from '../../../assets/icons/eye-close.svg';
 import EyeOpenIcon from '../../../assets/icons/eye-open.svg';
 import FacebookIcon from '../../../assets/icons/facebook.svg';
@@ -26,6 +27,8 @@ export const getIconByType = (type: IconTypes): ComponentType<SvgProps> | null =
       return EyeCloseIcon;
     case 'lock':
       return LockIcon;
+    case 'back':
+      return BackIcon;
     default:
       return null;
   }

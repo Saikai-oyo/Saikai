@@ -5,7 +5,10 @@ export enum RootScreenNames {
   //   Auth
   Login = 'Login',
   Register = 'Register',
-  ForgotPassword = 'ForgotPassword',
+
+  // ForgotPassword
+  ForgotPassword_EmailScreen = 'Email',
+  ForgotPassword_PasswordScreen = 'Password',
 }
 
 export type RootStackParamList = {
@@ -15,5 +18,6 @@ export type RootStackParamList = {
   //   Auth
   [RootScreenNames.Login]: undefined;
   [RootScreenNames.Register]: undefined;
-  [RootScreenNames.ForgotPassword]: undefined;
+  [RootScreenNames.ForgotPassword_EmailScreen]: undefined;
+  [RootScreenNames.ForgotPassword_PasswordScreen]: undefined;
 };

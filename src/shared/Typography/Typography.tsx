@@ -1,6 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react';
 import { StyleProp, StyleSheet, Text, TextProps, TextStyle } from 'react-native';
 
+import { textWeightToFontWeight } from './utils';
 import { TShirtSize } from '../types/T-Shirt-size';
 import { getStyleByTShirtSize } from '../utils/size-to-styles';
 
@@ -9,15 +10,10 @@ export interface TypographyProps extends TextProps {
   accessibilityLabel?: string;
   textSize?: TShirtSize;
   style?: StyleProp<TextStyle>;
+  weight?: TextStyle['fontWeight'];
 }
 
 const styles = StyleSheet.create({
-  bold: {
-    fontWeight: 'bold',
-  },
-  weight: {
-    fontWeight: '500',
-  },
   [TShirtSize.XL]: {
     fontSize: 20,
     lineHeight: 30,
@@ -46,16 +42,17 @@ export const Typography: FunctionComponent<PropsWithChildren<TypographyProps>> =
   accessibilityLabel,
   style,
   textSize,
+  weight = '500',
   disabled = false,
   bold = false,
   ...props
 }) => {
-  const boldStyle = bold ? styles.bold : {};
   const size = textSize ? getStyleByTShirtSize(styles)[textSize] : {};
+  const fontWeight = textWeightToFontWeight(weight, bold);
 
   return (
     <Text
-      style={[styles.weight, boldStyle, size, style]}
+      style={[fontWeight, size, style]}
       disabled={disabled}
       accessibilityLabel={accessibilityLabel}
       testID={testID}
