@@ -1,12 +1,12 @@
-// eslint-disable-next-line import/no-named-as-default
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
 import { COLORS } from './src/constants/colors';
-import { Input } from './src/shared/Input/Input';
-import { Typography } from './src/shared/Typography/Typography';
+import { AuthenticationStackConfiguration } from './src/Navigation/Stacks/Authentication';
+import { HomepageStackConfiguration } from './src/Navigation/Stacks/Homepage';
 
 // eslint-disable-next-line no-console
 console.log(
@@ -30,14 +30,21 @@ const styles = StyleSheet.create({
   },
 });
 
+const Stack = createNativeStackNavigator();
+
 const App = () => (
-  <ScrollView style={styles.scrollView} contentContainerStyle={styles.containerStyles}>
-    <View style={styles.container}>
-      <Typography bold>Open up App.tsx to start working on your app!</Typography>
-      <Input placeholder="lolo" />
-      <StatusBar style="auto" />
-    </View>
-  </ScrollView>
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="Homepage">
+      <Stack.Group>
+        <Stack.Screen {...HomepageStackConfiguration.Homepage} />
+      </Stack.Group>
+      <Stack.Group>
+        <Stack.Screen {...AuthenticationStackConfiguration.Login} />
+        <Stack.Screen {...AuthenticationStackConfiguration.Register} />
+        <Stack.Screen {...AuthenticationStackConfiguration.ForgotPassword} />
+      </Stack.Group>
+    </Stack.Navigator>
+  </NavigationContainer>
 );
 
 let AppEntryPoint = App;
