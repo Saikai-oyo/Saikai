@@ -20,6 +20,7 @@ const config: Config = {
     '!**/babel.config.js',
     '!**/jest.setup.js',
   ],
+  setupFiles: ['./node_modules/react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
 };
 

@@ -9,4 +9,8 @@ module.exports = {
     builder: 'webpack5',
   },
   framework: '@storybook/react',
+  webpackFinal: async (config) => {
+    config.resolve.alias['@react-navigation/native'] = '<rootDir>/__mocks__/react-navigation.js';
+    return config;
+  },
 };
