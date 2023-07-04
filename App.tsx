@@ -5,8 +5,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 
 import { COLORS } from './src/constants/colors';
-import { AuthenticationStackConfiguration } from './src/Navigation/Stacks/Authentication';
-import { HomepageStackConfiguration } from './src/Navigation/Stacks/Homepage';
+import {
+  AuthenticationScreenNames,
+  AuthenticationStackParamList,
+} from './src/Navigation/Stacks/AuthenticationScreenNames';
+import { HomepageScreenNames, HomepageStackParamList } from './src/Navigation/Stacks/HomepageScreenNames';
+import { Landing } from './src/screens/Landing/Landing';
+import { LoginScreen } from './src/screens/Login/LoginScreen';
 
 // eslint-disable-next-line no-console
 console.log(
@@ -30,18 +35,37 @@ const styles = StyleSheet.create({
   },
 });
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<AuthenticationStackParamList & HomepageStackParamList>();
 
 const App = () => (
-  <NavigationContainer>
-    <Stack.Navigator initialRouteName="Homepage">
+  <NavigationContainer documentTitle={{ enabled: false }}>
+    <Stack.Navigator
+      screenOptions={() => ({
+        title: '',
+        headerLeft: () => null,
+        headerTransparent: true,
+      })}
+      initialRouteName={HomepageScreenNames.Landing}
+    >
       <Stack.Group>
-        <Stack.Screen {...HomepageStackConfiguration.Homepage} />
+        <Stack.Screen name={HomepageScreenNames.Landing} key={HomepageScreenNames.Landing} component={Landing} />
       </Stack.Group>
       <Stack.Group>
-        <Stack.Screen {...AuthenticationStackConfiguration.Login} />
-        <Stack.Screen {...AuthenticationStackConfiguration.Register} />
-        <Stack.Screen {...AuthenticationStackConfiguration.ForgotPassword} />
+        <Stack.Screen
+          name={AuthenticationScreenNames.Login}
+          key={AuthenticationScreenNames.Login}
+          component={LoginScreen}
+        />
+        {/* <Stack.Screen
+          name={AuthenticationScreenNames.Register}
+          key={AuthenticationScreenNames.Register}
+          component={Register}
+        />
+        <Stack.Screen
+          name={AuthenticationScreenNames.ForgotPassword}
+          key={AuthenticationScreenNames.ForgotPassword}
+          component={ForgotPassword}
+        /> */}
       </Stack.Group>
     </Stack.Navigator>
   </NavigationContainer>

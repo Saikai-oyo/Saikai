@@ -1,7 +1,7 @@
 export default ({ config }) => ({
   ...config,
-  name: 'saikai',
-  slug: 'saikai',
+  name: 'Saikai',
+  slug: 'Saikai',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
@@ -29,7 +29,7 @@ export default ({ config }) => ({
     },
   },
   web: {
-    favicon: './assets/favicon.png',
+    favicon: './assets/vector_logo.png',
     bundler: 'metro',
   },
 });

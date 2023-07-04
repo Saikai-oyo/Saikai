@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export const Homepage = ({ navigation }) => (
+export const Landing = ({ navigation }) => (
   <View style={styles.container}>
     <Typography>Home Screen</Typography>
     <Button text="Go to Login" onPress={() => navigation.navigate('Login')} />

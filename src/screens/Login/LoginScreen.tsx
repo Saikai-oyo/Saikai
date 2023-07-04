@@ -1,10 +1,15 @@
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { Formik } from 'formik';
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { LoginSchema, onSubmit } from './utils/form-handlers';
 import { Division } from '../../components/Division/Division';
 import { COLORS } from '../../constants/colors';
+import {
+  AuthenticationScreenNames,
+  AuthenticationStackParamList,
+} from '../../Navigation/Stacks/AuthenticationScreenNames';
 import { Button } from '../../shared/Button/Button';
 import { ButtonMode } from '../../shared/Button/types';
 import { IconButton } from '../../shared/IconButton/IconButton';
@@ -70,7 +75,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export const LoginScreen = () => {
+export const LoginScreen: FunctionComponent<
+  NativeStackScreenProps<AuthenticationStackParamList, AuthenticationScreenNames.Login>
+> = () => {
   const renderThirdPartyLoginButton = () => (
     <View style={styles.buttonLoginMethods}>
       <IconButton type="linkedin" />
