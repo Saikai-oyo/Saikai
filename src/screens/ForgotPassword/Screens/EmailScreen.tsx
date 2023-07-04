@@ -46,6 +46,7 @@ export const EmailScreen: FunctionComponent<
     </Typography>
     <Input containerStyle={styles.input} placeholder="Email" keyboardType="email-address" autoCapitalize="none" />
     <Button
+      weight="400"
       containerStyle={styles.button}
       size={TShirtSize.L}
       text="Reset my Password"
