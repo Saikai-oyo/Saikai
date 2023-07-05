@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React from 'react';
 
-import { RootScreenNames, RootStackParamList } from './src/navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from './src/navigation/RootStackScreens';
 import { EmailScreen } from './src/screens/ForgotPassword/Screens/EmailScreen';
 import { Landing } from './src/screens/Landing/Landing';
 import { LoginScreen } from './src/screens/Login/LoginScreen';

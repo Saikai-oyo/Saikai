@@ -7,7 +7,7 @@ import { LoginSchema, onSubmit } from './utils/form-handlers';
 import { BackgroundModal } from '../../components/BackgroundModal/BackgroundModal';
 import { Division } from '../../components/Division/Division';
 import { COLORS } from '../../constants/colors';
-import { RootScreenNames, RootStackParamList } from '../../navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from '../../navigation/RootStackScreens';
 import { Button } from '../../shared/Button/Button';
 import { ButtonMode } from '../../shared/Button/types';
 import { IconButton } from '../../shared/IconButton/IconButton';

@@ -3,7 +3,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import React from 'react';
 
-import { RootScreenNames, RootStackParamList } from '../../../navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from '../../../navigation/RootStackScreens';
 import { EmailScreen } from '../Screens/EmailScreen';
 
 const EmailScreenMeta: ComponentMeta<typeof EmailScreen> = {

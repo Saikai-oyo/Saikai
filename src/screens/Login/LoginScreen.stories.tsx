@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react-native';
 import React from 'react';
 
 import { LoginScreen } from './LoginScreen';
-import { RootScreenNames, RootStackParamList } from '../../navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from '../../navigation/RootStackScreens';
 
 const LoginScreenMeta: ComponentMeta<typeof LoginScreen> = {
   title: 'Screens/Authentication/LoginScreen',

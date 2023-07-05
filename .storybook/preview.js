@@ -1,11 +1,9 @@
-import { COLORS } from '../src/constants/colors';
-
 export const parameters = {
   background: {
-    default: COLORS.gray100,
+    default: '#F2F4F7',
     values: [
-      { name: 'white', value: COLORS.white },
-      { name: 'black', value: COLORS.black },
+      { name: 'white', value: '#FFFFFF' },
+      { name: 'black', value: '#000000' },
     ],
   },
   actions: { argTypesRegex: '^on[A-Z].*' },

@@ -4,7 +4,7 @@ import { StyleSheet, View } from 'react-native';
 
 import { BackgroundModal } from '../../../components/BackgroundModal/BackgroundModal';
 import { COLORS } from '../../../constants/colors';
-import { RootScreenNames, RootStackParamList } from '../../../navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from '../../../navigation/RootStackScreens';
 import { Button } from '../../../shared/Button/Button';
 import { IconButton } from '../../../shared/IconButton/IconButton';
 import { Input } from '../../../shared/Input/Input';

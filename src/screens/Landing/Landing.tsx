@@ -2,7 +2,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React, { FunctionComponent } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { RootScreenNames, RootStackParamList } from '../../navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from '../../navigation/RootStackScreens';
 import { Button } from '../../shared/Button/Button';
 import { Typography } from '../../shared/Typography/Typography';
 
