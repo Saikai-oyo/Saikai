@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 });
 
 export const EmailScreen: FunctionComponent<
-  NativeStackScreenProps<RootStackParamList, RootScreenNames.ForgotPassword_EmailScreen>
+  NativeStackScreenProps<RootStackParamList, RootScreenNames.EmailScreen>
 > = () => (
   <BackgroundModal>
     <View style={styles.back}>

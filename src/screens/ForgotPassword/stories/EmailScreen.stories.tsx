@@ -19,7 +19,7 @@ type EmailScreenStory = ComponentStory<typeof EmailScreen>;
 
 export const Basic: EmailScreenStory = () => (
   <EmailScreen
-    navigation={{} as NativeStackNavigationProp<RootStackParamList, RootScreenNames.ForgotPassword_EmailScreen>}
-    route={{} as RouteProp<RootStackParamList, RootScreenNames.ForgotPassword_EmailScreen>}
+    navigation={{} as NativeStackNavigationProp<RootStackParamList, RootScreenNames.EmailScreen>}
+    route={{} as RouteProp<RootStackParamList, RootScreenNames.EmailScreen>}
   />
 );
