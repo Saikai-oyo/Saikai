@@ -3,7 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Constants from 'expo-constants';
 import React from 'react';
 
-import { RootScreenNames, RootStackParamList } from './src/Navigation/Stacks/RootStackScreens';
+import { RootScreenNames, RootStackParamList } from './src/navigation/RootStackScreens';
+import { EmailScreen } from './src/screens/ForgotPassword/Screens/EmailScreen';
 import { Landing } from './src/screens/Landing/Landing';
 import { LoginScreen } from './src/screens/Login/LoginScreen';
 
@@ -30,16 +31,7 @@ const App = () => (
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen name={RootScreenNames.Login} key={RootScreenNames.Login} component={LoginScreen} />
-        {/* <Stack.Screen
-          name={RootScreenNames.Register}
-          key={RootScreenNames.Register}
-          component={Register}
-        />
-        <Stack.Screen
-          name={RootScreenNames.ForgotPassword}
-          key={RootScreenNames.ForgotPassword}
-          component={ForgotPassword}
-        /> */}
+        <Stack.Screen name={RootScreenNames.EmailScreen} key={RootScreenNames.EmailScreen} component={EmailScreen} />
       </Stack.Group>
     </Stack.Navigator>
   </NavigationContainer>

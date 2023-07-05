@@ -6,7 +6,7 @@ import { COLORS } from '../../constants/colors';
 const styles = StyleSheet.create({
   container: {
     maxWidth: 325,
-    minHeight: 405,
+    height: 'auto',
     width: '100%',
     backgroundColor: COLORS.white,
     borderRadius: 24,

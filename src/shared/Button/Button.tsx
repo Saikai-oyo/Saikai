@@ -16,6 +16,7 @@ export interface ButtonProps extends BasicButton {
   icon?: FunctionComponent;
   disabled?: boolean;
   bold?: boolean;
+  weight?: TextStyle['fontWeight'];
   textSize?: TShirtSize;
 }
 
@@ -55,6 +56,7 @@ export const Button = ({
   mode,
   bold,
   textSize,
+  weight = '400',
   disabled = false,
 }: ButtonProps) => {
   const { wrapperStyle, typographyStyle } = useButtonStyle({ size, mode });
@@ -67,7 +69,7 @@ export const Button = ({
       disabled={disabled}
     >
       <View style={styles.wrapper}>
-        <Typography bold={bold} textSize={textSize} style={[styles.text, typographyStyle, textStyle]}>
+        <Typography weight={weight} bold={bold} textSize={textSize} style={[styles.text, typographyStyle, textStyle]}>
           {text}
         </Typography>
       </View>

@@ -19,6 +19,7 @@ import { Typography } from '../Typography/Typography';
 
 export interface InputProps extends TextInputProps {
   style?: StyleProp<TextStyle>;
+  containerStyle?: StyleProp<TextStyle>;
   labelStyle?: StyleProp<TextStyle>;
   label?: string;
   labelTestID?: string;
@@ -116,6 +117,7 @@ export const Input: FunctionComponent<InputProps> = ({
   onBlur,
   value,
   iconType,
+  containerStyle,
   name = '',
   disabled = false,
   secureTextEntry = false,
@@ -133,7 +135,7 @@ export const Input: FunctionComponent<InputProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, containerStyle]}>
       {label && (
         <Typography testID={labelTestID} style={[styles.label, labelStyle]}>
           {label}
