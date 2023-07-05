@@ -31,11 +31,7 @@ const App = () => (
       </Stack.Group>
       <Stack.Group>
         <Stack.Screen name={RootScreenNames.Login} key={RootScreenNames.Login} component={LoginScreen} />
-        <Stack.Screen
-          name={RootScreenNames.ForgotPassword_EmailScreen}
-          key={RootScreenNames.ForgotPassword_EmailScreen}
-          component={EmailScreen}
-        />
+        <Stack.Screen name={RootScreenNames.EmailScreen} key={RootScreenNames.EmailScreen} component={EmailScreen} />
       </Stack.Group>
     </Stack.Navigator>
   </NavigationContainer>
