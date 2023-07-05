@@ -16,7 +16,7 @@
     "test": "jest",
     "test:debug": "jest -o --watch",
     "test:watch": "jest --watch",
-    "lint": "eslint ./src/shared/** ./src/constants/** ./src/screens/** ./src/components/** ./src/navigation/**",
+    "lint": "eslint ./src/shared/** ./src/constants/** ./src/screens/** ./src/components/** ./src/navigation/*",
     "lint:fix": "yarn lint --fix",
     "postinstall": "husky install",
     "github:deploy": "npm run build && gh-pages -d build",
