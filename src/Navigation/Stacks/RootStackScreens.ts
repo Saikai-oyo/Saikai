@@ -8,7 +8,7 @@ export enum RootScreenNames {
 
   // ForgotPassword
   EmailScreen = 'Email',
-  PasswordScreen = 'Password',
+  // PasswordScreen = 'Password',
 }
 
 export type RootStackParamList = {
@@ -21,5 +21,5 @@ export type RootStackParamList = {
 
   // ForgotPassword
   [RootScreenNames.EmailScreen]: undefined;
-  [RootScreenNames.PasswordScreen]: undefined;
+  // [RootScreenNames.PasswordScreen]: undefined;
 };

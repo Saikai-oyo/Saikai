@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
 });
 
 export const textWeightToFontWeight = (weight: TextStyle['fontWeight'], bold = false) => {
-  if (bold) {
+  if (bold || weight === 'bold') {
     return styles.bold;
   }
 
@@ -58,8 +58,6 @@ export const textWeightToFontWeight = (weight: TextStyle['fontWeight'], bold = f
       return styles.weight800;
     case '900':
       return styles.weight900;
-    case 'bold':
-      return styles.bold;
     case 'normal':
       return styles.normal;
     case '500':
