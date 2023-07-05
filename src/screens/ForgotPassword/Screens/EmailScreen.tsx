@@ -51,7 +51,7 @@ export const EmailScreen: FunctionComponent<
       size={TShirtSize.L}
       text="Reset my Password"
       onPress={() => {
-        // Do something
+        // Trigger Modal
       }}
     />
   </BackgroundModal>
