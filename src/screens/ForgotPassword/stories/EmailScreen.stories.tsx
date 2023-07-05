@@ -7,7 +7,7 @@ import { RootScreenNames, RootStackParamList } from '../../../navigation/RootSta
 import { EmailScreen } from '../Screens/EmailScreen';
 
 const EmailScreenMeta: ComponentMeta<typeof EmailScreen> = {
-  title: 'Screens/Forgot Password/EmailScreen',
+  title: 'Screens/Forgot Password/Email Screen',
   component: EmailScreen,
   argTypes: {},
   args: {},

@@ -5,6 +5,7 @@ import React from 'react';
 
 import { RootScreenNames, RootStackParamList } from './src/navigation/RootStackScreens';
 import { EmailScreen } from './src/screens/ForgotPassword/Screens/EmailScreen';
+import { PasswordScreen } from './src/screens/ForgotPassword/Screens/PasswordScreen';
 import { Landing } from './src/screens/Landing/Landing';
 import { LoginScreen } from './src/screens/Login/LoginScreen';
 
@@ -32,6 +33,11 @@ const App = () => (
       <Stack.Group>
         <Stack.Screen name={RootScreenNames.Login} key={RootScreenNames.Login} component={LoginScreen} />
         <Stack.Screen name={RootScreenNames.EmailScreen} key={RootScreenNames.EmailScreen} component={EmailScreen} />
+        <Stack.Screen
+          name={RootScreenNames.PasswordScreen}
+          key={RootScreenNames.PasswordScreen}
+          component={PasswordScreen}
+        />
       </Stack.Group>
     </Stack.Navigator>
   </NavigationContainer>
