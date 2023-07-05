@@ -33,7 +33,7 @@ export interface InputProps extends TextInputProps {
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'stretch',
-    height: 80,
+    height: 75,
   },
   label: {
     fontSize: 13,
